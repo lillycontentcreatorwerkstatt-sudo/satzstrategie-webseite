@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satzstrategie | Das KIPPL-Protokoll</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container header-flex">
+        <a href="index.html" class="logo">Satz<span>strategie</span></a>
+
+        <button
+          class="burger-btn"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </button>
+
+        <nav class="smart-nav" id="smartNav">
+          <a href="angebot.html" class="nav-item">
+            <span class="nav-title">Leistungen</span>
+            <span class="nav-sub">Landingpages, Email & Ads</span>
+          </a>
+
+          <a href="angebot.html#proof" class="nav-item">
+            <span class="nav-title">Referenzen</span>
+            <span class="nav-sub">Ergebnisse & Case Studies</span>
+          </a>
+
+          <a href="kippl.html" class="nav-item">
+            <span class="nav-title">KIPPL-System</span>
+            <span class="nav-sub">KI + Verkaufspsychologie</span>
+          </a>
+
+          <a href="kontakt.html" class="nav-item highlight-item">
+            <span class="nav-title">Kontakt</span>
+            <span class="nav-sub">Strategiegespräch buchen</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <main>
+        <section style="padding: 4rem 0 2rem 0">
+          <span class="mono">// Unsere Methodik</span>
+          <h1 style="font-size: 3rem; margin-top: 1rem">
+            Technologie trifft <span class="highlight">Psychologie.</span>
+          </h1>
+          <p
+            style="
+              color: var(--text-muted);
+              max-width: 700px;
+              margin-top: 1rem;
+              font-size: 1.2rem;
+            "
+          >
+            Warum unsere Texte anders klingen als Standard-ChatGPT? Weil wir
+            einen strikten Prozess haben. Das KIPPL-Protokoll sichert Qualität
+            bei hoher Geschwindigkeit.
+          </p>
+        </section>
+
+        <section id="kippl-grid" style="padding-top: 2rem">
+          <div class="grid-3">
+            <article class="card kippl-card">
+              <span class="letter" aria-hidden="true">K</span>
+              <h3>Künstliche Intelligenz</h3>
+              <p>
+                Wir nutzen LLMs nicht zum "Schreiben", sondern als
+                Hochleistungs-Motor für Recherche, Strukturierung und erste
+                Entwürfe. Das spart 80% der Zeit.
+              </p>
+            </article>
+
+            <article class="card kippl-card">
+              <span class="letter" aria-hidden="true">I</span>
+              <h3>Intuition</h3>
+              <p>
+                Daten sind kalt. Wir liefern das Gefühl. Unsere menschliche
+                Intuition entscheidet, welche Emotion die Zielgruppe gerade
+                braucht.
+              </p>
+            </article>
+
+            <article class="card kippl-card">
+              <span class="letter" aria-hidden="true">P</span>
+              <h3>Produktivität</h3>
+              <p>
+                Hoher Output in kurzer Zeit. Wir skalieren Ihre Texterstellung
+                (z.B. für Blogs oder Shops) ohne Qualitätsverlust.
+              </p>
+            </article>
+
+            <article class="card kippl-card">
+              <span class="letter" aria-hidden="true">P</span>
+              <h3>Praxis-Check</h3>
+              <p>
+                Keine Theorie. Jeder Text wird gegen bewährte
+                Verkaufspsychologie getestet: Löst er das Problem? Baut er
+                Vertrauen auf?
+              </p>
+            </article>
+
+            <article class="card kippl-card">
+              <span class="letter" aria-hidden="true">L</span>
+              <h3>Lebensnähe</h3>
+              <p>
+                Texte für alle. Wir eliminieren "Corporate Speak" und
+                Fachchinesisch. Verständlich, barrierefrei und nah am echten
+                Leben.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section style="text-align: center; margin-top: 2rem">
+          <h3 style="margin-bottom: 1rem">Wollen Sie KIPPL testen?</h3>
+          <a href="kontakt.html" class="btn">Text anfragen</a>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 Satzstrategie.</p>
+        <div class="footer-links">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </footer>
+      <div id="speedDial" class="speed-dial-container">
+      <button id="btnScrollTop" class="speed-dial-option" title="Nach oben">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+
+      <a
+        href="index.html"
+        id="btnHome"
+        class="speed-dial-option"
+        title="Zur Startseite"
+      >
+        <i class="fas fa-home"></i>
+      </a>
+
+      <button id="btnMain" class="speed-dial-main" title="Menü öffnen">
+        <i class="fas fa-plus" id="mainIcon"></i>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

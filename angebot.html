@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satzstrategie | Angebot & Leistungen</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="container header-flex">
+        <a href="index.html" class="logo">Satz<span>strategie</span></a>
+
+        <button class="burger-btn" aria-label="Menü öffnen">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </button>
+
+        <nav class="smart-nav" id="smartNav">
+          <a href="angebot.html" class="nav-item">
+            <span class="nav-title">Leistungen</span>
+            <span class="nav-sub">Landingpages, Email & Ads</span>
+          </a>
+          <a href="angebot.html#proof" class="nav-item">
+            <span class="nav-title">Referenzen</span>
+            <span class="nav-sub">Ergebnisse & Case Studies</span>
+          </a>
+          <a href="kippl.html" class="nav-item">
+            <span class="nav-title">KIPPL-System</span>
+            <span class="nav-sub">KI + Verkaufspsychologie</span>
+          </a>
+          <a href="kontakt.html" class="nav-item highlight-item">
+            <span class="nav-title">Kontakt</span>
+            <span class="nav-sub">Strategiegespräch buchen</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <main>
+        <section style="padding: 4rem 0 2rem 0">
+          <span class="mono">// Unsere Leistungen</span>
+          <h1 style="font-size: 3rem; margin-top: 1rem">
+            Texte, die <span class="highlight">verkaufen.</span>
+          </h1>
+        </section>
+
+        <section id="services">
+          <div class="grid-3">
+            <article class="card">
+              <h3 class="mono">01 // Webseiten-Texte</h3>
+              <p style="color: var(--text-muted)">
+                Landingpages, die überzeugen.
+              </p>
+            </article>
+            <article class="card">
+              <h3 class="mono">02 // E-Mail-Marketing</h3>
+              <p style="color: var(--text-muted)">Newsletter mit Strategie.</p>
+            </article>
+            <article class="card">
+              <h3 class="mono">03 // Content</h3>
+              <p style="color: var(--text-muted)">SEO und Blogs.</p>
+            </article>
+          </div>
+        </section>
+
+        <section style="text-align: center; margin-top: 4rem">
+          <a href="kontakt.html" class="btn">Projekt anfragen</a>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 Satzstrategie.</p>
+        <div class="footer-links">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </footer>
+    </div>
+    <div id="speedDial" class="speed-dial-container">
+      <button id="btnScrollTop" class="speed-dial-option" title="Nach oben">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+
+      <a
+        href="index.html"
+        id="btnHome"
+        class="speed-dial-option"
+        title="Zur Startseite"
+      >
+        <i class="fas fa-home"></i>
+      </a>
+
+      <button id="btnMain" class="speed-dial-main" title="Menü öffnen">
+        <i class="fas fa-plus" id="mainIcon"></i>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
