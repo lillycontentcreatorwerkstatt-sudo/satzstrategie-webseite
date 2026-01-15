@@ -111,6 +111,7 @@ h2 {
 
 h3 {
   font-size: 1rem;
+  letter-spacing: 2px
 }
 
 .hero-intro {
@@ -872,4 +873,108 @@ details[open] summary.faq-question::after {
   h1 {
     font-size: 3.5rem; /* Nicht so riesig wie am Desktop */
   }
+}
+
+/* ============================================
+   SHOP & APPS PAGE STYLES
+   ============================================ */
+
+/* Kompakter Hero-Bereich (zieht den Text nach oben) */
+.hero-compact {
+  min-height: auto !important;
+  padding-top: 4rem; /* Identisch zur Startseite */
+  padding-bottom: 2rem;
+}
+
+/* Tagline oben */
+.shop-tagline {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* Entfernt Padding oben bei der App-Section */
+.section-clean {
+  padding-top: 0 !important;
+}
+
+/* Flexibles Grid für die Apps */
+.grid-apps {
+  /* Überschreibt das starre grid-3 für bessere Responsivität */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+}
+
+/* App Karten Layout */
+.app-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+}
+
+.app-card-header h3 {
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 1rem !important;
+  margin-top: 0;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.app-icon {
+  font-size: 2rem;
+}
+
+.app-description {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Icons Farben */
+.icon-blue { color: var(--accent-blue); }
+.icon-gold { color: var(--accent-gold); }
+
+/* Badges (Die kleinen Kästchen) */
+.app-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  border: 1px solid transparent; 
+}
+
+.badge-gold {
+  background: rgba(250, 204, 21, 0.2);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.badge-blue {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* Support Bereich unten */
+.support-section {
+  margin-top: 4rem;
+}
+
+.support-text {
+  color: var(--text-muted);
+  margin-top: 1rem;
+  max-width: 700px;
+}
+
+/* Links im Text */
+.link-inline {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.link-inline:hover {
+  color: #fff;
 }
