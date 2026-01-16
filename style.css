@@ -20,6 +20,17 @@ html {
   --focus-outline: var(--accent-gold);
 }
 
+/* --- OVERFLOW FIX --- */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+*, *::before, *::after {
+  max-width: 100vw;
+}
+
 /* --- ACCESSIBILITY --- */
 :focus-visible {
   outline: 2px solid var(--accent-gold);
@@ -1189,3 +1200,8 @@ details[open] summary.faq-question::after {
     padding-top: 0 !important;
   }
   
+  @media (min-width: 400px) and (max-width: 500px) {
+    h1 {
+      font-size: 2.4rem !important;
+    }
+  }
