@@ -127,30 +127,38 @@
           Eine E-Mail, wenn's soweit ist. Kein Spam, versprochen.
         </p>
         
-        <input 
-          type="email" 
-          placeholder="Deine E-Mail-Adresse" 
-          style="
-            width: 100%;
-            max-width: 350px;
-            padding: 1rem 1.25rem;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            color: #ffffff;
-            outline: none;
-            transition: border-color 0.3s ease;
-            margin-bottom: 1rem;
-          "
-          onfocus="this.style.borderColor='var(--accent-blue)'"
-          onblur="this.style.borderColor='rgba(255, 255, 255, 0.2)'"
-        />
-        
-        <div class="hero-btn-group" style="margin: 0 auto; max-width: 200px; justify-content: center; display: flex;">
-          <button type="submit" class="btn">Eintragen</button>
-        </div>
+        <form action="https://formsubmit.co/lillycontentcreatorwerkstatt@gmail.com" method="POST" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <input type="hidden" name="_next" value="https://lillycontentcreatorwerkstatt-sudo.github.io/satzstrategie-webseite/index.html">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="Neue Anmeldung Warteliste!">
+
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Deine E-Mail-Adresse" 
+            required
+            style="
+              width: 100%;
+              max-width: 350px;
+              padding: 1rem 1.25rem;
+              font-size: 1rem;
+              font-family: 'Inter', sans-serif;
+              background: rgba(255, 255, 255, 0.05);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              border-radius: 4px;
+              color: #ffffff;
+              outline: none;
+              transition: border-color 0.3s ease;
+              margin-bottom: 1rem;
+            "
+            onfocus="this.style.borderColor='var(--accent-blue)'"
+            onblur="this.style.borderColor='rgba(255, 255, 255, 0.2)'"
+          />
+          
+          <div class="hero-btn-group" style="margin: 0 auto; max-width: 200px; justify-content: center; display: flex;">
+            <button type="submit" class="btn">Eintragen</button>
+          </div>
+        </form>
         
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; margin-bottom: 0;">
           Mit der Eintragung akzeptierst du unsere 
@@ -186,7 +194,6 @@
           <i class="fas fa-home"></i>
         </a>
   
-        
         <button id="btnMain" class="speed-dial-main" title="Menü öffnen">
           <i class="fas fa-plus" id="mainIcon"></i>
         </button>
