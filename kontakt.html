@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <title>Satzstrategie | Kontakt</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -15,6 +16,8 @@
     />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
     <header>
       <div class="container header-flex">
         <a href="index.html" class="logo">Satz<span>strategie</span></a>
@@ -50,59 +53,61 @@
             <span class="nav-sub">Apps & Tools</span>
           </a>
 
-          <a href="kontakt.html" class="nav-item highlight-item">
+          <a href="kontakt.html" class="nav-item highlight-item active-page">
             <span class="nav-title">Kontakt</span>
             <span class="nav-sub">Strategiegespräch buchen</span>
           </a>
         </nav>
       </div>
     </header>
-    <div class="container">
-      <main>
-        <section class="hero" style="min-height: 60vh">
-          <div>
-            <span class="mono">// Let's talk</span>
-            <h1>Bereit für bessere Texte?</h1>
 
-            <div class="grid-3" style="margin-top: 3rem">
-              <div class="card" style="border: 2px solid var(--accent-blue)">
-                <h3>Direkt anfragen</h3>
-                <p style="color: var(--text-muted); margin-bottom: 2rem">
-                  Schreiben Sie uns kurz, worum es geht. Wir melden uns
-                  innerhalb von 24h.
-                </p>
-                <a
-                  href="mailto:hallo@satzstrategie.de"
-                  class="btn"
-                  style="margin-top: 0"
-                  >E-Mail schreiben</a
-                >
-                <p style="margin-top: 1rem; font-size: 0.9rem">
-                  hallo@satzstrategie.de
-                </p>
-              </div>
+    <main id="main-content">
+      <section class="hero hero-compact">
+        <div class="container">
+          <span class="mono">// Let's talk</span>
+          <h1>Bereit für bessere Texte?</h1>
+        </div>
+      </section>
 
-              <div class="about-box">
-                <h3>Wer schreibt hier?</h3>
-                <p style="margin-top: 1rem; color: var(--text-muted)">
-                  Wir sind <strong>Satzstrategie</strong>. Wir glauben, dass KI
-                  das mächtigste Werkzeug unserer Zeit ist – aber nur, wenn ein
-                  erfahrener Pilot am Steuer sitzt.
-                </p>
-              </div>
+      <section class="section-clean">
+        <div class="container">
+          <div class="grid-3">
+            <div class="card kippl-card" style="border: 2px solid var(--accent-blue)">
+              <h3>Direkt anfragen</h3>
+              <p style="color: var(--text-muted); margin-bottom: 2rem">
+                Schreiben Sie uns kurz, worum es geht. Wir melden uns
+                innerhalb von 24h.
+              </p>
+              <a href="mailto:hallo@satzstrategie.de" class="btn">E-Mail schreiben</a>
+              <p style="margin-top: 1rem; font-size: 0.9rem">
+                hallo@satzstrategie.de
+              </p>
+            </div>
+
+            <div class="card kippl-card">
+              <h3>Wer schreibt hier?</h3>
+              <p style="margin-top: 1rem; color: var(--text-muted)">
+                Wir sind <strong>Satzstrategie</strong>. Wir glauben, dass KI
+                das mächtigste Werkzeug unserer Zeit ist – aber nur, wenn ein
+                erfahrener Pilot am Steuer sitzt.
+              </p>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+    </main>
 
-      <footer>
+    <footer>
+      <div class="container">
         <p>&copy; 2026 Satzstrategie.</p>
         <div class="footer-links">
           <a href="impressum.html">Impressum</a>
           <a href="datenschutz.html">Datenschutz</a>
         </div>
-      </footer>
-      <div id="speedDial" class="speed-dial-container">
+      </div>
+    </footer>
+
+    <div id="speedDial" class="speed-dial-container">
       <button id="btnScrollTop" class="speed-dial-option" title="Nach oben">
         <i class="fas fa-arrow-up"></i>
       </button>

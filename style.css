@@ -5,10 +5,7 @@
 
 /* --- 1. VARIABLES --- */
 html {
-  /* 1. Hintergrund schwarz machen (statt standardmäßig weiß) */
   background-color: #02040a;
-
-  /* 2. Optional: Das "Über-den-Rand-Ziehen" komplett verbieten */
   overscroll-behavior: none;
 }
 :root {
@@ -96,10 +93,17 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 7vw, 4.8rem);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  font-size: clamp(1.8rem, 7vw, 4.8rem);
   text-transform: uppercase;
   text-shadow: 0 0 40px rgba(56, 189, 248, 0.1);
   margin-bottom: 1rem;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
 }
 
 h2 {
@@ -111,7 +115,7 @@ h2 {
 
 h3 {
   font-size: 1rem;
-  letter-spacing: 2px
+  letter-spacing: 2px;
 }
 
 .hero-intro {
@@ -196,7 +200,6 @@ h3 {
   display: block;
 }
 
-/* WICHTIG: Das hier hatte ich vorhin gelöscht, es ist aber wichtig für dein Layout! */
 .mono,
 .special-box {
   max-width: 100%;
@@ -246,14 +249,9 @@ header {
   top: 0;
   z-index: 100;
   padding: 1.5rem 0;
-
-  /* NEU: Deckende Farbe statt Transparenz */
   background: #02040a;
-
-  /* NEU: Blur komplett entfernen */
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -518,13 +516,8 @@ details[open] summary.faq-question::after {
   padding-left: 0;
   margin-bottom: 3rem;
 }
-@media (max-width: 768px) {
-  .faq-headline {
-    padding-left: 0;
-  }
-}
 
-/* --- 12. MOBILE --- */
+/* --- 12. GENERAL MOBILE (768px) --- */
 @media (max-width: 768px) {
   section {
     padding: 1.5rem 0;
@@ -541,6 +534,9 @@ details[open] summary.faq-question::after {
   .grid-3 {
     gap: 1.5rem;
     margin-top: 0.5rem;
+  }
+  .faq-headline {
+    padding-left: 0;
   }
 }
 
@@ -709,11 +705,7 @@ details[open] summary.faq-question::after {
 }
 
 /* ============================================
-   SPEED DIAL BUTTON (NUR DER NEUE CODE)
-   ============================================ */
-
-/* ============================================
-   SPEED DIAL BUTTON (Finaler Fix: Unsichtbarer Start)
+   SPEED DIAL BUTTON
    ============================================ */
 
 .speed-dial-container {
@@ -725,22 +717,18 @@ details[open] summary.faq-question::after {
   align-items: center;
   gap: 15px;
   z-index: 9999;
-
-  /* --- DAS HAT GEFEHLT: --- */
-  opacity: 0; /* 1. Unsichtbar starten */
-  pointer-events: none; /* 2. Nicht klickbar starten */
-  transform: translateY(20px); /* 3. Leicht nach unten versetzt */
-  transition: all 0.4s ease; /* 4. Weiche Animation */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
 }
 
-/* Erst wenn JS die Klasse "is-visible" hinzufügt, wird er sichtbar */
 .speed-dial-container.is-visible {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-/* Haupt-Button (Blau) */
 .speed-dial-main {
   width: 60px;
   height: 60px;
@@ -761,7 +749,6 @@ details[open] summary.faq-question::after {
   transform: scale(1.1);
 }
 
-/* Optionen (Graue Punkte) */
 .speed-dial-option {
   width: 50px;
   height: 50px;
@@ -775,8 +762,6 @@ details[open] summary.faq-question::after {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-  /* Optionen sind versteckt, bis man klickt */
   opacity: 0;
   transform: translateY(20px) scale(0.5);
   pointer-events: none;
@@ -786,7 +771,6 @@ details[open] summary.faq-question::after {
   background-color: #5a6268;
 }
 
-/* Wenn Menü offen -> Optionen zeigen */
 .speed-dial-container.menu-open .speed-dial-option {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -796,82 +780,71 @@ details[open] summary.faq-question::after {
   transform: rotate(45deg);
 }
 
-/* Startseite: Graue Optionen immer verstecken (nur Pfeil erlaubt) */
 .speed-dial-container.is-home .speed-dial-option {
   display: none !important;
 }
+
 /* ============================================
-   MOBILE MENU FIX v3 (Rechtsbündig & Sofort-Klick)
+   MOBILE MENU FIX (Rechtsbündig & Sofort-Klick)
    ============================================ */
 
 @media (max-width: 768px) {
-  /* 1. Das Menü-Panel: Klebt rechts */
   .smart-nav {
-    text-align: right !important; /* Text erzwingen: RECHTS */
-    border-radius: 8px 0 0 8px; /* Nur links rund */
-    padding: 1rem 0; /* Oben/Unten Luft */
-    width: 85vw !important; /* Breite */
-    right: 0 !important; /* Klebt am rechten Rand */
+    text-align: right !important;
+    border-radius: 8px 0 0 8px;
+    padding: 1rem 0;
+    width: 85vw !important;
+    right: 0 !important;
     left: auto !important;
   }
 
-  /* 2. Die Einträge: Alles nach rechts schieben */
   .nav-item {
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-end !important; /* Flexbox: Alles nach rechts */
-    text-align: right !important; /* Text: Rechts */
-    padding: 0.8rem 1.5rem 0.8rem 1rem; /* Rechts viel Platz für den Daumen */
+    align-items: flex-end !important;
+    text-align: right !important;
+    padding: 0.8rem 1.5rem 0.8rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  /* Letzte Linie weg */
   .nav-item:last-child {
     border-bottom: none;
   }
 
-  /* 3. WICHTIG FÜR SINGLE-KLICK: Untertitel immer anzeigen! */
   .nav-sub {
-    opacity: 1 !important; /* Immer sichtbar */
-    max-height: none !important; /* Volle Höhe */
+    opacity: 1 !important;
+    max-height: none !important;
     display: block !important;
     margin-top: 2px !important;
-
-    /* Design: Dezent grau */
     font-size: 0.8rem;
     color: #64748b;
     font-weight: 400;
   }
 
-  /* Titel etwas hervorheben */
   .nav-title {
     font-size: 1.2rem;
     margin-bottom: 0;
     line-height: 1.2;
   }
 }
+
 /* ============================================
-   IPAD & TABLET FIX (Leerraum entfernen)
-   Gilt für alles, was breiter als ein Handy ist,
-   aber schmaler als ein Desktop (bis 1024px).
+   IPAD & TABLET FIX (bis 1024px)
    ============================================ */
 
 @media (max-width: 1024px) {
-  /* 1. Header: Polsterung oben/unten halbieren */
   header {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
   }
 
-  /* 2. Start-Bereich: Ganz nach oben ziehen */
   .hero {
-    padding-top: 1rem !important; /* Zieht den Text hoch */
-    min-height: auto !important; /* Verhindert künstliche Länge */
+    padding-top: 1rem !important;
+    min-height: auto !important;
   }
 
-  /* 3. Schriftgröße etwas anpassen für Tablets */
   h1 {
-    font-size: 3.5rem; /* Nicht so riesig wie am Desktop */
+    font-size: 3.5rem;
   }
 }
 
@@ -879,31 +852,25 @@ details[open] summary.faq-question::after {
    SHOP & APPS PAGE STYLES
    ============================================ */
 
-/* Kompakter Hero-Bereich (zieht den Text nach oben) */
 .hero-compact {
   min-height: auto !important;
-  padding-top: 4rem; /* Identisch zur Startseite */
+  padding-top: 4rem;
   padding-bottom: 2rem;
 }
 
-/* Tagline oben */
 .shop-tagline {
   display: block;
   margin-bottom: 1.5rem;
 }
 
-/* Entfernt Padding oben bei der App-Section */
 .section-clean {
   padding-top: 0 !important;
 }
 
-/* Flexibles Grid für die Apps */
 .grid-apps {
-  /* Überschreibt das starre grid-3 für bessere Responsivität */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
 }
 
-/* App Karten Layout */
 .app-card-header {
   display: flex;
   align-items: center;
@@ -930,11 +897,13 @@ details[open] summary.faq-question::after {
   margin-bottom: 1rem;
 }
 
-/* Icons Farben */
-.icon-blue { color: var(--accent-blue); }
-.icon-gold { color: var(--accent-gold); }
+.icon-blue {
+  color: var(--accent-blue);
+}
+.icon-gold {
+  color: var(--accent-gold);
+}
 
-/* Badges (Die kleinen Kästchen) */
 .app-badge {
   display: inline-block;
   padding: 0.4rem 0.8rem;
@@ -942,7 +911,7 @@ details[open] summary.faq-question::after {
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 0.5rem;
-  border: 1px solid transparent; 
+  border: 1px solid transparent;
 }
 
 .badge-gold {
@@ -957,7 +926,6 @@ details[open] summary.faq-question::after {
   color: var(--accent-blue);
 }
 
-/* Support Bereich unten */
 .support-section {
   margin-top: 4rem;
 }
@@ -968,7 +936,6 @@ details[open] summary.faq-question::after {
   max-width: 700px;
 }
 
-/* Links im Text */
 .link-inline {
   color: var(--accent-blue);
   text-decoration: underline;
@@ -977,4 +944,157 @@ details[open] summary.faq-question::after {
 
 .link-inline:hover {
   color: #fff;
+}
+
+/* ============================================
+   MOBILE OPTIMIERUNG – PREMIUM UX
+   Für Smartphones unter 480px
+   ============================================ */
+
+@media (max-width: 480px) {
+  /* --- HEADLINE: Mehr Punch, engerer Zeilenabstand --- */
+  h1 {
+    font-size: clamp(1.8rem, 11vw, 2.8rem) !important;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+  }
+
+  /* --- SPECIAL-BOX: Größerer Text für bessere Lesbarkeit --- */
+  .special-box {
+    padding: 1.2rem 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .special-box p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* --- BUTTONS: Mehr Abstand, größerer Primary CTA --- */
+  .hero-btn-group {
+    margin-top: 2rem;
+    gap: 0.75rem;
+  }
+
+  .hero-btn-group .btn {
+    padding: 1.1rem 1.5rem;
+    font-size: 0.95rem !important;
+    min-height: 68px;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+  }
+
+  .hero-btn-group .btn-outline {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.85rem !important;
+    min-height: 62px;
+    letter-spacing: 2px;
+  }
+
+  .btn-subtext {
+    font-size: 0.7rem !important;
+    margin-top: 3px;
+  }
+
+  /* --- HERO INTRO: Kompakter --- */
+  .hero-intro {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* --- TAGLINE: Etwas kleiner --- */
+  .mono {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  /* --- CARDS: Kompakteres Padding --- */
+  .card {
+    padding: 1.5rem;
+  }
+
+  .kippl-card h3 {
+    font-size: 0.9rem;
+  }
+
+  /* --- FAQ: Bessere Touch-Targets --- */
+  details.faq-item {
+    padding: 1.2rem;
+  }
+
+  summary.faq-question {
+    font-size: 1rem;
+    padding-right: 1.5rem;
+  }
+
+  /* --- FOOTER: Kompakter --- */
+  footer {
+    margin-top: 3rem;
+    padding: 2rem 0;
+  }
+
+  .footer-links {
+    gap: 1.5rem;
+  }
+
+  /* --- SPEED DIAL: Kleinerer Button auf Mobile --- */
+  .speed-dial-container {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .speed-dial-main {
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .speed-dial-option {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ============================================
+   EXTRA SMALL SCREENS (iPhone SE, Mini)
+   Unter 375px
+   ============================================ */
+
+@media (max-width: 375px) {
+  h1 {
+    font-size: clamp(1.6rem, 10vw, 2.4rem) !important;
+  }
+
+  .hero-btn-group .btn,
+  .hero-btn-group .btn-outline {
+    font-size: 0.8rem !important;
+    letter-spacing: 1px;
+    padding: 0.9rem 1rem;
+  }
+
+  .special-box p {
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* Fix für konsistenten Abstand nach Header */
+@media (max-width: 768px) {
+  main > section:first-child {
+    padding-top: 0.5rem !important;
+  }
+  
+  main > section:first-child .mono {
+    margin-top: 0;
+  }
 }
