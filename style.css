@@ -360,6 +360,42 @@ header {
   letter-spacing: 0;
 }
 
+.hero-compact {
+  padding-top: 4.5rem;
+  padding-bottom: 4rem;
+}
+
+.hero-compact .mono {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+.hero-compact h1 {
+  margin-bottom: 3rem;
+}
+
+/* Subheadline */
+.hero-sub {
+  max-width: 34rem;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* CTA optisch beruhigen */
+.btn-charge.hero-cta {
+  background: #27a6dd;     
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Button + Textlink nicht kleben lassen */
+.hero-cta + .hero-more {
+  margin-top: 0.9rem;
+}
+
+
 /* Tablet */
 @media (max-width: 768px) {
   .hero-btn-group {
@@ -404,6 +440,34 @@ header {
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
 }
+
+@media (max-width: 768px) {
+  .hero-compact {
+    padding-top: 4.4rem;
+    padding-bottom: 3.6rem;
+  }
+
+  .hero-compact .mono {
+    margin-bottom: 2.8rem;      /* Mobile extra Luft */
+  }
+
+  .hero-compact h1 {
+    font-size: clamp(1.7rem, 7vw, 2.1rem);
+    line-height: 1.2;
+    margin-bottom: 2.4rem;      /* mehr Abstand H1 → Subline */
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    margin-bottom: 2.6rem;      /* mehr Abstand Subline → Button */
+  }
+
+  .hero-cta-soft {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
 
 /* Subheadline */
 .hero-sub {
@@ -1260,6 +1324,16 @@ details[open] summary.faq-question::after {
     margin-top: 4rem !important;
     padding-top: 0 !important;
   }
+
+  #leistungen h2 {
+    margin-top: 3.2rem;          /* mehr Abstand vom Hero-CTA */
+    margin-bottom: 1.8rem;
+    color: #ffffff;
+  }
+
+  #leistungen h2 .highlight {
+    color: #ffffff;              /* Buntigkeit rausnehmen */
+  }
   
   section#faq {
     margin-top: 4rem !important;
@@ -1271,3 +1345,48 @@ details[open] summary.faq-question::after {
       font-size: 2.4rem !important;
     }
   }
+
+  .btn-charge {
+    background: #1e90c2;  /* gedämpfteres Blau */
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .btn-charge:hover {
+    background: #25a0d4;
+  }
+
+  .hero-cta-soft {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.6rem;
+    border-radius: 999px;
+    background: rgba(39, 160, 212, 0.1);
+    border: 1px solid rgba(39, 160, 212, 0.9);
+    color: #eaf7ff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    box-shadow: none;
+    margin: 2.6rem auto 0;   /* vorher kleiner oder größer → jetzt feinjustieren */
+  }
+  
+  .hero-cta-soft .btn-subtext {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-cta-soft:hover {
+    background: rgba(39, 160, 212, 0.2);
+  }
+ 
+  
+  
+  
+  
+  
+   
+  
