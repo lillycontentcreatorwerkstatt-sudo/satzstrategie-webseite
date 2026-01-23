@@ -1,11 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
-  // Puppeteer für Serverless-Umgebungen optimieren
-  experimental: {
-    serverComponentsExternalPackages: ["puppeteer-core"],
-  },
+  // Das verhindert, dass Next.js versucht, Puppeteer zu "bundlen"
+  serverComponentsExternalPackages: ["puppeteer"],
 };
 
 export default nextConfig;
