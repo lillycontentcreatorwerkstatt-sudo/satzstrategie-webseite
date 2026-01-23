@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   serverExternalPackages: [
     "puppeteer",
     "puppeteer-core",
-    "@sparticuz/chromium-min",
+    // @sparticuz/chromium-min NICHT in serverExternalPackages, damit die Dateien gebündelt werden
   ],
   // Inkludiere Chromium-Binärdateien explizit für Vercel
   // Für App Router muss der Pfad mit src/app/api/** beginnen
