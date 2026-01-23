@@ -19,11 +19,17 @@ export async function POST(request: Request) {
     // Browser-Weiche
     if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       console.log("🚀 SERVER-MODUS (Vercel)");
-      chromium.setGraphicsMode = false;
+      
+      // Chromium-Konfiguration für Vercel
+      (chromium as any).setGraphicsMode = false;
+      
+      const executablePath = await chromium.executablePath();
+      console.log("Chromium executable path:", executablePath);
+      
       browser = await puppeteerCore.launch({
         args: (chromium as any).args,
         defaultViewport: (chromium as any).defaultViewport,
-        executablePath: await chromium.executablePath(),
+        executablePath: executablePath,
         headless: (chromium as any).headless,
       });
     } else {
@@ -72,6 +78,12 @@ export async function POST(request: Request) {
 
   } catch (error) {
     console.error("CRITICAL ERROR:", error);
-    return NextResponse.json({ error: "Fehler." }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    console.error("Error details:", { message: errorMessage, stack: errorStack });
+    return NextResponse.json({ 
+      error: "Fehler bei der Analyse.", 
+      details: process.env.NODE_ENV === "development" ? errorMessage : undefined 
+    }, { status: 500 });
   }
 }
