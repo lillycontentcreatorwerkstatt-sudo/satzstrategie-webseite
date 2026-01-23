@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
 import OpenAI from "openai";
+
+// Wir brauchen verschiedene Pakete für Server (Vercel) und Lokal
+import chromium from "@sparticuz/chromium";
+import puppeteerCore from "puppeteer-core";
+import puppeteer from "puppeteer";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "",
@@ -11,9 +15,9 @@ export async function POST(request: Request) {
   try {
     const { url, keywords } = await request.json();
     
-    // 1. WIR zählen die Keywords hier im Code (Nicht die KI!)
+    // 1. Keywords vorbereiten
     const keywordList = keywords.split(',').map((k: string) => k.trim()).filter((k: string) => k.length > 0);
-    const totalKeywordsCount = keywordList.length; // Das ist der Nenner (z.B. 2)
+    const totalKeywordsCount = keywordList.length;
     const keywordsString = keywordList.join('", "'); 
 
     // URL Validierung
@@ -22,28 +26,46 @@ export async function POST(request: Request) {
       targetUrl = `https://${url}`;
     }
 
-    // Puppeteer
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    // 2. BROWSER STARTEN (Die Weiche)
+    let browser;
+    
+    // Prüfen, ob wir auf Vercel sind (Environment Variable)
+    if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+      // SERVER-MODUS (Sparticuz Chromium)
+      chromium.setGraphicsMode = false;
+      browser = await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      });
+    } else {
+      // LOKALER MODUS (Normales Puppeteer)
+      browser = await puppeteer.launch({
+        headless: true,
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      });
+    }
+
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 1200 });
     
-    await page.goto(targetUrl, { waitUntil: "networkidle0", timeout: 60000 });
+    // Timeout etwas erhöhen für Sicherheit
+    await page.goto(targetUrl, { waitUntil: "networkidle0", timeout: 20000 });
 
     const screenshotBuffer = await page.screenshot({ encoding: "base64" });
     const screenshot = `data:image/jpeg;base64,${screenshotBuffer}`;
 
     const html = await page.content();
     const $ = cheerio.load(html);
-    const bodyText = $("body").text().replace(/\s+/g, " ").trim().substring(0, 6000);
+    // Text etwas kürzen, um Token zu sparen
+    const bodyText = $("body").text().replace(/\s+/g, " ").trim().substring(0, 5000);
     const title = $("title").text();
     const metaDesc = $('meta[name="description"]').attr("content") || "Keine Beschreibung";
 
     await browser.close();
 
-    // 3. KI-Analyse (JA/NEIN Zwang)
+    // 3. KI-Analyse
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
@@ -56,7 +78,7 @@ export async function POST(request: Request) {
           AUFGABE KATEGORIE 1 (KLARHEIT):
           - Gehe die Liste der User-Keywords durch.
           - Prüfe für JEDES einzelne Keyword: Kommt es im Text vor? (Ja/Nein).
-          - Strikte Regel: Nur exakte Treffer oder direkte Synonyme (Singular/Plural) zählen. Abstrakte Themennähe zählt NICHT.
+          - Strikte Regel: Nur exakte Treffer oder direkte Synonyme (Singular/Plural) zählen.
           
           AUFGABE KATEGORIE 2 & 3:
           - Bewerte Design und Technik objektiv (0-100).
@@ -64,14 +86,13 @@ export async function POST(request: Request) {
           GIB GENAU DIESES JSON FORMAT ZURÜCK:
           {
             "keywordResults": [
-              { "keyword": "Name des Keywords", "isPresent": boolean },
-              { "keyword": "Name des zweiten Keywords", "isPresent": boolean }
+              { "keyword": "Name des Keywords", "isPresent": boolean }
             ],
-            "clarityFeedback": "Schreibe hier einen Fließtext, der genau erklärt, was gefunden wurde und was fehlt.",
+            "clarityFeedback": "Kurzes Feedback.",
             "designScore": number,
-            "designFeedback": "Text...",
+            "designFeedback": "Kurzes Feedback.",
             "techScore": number,
-            "techFeedback": "Text..."
+            "techFeedback": "Kurzes Feedback."
           }`
         },
         {
@@ -88,53 +109,32 @@ export async function POST(request: Request) {
 
     const result = JSON.parse(response.choices[0].message.content || "{}");
 
-    // 4. MATHE IM CODE (Gnadenlos)
+    // 4. Score Berechnung
     let clarityScore = 0;
-    
     if (result.keywordResults && Array.isArray(result.keywordResults)) {
-        // Wir zählen, wie viele "true" zurückkamen
         const foundCount = result.keywordResults.filter((k: any) => k.isPresent === true).length;
-        
-        // Berechnung: (Gefunden / Tatsächliche Eingabe) * 100
-        // Beispiel: 1 gefunden / 2 eingegeben = 0.5 * 100 = 50.
         if (totalKeywordsCount > 0) {
             clarityScore = Math.round((foundCount / totalKeywordsCount) * 100);
         }
     }
 
-    // JSON zusammenbauen für das Frontend
     const finalResult = {
         categories: [
-            { 
-                name: "Klarheit & Hook", 
-                score: clarityScore, 
-                feedback: result.clarityFeedback 
-            },
-            { 
-                name: "Design & Accessibility", 
-                score: result.designScore || 0, 
-                feedback: result.designFeedback 
-            },
-            { 
-                name: "Google & KI-Sichtbarkeit", 
-                score: result.techScore || 0, 
-                feedback: result.techFeedback 
-            }
+            { name: "Klarheit & Hook", score: clarityScore, feedback: result.clarityFeedback },
+            { name: "Design & Accessibility", score: result.designScore || 0, feedback: result.designFeedback },
+            { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
         ],
-        totalScore: 0 // Wird unten berechnet
+        totalScore: 0
     };
 
-    // Gesamt-Score berechnen
     let sumScore = 0;
-    finalResult.categories.forEach((cat: any) => {
-        sumScore += cat.score;
-    });
+    finalResult.categories.forEach((cat: any) => { sumScore += cat.score; });
     finalResult.totalScore = Math.round(sumScore / 3);
 
     return NextResponse.json(finalResult);
 
   } catch (error) {
     console.error("Analyse-Fehler:", error);
-    return NextResponse.json({ error: "Fehler." }, { status: 500 });
+    return NextResponse.json({ error: "Fehler bei der Analyse." }, { status: 500 });
   }
 }
