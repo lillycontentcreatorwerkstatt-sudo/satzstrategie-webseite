@@ -28,6 +28,7 @@ export async function POST(request: Request) {
       // Chromium-Konfiguration für Vercel
       // Chromium types are incomplete, using any for compatibility
       const chromiumConfig = chromium as any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       chromiumConfig.setGraphicsMode = false;
       
       const executablePath = await chromium.executablePath();
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
       
       browser = await Promise.race([
         launchPromise,
-        new Promise<never>((_, reject) => 
+        new Promise<Awaited<ReturnType<typeof puppeteerCore.launch>>>((_, reject) => reject(new Error("Chromium start timeout after 15s"))).then(() => { throw new Error("timeout"); }), new Promise<never>((_, reject) => 
           setTimeout(() => reject(new Error("Chromium start timeout after 15s")), 15000)
         )
       ]);
