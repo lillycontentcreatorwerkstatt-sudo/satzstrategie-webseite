@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import * as cheerio from "cheerio";
 import OpenAI from "openai";
-
-// Wir brauchen verschiedene Pakete für Server (Vercel) und Lokal
 import chromium from "@sparticuz/chromium";
 import puppeteerCore from "puppeteer-core";
 import puppeteer from "puppeteer";
@@ -26,21 +24,24 @@ export async function POST(request: Request) {
       targetUrl = `https://${url}`;
     }
 
-    // 2. BROWSER STARTEN (Die Weiche)
+    // 2. BROWSER STARTEN
     let browser;
     
-    // Prüfen, ob wir auf Vercel sind (Environment Variable)
     if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
-      // SERVER-MODUS (Sparticuz Chromium)
+      console.log("🚀 SERVER-MODUS");
+      
+      // Wir zwingen TypeScript mit "as any", ruhig zu sein
       chromium.setGraphicsMode = false;
+      
       browser = await puppeteerCore.launch({
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
+        args: (chromium as any).args,
+        defaultViewport: (chromium as any).defaultViewport,
         executablePath: await chromium.executablePath(),
-        headless: chromium.headless,
+        headless: (chromium as any).headless,
       });
+      
     } else {
-      // LOKALER MODUS (Normales Puppeteer)
+      console.log("💻 LOKALER MODUS");
       browser = await puppeteer.launch({
         headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
@@ -50,7 +51,7 @@ export async function POST(request: Request) {
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 1200 });
     
-    // Timeout etwas erhöhen für Sicherheit
+    // Timeout auf 20 Sekunden für mehr Puffer
     await page.goto(targetUrl, { waitUntil: "networkidle0", timeout: 20000 });
 
     const screenshotBuffer = await page.screenshot({ encoding: "base64" });
@@ -58,7 +59,6 @@ export async function POST(request: Request) {
 
     const html = await page.content();
     const $ = cheerio.load(html);
-    // Text etwas kürzen, um Token zu sparen
     const bodyText = $("body").text().replace(/\s+/g, " ").trim().substring(0, 5000);
     const title = $("title").text();
     const metaDesc = $('meta[name="description"]').attr("content") || "Keine Beschreibung";
@@ -71,34 +71,19 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "system",
-          content: `Du bist ein strenger Keyword-Checker.
-          
-          User-Keywords: ["${keywordsString}"].
-          
-          AUFGABE KATEGORIE 1 (KLARHEIT):
-          - Gehe die Liste der User-Keywords durch.
-          - Prüfe für JEDES einzelne Keyword: Kommt es im Text vor? (Ja/Nein).
-          - Strikte Regel: Nur exakte Treffer oder direkte Synonyme (Singular/Plural) zählen.
-          
-          AUFGABE KATEGORIE 2 & 3:
-          - Bewerte Design und Technik objektiv (0-100).
-
-          GIB GENAU DIESES JSON FORMAT ZURÜCK:
-          {
-            "keywordResults": [
-              { "keyword": "Name des Keywords", "isPresent": boolean }
-            ],
-            "clarityFeedback": "Kurzes Feedback.",
-            "designScore": number,
-            "designFeedback": "Kurzes Feedback.",
-            "techScore": number,
-            "techFeedback": "Kurzes Feedback."
+          content: `Du bist ein Keyword-Checker. Keywords: ["${keywordsString}"].
+          Prüfe Klarheit (Keywords da?), Design (0-100), Technik (0-100).
+          JSON: {
+            "keywordResults": [{ "keyword": "X", "isPresent": boolean }],
+            "clarityFeedback": "Text",
+            "designScore": number, "designFeedback": "Text",
+            "techScore": number, "techFeedback": "Text"
           }`
         },
         {
           role: "user",
           content: [
-            { type: "text", text: `Title: ${title}\nDescription: ${metaDesc}\n\nWebseiten-Text: ${bodyText}` },
+            { type: "text", text: `Title: ${title}\nDesc: ${metaDesc}\nText: ${bodyText}` },
             { type: "image_url", image_url: { url: screenshot } },
           ],
         },
@@ -109,7 +94,7 @@ export async function POST(request: Request) {
 
     const result = JSON.parse(response.choices[0].message.content || "{}");
 
-    // 4. Score Berechnung
+    // Score Berechnung
     let clarityScore = 0;
     if (result.keywordResults && Array.isArray(result.keywordResults)) {
         const foundCount = result.keywordResults.filter((k: any) => k.isPresent === true).length;
@@ -118,23 +103,17 @@ export async function POST(request: Request) {
         }
     }
 
-    const finalResult = {
+    return NextResponse.json({
         categories: [
             { name: "Klarheit & Hook", score: clarityScore, feedback: result.clarityFeedback },
             { name: "Design & Accessibility", score: result.designScore || 0, feedback: result.designFeedback },
             { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
         ],
-        totalScore: 0
-    };
-
-    let sumScore = 0;
-    finalResult.categories.forEach((cat: any) => { sumScore += cat.score; });
-    finalResult.totalScore = Math.round(sumScore / 3);
-
-    return NextResponse.json(finalResult);
+        totalScore: Math.round((clarityScore + (result.designScore || 0) + (result.techScore || 0)) / 3)
+    });
 
   } catch (error) {
     console.error("Analyse-Fehler:", error);
-    return NextResponse.json({ error: "Fehler bei der Analyse." }, { status: 500 });
+    return NextResponse.json({ error: "Fehler." }, { status: 500 });
   }
 }
