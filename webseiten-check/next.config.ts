@@ -8,12 +8,11 @@ const nextConfig: NextConfig = {
     "@sparticuz/chromium-min",
   ],
   // Inkludiere Chromium-Binärdateien explizit für Vercel
-  experimental: {
-    outputFileTracingIncludes: {
-      "/api/analyze/**": [
-        "./node_modules/@sparticuz/chromium-min/**/*",
-      ],
-    },
+  // outputFileTracingIncludes wurde aus experimental verschoben (Next.js 16+)
+  outputFileTracingIncludes: {
+    "/api/analyze/**": [
+      "./node_modules/@sparticuz/chromium-min/**/*",
+    ],
   },
 };
 
