@@ -8,9 +8,9 @@ const nextConfig: NextConfig = {
     "@sparticuz/chromium-min",
   ],
   // Inkludiere Chromium-Binärdateien explizit für Vercel
-  // outputFileTracingIncludes wurde aus experimental verschoben (Next.js 16+)
+  // Für App Router muss der Pfad mit src/app/api/** beginnen
   outputFileTracingIncludes: {
-    "/api/analyze/**": [
+    "src/app/api/**": [
       "./node_modules/@sparticuz/chromium-min/**/*",
     ],
   },
