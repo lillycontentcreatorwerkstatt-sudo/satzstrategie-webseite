@@ -27,7 +27,6 @@ export async function POST(request: Request) {
       
       // Chromium-Konfiguration für Vercel
       // Chromium types are incomplete, using any for compatibility
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const chromiumConfig = chromium as any;
       chromiumConfig.setGraphicsMode = false;
       
@@ -45,7 +44,6 @@ export async function POST(request: Request) {
       browser = await Promise.race([
         launchPromise,
         new Promise<never>((_, reject) => 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setTimeout(() => reject(new Error("Chromium start timeout after 15s")), 15000)
         )
       ]);
