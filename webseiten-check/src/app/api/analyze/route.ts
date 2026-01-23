@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import * as cheerio from "cheerio";
 import OpenAI from "openai";
-import chromium from "@sparticuz/chromium";
+import chromium from "@sparticuz/chromium-min";
 import puppeteerCore from "puppeteer-core";
 import puppeteer from "puppeteer";
 
@@ -44,7 +44,8 @@ export async function POST(request: Request) {
       
       browser = await Promise.race([
         launchPromise,
-        new Promise<any>((_, reject) => 
+        new Promise<never>((_, reject) => 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setTimeout(() => reject(new Error("Chromium start timeout after 15s")), 15000)
         )
       ]);
