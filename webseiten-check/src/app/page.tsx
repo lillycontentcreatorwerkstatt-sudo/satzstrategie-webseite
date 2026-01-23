@@ -32,7 +32,7 @@ export default function Home() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Ein Fehler ist aufgetreten");
+        const errorMsg = data.details || data.error || "Ein Fehler ist aufgetreten"; throw new Error(errorMsg);
       }
 
       setResult(data);

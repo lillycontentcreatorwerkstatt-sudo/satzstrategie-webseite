@@ -13,13 +13,13 @@ interface KeywordResult {
 }
 
 export async function POST(request: Request) {
+  let browser;
   try {
     const { url, keywords } = await request.json();
     const keywordList = keywords.split(',').map((k: string) => k.trim()).filter((k: string) => k.length > 0);
     const keywordsString = keywordList.join('", "'); 
 
     const targetUrl = url.startsWith("http") ? url : `https://${url}`;
-    let browser;
 
     // Browser-Weiche
     if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
@@ -34,12 +34,20 @@ export async function POST(request: Request) {
       const executablePath = await chromium.executablePath();
       console.log("Chromium executable path:", executablePath);
       
-      browser = await puppeteerCore.launch({
+      // Timeout für Chromium-Start (15 Sekunden)
+      const launchPromise = puppeteerCore.launch({
         args: chromiumConfig.args,
         defaultViewport: chromiumConfig.defaultViewport,
         executablePath: executablePath,
         headless: chromiumConfig.headless,
       });
+      
+      browser = await Promise.race([
+        launchPromise,
+        new Promise<any>((_, reject) => 
+          setTimeout(() => reject(new Error("Chromium start timeout after 15s")), 15000)
+        )
+      ]);
     } else {
       console.log("💻 LOKALER MODUS");
       browser = await puppeteer.launch({
@@ -60,6 +68,7 @@ export async function POST(request: Request) {
     const metaDesc = $('meta[name="description"]').attr("content") || "";
 
     await browser.close();
+    browser = null;
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -85,13 +94,25 @@ export async function POST(request: Request) {
     });
 
   } catch (error) {
+    // Browser sicher schließen bei Fehler
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (closeError) {
+        console.error("Error closing browser:", closeError);
+      }
+    }
+    
     console.error("CRITICAL ERROR:", error);
     const errorMessage = error instanceof Error ? error.message : String(error);
     const errorStack = error instanceof Error ? error.stack : undefined;
     console.error("Error details:", { message: errorMessage, stack: errorStack });
+    
+    // Zeige auch in Production Details an, damit wir das Problem debuggen können
     return NextResponse.json({ 
       error: "Fehler bei der Analyse.", 
-      details: process.env.NODE_ENV === "development" ? errorMessage : undefined 
+      details: errorMessage,
+      stack: process.env.NODE_ENV === "development" ? errorStack : undefined
     }, { status: 500 });
   }
 }
