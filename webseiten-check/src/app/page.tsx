@@ -3,11 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+interface AnalysisResult {
+  categories: Array<{ name: string; score: number; feedback: string }>;
+  totalScore: number;
+}
 export default function Home() {
   const [url, setUrl] = useState("");
   const [keywords, setKeywords] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState("");
   
   const [step, setStep] = useState<"input" | "email-gate" | "results">("input");
@@ -33,8 +37,8 @@ export default function Home() {
 
       setResult(data);
       setStep("email-gate");
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Ein Fehler ist aufgetreten");
     } finally {
       setLoading(false);
     }
@@ -245,7 +249,7 @@ export default function Home() {
 
                 {/* Feedback Karten */}
                 <div className="grid md:grid-cols-3 gap-8">
-                {result.categories.map((cat: any, i: number) => (
+                {result.categories.map((cat: { name: string; score: number; feedback: string }, i: number) => (
                     <motion.div 
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -356,7 +360,7 @@ export default function Home() {
                 </h3>
                 <p className="text-green-900 mb-10 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-medium">
                   Wow! Ein Score von {result.totalScore}/100 ist selten. Ihre Seite spielt in der Champions League. 
-                  Jetzt geht es nicht mehr ums "Reparieren", sondern ums <strong>Dominieren</strong>. 
+                  Jetzt geht es nicht mehr ums &quot;Reparieren&quot;, sondern ums <strong>Dominieren</strong>.
                   Wenn Sie wissen wollen, wie Sie mit dieser Basis zum unangefochtenen Marktführer werden:
                 </p>
                 <div className="flex justify-center">

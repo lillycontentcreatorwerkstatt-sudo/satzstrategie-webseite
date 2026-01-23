@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     console.log("NEUER LEAD (Online):", email, url, keywords);
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

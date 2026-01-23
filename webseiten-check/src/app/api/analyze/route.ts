@@ -7,13 +7,18 @@ import puppeteer from "puppeteer";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "" });
 
+interface KeywordResult {
+  keyword: string;
+  isPresent: boolean;
+}
+
 export async function POST(request: Request) {
   try {
     const { url, keywords } = await request.json();
     const keywordList = keywords.split(',').map((k: string) => k.trim()).filter((k: string) => k.length > 0);
     const keywordsString = keywordList.join('", "'); 
 
-    let targetUrl = url.startsWith("http") ? url : `https://${url}`;
+    const targetUrl = url.startsWith("http") ? url : `https://${url}`;
     let browser;
 
     // Browser-Weiche
@@ -21,16 +26,19 @@ export async function POST(request: Request) {
       console.log("🚀 SERVER-MODUS (Vercel)");
       
       // Chromium-Konfiguration für Vercel
-      (chromium as any).setGraphicsMode = false;
+      // Chromium types are incomplete, using any for compatibility
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const chromiumConfig = chromium as any;
+      chromiumConfig.setGraphicsMode = false;
       
       const executablePath = await chromium.executablePath();
       console.log("Chromium executable path:", executablePath);
       
       browser = await puppeteerCore.launch({
-        args: (chromium as any).args,
-        defaultViewport: (chromium as any).defaultViewport,
+        args: chromiumConfig.args,
+        defaultViewport: chromiumConfig.defaultViewport,
         executablePath: executablePath,
-        headless: (chromium as any).headless,
+        headless: chromiumConfig.headless,
       });
     } else {
       console.log("💻 LOKALER MODUS");
@@ -64,7 +72,7 @@ export async function POST(request: Request) {
 
     const result = JSON.parse(response.choices[0].message.content || "{}");
     // Score Berechnung vereinfacht
-    const found = (result.keywordResults || []).filter((k: any) => k.isPresent).length;
+    const found = ((result.keywordResults as KeywordResult[]) || []).filter((k) => k.isPresent).length;
     const clarityScore = keywordList.length > 0 ? Math.round((found / keywordList.length) * 100) : 0;
 
     return NextResponse.json({

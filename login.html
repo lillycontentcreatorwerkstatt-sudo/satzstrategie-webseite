@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="4a20a504-3148-42fd-b130-97639db28175" data-blockingmode="auto" type="text/javascript"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login | Satzstrategie</title>
+    <meta
+      name="description"
+      content="Melden Sie sich bei Satzstrategie an, um auf Ihr Konto zuzugreifen."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1A1A1A',
+              surface: '#FAFAFA',
+              accent: '#007AFF'
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-surface text-primary font-sans">
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <!-- MODERN HEADER -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-2xl font-bold text-primary">
+            Satz<span class="text-accent">strategie</span>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-8">
+            <a href="angebot.html" class="text-primary hover:text-accent transition-colors">Expertise</a>
+            <a href="shop.html" class="text-primary hover:text-accent transition-colors">Lab</a>
+            <a href="login.html" class="text-primary hover:text-accent transition-colors">Login</a>
+            <a href="kontakt.html" class="px-6 py-2 border-2 border-gray-300 rounded-full text-primary hover:border-accent hover:text-accent transition-all">
+              Kontakt
+            </a>
+          </nav>
+
+          <button class="md:hidden burger-btn" aria-label="Menü öffnen">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- LOGIN SECTION -->
+      <section class="min-h-[80vh] flex items-center justify-center py-16 px-6">
+        <div class="w-full max-w-md">
+          <!-- Login Card -->
+          <div class="bg-white rounded-3xl border border-gray-200 p-12 shadow-lg">
+            <h1 class="text-4xl font-bold mb-2 text-center">Willkommen zurück</h1>
+            <p class="text-gray-600 text-center mb-8">Melden Sie sich bei Ihrem Konto an</p>
+
+            <form id="loginForm" class="space-y-6">
+              <!-- Email Field -->
+              <div>
+                <label for="email" class="block text-sm font-semibold mb-2 text-gray-700">
+                  E-Mail-Adresse
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-accent focus:outline-none transition-colors"
+                  placeholder="ihre@email.de"
+                />
+              </div>
+
+              <!-- Password Field -->
+              <div>
+                <label for="password" class="block text-sm font-semibold mb-2 text-gray-700">
+                  Passwort
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                  class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-accent focus:outline-none transition-colors"
+                  placeholder="••••••••"
+                />
+              </div>
+
+              <!-- Remember Me & Forgot Password -->
+              <div class="flex items-center justify-between">
+                <label class="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="remember"
+                    class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent"
+                  />
+                  <span class="ml-2 text-sm text-gray-600">Angemeldet bleiben</span>
+                </label>
+                <a href="#" class="text-sm text-accent hover:underline">
+                  Passwort vergessen?
+                </a>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="w-full bg-accent text-white py-3 px-6 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-md hover:shadow-lg"
+              >
+                Anmelden
+              </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="relative my-8">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-200"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="px-4 bg-white text-gray-500">oder</span>
+              </div>
+            </div>
+
+            <!-- Sign Up Link -->
+            <p class="text-center text-gray-600">
+              Noch kein Konto?
+              <a href="#" class="text-accent font-semibold hover:underline">
+                Registrieren
+              </a>
+            </p>
+          </div>
+
+          <!-- Back to Home -->
+          <div class="text-center mt-8">
+            <a href="index.html" class="text-gray-600 hover:text-accent transition-colors inline-flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Zurück zur Startseite
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary text-white py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-white/70 mb-4 md:mb-0">&copy; 2026 Satzstrategie.</p>
+          <div class="flex gap-8">
+            <a href="impressum.html" class="text-white/70 hover:text-white transition-colors">Impressum</a>
+            <a href="datenschutz.html" class="text-white/70 hover:text-white transition-colors">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Basic form validation
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (email && password) {
+          // Add your login logic here
+          alert('Login-Funktion würde hier implementiert werden.\n\nE-Mail: ' + email);
+        }
+      });
+    </script>
+  </body>
+</html>
