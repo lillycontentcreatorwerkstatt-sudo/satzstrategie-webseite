@@ -91,22 +91,41 @@ export async function POST(request: Request) {
     
     Der Nutzer hat diese Keywords eingegeben, die seine Angebote/Leistungen beschreiben: ["${keywordsString}"]
     
-    Deine Aufgabe: Prüfe, ob ein Besucher diese Angebote auf der Webseite auch tatsächlich findet und versteht.
-    
+    AUFGABE 1 - KEYWORD-CHECK:
     Prüfe für JEDES Keyword einzeln:
     - Wird es klar kommuniziert (in Headline, Hero, prominent sichtbar)?
     - Wird es nur versteckt erwähnt (im Fließtext, schwer zu finden)?
     - Oder fehlt es komplett?
     
+    AUFGABE 2 - BARRIEREFREIHEIT (WCAG-Kriterien):
+    Prüfe diese konkreten Kriterien anhand von Screenshot und HTML:
+    
+    Visuell (Screenshot):
+    - Kontrast: Ist Text auf allen Hintergründen gut lesbar? (WCAG: mind. 4.5:1)
+    - Schriftgröße: Ist Fließtext groß genug? (WCAG: mind. 16px empfohlen)
+    - Klickflächen: Sind Buttons/Links groß genug? (WCAG: mind. 44x44px)
+    - Farbabhängigkeit: Werden Infos nur durch Farbe vermittelt?
+    
+    Technisch (HTML):
+    - Alt-Texte: Haben Bilder Beschreibungen?
+    - Überschriften: Gibt es eine logische H1→H2→H3 Struktur?
+    
     Antworte als JSON mit genau dieser Struktur:
     {
       "keywordResults": [{"keyword": "x", "isPresent": true}],
-      "clarityFeedback": "Gehe auf JEDES eingegebene Keyword einzeln ein:\n• [Keyword]: [✓ Stark / ◐ Schwach / ✗ Fehlt] – [Wo gefunden oder warum es fehlt, 1 Satz]\n\nNach der Liste: 1-2 Sätze Fazit, was ein Besucher als Erstes versteht und was untergeht.",
+      "clarityFeedback": "Gehe auf JEDES Keyword einzeln ein:\n• [Keyword]: [✓ Stark / ◐ Schwach / ✗ Fehlt] – [Begründung, 1 Satz]\n\nFazit: 1-2 Sätze was ein Besucher versteht und was untergeht.",
+      "accessibilityChecks": [
+        {"criterion": "Kontrast", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
+        {"criterion": "Schriftgröße", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
+        {"criterion": "Klickflächen", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
+        {"criterion": "Farbabhängigkeit", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
+        {"criterion": "Alt-Texte", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
+        {"criterion": "Überschriften-Struktur", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"}
+      ],
       "designScore": 50,
-      "designFeedback": "Deutsche Bewertung zu Design und Barrierefreiheit (2–3 Sätze).",
+      "designFeedback": "2-3 Sätze Gesamteindruck zu Design und Lesbarkeit.",
       "techScore": 50,
-      "techFeedback": "Deutsche Bewertung zu Google- und KI-Sichtbarkeit (2–3 Sätze).",
-      "accessibilityWarning": true oder false (true wenn designScore unter 80)
+      "techFeedback": "2-3 Sätze zu Google- und KI-Sichtbarkeit."
     }`
         },
         { 
@@ -125,14 +144,31 @@ export async function POST(request: Request) {
     const found = ((result.keywordResults as KeywordResult[]) || []).filter((k) => k.isPresent).length;
     const clarityScore = keywordList.length > 0 ? Math.round((found / keywordList.length) * 100) : 0;
     
+    // Accessibility-Score aus den Checks berechnen
+    const accessibilityChecks = result.accessibilityChecks || [];
+    const accessibilityPoints = accessibilityChecks.reduce((sum: number, check: {status: string}) => {
+      if (check.status === "gut") return sum + 100;
+      if (check.status === "grenzwertig") return sum + 50;
+      return sum; // mangelhaft = 0
+    }, 0);
+    const accessibilityScore = accessibilityChecks.length > 0 
+      ? Math.round(accessibilityPoints / accessibilityChecks.length) 
+      : result.designScore || 0;
+    
+    // Prüfen ob kritische Mängel vorliegen
+    const hasCriticalIssues = accessibilityChecks.some(
+      (check: {status: string}) => check.status === "mangelhaft"
+    );
+    
     return NextResponse.json({
       categories: [
         { name: "Klarheit & Hook", score: clarityScore, feedback: result.clarityFeedback },
-        { name: "Design & Accessibility", score: result.designScore || 0, feedback: result.designFeedback },
+        { name: "Design & Accessibility", score: accessibilityScore, feedback: result.designFeedback },
         { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
       ],
-      totalScore: Math.round((clarityScore + (result.designScore || 0) + (result.techScore || 0)) / 3),
-      accessibilityWarning: result.accessibilityWarning || (result.designScore < 80)
+      totalScore: Math.round((clarityScore + accessibilityScore + (result.techScore || 0)) / 3),
+      accessibilityChecks: accessibilityChecks,
+      accessibilityWarning: hasCriticalIssues || accessibilityScore < 70
     });
 
   } catch (error) {

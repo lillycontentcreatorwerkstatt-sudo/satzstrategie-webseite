@@ -6,6 +6,11 @@ import { motion } from "framer-motion";
 interface AnalysisResult {
   categories: Array<{ name: string; score: number; feedback: string }>;
   totalScore: number;
+  accessibilityChecks?: Array<{ 
+    criterion: string; 
+    status: "gut" | "grenzwertig" | "mangelhaft"; 
+    detail: string 
+  }>;
 }
 export default function Home() {
   const [url, setUrl] = useState("");
@@ -280,6 +285,55 @@ export default function Home() {
                     </div>
                     </motion.div>
                 ))}
+
+                {/* --- WCAG BARRIEREFREIHEITS-DETAILS --- */}
+{result.accessibilityChecks && result.accessibilityChecks.length > 0 && (
+  <div className="md:col-span-3 mt-8">
+    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6">
+      <h4 className="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
+        <span>♿</span> Barrierefreiheit im Detail (WCAG-Kriterien)
+      </h4>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {result.accessibilityChecks.map((check, index) => {
+          const statusConfig = {
+            "gut": { 
+              icon: "✓", 
+              color: "text-green-700", 
+              bg: "bg-green-50", 
+              border: "border-green-200" 
+            },
+            "grenzwertig": { 
+              icon: "◐", 
+              color: "text-yellow-700", 
+              bg: "bg-yellow-50", 
+              border: "border-yellow-200" 
+            },
+            "mangelhaft": { 
+              icon: "✗", 
+              color: "text-red-700", 
+              bg: "bg-red-50", 
+              border: "border-red-200" 
+            }
+          };
+          const config = statusConfig[check.status] || statusConfig["mangelhaft"];
+          
+          return (
+            <div 
+              key={index} 
+              className={`p-4 rounded-xl ${config.bg} border ${config.border} flex items-start gap-3`}
+            >
+              <span className={`${config.color} font-bold text-xl`}>{config.icon}</span>
+              <div>
+                <span className="font-semibold text-slate-800 block">{check.criterion}</span>
+                <p className="text-sm text-slate-600 mt-1">{check.detail}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+)}
                 
                 {/* --- BEGINN DER NEUEN AMPEL-LOGIK (MIT RECHTS-ALARM) --- */}
           <div className="mt-16 max-w-5xl mx-auto transition-all animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 font-sans">
