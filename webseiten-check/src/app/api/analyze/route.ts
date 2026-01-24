@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import * as cheerio from "cheerio";
 import OpenAI from "openai";
-import chromium from "@sparticuz/chromium";
+import chromium from "@sparticuz/chromium-min";
 import puppeteerCore from "puppeteer-core";
 import puppeteer from "puppeteer";
 
@@ -25,13 +25,15 @@ export async function POST(request: Request) {
     if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       console.log("🚀 SERVER-MODUS (Vercel)");
       
-      // Chromium-Konfiguration für Vercel
+      // chromium-min: Brotli-Dateien fehlen lokal → Pack von URL laden
+      const packUrl = process.env.CHROMIUM_REMOTE_EXEC_PATH ||
+        "https://github.com/Sparticuz/chromium/releases/download/v143.0.4/chromium-v143.0.4-pack.x64.tar";
       // Chromium types are incomplete, using any for compatibility
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const chromiumConfig = chromium as any;
       chromiumConfig.setGraphicsMode = false;
       
-      const executablePath = await chromium.executablePath();
+      const executablePath = await chromium.executablePath(packUrl);
       console.log("Chromium executable path:", executablePath);
       
       // Timeout für Chromium-Start (15 Sekunden)
@@ -73,7 +75,19 @@ export async function POST(request: Request) {
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: `Prüfe Keywords ["${keywordsString}"]. JSON: { "keywordResults": [{"keyword": "x", "isPresent": true}], "clarityFeedback": "x", "designScore": 50, "designFeedback": "x", "techScore": 50, "techFeedback": "x" }` },
+        { role: "system", content: `Du bist ein deutschsprachiger Webseiten-Analyst. Antworte ausschließlich auf Deutsch. Alle Texte (clarityFeedback, designFeedback, techFeedback) müssen auf Deutsch formuliert sein.
+
+Prüfe die Keywords ["${keywordsString}"] in Title, Meta-Description und Seiteninhalt.
+
+Antworte als JSON mit genau dieser Struktur:
+{
+  "keywordResults": [{"keyword": "x", "isPresent": true}],
+  "clarityFeedback": "Deutsche Bewertung zu Klarheit, Botschaft und Hook (2–4 Sätze, ggf. mit Aufzählungen).",
+  "designScore": 50,
+  "designFeedback": "Deutsche Bewertung zu Design und Barrierefreiheit (2–4 Sätze, ggf. mit Aufzählungen).",
+  "techScore": 50,
+  "techFeedback": "Deutsche Bewertung zu Google- und KI-Sichtbarkeit (2–4 Sätze, ggf. mit Aufzählungen)."
+}` },
         { role: "user", content: [{ type: "text", text: `Title: ${title}\nDesc: ${metaDesc}\nText: ${bodyText}` }, { type: "image_url", image_url: { url: screenshot } }] }
       ],
       response_format: { type: "json_object" }
