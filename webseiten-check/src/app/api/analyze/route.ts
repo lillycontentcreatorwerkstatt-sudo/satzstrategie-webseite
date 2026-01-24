@@ -93,29 +93,33 @@ export async function POST(request: Request) {
     
     AUFGABE 1 - KEYWORD-CHECK:
     Prüfe für JEDES Keyword einzeln:
-    - Wird es klar kommuniziert (in Headline, Hero, prominent sichtbar)?
-    - Wird es nur versteckt erwähnt (im Fließtext, schwer zu finden)?
-    - Oder fehlt es komplett?
+    - Wird es in der HAUPT-HEADLINE prominent kommuniziert? → Stark
+    - Wird es nur im Logo, Subline oder Navigation erwähnt? → Schwach (Besucher muss suchen)
+    - Wird es nur im Fließtext erwähnt? → Schwach
+    - Fehlt es komplett? → Fehlt
     
     AUFGABE 2 - BARRIEREFREIHEIT (WCAG-Kriterien):
     Prüfe diese konkreten Kriterien anhand von Screenshot und HTML:
     
-    Visuell (Screenshot):
-    - Kontrast: Ist Text auf allen Hintergründen gut lesbar? (WCAG: mind. 4.5:1)
-    - Schriftgröße: Ist Fließtext groß genug? (WCAG: mind. 16px empfohlen)
-    - Klickflächen: Sind Buttons/Links groß genug? (WCAG: mind. 44x44px)
-    - Farbabhängigkeit: Werden Infos nur durch Farbe vermittelt?
+    KONTRAST - SEI HIER SEHR STRENG:
+    - Gelb, Orange, Hellgrau, Pastellfarben auf weißem/hellem Hintergrund = IMMER "mangelhaft"
+    - Hellblau, Hellgrün, Beige auf Weiß = IMMER "mangelhaft"
+    - Nur dunkle Farben (Schwarz, Dunkelblau, Dunkelgrau, Dunkelgrün) auf hellem Hintergrund = "gut"
+    - WCAG verlangt Kontrastverhältnis von mindestens 4.5:1 - helle Farben auf Weiß erreichen das NIE
     
-    Technisch (HTML):
-    - Alt-Texte: Haben Bilder Beschreibungen?
+    Weitere Kriterien:
+    - Schriftgröße: Ist Fließtext groß genug? (mind. 16px empfohlen)
+    - Klickflächen: Sind Buttons/Links groß genug? (mind. 44x44px)
+    - Farbabhängigkeit: Werden Infos NUR durch Farbe vermittelt? (z.B. "rote Felder sind Pflicht")
+    - Alt-Texte: Haben Bilder Beschreibungen im HTML?
     - Überschriften: Gibt es eine logische H1→H2→H3 Struktur?
     
     Antworte als JSON mit genau dieser Struktur:
     {
       "keywordResults": [{"keyword": "x", "isPresent": true}],
-      "clarityFeedback": "Gehe auf JEDES Keyword einzeln ein:\n• [Keyword]: [✓ Stark / ◐ Schwach / ✗ Fehlt] – [Begründung, 1 Satz]\n\nFazit: 1-2 Sätze was ein Besucher versteht und was untergeht.",
+      "clarityFeedback": "Gehe auf JEDES Keyword einzeln ein:\n• [Keyword]: [✓ Stark / ◐ Schwach / ✗ Fehlt] – [Wo genau gefunden (Headline/Logo/Subline/Fließtext) oder warum es fehlt, 1 Satz]\n\nFazit: 1-2 Sätze was ein Besucher auf den ersten Blick versteht und was untergeht.",
       "accessibilityChecks": [
-        {"criterion": "Kontrast", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
+        {"criterion": "Kontrast", "status": "gut/grenzwertig/mangelhaft", "detail": "Beschreibe konkret welche Farben problematisch sind"},
         {"criterion": "Schriftgröße", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
         {"criterion": "Klickflächen", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
         {"criterion": "Farbabhängigkeit", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
