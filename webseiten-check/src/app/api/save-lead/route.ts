@@ -2,16 +2,26 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const { email, url, keywords } = await request.json();
+    const { email, url, keywords, score } = await request.json();
 
-    // HINWEIS: Online können wir keine CSV speichern (Serverless).
-    // Hier würden wir später eine E-Mail an dich senden oder eine Datenbank nutzen.
-    // Für jetzt loggen wir es nur, damit der User keinen Fehler sieht.
+    const googleSheetUrl = process.env.GOOGLE_SHEET_URL;
     
-    console.log("NEUER LEAD (Online):", email, url, keywords);
+    if (!googleSheetUrl) {
+      console.error("GOOGLE_SHEET_URL nicht konfiguriert");
+      return NextResponse.json({ success: true });
+    }
+
+    await fetch(googleSheetUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, url, keywords, score }),
+    });
+
+    console.log("NEUER LEAD (Google Sheet):", email, url, keywords, score);
 
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ success: false }, { status: 500 });
+  } catch (error) {
+    console.error("Fehler beim Speichern:", error);
+    return NextResponse.json({ success: true });
   }
 }

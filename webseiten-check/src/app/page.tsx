@@ -55,20 +55,23 @@ export default function Home() {
       alert("Bitte eine gültige E-Mail eingeben.");
       return;
     }
-
-    // HIER IST DER UNTERSCHIED: Wir schicken die Daten wirklich los!
+  
     try {
       await fetch("/api/save-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, url, keywords }),
+        body: JSON.stringify({ 
+          email, 
+          url, 
+          keywords,
+          score: result?.totalScore
+        }),
       });
       console.log("E-Mail erfolgreich an Server gesendet!"); 
     } catch (err) {
       console.error("Fehler beim Senden:", err);
     }
     
-    // Weiter zum Ergebnis
     setStep("results");
     setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
   };
