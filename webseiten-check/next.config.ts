@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Dies stellt sicher, dass die Browser-Binärdateien beim Bauen 
-  // auf den Vercel-Server mitgenommen werden.
+  // Diese Einstellung zwingt Vercel, die Chromium-Dateien 
+  // komplett und unverändert auf den Server zu kopieren.
   serverExternalPackages: ["@sparticuz/chromium"],
 };
 
