@@ -5,8 +5,6 @@ import chromium from "@sparticuz/chromium-min";
 import puppeteerCore from "puppeteer-core";
 import puppeteer from "puppeteer";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "" });
-
 interface KeywordResult {
   keyword: string;
   isPresent: boolean;
@@ -15,6 +13,18 @@ interface KeywordResult {
 export async function POST(request: Request) {
   let browser;
   try {
+    const apiKey = process.env.OPENAI_API_KEY?.trim();
+    if (!apiKey) {
+      return NextResponse.json(
+        {
+          error: "OpenAI API-Key fehlt.",
+          details: "OPENAI_API_KEY ist nicht gesetzt. Lokal: .env.local anlegen. Vercel: Project Settings → Environment Variables.",
+        },
+        { status: 500 }
+      );
+    }
+    const openai = new OpenAI({ apiKey });
+
     const { url, keywords } = await request.json();
     const keywordList = keywords.split(',').map((k: string) => k.trim()).filter((k: string) => k.length > 0);
     const keywordsString = keywordList.join('", "'); 
@@ -75,36 +85,52 @@ export async function POST(request: Request) {
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: `Du bist ein deutschsprachiger Webseiten-Analyst. Antworte ausschließlich auf Deutsch. Alle Texte (clarityFeedback, designFeedback, techFeedback) müssen auf Deutsch formuliert sein.
-
-Prüfe die Keywords ["${keywordsString}"] in Title, Meta-Description und Seiteninhalt.
-
-Antworte als JSON mit genau dieser Struktur:
-{
-  "keywordResults": [{"keyword": "x", "isPresent": true}],
-  "clarityFeedback": "Deutsche Bewertung zu Klarheit, Botschaft und Hook (2–4 Sätze, ggf. mit Aufzählungen).",
-  "designScore": 50,
-  "designFeedback": "Deutsche Bewertung zu Design und Barrierefreiheit (2–4 Sätze, ggf. mit Aufzählungen).",
-  "techScore": 50,
-  "techFeedback": "Deutsche Bewertung zu Google- und KI-Sichtbarkeit (2–4 Sätze, ggf. mit Aufzählungen)."
-}` },
-        { role: "user", content: [{ type: "text", text: `Title: ${title}\nDesc: ${metaDesc}\nText: ${bodyText}` }, { type: "image_url", image_url: { url: screenshot } }] }
+        { 
+          role: "system", 
+          content: `Du bist ein deutschsprachiger Webseiten-Analyst. Antworte ausschließlich auf Deutsch.
+    
+    Der Nutzer hat diese Keywords eingegeben, die seine Angebote/Leistungen beschreiben: ["${keywordsString}"]
+    
+    Deine Aufgabe: Prüfe, ob ein Besucher diese Angebote auf der Webseite auch tatsächlich findet und versteht.
+    
+    Prüfe für JEDES Keyword einzeln:
+    - Wird es klar kommuniziert (in Headline, Hero, prominent sichtbar)?
+    - Wird es nur versteckt erwähnt (im Fließtext, schwer zu finden)?
+    - Oder fehlt es komplett?
+    
+    Antworte als JSON mit genau dieser Struktur:
+    {
+      "keywordResults": [{"keyword": "x", "isPresent": true}],
+      "clarityFeedback": "Gehe auf JEDES eingegebene Keyword einzeln ein:\n• [Keyword]: [✓ Stark / ◐ Schwach / ✗ Fehlt] – [Wo gefunden oder warum es fehlt, 1 Satz]\n\nNach der Liste: 1-2 Sätze Fazit, was ein Besucher als Erstes versteht und was untergeht.",
+      "designScore": 50,
+      "designFeedback": "Deutsche Bewertung zu Design und Barrierefreiheit (2–3 Sätze).",
+      "techScore": 50,
+      "techFeedback": "Deutsche Bewertung zu Google- und KI-Sichtbarkeit (2–3 Sätze)."
+    }`
+        },
+        { 
+          role: "user", 
+          content: [
+            { type: "text", text: `Title: ${title}\nDesc: ${metaDesc}\nText: ${bodyText}` }, 
+            { type: "image_url", image_url: { url: screenshot } }
+          ] 
+        }
       ],
       response_format: { type: "json_object" }
     });
-
+    
     const result = JSON.parse(response.choices[0].message.content || "{}");
-    // Score Berechnung vereinfacht
+    
     const found = ((result.keywordResults as KeywordResult[]) || []).filter((k) => k.isPresent).length;
     const clarityScore = keywordList.length > 0 ? Math.round((found / keywordList.length) * 100) : 0;
-
+    
     return NextResponse.json({
-        categories: [
-            { name: "Klarheit & Hook", score: clarityScore, feedback: result.clarityFeedback },
-            { name: "Design & Accessibility", score: result.designScore || 0, feedback: result.designFeedback },
-            { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
-        ],
-        totalScore: Math.round((clarityScore + (result.designScore||0) + (result.techScore||0)) / 3)
+      categories: [
+        { name: "Klarheit & Hook", score: clarityScore, feedback: result.clarityFeedback },
+        { name: "Design & Accessibility", score: result.designScore || 0, feedback: result.designFeedback },
+        { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
+      ],
+      totalScore: Math.round((clarityScore + (result.designScore || 0) + (result.techScore || 0)) / 3)
     });
 
   } catch (error) {
