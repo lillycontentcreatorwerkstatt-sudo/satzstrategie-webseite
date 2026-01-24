@@ -105,7 +105,8 @@ export async function POST(request: Request) {
       "designScore": 50,
       "designFeedback": "Deutsche Bewertung zu Design und Barrierefreiheit (2–3 Sätze).",
       "techScore": 50,
-      "techFeedback": "Deutsche Bewertung zu Google- und KI-Sichtbarkeit (2–3 Sätze)."
+      "techFeedback": "Deutsche Bewertung zu Google- und KI-Sichtbarkeit (2–3 Sätze).",
+      "accessibilityWarning": true oder false (true wenn designScore unter 80)
     }`
         },
         { 
@@ -130,7 +131,8 @@ export async function POST(request: Request) {
         { name: "Design & Accessibility", score: result.designScore || 0, feedback: result.designFeedback },
         { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
       ],
-      totalScore: Math.round((clarityScore + (result.designScore || 0) + (result.techScore || 0)) / 3)
+      totalScore: Math.round((clarityScore + (result.designScore || 0) + (result.techScore || 0)) / 3),
+      accessibilityWarning: result.accessibilityWarning || (result.designScore < 80)
     });
 
   } catch (error) {
