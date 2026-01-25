@@ -5,11 +5,6 @@ import chromium from "@sparticuz/chromium-min";
 import puppeteerCore from "puppeteer-core";
 import puppeteer from "puppeteer";
 
-interface KeywordResult {
-  keyword: string;
-  isPresent: boolean;
-}
-
 export async function POST(request: Request) {
   let browser;
   try {
@@ -35,10 +30,8 @@ export async function POST(request: Request) {
     if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       console.log("🚀 SERVER-MODUS (Vercel)");
       
-      // chromium-min: Brotli-Dateien fehlen lokal → Pack von URL laden
       const packUrl = process.env.CHROMIUM_REMOTE_EXEC_PATH ||
         "https://github.com/Sparticuz/chromium/releases/download/v143.0.4/chromium-v143.0.4-pack.x64.tar";
-      // Chromium types are incomplete, using any for compatibility
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const chromiumConfig = chromium as any;
       chromiumConfig.setGraphicsMode = false;
@@ -46,7 +39,6 @@ export async function POST(request: Request) {
       const executablePath = await chromium.executablePath(packUrl);
       console.log("Chromium executable path:", executablePath);
       
-      // Timeout für Chromium-Start (15 Sekunden)
       const launchPromise = puppeteerCore.launch({
         args: chromiumConfig.args,
         defaultViewport: chromiumConfig.defaultViewport,
@@ -82,101 +74,161 @@ export async function POST(request: Request) {
     await browser.close();
     browser = null;
 
+    const systemPrompt = `Du bist ein erfahrener Webseiten-Analyst und Copywriting-Experte für den deutschsprachigen Markt. 
+
+Der Nutzer hat diese Keywords eingegeben, die seine Angebote/Leistungen beschreiben: ["${keywordsString}"]
+
+## DEINE AUFGABE
+
+Analysiere die Webseite auf:
+1. **Conversion-Schwächen** – Wo verliert die Seite Besucher?
+2. **Copywriting-Probleme** – Welche Texte sind schwach, unklar oder zu generisch?
+3. **KI-typische Muster** – Klingt der Text nach ChatGPT?
+
+## ANALYSE-KRITERIEN
+
+### Copywriting-Check:
+- Ist die Headline klar und benefit-orientiert?
+- Werden die Keywords prominent kommuniziert?
+- Gibt es einen klaren Call-to-Action?
+- Ist der Text konkret oder zu abstrakt/generisch?
+- Spricht die Seite die Zielgruppe direkt an?
+
+### KI-Erkennungsmerkmale:
+- Floskeln wie "In der heutigen Zeit", "Es ist kein Geheimnis"
+- Zu gleichmäßiger Satzrhythmus
+- Generische Superlative ("erstklassig", "einzigartig", "innovativ")
+- Passive Konstruktionen
+- Fehlende persönliche Stimme
+
+### Barrierefreiheit (WCAG):
+- Kontrast: Helle Farben (Gelb, Orange, Hellgrau, Pastell) auf Weiß = IMMER mangelhaft
+- Schriftgröße: Mind. 16px für Fließtext
+- Klickflächen: Mind. 44x44px
+- Alt-Texte für Bilder
+- Logische Überschriften-Struktur (H1→H2→H3)
+
+## AUSGABEFORMAT
+
+Antworte AUSSCHLIESSLICH mit validem JSON:
+
+{
+  "websiteScore": <Zahl 0-100>,
+  "scoreBegruendung": "<1 Satz: Was macht die Seite gut oder schlecht?>",
+  "hauptproblem": "<Knackige Beschreibung des größten Problems in 1-2 Sätzen>",
+  "analyseCards": [
+    {
+      "problemTitel": "<Kurzer Titel, max 4 Wörter>",
+      "problemBeschreibung": "<Was genau ist das Problem? 2-3 Sätze>",
+      "vorher": "<EXAKTES Zitat von der Webseite, max 25 Wörter>",
+      "nachher": "<Deine verbesserte Version, ähnliche Länge>",
+      "warumBesser": "<1 Satz: Was macht die Änderung aus?>"
+    },
+    {
+      "problemTitel": "<Titel>",
+      "problemBeschreibung": "<Beschreibung>",
+      "vorher": "<Zitat>",
+      "nachher": "<Verbesserung>",
+      "warumBesser": "<Erklärung>"
+    },
+    {
+      "problemTitel": "<Titel>",
+      "problemBeschreibung": "<Beschreibung>",
+      "vorher": "<Zitat>",
+      "nachher": "<Verbesserung>",
+      "warumBesser": "<Erklärung>"
+    }
+  ],
+  "accessibilityChecks": [
+    {"criterion": "Kontrast", "status": "gut/grenzwertig/mangelhaft", "detail": "<Konkrete Beschreibung>"},
+    {"criterion": "Schriftgröße", "status": "gut/grenzwertig/mangelhaft", "detail": "<Kurze Begründung>"},
+    {"criterion": "Klickflächen", "status": "gut/grenzwertig/mangelhaft", "detail": "<Kurze Begründung>"},
+    {"criterion": "Alt-Texte", "status": "gut/grenzwertig/mangelhaft", "detail": "<Kurze Begründung>"},
+    {"criterion": "Überschriften-Struktur", "status": "gut/grenzwertig/mangelhaft", "detail": "<Kurze Begründung>"}
+  ],
+  "keywordCheck": "<Für JEDES Keyword: ✓ Stark / ◐ Schwach / ✗ Fehlt – mit kurzer Begründung wo gefunden>",
+  "teaserWeitereProbleme": "<1 Satz der andeutet, dass es noch mehr zu verbessern gibt>"
+}
+
+## WICHTIGE REGELN:
+1. Die "vorher"-Zitate MÜSSEN EXAKT von der Webseite stammen – kopiere echten Text!
+2. Wenn keine guten Textbeispiele zu finden sind, zitiere Headlines, Button-Texte oder Meta-Beschreibungen
+3. Die "nachher"-Versionen müssen sofort umsetzbar sein
+4. GENAU 3 analyseCards
+5. Sei KONKRET – beziehe dich auf den tatsächlichen Inhalt
+6. Deutsch, Du-Ansprache für die Verbesserungen`;
+
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { 
           role: "system", 
-          content: `Du bist ein deutschsprachiger Webseiten-Analyst. Antworte ausschließlich auf Deutsch.
-    
-    Der Nutzer hat diese Keywords eingegeben, die seine Angebote/Leistungen beschreiben: ["${keywordsString}"]
-    
-    AUFGABE 1 - KEYWORD-CHECK:
-    Prüfe für JEDES Keyword einzeln:
-    - Wird es in der HAUPT-HEADLINE prominent kommuniziert? → Stark
-    - Wird es nur im Logo, Subline oder Navigation erwähnt? → Schwach (Besucher muss suchen)
-    - Wird es nur im Fließtext erwähnt? → Schwach
-    - Fehlt es komplett? → Fehlt
-    
-    AUFGABE 2 - BARRIEREFREIHEIT (WCAG-Kriterien):
-    Prüfe diese konkreten Kriterien anhand von Screenshot und HTML:
-    
-    KONTRAST - SEI HIER SEHR STRENG:
-    - Gelb, Orange, Hellgrau, Pastellfarben auf weißem/hellem Hintergrund = IMMER "mangelhaft"
-    - Hellblau, Hellgrün, Beige auf Weiß = IMMER "mangelhaft"
-    - Nur dunkle Farben (Schwarz, Dunkelblau, Dunkelgrau, Dunkelgrün) auf hellem Hintergrund = "gut"
-    - WCAG verlangt Kontrastverhältnis von mindestens 4.5:1 - helle Farben auf Weiß erreichen das NIE
-    
-    Weitere Kriterien:
-    - Schriftgröße: Ist Fließtext groß genug? (mind. 16px empfohlen)
-    - Klickflächen: Sind Buttons/Links groß genug? (mind. 44x44px)
-    - Farbabhängigkeit: Werden Infos NUR durch Farbe vermittelt? (z.B. "rote Felder sind Pflicht")
-    - Alt-Texte: Haben Bilder Beschreibungen im HTML?
-    - Überschriften: Gibt es eine logische H1→H2→H3 Struktur?
-    
-    Antworte als JSON mit genau dieser Struktur:
-    {
-      "keywordResults": [{"keyword": "x", "isPresent": true}],
-      "clarityFeedback": "Gehe auf JEDES Keyword einzeln ein:\n• [Keyword]: [✓ Stark / ◐ Schwach / ✗ Fehlt] – [Wo genau gefunden (Headline/Logo/Subline/Fließtext) oder warum es fehlt, 1 Satz]\n\nFazit: 1-2 Sätze was ein Besucher auf den ersten Blick versteht und was untergeht.",
-      "accessibilityChecks": [
-        {"criterion": "Kontrast", "status": "gut/grenzwertig/mangelhaft", "detail": "Beschreibe konkret welche Farben problematisch sind"},
-        {"criterion": "Schriftgröße", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
-        {"criterion": "Klickflächen", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
-        {"criterion": "Farbabhängigkeit", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
-        {"criterion": "Alt-Texte", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"},
-        {"criterion": "Überschriften-Struktur", "status": "gut/grenzwertig/mangelhaft", "detail": "Kurze Begründung"}
-      ],
-      "designScore": 50,
-      "designFeedback": "2-3 Sätze Gesamteindruck zu Design und Lesbarkeit.",
-      "techScore": 50,
-      "techFeedback": "2-3 Sätze zu Google- und KI-Sichtbarkeit."
-    }`
+          content: systemPrompt
         },
         { 
           role: "user", 
           content: [
-            { type: "text", text: `Title: ${title}\nDesc: ${metaDesc}\nText: ${bodyText}` }, 
+            { type: "text", text: `URL: ${targetUrl}\nTitle: ${title}\nMeta-Description: ${metaDesc}\n\nSeitentext:\n${bodyText}` }, 
             { type: "image_url", image_url: { url: screenshot } }
           ] 
         }
       ],
-      response_format: { type: "json_object" }
+      response_format: { type: "json_object" },
+      temperature: 0.7
     });
     
     const result = JSON.parse(response.choices[0].message.content || "{}");
     
-    const found = ((result.keywordResults as KeywordResult[]) || []).filter((k) => k.isPresent).length;
-    const clarityScore = keywordList.length > 0 ? Math.round((found / keywordList.length) * 100) : 0;
+    // Validierung und Defaults
+    const websiteScore = Math.min(100, Math.max(0, Number(result.websiteScore) || 50));
+    const analyseCards = Array.isArray(result.analyseCards) ? result.analyseCards.slice(0, 3) : [];
+    const accessibilityChecks = Array.isArray(result.accessibilityChecks) ? result.accessibilityChecks : [];
     
-    // Accessibility-Score aus den Checks berechnen
-    const accessibilityChecks = result.accessibilityChecks || [];
+    // Accessibility-Score berechnen
     const accessibilityPoints = accessibilityChecks.reduce((sum: number, check: {status: string}) => {
       if (check.status === "gut") return sum + 100;
       if (check.status === "grenzwertig") return sum + 50;
-      return sum; // mangelhaft = 0
+      return sum;
     }, 0);
     const accessibilityScore = accessibilityChecks.length > 0 
       ? Math.round(accessibilityPoints / accessibilityChecks.length) 
-      : result.designScore || 0;
+      : 50;
     
-    // Prüfen ob kritische Mängel vorliegen
-    const hasCriticalIssues = accessibilityChecks.some(
+    const hasCriticalAccessibilityIssues = accessibilityChecks.some(
       (check: {status: string}) => check.status === "mangelhaft"
     );
-    
+
     return NextResponse.json({
-      categories: [
-        { name: "Klarheit & Hook", score: clarityScore, feedback: result.clarityFeedback },
-        { name: "Design & Accessibility", score: accessibilityScore, feedback: result.designFeedback },
-        { name: "Google & KI-Sichtbarkeit", score: result.techScore || 0, feedback: result.techFeedback }
-      ],
-      totalScore: Math.round((clarityScore + accessibilityScore + (result.techScore || 0)) / 3),
-      accessibilityChecks: accessibilityChecks,
-      accessibilityWarning: hasCriticalIssues || accessibilityScore < 70
+      // Neue Premium-Felder
+      websiteScore,
+      scoreBegruendung: result.scoreBegruendung || "",
+      hauptproblem: result.hauptproblem || "",
+      analyseCards: analyseCards.map((card: {
+        problemTitel?: string;
+        problemBeschreibung?: string;
+        vorher?: string;
+        nachher?: string;
+        warumBesser?: string;
+      }) => ({
+        problemTitel: card.problemTitel || "Verbesserungspotenzial",
+        problemBeschreibung: card.problemBeschreibung || "",
+        vorher: card.vorher || "",
+        nachher: card.nachher || "",
+        warumBesser: card.warumBesser || "",
+      })),
+      keywordCheck: result.keywordCheck || "",
+      teaserWeitereProbleme: result.teaserWeitereProbleme || "",
+      
+      // Accessibility
+      accessibilityChecks,
+      accessibilityScore,
+      accessibilityWarning: hasCriticalAccessibilityIssues || accessibilityScore < 70,
+      
+      // Kompatibilität
+      totalScore: websiteScore,
     });
 
   } catch (error) {
-    // Browser sicher schließen bei Fehler
     if (browser) {
       try {
         await browser.close();
@@ -190,7 +242,6 @@ export async function POST(request: Request) {
     const errorStack = error instanceof Error ? error.stack : undefined;
     console.error("Error details:", { message: errorMessage, stack: errorStack });
     
-    // Zeige auch in Production Details an, damit wir das Problem debuggen können
     return NextResponse.json({ 
       error: "Fehler bei der Analyse.", 
       details: errorMessage,
