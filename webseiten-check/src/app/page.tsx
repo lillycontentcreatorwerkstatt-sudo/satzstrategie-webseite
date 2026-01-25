@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface AnalyseCard {
@@ -124,6 +125,12 @@ export default function Home() {
         {/* Header */}
         <header className="flex justify-between items-center mb-16 no-print">
           <div className="font-bold text-xl tracking-tight">Satzstrategie Website-Check</div>
+          <Link
+            href="/text-check"
+            className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
+          >
+            Text-Check →
+          </Link>
         </header>
 
         {/* STEP 1: INPUT */}

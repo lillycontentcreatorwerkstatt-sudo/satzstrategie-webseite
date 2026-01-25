@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 type Platform = "LinkedIn" | "Instagram" | "Landingpage";
@@ -132,6 +133,12 @@ export default function TextCheckPage() {
       <div className="max-w-4xl mx-auto">
         <header className="flex justify-between items-center mb-16 no-print">
           <div className="font-bold text-xl tracking-tight">Satzstrategie Text-Check</div>
+          <Link
+            href="/"
+            className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
+          >
+            ← Webseiten-Check
+          </Link>
         </header>
 
         {/* STEP 1: INPUT */}
