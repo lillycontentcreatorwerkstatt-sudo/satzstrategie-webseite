@@ -1,8 +1,74 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import { checkRateLimit } from "@/lib/rate-limit";
+
+const TEXT_ANALYZE_LIMIT = 10;
+const TEXT_ANALYZE_WINDOW_MS = 10 * 60 * 1_000;
+const MAX_WORDS = 500;
+const MAX_KEYWORDS_LENGTH = 500;
+const PLATFORMS = new Set(["LinkedIn", "Instagram", "Landingpage"]);
 
 export async function POST(request: Request) {
   try {
+    const rateLimit = checkRateLimit(
+      request,
+      "text-analysis",
+      TEXT_ANALYZE_LIMIT,
+      TEXT_ANALYZE_WINDOW_MS,
+    );
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: "Zu viele Analysen",
+          details: "Bitte warte kurz, bevor du einen weiteren Text analysierst.",
+        },
+        {
+          status: 429,
+          headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+        },
+      );
+    }
+
+    let payload: unknown;
+    try {
+      payload = await request.json();
+    } catch {
+      return NextResponse.json({ error: "Ungültige JSON-Anfrage" }, { status: 400 });
+    }
+    if (!payload || typeof payload !== "object") {
+      return NextResponse.json({ error: "Ungültige Anfrage" }, { status: 400 });
+    }
+
+    const { text, platform, keywords } = payload as Record<string, unknown>;
+    if (typeof text !== "string" || typeof platform !== "string" || !PLATFORMS.has(platform)) {
+      return NextResponse.json({ error: "Ungültige Eingabe" }, { status: 400 });
+    }
+    if (keywords !== undefined && typeof keywords !== "string") {
+      return NextResponse.json({ error: "Ungültige Keywords" }, { status: 400 });
+    }
+
+    const keywordInput = (keywords ?? "") as string;
+    if (keywordInput.length > MAX_KEYWORDS_LENGTH) {
+      return NextResponse.json(
+        { error: "Zu viele Keywords", details: "Bitte kürze die Keyword-Eingabe auf maximal 500 Zeichen." },
+        { status: 400 },
+      );
+    }
+
+    const normalizedText = text.trim();
+    const wordCount = normalizedText.split(/\s+/).filter(Boolean).length;
+    if (wordCount < 20 || wordCount > MAX_WORDS) {
+      return NextResponse.json(
+        {
+          error: wordCount < 20 ? "Text zu kurz" : "Text zu lang",
+          details: wordCount < 20
+            ? "Bitte gib mindestens 20 Wörter ein, damit eine aussagekräftige Analyse möglich ist."
+            : "Bitte kürze den Text auf maximal 500 Wörter.",
+        },
+        { status: 400 },
+      );
+    }
+
     const apiKey = process.env.OPENAI_API_KEY?.trim();
     if (!apiKey) {
       return NextResponse.json(
@@ -16,21 +82,7 @@ export async function POST(request: Request) {
     }
     const openai = new OpenAI({ apiKey });
 
-    const { text, platform, keywords } = await request.json();
-    
-    // Wortanzahl prüfen
-    const wordCount = (text || "").trim().split(/\s+/).filter((w: string) => w.length > 0).length;
-    if (wordCount < 20) {
-      return NextResponse.json(
-        {
-          error: "Text zu kurz",
-          details: "Bitte gib mindestens 20 Wörter ein, damit eine aussagekräftige Analyse möglich ist.",
-        },
-        { status: 400 }
-      );
-    }
-
-    const keywordList = (keywords || "")
+    const keywordList = keywordInput
       .split(",")
       .map((k: string) => k.trim())
       .filter((k: string) => k.length > 0);
@@ -107,7 +159,7 @@ Antworte AUSSCHLIESSLICH mit validem JSON in genau dieser Struktur:
       "warumBesser": "<Erklärung>"
     }
   ],
-  "pi": "<Wie gut passt der Text zur Plattform ${platform}? 1-2 Sätze.>",
+  "plattformPassung": "<Wie gut passt der Text zur Plattform ${platform}? 1-2 Sätze.>",
   "teaserWeitereProbleme": "<1 Satz der andeutet, dass es noch mehr zu verbessern gibt, ohne Details>"
 }
 
@@ -129,7 +181,7 @@ Antworte AUSSCHLIESSLICH mit validem JSON in genau dieser Struktur:
         },
         {
           role: "user",
-          content: `Analysiere folgenden ${platform}-Text:\n\n---\n${(text || "").slice(0, 8000)}\n---`,
+          content: `Analysiere folgenden ${platform}-Text:\n\n---\n${normalizedText.slice(0, 8_000)}\n---`,
         },
       ],
       response_format: { type: "json_object" },
@@ -143,7 +195,7 @@ Antworte AUSSCHLIESSLICH mit validem JSON in genau dieser Struktur:
     const analyseCards = Array.isArray(result.analyseCards) ? result.analyseCards.slice(0, 3) : [];
     
     // Score umrechnen: kiScore 1-10 → displayScore 100-0 (niedriger KI-Score = besserer Text)
-    const displayScore = Math.round((10 - kiScore) * 10);
+    const displayScore = Math.round(((10 - kiScore) / 9) * 100);
 
     return NextResponse.json({
       // Neue Premium-Felder

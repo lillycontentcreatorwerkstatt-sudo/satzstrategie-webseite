@@ -34,13 +34,14 @@
       <div class="max-w-7xl mx-auto px-6 py-5">
         <div class="flex items-center justify-between">
           <a href="index.html" class="text-2xl font-bold text-black">Satz<span class="text-accent">strategie</span></a>
-          <nav class="hidden md:flex items-center gap-10">
+          <nav id="primary-navigation" class="hidden md:flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 absolute md:static top-full left-0 right-0 bg-white px-6 py-6 md:p-0 border-b md:border-0 border-gray-200 shadow-lg md:shadow-none">
             <a href="angebot.html" class="text-gray-900 hover:text-accent transition-colors">Expertise</a>
             <a href="shop.html" class="text-gray-900 hover:text-accent transition-colors">Lab</a>
-            <a href="login.html" class="text-gray-900 hover:text-accent transition-colors">Login</a>
+            <a href="https://satzstrategie-webseite.vercel.app/" class="text-accent font-semibold hover:text-blue-700 transition-colors">Webseiten-Check</a>
+            <a href="coming-soon.html" class="text-gray-900 hover:text-accent transition-colors">Login</a>
             <a href="kontakt.html" class="px-8 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-700 transition-all duration-300">Kontakt</a>
           </nav>
-          <button class="md:hidden p-2" aria-label="Menü öffnen">
+          <button id="mobile-menu-toggle" class="md:hidden p-2" type="button" aria-label="Menü öffnen" aria-controls="primary-navigation" aria-expanded="false">
             <span class="block w-6 h-0.5 bg-gray-900 mb-1"></span>
             <span class="block w-6 h-0.5 bg-gray-900 mb-1"></span>
             <span class="block w-6 h-0.5 bg-gray-900"></span>
@@ -75,10 +76,15 @@
             <div class="flex-1 pt-2">
               <div id="tab1" class="tab-content">
                 <p class="text-2xl leading-relaxed mb-10 text-gray-700">Psychologie statt Phrase. Wir verwandeln technische Komplexität in Umsatz.</p>
-                <a href="kontakt.html" class="inline-flex items-center gap-2 px-10 py-4 bg-accent text-white rounded-full font-semibold hover:bg-blue-600 transition-all duration-300">
-                  Strategiegespräch
-                  <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </a>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <a href="https://satzstrategie-webseite.vercel.app/" class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-accent text-white rounded-full font-semibold hover:bg-blue-600 transition-all duration-300">
+                    Webseite kostenlos prüfen
+                    <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </a>
+                  <a href="kontakt.html" class="inline-flex items-center justify-center px-10 py-4 border-2 border-gray-300 text-gray-900 rounded-full font-semibold hover:border-gray-900 transition-all duration-300">
+                    Strategiegespräch
+                  </a>
+                </div>
               </div>
               <div id="tab2" class="tab-content hidden">
                 <p class="text-2xl leading-relaxed mb-10 text-gray-700">Von der Idee zum Product. Wir entwickeln Apps und Websites, die Ihre Nutzer lieben.</p>
@@ -110,7 +116,7 @@
                 <p class="text-xl text-gray-600 leading-relaxed mb-8">Klartext reden.</p>
               </div>
               <div class="h-64 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl flex items-center justify-center">
-                <span class="text-gray-400 text-sm">Vorher/Nachher Mockup</span>
+                <span class="text-gray-500 text-sm font-medium">Komplexe Botschaften. Klar auf den Punkt.</span>
               </div>
             </div>
             <div class="bg-white rounded-3xl border border-gray-200 p-12 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -120,7 +126,7 @@
                 <p class="text-xl text-gray-600 leading-relaxed">Code, der bewegt.</p>
               </div>
               <div class="h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl flex items-center justify-center mt-8">
-                <span class="text-gray-400 text-sm">iPhone Mockup</span>
+                <span class="text-gray-500 text-sm font-medium">Digitale Produkte mit Substanz.</span>
               </div>
             </div>
             <div class="bg-white rounded-3xl border border-gray-200 p-12 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -149,11 +155,11 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Worte, die ankommen.</h2>
                 <p class="text-xl text-white/90 leading-relaxed max-w-xl">Kein Fülltext. Kein Bullshit. Wir schreiben, was verkauft – für Healthcare, Tech und B2B.</p>
               </div>
-              <!-- Rechts: Platzhalter für schwebendes Bild -->
+              <!-- Rechts: visuelles Statement -->
               <div class="flex-1 w-full flex justify-center lg:justify-end">
                 <div class="relative w-full max-w-md">
                   <div class="aspect-[4/3] rounded-3xl bg-gray-800/80 border border-white/10 shadow-2xl md:-translate-y-4 flex items-center justify-center">
-                    <span class="text-white/40 text-sm">Bildplatzhalter</span>
+                    <span class="text-white text-3xl md:text-4xl font-bold text-center px-8">Klar. Glaubwürdig. Wirksam.</span>
                   </div>
                 </div>
               </div>
@@ -173,7 +179,7 @@
               </div>
               <h3 class="text-2xl font-bold mb-3 text-gray-900">YouTube</h3>
               <p class="text-gray-600 mb-6">Copywriting & KI-Tutorials für Unternehmer.</p>
-              <a href="#" class="text-accent hover:underline font-medium">Zum Kanal →</a>
+              <a href="coming-soon.html" class="text-accent hover:underline font-medium">Demnächst →</a>
             </div>
             <div class="bg-white rounded-3xl border border-gray-200 p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
               <div class="w-16 h-16 bg-orange-500 rounded-3xl flex items-center justify-center mb-6">
@@ -181,7 +187,7 @@
               </div>
               <h3 class="text-2xl font-bold mb-3 text-gray-900">Patreon</h3>
               <p class="text-gray-600 mb-6">Exklusive Templates, Swipe Files & Workshops.</p>
-              <a href="#" class="text-accent hover:underline font-medium">Mitglied werden →</a>
+              <a href="coming-soon.html" class="text-accent hover:underline font-medium">Demnächst →</a>
             </div>
             <div class="bg-white rounded-3xl border border-gray-200 p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
               <div class="w-16 h-16 bg-accent rounded-3xl flex items-center justify-center mb-6">
@@ -189,8 +195,31 @@
               </div>
               <h3 class="text-2xl font-bold mb-3 text-gray-900">Community</h3>
               <p class="text-gray-600 mb-6">Austausch mit anderen Copywritern & Marketern.</p>
-              <a href="#" class="text-accent hover:underline font-medium">Beitreten →</a>
+              <a href="coming-soon.html" class="text-accent hover:underline font-medium">Demnächst →</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KOSTENLOSER WEBSEITEN-CHECK -->
+      <section id="webseiten-check" class="py-24 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-blue-700 to-blue-950 text-white p-10 md:p-16 lg:p-20 overflow-hidden relative">
+            <div class="relative z-10 max-w-3xl">
+              <span class="inline-flex px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-semibold mb-8">Kostenloser Webseiten-Check</span>
+              <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Verkauft deine Webseite – oder vertreibt sie Kunden?</h2>
+              <p class="text-xl text-blue-100 leading-relaxed mb-10">Gib deine Webadresse ein und erhalte eine kompakte KI-Auswertung mit Score, drei konkreten Textverbesserungen und einem grundlegenden Barrierefreiheits-Check.</p>
+              <div class="grid sm:grid-cols-3 gap-4 mb-10 text-sm font-medium">
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">✓ Ergebnis in etwa 30 Sekunden</div>
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">✓ Konkrete Vorher-Nachher-Texte</div>
+                <div class="rounded-2xl bg-white/10 border border-white/10 p-4">✓ Direkt im Browser ansehen</div>
+              </div>
+              <a href="https://satzstrategie-webseite.vercel.app/" class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-blue-800 rounded-full font-bold text-lg hover:bg-blue-50 transition-all duration-300 shadow-xl">
+                Jetzt Webseite prüfen
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
+            <div class="absolute -right-24 -bottom-32 w-96 h-96 rounded-full bg-blue-400/20 blur-3xl" aria-hidden="true"></div>
           </div>
         </div>
       </section>
@@ -242,6 +271,35 @@
     <!-- Tab-Switching -->
     <script>
       (function () {
+        var menuButton = document.querySelector('#mobile-menu-toggle');
+        var navigation = document.querySelector('#primary-navigation');
+
+        if (menuButton && navigation) {
+          menuButton.addEventListener('click', function () {
+            var isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', String(!isOpen));
+            menuButton.setAttribute('aria-label', isOpen ? 'Menü öffnen' : 'Menü schließen');
+            navigation.classList.toggle('hidden', isOpen);
+          });
+
+          navigation.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              menuButton.setAttribute('aria-expanded', 'false');
+              menuButton.setAttribute('aria-label', 'Menü öffnen');
+              navigation.classList.add('hidden');
+            });
+          });
+
+          document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+              menuButton.setAttribute('aria-expanded', 'false');
+              menuButton.setAttribute('aria-label', 'Menü öffnen');
+              navigation.classList.add('hidden');
+              menuButton.focus();
+            }
+          });
+        }
+
         function switchTab(tabId) {
           var btn = document.querySelector('.tab-button[data-tab="' + tabId + '"]');
           if (!btn) return;

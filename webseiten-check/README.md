@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Satzstrategie Check
 
-## Getting Started
+Der Satzstrategie Check ist die Next.js-Anwendung hinter den beiden kostenlosen Analyse-Werkzeugen:
 
-First, run the development server:
+- `/` analysiert Webseiten anhand von Inhalt, Conversion und grundlegenden Barrierefreiheitsmerkmalen.
+- `/text-check` analysiert Texte für LinkedIn, Instagram oder Landingpages.
+
+Die statische Unternehmenswebsite liegt eine Ebene höher im Repository und wird unabhängig von dieser Anwendung veröffentlicht.
+
+## Lokal starten
+
+Voraussetzungen: eine aktuelle Node.js-LTS-Version und npm.
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Anschließend ist die Anwendung unter [http://localhost:3000](http://localhost:3000) erreichbar.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Umgebungsvariablen
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `OPENAI_API_KEY`: API-Schlüssel für die beiden Analysen.
+- `GOOGLE_SHEET_URL`: HTTPS-Endpunkt, an den freigeschaltete Leads gesendet werden.
+- `CHROMIUM_REMOTE_EXEC_PATH`: optionaler Remote-Pack für Chromium auf Vercel. Ohne Angabe wird der im Code hinterlegte offizielle Sparticuz-Pack verwendet.
 
-## Learn More
+Geheimnisse gehören ausschließlich in `.env.local` beziehungsweise in die Vercel Environment Variables und nie ins Repository.
 
-To learn more about Next.js, take a look at the following resources:
+## Qualitätschecks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint
+npm run build
+npm audit
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Betriebshinweise
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Die Analyse-Endpunkte validieren Eingaben, blockieren lokale und private Netzwerkziele und besitzen ein einfaches In-Memory-Limit pro Client. Für höheren Traffic sollte dieses Limit durch einen zentralen Dienst wie Vercel KV oder Upstash Redis ersetzt werden, weil mehrere Serverless-Instanzen keinen gemeinsamen Speicher besitzen.

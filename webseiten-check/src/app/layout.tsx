@@ -30,7 +30,7 @@ export default function RootLayout({
                 Satzstrategie Check
               </Link>
               <Link
-                href="#kontakt"
+                href="https://www.satzstrategie.de/kontakt.html"
                 className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
               >
                 Kontakt
@@ -39,7 +39,7 @@ export default function RootLayout({
           </header>
 
           {/* Main Content */}
-          <main className="flex-1">{children}</main>
+          <div className="flex-1">{children}</div>
 
           {/* Footer */}
           <footer className="bg-[#1A1A1A] text-white">

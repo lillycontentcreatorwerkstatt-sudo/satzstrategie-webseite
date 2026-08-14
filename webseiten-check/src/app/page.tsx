@@ -77,13 +77,14 @@ export default function Home() {
 
   const handleUnlockResults = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
     if (!email.includes("@")) {
       alert("Bitte eine gültige E-Mail eingeben.");
       return;
     }
   
     try {
-      await fetch("/api/save-lead", {
+      const response = await fetch("/api/save-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -93,8 +94,14 @@ export default function Home() {
           score: result?.totalScore
         }),
       });
-    } catch (err) {
-      console.error("Fehler beim Senden:", err);
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.details || data.error || "Die E-Mail konnte nicht gespeichert werden.");
+      }
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Die E-Mail konnte nicht gespeichert werden.");
+      return;
     }
     
     setStep("results");
@@ -167,7 +174,7 @@ export default function Home() {
 
                 <p className="text-sm text-slate-500 mt-2 flex items-center justify-center gap-2 font-medium">
                   <span>🔒</span> 
-                  Ergebnis im Tausch gegen deine E-Mail (kein Newsletter, nur der Report).
+                  Ergebnis nach E-Mail-Eingabe direkt ansehen. Kein Newsletter.
                 </p>
 
                 {error && (
@@ -192,7 +199,7 @@ export default function Home() {
             </div>
             <h2 className="text-3xl font-bold mb-4 text-slate-900">Analyse fertig!</h2>
             <p className="text-slate-600 mb-8 text-lg leading-relaxed">
-              Wir haben <strong>3 konkrete Verbesserungen</strong> für <strong>{url}</strong> gefunden. Wohin dürfen wir den Report senden?
+              Wir haben <strong>3 konkrete Verbesserungen</strong> für <strong>{url}</strong> gefunden. Mit welcher E-Mail möchtest du das Ergebnis freischalten?
             </p>
             
             <form onSubmit={handleUnlockResults} className="flex flex-col gap-4">
@@ -211,7 +218,15 @@ export default function Home() {
                 Ergebnis jetzt anzeigen
               </button>
             </form>
-            <p className="text-sm text-slate-400 mt-6 font-medium">Deine Daten sind sicher. Kein Spam.</p>
+            {error && (
+              <p role="alert" className="mt-4 rounded-lg bg-red-50 p-3 text-sm font-medium text-red-700">
+                {error}
+              </p>
+            )}
+            <p className="text-sm text-slate-400 mt-6 font-medium">
+              Kein Newsletter. Mehr dazu in unserer{" "}
+              <a className="underline" href="https://www.satzstrategie.de/datenschutz.html">Datenschutzerklärung</a>.
+            </p>
           </motion.div>
         )}
 
@@ -405,7 +420,7 @@ export default function Home() {
                     </p>
                     <div className="flex justify-center">
                       <a 
-                        href="https://calendly.com/DEIN-LINK"
+                        href="https://www.satzstrategie.de/kontakt.html"
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white text-lg md:text-xl font-bold py-4 px-12 rounded-xl shadow-md transform hover:scale-105 transition-all no-underline"
@@ -425,7 +440,7 @@ export default function Home() {
                     </p>
                     <div className="flex justify-center">
                       <a 
-                        href="https://calendly.com/DEIN-LINK"
+                        href="https://www.satzstrategie.de/kontakt.html"
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white text-lg md:text-xl font-bold py-4 px-12 rounded-xl shadow-md transform hover:scale-105 transition-all no-underline"
@@ -445,7 +460,7 @@ export default function Home() {
                     </p>
                     <div className="flex justify-center">
                       <a 
-                        href="https://calendly.com/DEIN-LINK"
+                        href="https://www.satzstrategie.de/kontakt.html"
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white text-lg md:text-xl font-bold py-4 px-12 rounded-xl shadow-md transform hover:scale-105 transition-all no-underline"
