@@ -6,7 +6,7 @@ Diese Datei hält die bisher gemeinsam entwickelte Richtung fest. Sie ist eine A
 
 ## Markenkern
 
-> **Ich sehe, was andere übersehen.**
+> **Wir sehen, was andere übersehen.**
 
 Satzstrategie steht für den unvoreingenommenen, genauen Blick auf Websites. Im Mittelpunkt steht nicht nur, ob eine Website schön oder technisch funktionsfähig ist, sondern was sie tatsächlich vermittelt, wo sie Menschen verliert und welches Potenzial ungenutzt bleibt.
 
@@ -28,7 +28,7 @@ Die drei aufeinanderfolgenden Ziele einer guten Website sind:
 
 Eine mögliche übergreifende Aussage lautet:
 
-> **Ich mache sichtbar und verständlich, was Ihr Unternehmen auszeichnet – für Menschen und für die Systeme, über die Menschen heute suchen.**
+> **Wir machen sichtbar und verständlich, was Ihr Unternehmen auszeichnet – für Menschen und für die Systeme, über die Menschen heute suchen.**
 
 ## Positionierung
 
@@ -42,7 +42,49 @@ Damit können sowohl kleine als auch größere Unternehmen angesprochen werden, 
 
 Die Rolle von Satzstrategie ist am ehesten:
 
-> **Website-Strategin mit Copywriting-Kern und einem unabhängigen Blick auf Wirkung, Sichtbarkeit und Zugänglichkeit.**
+> **Ein menschlich geführtes, KI-gestütztes Strategiestudio mit Copywriting-Kern und einem unabhängigen Blick auf Wirkung, Sichtbarkeit und Zugänglichkeit.**
+
+## Unternehmensmodell: Gründerin und KI-Agenten
+
+Satzstrategie ist ein Start-up, das von der Gründerin geführt und gemeinsam mit spezialisierten KI-Agenten betrieben wird. Das „Wir“ ist deshalb bewusst gewählt. Es darf jedoch nie den falschen Eindruck erzeugen, hinter der Marke stehe ein großes menschliches Agenturteam.
+
+Die klare Rollenverteilung:
+
+- Die Gründerin führt Kundengespräche, ordnet Ergebnisse strategisch ein, hinterfragt sie und trägt die persönliche Verantwortung.
+- Spezialisierte KI-Agenten unterstützen Analyse, Recherche, Sprache, Auffindbarkeit, Nutzerführung, Technik, Qualitätssicherung und Zugänglichkeit.
+- Automatisierte Ergebnisse werden als solche gekennzeichnet.
+- Persönliche Analysen und finale Empfehlungen werden menschlich geprüft und verantwortet.
+
+Zentrale Vertrauenszeile:
+
+> **Menschlich geführt. KI-gestützt. Persönlich verantwortet.**
+
+### Bereich „Wer wir sind“
+
+Das Unternehmensmodell wird auf der Website unter „Wer wir sind“ anschaulich und transparent vorgestellt.
+
+Möglicher Einstieg:
+
+> **Eine Gründerin. Mehrere spezialisierte Blickwinkel.**
+
+> Satzstrategie ist ein menschlich geführtes, KI-gestütztes Strategiestudio. Die Gründerin verantwortet Beratung, Einordnung und alle finalen Empfehlungen. Unterstützt wird sie von spezialisierten KI-Agenten, die Websites aus unterschiedlichen Perspektiven betrachten.
+
+Die Gründerin wird als reale menschliche Vertrauensperson zuerst vorgestellt. Danach erhält jeder tatsächlich eingesetzte KI-Agent eine eigene hochwertige Karte mit:
+
+- einem Namen;
+- der eindeutigen Bezeichnung „KI-Agent“;
+- einem klar als KI-generiert erkennbaren und gekennzeichneten Porträt;
+- seinem Fachbereich;
+- einer kurzen Persönlichkeit;
+- seiner besonderen Prüffrage und Perspektive.
+
+Mögliche Agentenrollen sind Sprache und Klarheit, Nutzerführung und Wirkung, Google- und KI-Auffindbarkeit, Zugänglichkeit sowie Technik und Qualität. Namen, Persönlichkeiten und Bildsprache werden erst festgelegt, wenn die tatsächlichen Rollen und Arbeitsabläufe definiert sind.
+
+Die Darstellung soll persönlich und identifikationsstark wirken, aber nicht wie ein Comic oder eine Sammlung erfundener menschlicher Mitarbeitender. Alle Informationen müssen auch ohne Hover-Effekte zugänglich sein.
+
+Leitgedanke dieses Bereichs:
+
+> **Unsere Agenten liefern verschiedene Perspektiven. Die Strategie entsteht dort, wo diese Perspektiven zusammenkommen.**
 
 ## Was KI-Auffindbarkeit wirklich bedeutet
 
@@ -71,31 +113,70 @@ Offizielle Grundlage für Google:
 - [Google: Optimizing your website for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
 - [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
 
-## Möglicher erster Bereich der Website
+## KI-Transparenz
 
-Der Einstieg soll drei Ebenen besitzen und dadurch konkret sein, ohne überladen zu wirken.
+Transparenz ist ein festes Prinzip von Satzstrategie und zugleich Teil der rechtlichen Konzeption. Seit dem 2. August 2026 gelten insbesondere die Transparenzpflichten aus Artikel 50 des EU AI Acts. Bei direkter Interaktion mit einem KI-System muss für betroffene Personen klar erkennbar sein, dass sie mit KI interagieren, sofern dies nicht ohnehin offensichtlich ist. Bestimmte KI-generierte oder manipulierte Inhalte unterliegen weiteren Kennzeichnungspflichten. Die Information muss klar, unterscheidbar und barrierefrei erfolgen.
 
-Einordnung:
+Für Satzstrategie wird die Transparenz einfach und nutzerfreundlich umgesetzt:
 
-> WEBSITE-ANALYSE · STRATEGIE · SICHTBARKEIT
+Beim automatisierten Schnellcheck:
 
-Hauptaussage:
+> **KI-gestützte Ersteinschätzung. Keine vollständige persönliche Prüfung.**
 
-> **Ich sehe, was andere übersehen.**
+Ausführlicher Hinweis in unmittelbarer Nähe des Checks:
 
-Erklärung:
+> **Diese Ersteinschätzung wird mithilfe spezialisierter KI-Agenten erstellt. Sie bietet eine erste Orientierung und ersetzt keine persönliche vollständige Website-Analyse.**
 
-> Ich analysiere, warum Ihre Website nicht klar genug vermittelt, wofür Ihr Unternehmen steht – und was sie braucht, damit Sie in Google und KI-Suchen gefunden, von Menschen verstanden und schließlich gewählt werden.
+Bei der persönlichen Wirkungsanalyse:
 
-Direkter Übergang zum Schnellcheck:
+> **KI-gestützt analysiert. Von der Gründerin geprüft und persönlich verantwortet.**
+
+Zusätzlich werden später in den Datenschutz- und Rechtstexten verständlich beschrieben:
+
+- welche Teile automatisiert ablaufen;
+- welche Ergebnisse persönlich überprüft werden;
+- welche Daten verarbeitet und an welche Dienste sie übermittelt werden;
+- wie lange Daten gespeichert werden;
+- wie eine menschliche Prüfung oder Kontaktaufnahme möglich ist.
+
+Die konkrete rechtliche Ausgestaltung von Datenschutzerklärung, Kundenverträgen und KI-Kennzeichnung wird vor Veröffentlichung fachjuristisch geprüft.
+
+Offizielle Grundlage:
+
+- [EU AI Act, Artikel 50](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=en)
+- [EU-Kommission: Kennzeichnung KI-generierter Inhalte](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content)
+
+## Erster Bereich der Website
+
+Der Einstieg soll eine eindeutige Hierarchie besitzen und ohne Überladung sofort verständlich sein. Oberhalb der Hook steht keine erklärende Zeile. Der Blick fällt zuerst ausschließlich auf die Hauptaussage.
+
+### Hook
+
+> **Wir sehen, was andere übersehen.**
+
+Die Hook wird groß, ruhig und selbstbewusst über zwei oder drei Zeilen inszeniert. Das Wort „übersehen“ kann durch Farbe, Typografie oder eine zurückhaltende Bewegung hervorgehoben werden. Der vollständige Satz bleibt jederzeit sichtbar und verständlich.
+
+### Konkretes Versprechen
+
+> **Wir analysieren, was Ihre Website Menschen, Google und KI-Systemen vermittelt – damit Ihr Unternehmen gefunden, verstanden und gewählt wird.**
+
+Darunter folgt die Vertrauenszeile:
+
+> **Menschlich geführt. KI-gestützt. Persönlich verantwortet.**
+
+### Direkter Übergang zum Schnellcheck
 
 > **Was erzählt Ihre Website über Ihr Unternehmen?**
 
-Darunter stehen das URL-Feld, die Aktion „Website kurz prüfen“ und eine knappe Einordnung wie:
+Darunter stehen das URL-Feld und die Aktion:
 
-> Ersteinschätzung zu Wirkung, Struktur, Sichtbarkeit und Zugänglichkeit.
+> **Ersten Eindruck erhalten →**
 
-Die endgültige Formulierung und visuelle Gestaltung werden später entwickelt.
+Knappe Einordnung:
+
+> **Ersteinschätzung zu Wirkung, Auffindbarkeit, Nutzerführung und Zugänglichkeit.**
+
+Die Reihenfolge des ersten Bildschirms lautet damit: Haltung → Leistung → Ergebnis → Vertrauen → Handlung.
 
 ## Die eigene Analysemethode
 
@@ -158,7 +239,7 @@ Zentrale Vertrauensaussagen:
 
 > **Sie brauchen nicht immer eine neue Website. Manchmal brauchen Sie zuerst einen klaren Blick auf die bestehende.**
 
-> **Ich sage Ihnen nicht automatisch, dass Sie eine neue Website brauchen. Ich zeige Ihnen, was Ihre bestehende Website leisten müsste.**
+> **Wir sagen Ihnen nicht automatisch, dass Sie eine neue Website brauchen. Wir zeigen Ihnen, was Ihre bestehende Website leisten müsste.**
 
 ## Besucherreise
 
@@ -225,6 +306,9 @@ Satzstrategie kombiniert daraus:
 - Keine Abwertung von WordPress oder anderen Plattformen; entscheidend sind Ergebnis und Umsetzung.
 - Keine Ranking-Garantien für Google, ChatGPT oder andere KI-Systeme.
 - Keine Behauptung, ein automatischer Check könne eine vollständige Barrierefreiheitsprüfung ersetzen.
+- Keine Verschleierung automatisierter Analyse oder direkter KI-Interaktion.
+- Keine Darstellung der KI-Agenten als angebliche menschliche Mitarbeitende.
+- Die Gründerin bleibt als verantwortliche menschliche Instanz sichtbar.
 - Keine überladene Startseite und keine undifferenzierte Liste sämtlicher möglicher Leistungen.
 - Die Website selbst muss die versprochene Klarheit, Qualität und Zugänglichkeit beweisen.
 
@@ -234,7 +318,7 @@ Satzstrategie kombiniert daraus:
 - Form und Tiefe des schriftlichen Berichts;
 - Preismodell und mögliche Pakete;
 - genaue Kriterien und Darstellung des kostenlosen Schnellchecks;
-- endgültige Hero-Texte und visuelle Leitidee;
+- genaue visuelle Inszenierung des festgelegten Hero-Textes;
+- Namen, Persönlichkeiten, tatsächliche Rollen und Bildsprache der KI-Agenten;
 - Umfang der optionalen Umsetzungsbegleitung;
 - Beweisführung durch eigene Analysen, Beispiele und spätere Kundenfälle.
-
