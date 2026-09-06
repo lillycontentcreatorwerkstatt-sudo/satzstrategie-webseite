@@ -22,11 +22,14 @@ gelten der hier dokumentierte Stand und die späteren Wünsche von Lilly.
 - Aktuelle Anwendung: Next.js im Verzeichnis `webseiten-check`.
 - Lokale Vorschau: `http://localhost:3000/` (`npm run dev` in diesem Verzeichnis).
 - Das bestehende Git-Repository wird weiterverwendet. Kein neues Repository.
-- Der aktuelle Entwicklungsstand wurde am 6. September 2026 auf Wunsch von Lilly
-  zu GitHub hochgeladen: Branch `codex/revival-foundation` im bestehenden Repository
-  `lillycontentcreatorwerkstatt-sudo/satzstrategie-webseite`. `main` bleibt unverändert.
-- Keine Zusammenführung oder aktive Live-Veröffentlichung vorgenommen. Ob die
-  GitHub-Anbindung eine automatische Vercel-Vorschau erzeugt, ist nicht verifiziert.
+- Der aktuelle Entwicklungsstand wurde am 6. September 2026 zunächst auf
+  `codex/revival-foundation` zu GitHub hochgeladen. Anschließend hat Lilly gewünscht,
+  dass der neue Stand den veralteten Stand in `main` ersetzt.
+- Aktueller Hauptzweig ist deshalb `main` im bestehenden Repository
+  `lillycontentcreatorwerkstatt-sudo/satzstrategie-webseite`. Die Übernahme erfolgt
+  regulär als Fast-forward, ohne Force-Push; ältere Versionen bleiben erhalten.
+- Ein Push auf `main` kann die angebundene Veröffentlichung auslösen. Ein aktueller
+  GitHub-Stand allein bestätigt noch nicht die erfolgreich ausgelieferte Live-Seite.
 - Die alten HTML-Dateien im Repository bleiben erhalten. Die Anwendung übernimmt
   die bestehenden Rechtstexte über `src/lib/legal-content.ts`.
 - Geheimnisse und lokale Laufzeitdaten bleiben außerhalb der Versionskontrolle.
