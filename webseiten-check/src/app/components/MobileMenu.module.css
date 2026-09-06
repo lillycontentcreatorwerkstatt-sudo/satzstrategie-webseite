@@ -1,0 +1,11 @@
+.menu { color:#fff; }
+.menu > summary { display:flex; align-items:center; gap:.65rem; min-height:44px; list-style:none; font-size:.875rem; cursor:pointer; }
+.menu > summary::-webkit-details-marker { display:none; }
+.menu > summary > span { font-size:1.5rem; line-height:1; transition:transform .2s; }
+.menu[open] > summary > span { transform:rotate(45deg); }
+.menu nav { position:absolute; z-index:60; inset:100% 0 auto; background:#090909; border:1px solid #333; padding:.5rem 1.25rem 1rem; box-shadow:0 1rem 2rem #0005; }
+.menu nav a { display:grid; grid-template-columns:1.5rem 1fr auto; align-items:center; gap:.75rem; min-height:56px; padding:.75rem 0; color:#fff; font-size:.9375rem; line-height:1.4; text-decoration:none; border-bottom:1px solid #333; }
+.menu nav a:last-child { border-bottom:0; }
+.menu nav a > span:first-child { font:.75rem monospace; color:#aaa; }
+.menu nav a[aria-current="page"] { color:#e8a94a; }
+.menu :is(summary,a):focus-visible { outline:2px solid #e8a94a; outline-offset:4px; }

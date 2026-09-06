@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import InteriorShell from "@/app/components/InteriorShell";
 import { readLegacyLegalContent } from "@/lib/legal-content";
+
+export const metadata: Metadata = { title: "Impressum — Satzstrategie", description: "Anbieterkennzeichnung und Kontaktdaten von Satzstrategie." };
 
 export default function ImpressumPage() {
   const content = readLegacyLegalContent("impressum.html", ".legal-content");

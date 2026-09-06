@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import InteriorShell from "@/app/components/InteriorShell";
 import { readLegacyLegalContent } from "@/lib/legal-content";
+
+export const metadata: Metadata = { title: "Datenschutz — Satzstrategie", description: "Informationen zur Verarbeitung personenbezogener Daten bei Satzstrategie." };
 
 export default function DatenschutzPage() {
   const content = readLegacyLegalContent("datenschutz.html", ".privacy-content");

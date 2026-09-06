@@ -1,15 +1,42 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import InteriorShell from "@/app/components/InteriorShell";
+import StudioShell, { StudioEyebrow, StudioNext } from "@/app/components/StudioShell";
+import CopyProof from "@/app/components/CopyProof";
+
+export const metadata: Metadata = {
+  title: "Copywriting & Beratung — Satzstrategie",
+  description: "Klarheit für Ihr Angebot. Copywriting für Ihre Webseite. Satzstrategie verbindet Text, Analyse und Beratung – branchenübergreifend.",
+};
 
 export default function BeratungPage() {
   return (
-    <InteriorShell eyebrow="Beratung" title="Nicht jede Website braucht einen Neubau. Aber jede braucht Klarheit." intro="Wir prüfen unabhängig, was Ihre Website tatsächlich vermittelt — und geben Ihnen eine klare Grundlage für die nächsten Entscheidungen.">
-      <section className="service-grid" aria-label="Beratungsangebote">
-        <article><span>01</span><h2>Ersteinschätzung</h2><p>Ein kompakter KI-gestützter Blick auf Verständlichkeit, Wirkung und grundlegende Zugänglichkeit.</p><Link href="/analyse">Website prüfen →</Link></article>
-        <article><span>02</span><h2>Vollständige Analyse</h2><p>Wir untersuchen Positionierung, Copy, Nutzerführung, Google-Signale, KI-Zuordnung und Barrierefreiheit — persönlich eingeordnet.</p><Link href="/kontakt">Analyse anfragen →</Link></article>
-        <article><span>03</span><h2>Strategische Begleitung</h2><p>Wir übersetzen die Erkenntnisse in Struktur, Texte und ein klares Briefing. Ihr bestehendes Designteam kann damit weiterarbeiten — oder wir entwickeln gemeinsam weiter.</p><Link href="/kontakt">Projekt besprechen →</Link></article>
+    <StudioShell active="/beratung">
+      <section className="studio-hero studio-copy-intro">
+        <StudioEyebrow number="02">Copywriting & Beratung</StudioEyebrow>
+        <div className="studio-copy-columns">
+          <div>
+            <h1 className="studio-title">Ihr Können.<br />In <span className="studio-mark">klaren Worten.</span></h1>
+            <p className="studio-lead">Sie wissen, was Ihr Unternehmen kann. Wir finden die Worte dafür – für Ihre Webseite, Ihre Leistungen und den nächsten Klick.</p>
+            <div className="studio-actions"><Link className="studio-button" href="/kontakt">Über Ihre Texte sprechen <span aria-hidden="true">↗</span></Link></div>
+            <nav className="studio-offer-links" aria-label="Unsere Leistungen">
+              <a href="#neue-texte">Webseitentexte <span aria-hidden="true">↓</span></a>
+              <a href="#texte-ueberarbeiten">Textüberarbeitung <span aria-hidden="true">↓</span></a>
+              <a href="#webseitenberatung">Webseitenberatung <span aria-hidden="true">↓</span></a>
+            </nav>
+          </div>
+          <CopyProof />
+        </div>
       </section>
-      <section className="statement-band"><p>Wir verkaufen Ihnen keinen Neubau, wenn eine präzise Korrektur die bessere Lösung ist.</p></section>
-    </InteriorShell>
+      <section className="studio-section" id="leistungen">
+        <div className="studio-section-intro"><p className="studio-label">Text. Überarbeitung. Beratung.</p><h2>Wo setzen wir an?</h2></div>
+        <ol className="studio-services">
+          <li id="neue-texte"><span className="studio-label">01</span><h3>Neue Webseitentexte.</h3><p>Aus Ihrer Botschaft werden fertige Texte für Startseite, Leistungen oder Landingpage – in einem Ton, der zu Ihnen passt.</p></li>
+          <li id="texte-ueberarbeiten"><span className="studio-label">02</span><h3>Bestehende Texte verbessern.</h3><p>Sie erhalten überarbeitete Texte mit klarerem Nutzen und einer nachvollziehbaren Begründung für die Änderungen.</p></li>
+          <li id="webseitenberatung"><span className="studio-label">03</span><h3>Den Auftritt hinterfragen.</h3><p>Was soll Ihre Webseite verkaufen – und was vermittelt sie tatsächlich? Sie erhalten priorisierte Empfehlungen zu Text und Struktur. Ihr bestehendes Webdesignteam kann damit weiterarbeiten.</p></li>
+        </ol>
+      </section>
+      <p className="studio-scope-note">Für kleine Unternehmen und große Teams. Ohne Branchenfestlegung. Eine Beratung setzt keinen Webseiten-Neubau voraus.</p>
+      <StudioNext href="/kontakt" label="Gemeinsam den Umfang klären">Über Ihr Projekt sprechen.</StudioNext>
+    </StudioShell>
   );
 }

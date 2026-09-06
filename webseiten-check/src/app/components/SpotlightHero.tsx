@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import MobileMenu from "./MobileMenu";
 
 const HERO_SEEN_KEY = "satzstrategie-hero-seen";
 
@@ -195,9 +196,10 @@ export default function SpotlightHero() {
         <nav className="spotlight-nav" aria-label="Hauptnavigation">
           <Link className="spotlight-brand" href="/">satzstrategie.</Link>
           <div className="spotlight-links">
-            <Link href="/analyse">Analyse</Link><Link href="/beratung">Beratung</Link><Link href="/wer-wir-sind">Wer wir sind</Link>
+            <Link href="/analyse">Analyse</Link><Link href="/beratung">Copywriting & Beratung</Link><Link href="/wer-wir-sind">Wer wir sind</Link>
           </div>
-          <Link className="spotlight-nav-action" href="/kontakt">Gespräch buchen ↗</Link>
+          <Link className="spotlight-nav-action" href="/kontakt" aria-label="Gespräch anfragen"><span className="spotlight-contact-full">Gespräch anfragen ↗</span><span className="spotlight-contact-short">Kontakt ↗</span></Link>
+          <MobileMenu className="spotlight-mobile-menu" />
         </nav>
 
         <section className="spotlight-scene" ref={sceneRef} aria-label="Webseiten werden gefunden, verstanden und gewählt">
@@ -214,21 +216,27 @@ export default function SpotlightHero() {
             <p className="spotlight-arrival" ref={arrivalRef}>wird<span className="spotlight-end-period" ref={periodRef}>.</span></p>
           </div>
           <span className="spotlight-spark" aria-hidden="true" /><span className="spotlight-beam" aria-hidden="true" /><span className="spotlight-haze" aria-hidden="true" />
-          <p className="spotlight-final-sentence">
-            <span ref={(node) => { targetRefs.current[0] = node; }}>Als <strong>Copywriter:innen</strong> sorgen wir dafür, dass Ihre <strong>Webseite</strong></span>{" "}
-            <span ref={(node) => { targetRefs.current[1] = node; }}>gefunden,</span>{" "}<span ref={(node) => { targetRefs.current[2] = node; }}>verstanden</span>{" "}
-            <span ref={(node) => { targetRefs.current[3] = node; }}>und gewählt</span>{" "}<span ref={(node) => { targetRefs.current[4] = node; }}>wird.</span>
-          </p>
-          <h1 className="spotlight-hook">Wir sehen, was andere übersehen<span>.</span></h1>
-        </section>
-
-        <section className="spotlight-form-area" id="website-pruefen" aria-label="Website prüfen">
-          <form className="spotlight-form" onSubmit={submit}>
-            <label className="sr-only" htmlFor="spotlight-url">Adresse Ihrer Website</label>
-            <input className="spotlight-url" id="spotlight-url" type="text" inputMode="url" autoComplete="url" placeholder="https://ihre-website.de" value={url} onChange={(event) => setUrl(event.target.value)} />
-            <button className="spotlight-submit" type="submit">Website prüfen →</button>
-          </form>
-          <p className="spotlight-microcopy"><span>KI-gestützte Ersteinschätzung · in 30 Sekunden</span><span aria-live="polite">{status}</span></p>
+          <div className="spotlight-final-stack">
+            <p className="spotlight-final-sentence">
+              <span ref={(node) => { targetRefs.current[0] = node; }}>Als <strong className="spotlight-copywriter">Copywriter:innen</strong> sorgen wir dafür, dass Ihre <strong>Webseite</strong></span>{" "}
+              <span ref={(node) => { targetRefs.current[1] = node; }}>gefunden,</span>{" "}<span ref={(node) => { targetRefs.current[2] = node; }}>verstanden</span>{" "}
+              <span ref={(node) => { targetRefs.current[3] = node; }}>und gewählt</span>{" "}<span ref={(node) => { targetRefs.current[4] = node; }}>wird.</span>
+            </p>
+            <h1 className="spotlight-hook">Wir sehen, was andere übersehen<span>.</span></h1>
+            <section className="spotlight-form-area" id="website-pruefen" aria-label="Website prüfen oder ein Gespräch anfragen">
+              <div className="spotlight-decision-grid">
+                <div className="spotlight-check">
+                  <form className="spotlight-form" onSubmit={submit}>
+                    <label className="sr-only" htmlFor="spotlight-url">Adresse Ihrer Website</label>
+                    <input className="spotlight-url" id="spotlight-url" type="text" inputMode="url" autoComplete="url" placeholder="https://ihre-website.de" value={url} onChange={(event) => setUrl(event.target.value)} />
+                    <button className="spotlight-submit" type="submit">Website prüfen →</button>
+                  </form>
+                  <p className="spotlight-microcopy"><span>KI-gestützte Ersteinschätzung · in 30 Sekunden<br />Ergebnis nach E-Mail-Eingabe.</span><span aria-live="polite">{status}</span></p>
+                </div>
+                <Link className="spotlight-conversation" href="/kontakt"><span>Über Ihre Texte sprechen</span><span aria-hidden="true">↗</span></Link>
+              </div>
+            </section>
+          </div>
         </section>
         </div>
       </main>
@@ -236,7 +244,6 @@ export default function SpotlightHero() {
         <div className="spotlight-footer-inner">
           <div className="spotlight-footer-identity">
             <span className="spotlight-footer-brand">satzstrategie.</span>
-            <span>Gefunden. Verstanden. Gewählt.</span>
           </div>
           <div className="spotlight-footer-meta">
             <nav aria-label="Rechtliche Informationen">
