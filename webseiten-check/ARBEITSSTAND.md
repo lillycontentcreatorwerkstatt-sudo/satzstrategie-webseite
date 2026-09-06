@@ -30,6 +30,11 @@ gelten der hier dokumentierte Stand und die späteren Wünsche von Lilly.
   regulär als Fast-forward, ohne Force-Push; ältere Versionen bleiben erhalten.
 - Ein Push auf `main` kann die angebundene Veröffentlichung auslösen. Ein aktueller
   GitHub-Stand allein bestätigt noch nicht die erfolgreich ausgelieferte Live-Seite.
+- Am 6. September 2026 wurde die bestehende Domain bei IONOS auf das Vercel-Projekt
+  umgestellt: `https://www.satzstrategie.de/`, mit Weiterleitung von
+  `https://satzstrategie.de/`. Beide Domainkonfigurationen und HTTPS am neuen Ziel
+  sind geprüft; DNS-Zwischenspeicher können vorübergehend noch die alte Seite zeigen.
+  E-Mail-Einträge bleiben unverändert. Details und Rückweg: `DOMAIN-UMSTELLUNG.md`.
 - Die alten HTML-Dateien im Repository bleiben erhalten. Die Anwendung übernimmt
   die bestehenden Rechtstexte über `src/lib/legal-content.ts`.
 - Geheimnisse und lokale Laufzeitdaten bleiben außerhalb der Versionskontrolle.
@@ -97,7 +102,8 @@ gelten der hier dokumentierte Stand und die späteren Wünsche von Lilly.
   schmale/kurze Fenster, Kontaktweg, Tastatur und reduzierte Bewegung.
 - Ein echtes Porträt von Lilly fehlt bewusst noch: nur ein von ihr ausgewähltes
   Bild verwenden. Weitere Arbeitsbeispiele nur nachvollziehbar und korrekt benennen.
-- Vor Veröffentlichung: aktuelle Kontaktdaten, Impressumsanbieter, Datenschutz,
+- Noch ausstehende inhaltliche Freigabe trotz erfolgter Domain-Umstellung:
+  aktuelle Kontaktdaten, Impressumsanbieter, Datenschutz,
   Analyse-/Lead-Verarbeitung und tatsächliche Analysedauer überprüfen. Keine
   juristische Freigabe oder garantierte Analysezeit aus diesem Stand ableiten.
 
