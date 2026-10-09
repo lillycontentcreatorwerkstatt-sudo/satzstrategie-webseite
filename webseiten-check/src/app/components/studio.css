@@ -117,7 +117,7 @@
 .studio-fields { display:grid; gap:1.75rem; }
 .studio-field { display:grid; gap:.65rem; }
 .studio-field label { font-size:.9375rem; font-weight:500; }
-.studio-field input, .studio-field textarea { width:100%; min-width:0; padding:.85rem 0; border:0; border-bottom:1px solid #858585; border-radius:0; background:#fff; color:#151515; outline-offset:4px; }
+.studio-field input, .studio-field textarea, .studio-field select { width:100%; min-width:0; padding:.85rem 0; border:0; border-bottom:1px solid #858585; border-radius:0; background:#fff; color:#151515; outline-offset:4px; font:inherit; }
 .studio-field input::placeholder, .studio-field textarea::placeholder { color:#747474; opacity:1; }
 .studio-field textarea { resize:vertical; min-height:5.5rem; }
 .studio-field small { color:var(--studio-muted); font-size:.8125rem; }
@@ -148,6 +148,8 @@
 .studio-contact-help { margin-bottom:1.5rem; }
 .studio-check-followup { padding:1.5rem 0 3rem; color:var(--studio-muted); }
 .studio-check-followup a { color:var(--studio-ink); display:inline-flex; align-items:center; min-height:44px; }
+.studio-check-alternatives { display:grid; justify-items:start; gap:.5rem; }
+.studio-gate > p, .studio-report-url, .studio-keyword-result, .studio-comparison blockquote { overflow-wrap:anywhere; }
 .studio-check-layout { gap:1.75rem; padding-top:2.5rem; padding-bottom:2.5rem; }
 .studio-check-intro h1 { margin-top:1.5rem; font-size:clamp(2.25rem,4.7vw,4.25rem); }
 .studio-check-intro .studio-lead { margin-top:1.25rem; }
@@ -271,7 +273,7 @@
 .studio-page h1.studio-title { font-size:clamp(2.5rem,5vw,5rem); font-weight:500; line-height:1.12; letter-spacing:-.025em; text-wrap:initial; }
 .studio-mark { text-decoration:underline; text-decoration-color:var(--studio-amber); text-decoration-thickness:.075em; text-underline-offset:.14em; text-decoration-skip-ink:none; }
 .studio-copy-columns { display:grid; gap:3rem; align-items:start; }
-.studio-copy-columns > div, .studio-copy-columns > figure { min-width:0; }
+.studio-copy-columns > * { min-width:0; }
 .studio-copy-columns .studio-lead { margin-top:1.75rem; max-width:33rem; }
 .studio-copy-columns .studio-offer-links { margin-top:2rem; max-width:30rem; }
 .studio-copy-columns .studio-actions { margin-top:1.75rem; }
@@ -311,6 +313,11 @@
 .studio-team-lines dt { font-size:1.75rem; font-weight:500; line-height:1.3; }
 .studio-team-lines dt span { display:block; font-size:.875rem; font-weight:400; color:var(--studio-muted); margin-top:.5rem; }
 .studio-team-lines dd { margin:0; max-width:39rem; color:var(--studio-muted); }
+.studio-about-personal > .studio-lead { margin-top:.75rem; }
+.studio-about-personal > .studio-team-lines { margin-top:2.5rem; }
+.studio-team-support { margin-top:1rem; border-left:2px solid var(--studio-amber); padding-left:1.25rem; max-width:43rem; }
+.studio-team-support h2 { font-size:1.125rem; font-weight:500; line-height:1.4; letter-spacing:normal; text-wrap:initial; margin-bottom:.5rem; }
+.studio-team-support p { color:var(--studio-muted); }
 .studio-open-industry { border-left:2px solid var(--studio-amber); padding-left:1.25rem; max-width:43rem; color:var(--studio-muted); margin-top:1.5rem!important; }
 .studio-contact-personal { max-width:none; }
 .studio-contact-compose { display:grid; gap:2.5rem; margin-bottom:2.5rem; }
@@ -327,6 +334,12 @@
 .studio-message-sheet .studio-button:hover { background:#f1ba67; }
 .studio-message-sheet .studio-email-address { color:#fff; font-size:.875rem; margin-top:.5rem; }
 .studio-message-sheet :is(a,button):focus-visible { outline-color:var(--studio-amber); }
+.studio-copy-email { display:grid; gap:.35rem; max-width:100%; font-size:.8125rem; }
+.studio-copy-email > span:first-child { overflow-wrap:anywhere; }
+.studio-copy-email button { justify-self:start; background:none; border:0; border-bottom:1px solid #777; padding:.35rem 0; min-height:44px; }
+.studio-copy-email [role="status"] { color:var(--studio-muted); }
+.studio-hero.studio-contact-personal { padding-top:2rem; }
+.studio-contact-personal .studio-eyebrow { margin-bottom:1.5rem; }
 @media (min-width:760px) {
   .studio-team-lines > div { grid-template-columns:1fr 2.1fr; gap:2rem; }
 }

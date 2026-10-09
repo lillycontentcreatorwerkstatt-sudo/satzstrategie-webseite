@@ -22,6 +22,7 @@ export default function SpotlightHero() {
   const timersRef = useRef<number[]>([]);
   const animationsRef = useRef<Animation[]>([]);
   const replayRef = useRef<() => void>(() => undefined);
+  const finishRef = useRef<() => void>(() => undefined);
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState("");
 
@@ -96,6 +97,7 @@ export default function SpotlightHero() {
       stage.className = "spotlight-page is-final is-complete";
       ["--spot-x", "--source-y", "--target-y", "--beam-height", "--beam-width", "--beam-half"].forEach((property) => stage.style.removeProperty(property));
     };
+    finishRef.current = showFinal;
 
     const morphSentence = () => {
       const pairs: Array<[HTMLElement, HTMLElement]> = [
@@ -157,23 +159,32 @@ export default function SpotlightHero() {
       later(5500, morphSentence);
       later(6000, () => stage.classList.add("is-payoff"));
       later(7100, () => stage.classList.add("is-cta-visible"));
-      later(8100, () => { stage.classList.add("is-complete"); window.sessionStorage.setItem(HERO_SEEN_KEY, "1"); });
+      later(8100, () => { stage.classList.add("is-complete"); try { window.sessionStorage.setItem(HERO_SEEN_KEY, "1"); } catch { /* Storage is optional. */ } });
     };
 
     replayRef.current = play;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const alreadySeen = window.sessionStorage.getItem(HERO_SEEN_KEY) === "1";
+    let alreadySeen = false;
+    try { alreadySeen = window.sessionStorage.getItem(HERO_SEEN_KEY) === "1"; } catch { /* Storage is optional. */ }
     if (reducedMotion || alreadySeen) showFinal(); else play();
     return () => {
       replayRef.current = () => undefined;
+      finishRef.current = () => undefined;
       clearMotion();
     };
   }, []);
 
   const replayAnimation = () => {
-    window.sessionStorage.removeItem(HERO_SEEN_KEY);
+    try { window.sessionStorage.removeItem(HERO_SEEN_KEY); } catch { /* Storage is optional. */ }
+    window.scrollTo({ top: 0, behavior: "instant" });
     replayRef.current();
+  };
+
+  const skipAnimation = () => {
+    finishRef.current();
+    try { window.sessionStorage.setItem(HERO_SEEN_KEY, "1"); } catch { /* Storage is optional. */ }
+    document.getElementById("spotlight-url")?.focus();
   };
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -191,20 +202,21 @@ export default function SpotlightHero() {
         </button>
       )}
       <main className="spotlight-page" ref={stageRef}>
-        <a className="skip-link" href="#website-pruefen">Direkt zum Website-Check</a>
+        <a className="skip-link" href="#website-pruefen" onClick={skipAnimation}>Direkt zum Textcheck</a>
         <div className="spotlight-inner">
         <nav className="spotlight-nav" aria-label="Hauptnavigation">
           <Link className="spotlight-brand" href="/">satzstrategie.</Link>
           <div className="spotlight-links">
-            <Link href="/analyse">Analyse</Link><Link href="/beratung">Copywriting & Beratung</Link><Link href="/wer-wir-sind">Wer wir sind</Link>
+            <Link href="/analyse">Analyse</Link><Link href="/beratung">Leistungen</Link><Link href="/wer-wir-sind">Wer wir sind</Link>
           </div>
           <Link className="spotlight-nav-action" href="/kontakt" aria-label="Gespräch anfragen"><span className="spotlight-contact-full">Gespräch anfragen ↗</span><span className="spotlight-contact-short">Kontakt ↗</span></Link>
           <MobileMenu className="spotlight-mobile-menu" />
+          <div className="spotlight-intro-tools"><span>Text, Design & Code</span><button type="button" onClick={skipAnimation}>Zum Textcheck ↓</button></div>
         </nav>
 
         <section className="spotlight-scene" ref={sceneRef} aria-label="Webseiten werden gefunden, verstanden und gewählt">
-          <div className="spotlight-build-group">
-            <p className="spotlight-builder" ref={builderRef}><span ref={prefixRef}>Wir sorgen dafür, dass Ihre Webseite</span></p>
+          <div className="spotlight-build-group" aria-hidden="true">
+            <p className="spotlight-builder" ref={builderRef}><span ref={prefixRef}>Unser Ziel: eine Webseite, die</span></p>
             <div className="spotlight-perception-row" ref={rowRef} aria-label="gefunden, verstanden und gewählt">
               {[["gefunden,", "Google"], ["verstanden,", "Menschen"], ["und gewählt", "KI"]].map(([word, hint], index) => (
                 <span className="spotlight-perception-item" key={word}>
@@ -218,28 +230,29 @@ export default function SpotlightHero() {
           <span className="spotlight-spark" aria-hidden="true" /><span className="spotlight-beam" aria-hidden="true" /><span className="spotlight-haze" aria-hidden="true" />
           <div className="spotlight-final-stack">
             <p className="spotlight-final-sentence">
-              <span ref={(node) => { targetRefs.current[0] = node; }}>Als <strong className="spotlight-copywriter">Copywriter:innen</strong> sorgen wir dafür, dass Ihre <strong>Webseite</strong></span>{" "}
+              <span ref={(node) => { targetRefs.current[0] = node; }}><strong className="spotlight-copywriter">Copywriting, Design und Entwicklung.</strong><br />Für eine Webseite, die</span>{" "}
               <span ref={(node) => { targetRefs.current[1] = node; }}>gefunden,</span>{" "}<span ref={(node) => { targetRefs.current[2] = node; }}>verstanden</span>{" "}
               <span ref={(node) => { targetRefs.current[3] = node; }}>und gewählt</span>{" "}<span ref={(node) => { targetRefs.current[4] = node; }}>wird.</span>
             </p>
             <h1 className="spotlight-hook">Wir sehen, was andere übersehen<span>.</span></h1>
-            <section className="spotlight-form-area" id="website-pruefen" aria-label="Website prüfen oder ein Gespräch anfragen">
+            <section className="spotlight-form-area" id="website-pruefen" aria-label="Website prüfen oder ein Gespräch anfragen" onFocusCapture={() => { if (!stageRef.current?.classList.contains("is-complete")) skipAnimation(); }}>
               <div className="spotlight-decision-grid">
                 <div className="spotlight-check">
-                  <form className="spotlight-form" onSubmit={submit}>
+                  <form className="spotlight-form" action="/analyse" onSubmit={submit}>
                     <label className="sr-only" htmlFor="spotlight-url">Adresse Ihrer Website</label>
-                    <input className="spotlight-url" id="spotlight-url" type="text" inputMode="url" autoComplete="url" placeholder="https://ihre-website.de" value={url} onChange={(event) => setUrl(event.target.value)} />
-                    <button className="spotlight-submit" type="submit">Website prüfen →</button>
+                    <input className="spotlight-url" id="spotlight-url" name="url" type="text" inputMode="url" autoComplete="url" placeholder="https://ihre-website.de" value={url} onChange={(event) => { setUrl(event.target.value); setStatus(""); }} />
+                    <button className="spotlight-submit" type="submit">Textcheck starten →</button>
                   </form>
-                  <p className="spotlight-microcopy"><span>KI-gestützte Ersteinschätzung · in 30 Sekunden<br />Ergebnis nach E-Mail-Eingabe.</span><span aria-live="polite">{status}</span></p>
+                  <p className="spotlight-microcopy"><span>KI-Textcheck für diese Seite.<br />Ergebnis nach E-Mail-Eingabe.</span><span aria-live="polite">{status}</span></p>
                 </div>
-                <Link className="spotlight-conversation" href="/kontakt"><span>Über Ihre Texte sprechen</span><span aria-hidden="true">↗</span></Link>
+                <Link className="spotlight-conversation" href="/kontakt"><span>Ihr Projekt besprechen</span><span aria-hidden="true">↗</span></Link>
               </div>
             </section>
           </div>
         </section>
         </div>
       </main>
+      <noscript><style>{`.spotlight-builder,.spotlight-build-group,.spotlight-intro-tools button{display:none!important}.spotlight-final-sentence,.spotlight-hook,.spotlight-form-area,.spotlight-footer{opacity:1!important;transform:none!important}`}</style></noscript>
       <footer className="spotlight-footer">
         <div className="spotlight-footer-inner">
           <div className="spotlight-footer-identity">

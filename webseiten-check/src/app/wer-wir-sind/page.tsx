@@ -4,7 +4,7 @@ import StudioShell, { StudioEyebrow } from "@/app/components/StudioShell";
 
 export const metadata: Metadata = {
   title: "Wer wir sind — Satzstrategie",
-  description: "Lilly und Piet haben Satzstrategie gemeinsam ins Leben gerufen. Lilly verantwortet Copywriting und Beratung, Piet bringt den zweiten Blick ein. KI-Agenten unterstützen beide.",
+  description: "Lilly verbindet Copywriting, UX/UI-Design und Softwareentwicklung. Piet ist Inhaber und prüft die Entwürfe mit. KI-Agenten unterstützen die Arbeit, Menschen entscheiden.",
 };
 
 export default function AboutPage() {
@@ -12,29 +12,18 @@ export default function AboutPage() {
     <StudioShell active="/wer-wir-sind">
       <section className="studio-hero studio-about-personal">
         <StudioEyebrow number="03">Wer wir sind</StudioEyebrow>
-        <div className="studio-personal-grid">
-          <div>
-            <h1 className="studio-title"><span className="studio-mark">Lilly</span> &amp; <span className="studio-mark">Piet</span><span className="studio-name-period">.</span></h1>
-            <p className="studio-personal-role">Zwei Menschen. Viele KI-Agenten.</p>
-            <p className="studio-lead">Satzstrategie haben wir gemeinsam ins Leben gerufen – mit unterschiedlichen Stärken und einem gemeinsamen Blick für das, was Ihre Webseite sagen soll.</p>
-            <div className="studio-actions"><Link href="/kontakt" className="studio-button">Lernen wir uns kennen <span aria-hidden="true">↗</span></Link></div>
-          </div>
-          <aside className="studio-thinking-note" aria-label="Unser Blick auf Ihre Webseite">
-            <p className="studio-label">Hier schauen wir genauer hin</p>
-            <p className="studio-thinking-question">Sie wissen,<br />was Sie können.</p>
-            <p className="studio-thinking-turn">Weiß man es auch<br />nach einem Blick auf<br /><span className="studio-mark">Ihre Webseite?</span></p>
-            <p className="studio-thinking-caption">Bei dieser Lücke beginnt unsere Arbeit.</p>
-          </aside>
-        </div>
-      </section>
-      <section className="studio-section studio-working-together" aria-labelledby="working-title">
-        <div className="studio-section-intro"><p className="studio-label">Wer was einbringt</p><h2 id="working-title">Zwei Perspektiven.<br />Persönlich verantwortlich.</h2></div>
+        <h1 className="studio-title"><span className="studio-mark">Lilly</span> &amp; <span className="studio-mark">Piet</span><span className="studio-name-period">.</span></h1>
+        <p className="studio-personal-role">Zwei Menschen. Viele KI-Agenten.</p>
+        <p className="studio-lead">Wir haben Satzstrategie gemeinsam aufgebaut.</p>
         <dl className="studio-team-lines">
-          <div><dt>Lilly <span>Worte und Strategie</span></dt><dd>Ihre Ansprechpartnerin für Copywriting und Beratung. Sie schreibt, überarbeitet und bringt Ihre Botschaft auf den Punkt.</dd></div>
-          <div><dt>Piet <span>Der zweite Blick · Inhaber</span></dt><dd>Er arbeitet im Hintergrund, hinterfragt Entwürfe und prüft mit seinem Gespür, ob das Ergebnis überzeugt.</dd></div>
-          <div><dt>Unsere KI-Agenten <span>Vielseitige Unterstützung</span></dt><dd>Sie helfen bei Recherche, Analysen und Entwürfen. Die Entscheidungen und die Verantwortung bleiben bei uns Menschen.</dd></div>
+          <div><dt>Lilly <span>Copywriting · UX/UI-Design · Softwareentwicklung</span></dt><dd>Lilly schreibt die Texte, gestaltet die Nutzerführung und entwickelt die Webseite. Sie steuert die KI-Agenten und prüft deren Ergebnisse vor der Freigabe.</dd></div>
+          <div><dt>Piet <span>Inhaber · Der zweite Blick</span></dt><dd>Piet arbeitet im Hintergrund. Er liest mit, hinterfragt Entwürfe und sagt, wo etwas noch nicht überzeugt.</dd></div>
         </dl>
-        <p className="studio-open-industry">Wir legen uns nicht auf eine Branche fest. Sondern auf die Frage, wie Ihr Angebot verständlich wird. Für kleine Unternehmen und große Teams.</p>
+        <aside className="studio-team-support" aria-labelledby="team-support-title">
+          <h2 id="team-support-title">Wo KI mitarbeitet.</h2>
+          <p>Unsere Agenten unterstützen bei Recherche, Text und Code. Wir prüfen und geben frei. Die Verantwortung bleibt bei uns.</p>
+        </aside>
+        <div className="studio-actions"><Link href="/kontakt" className="studio-button">Lilly schreiben <span aria-hidden="true">↗</span></Link></div>
       </section>
     </StudioShell>
   );
