@@ -1,6 +1,6 @@
 export const siteNavigation = [
-  { href: "/analyse", label: "Analyse", number: "01" },
-  { href: "/beratung", label: "Leistungen", number: "02" },
-  { href: "/wer-wir-sind", label: "Wer wir sind", number: "03" },
-  { href: "/kontakt", label: "Gespräch anfragen", number: "04" },
+  { href: "/beratung", label: "Leistungen", number: "01" },
+  { href: "/analyse", label: "Textcheck", number: "02" },
+  { href: "/wer-wir-sind", label: "Wir sind", number: "03" },
+  { href: "/kontakt", label: "Kontakt", number: "04" },
 ];

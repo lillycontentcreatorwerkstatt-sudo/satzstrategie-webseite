@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { analysisReleaseGuard } from "@/lib/analysis-release";
 import OpenAI from "openai";
 import chromium from "@sparticuz/chromium-min";
 import puppeteerCore from "puppeteer-core";
@@ -11,6 +12,8 @@ export const runtime = "nodejs";
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
+  const unavailable = analysisReleaseGuard();
+  if (unavailable) return unavailable;
   let browser;
   try {
     const limit = checkRateLimit(request, "website-analysis", 5, 10 * 60 * 1_000);

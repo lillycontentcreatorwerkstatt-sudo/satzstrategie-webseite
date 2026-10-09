@@ -1,30 +1,11 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import StudioShell, { StudioEyebrow } from "@/app/components/StudioShell";
-
-export const metadata: Metadata = {
-  title: "Wer wir sind — Satzstrategie",
-  description: "Lilly verbindet Copywriting, UX/UI-Design und Softwareentwicklung. Piet ist Inhaber und prüft die Entwürfe mit. KI-Agenten unterstützen die Arbeit, Menschen entscheiden.",
-};
-
-export default function AboutPage() {
-  return (
-    <StudioShell active="/wer-wir-sind">
-      <section className="studio-hero studio-about-personal">
-        <StudioEyebrow number="03">Wer wir sind</StudioEyebrow>
-        <h1 className="studio-title"><span className="studio-mark">Lilly</span> &amp; <span className="studio-mark">Piet</span><span className="studio-name-period">.</span></h1>
-        <p className="studio-personal-role">Zwei Menschen. Viele KI-Agenten.</p>
-        <p className="studio-lead">Wir haben Satzstrategie gemeinsam aufgebaut.</p>
-        <dl className="studio-team-lines">
-          <div><dt>Lilly <span>Copywriting · UX/UI-Design · Softwareentwicklung</span></dt><dd>Lilly schreibt die Texte, gestaltet die Nutzerführung und entwickelt die Webseite. Sie steuert die KI-Agenten und prüft deren Ergebnisse vor der Freigabe.</dd></div>
-          <div><dt>Piet <span>Inhaber · Der zweite Blick</span></dt><dd>Piet arbeitet im Hintergrund. Er liest mit, hinterfragt Entwürfe und sagt, wo etwas noch nicht überzeugt.</dd></div>
-        </dl>
-        <aside className="studio-team-support" aria-labelledby="team-support-title">
-          <h2 id="team-support-title">Wo KI mitarbeitet.</h2>
-          <p>Unsere Agenten unterstützen bei Recherche, Text und Code. Wir prüfen und geben frei. Die Verantwortung bleibt bei uns.</p>
-        </aside>
-        <div className="studio-actions"><Link href="/kontakt" className="studio-button">Lilly schreiben <span aria-hidden="true">↗</span></Link></div>
-      </section>
-    </StudioShell>
-  );
+import { pageMetadata } from "@/lib/site-metadata";
+import StudioShell, { StudioNext } from "../components/StudioShell";
+export const metadata = pageMetadata("/wer-wir-sind", "Wir sind Lilly & Piet | Satzstrategie", "Lilly ist Softwareentwicklerin, UX/UI-Designerin und KI-Spezialistin. Piet ist Inhaber und liefert den zweiten Blick. Lernen Sie Satzstrategie kennen.");
+export default function StudioPage() {
+  return <StudioShell active="/wer-wir-sind">
+    <section className="about-hero"><h1><span>Lilly.</span><span className="about-amp" aria-hidden="true">&amp;</span><span>Piet.</span></h1><p>Zwei Menschen.<br />Eine gemeinsame Satzstrategie.</p></section>
+    <section className="people-spread section-space" aria-label="Das Team"><article className="person-sheet person-lilly"><h2>Lilly</h2><p className="person-role"><span>Softwareentwicklerin</span><span>UX/UI-Designerin</span><span>KI-Spezialistin</span></p><p>Lilly sucht die Wörter, baut die Nutzerführung und entwickelt die Webseite. Sie verbindet den Gedanken hinter einem Angebot mit dem Auftritt, den Menschen sehen.</p><p>Sie steuert die KI-Agenten und prüft deren Ergebnisse vor der Freigabe.</p><p className="person-note">Vom ersten Wort<br />bis in den Code.</p></article><article className="person-sheet person-piet"><h2>Piet</h2><p className="person-role">Inhaber · Der zweite Blick</p><p>Piet arbeitet im Hintergrund. Er liest mit, hinterfragt Entwürfe und sagt, wo etwas noch nicht überzeugt.</p><p>Dieser zweite Blick gehört zu unserer Arbeit. Denn ein Satz muss auch für jemanden funktionieren, der ihn nicht selbst geschrieben hat.</p><p className="person-note">Noch einmal lesen.<br />Noch einmal fragen.</p></article></section>
+    <section className="human-statement section-space"><h2>KI arbeitet mit.<br /><span>Wir entscheiden.</span></h2><div><p>Unsere Agenten unterstützen bei Recherche, Text und Code. Wir prüfen die Ergebnisse, überarbeiten und geben frei. Die Verantwortung bleibt bei uns.</p><p>Eine mögliche Formulierung ist schnell da. Ob sie zu Ihnen passt, was sie verspricht und wo sie stehen sollte, braucht einen genaueren Blick.</p></div></section>
+    <StudioNext href="/kontakt" label="Direkter Kontakt mit Lilly.">Ein paar Zeilen reichen.</StudioNext>
+  </StudioShell>;
 }

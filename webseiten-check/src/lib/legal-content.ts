@@ -9,6 +9,8 @@ export function readLegacyLegalContent(fileName: "impressum.html" | "datenschutz
   const source = readFileSync(sourcePath, "utf8");
   const $ = cheerio.load(source);
   $(selector).find("script").remove();
+  // Content stays intact; legacy inline colors must not override the new contrast tokens.
+  $(selector).find("[style]").removeAttr("style");
   const content = $(selector).html();
   if (!content) throw new Error(`Rechtstext konnte nicht aus ${fileName} gelesen werden.`);
   return content;

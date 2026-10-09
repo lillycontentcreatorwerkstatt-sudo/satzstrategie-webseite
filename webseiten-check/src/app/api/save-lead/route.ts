@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { analysisReleaseGuard } from "@/lib/analysis-release";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 const LEAD_LIMIT = 10;
@@ -6,6 +7,8 @@ const LEAD_WINDOW_MS = 10 * 60 * 1_000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
+  const unavailable = analysisReleaseGuard();
+  if (unavailable) return unavailable;
   try {
     const rateLimit = checkRateLimit(request, "save-lead", LEAD_LIMIT, LEAD_WINDOW_MS);
     if (!rateLimit.allowed) {

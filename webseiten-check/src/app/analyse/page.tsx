@@ -1,13 +1,11 @@
 import AnalysisExperience from "@/app/components/AnalysisExperience";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-metadata";
+import { isAnalysisAvailable } from "@/lib/analysis-release";
 
-export const metadata: Metadata = {
-  title: "Webseitenanalyse — Satzstrategie",
-  description: "Was vermittelt Ihre Webseite? KI-gestützter Textcheck der eingegebenen Seite mit konkreten Formulierungsvorschlägen. Keine Ranking- oder Barrierefreiheitsmessung.",
-};
+export const metadata = pageMetadata("/analyse", "Webseitenanalyse — Satzstrategie", "Was vermittelt Ihre Webseite? Lernen Sie unseren Textcheck an einer gekennzeichneten Beispielauswertung kennen. Persönliche Beratung auf Anfrage.");
 
 export default async function AnalysePage({ searchParams }: PageProps<"/analyse">) {
   const query = await searchParams;
   const url = typeof query.url === "string" ? query.url : "";
-  return <AnalysisExperience initialUrl={url} />;
+  return <AnalysisExperience available={isAnalysisAvailable()} initialUrl={url} />;
 }

@@ -1,11 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-metadata";
+import { isAnalysisAvailable } from "@/lib/analysis-release";
 import AnalysisExperience from "@/app/components/AnalysisExperience";
 
-export const metadata: Metadata = {
-  title: "Textcheck — Satzstrategie",
-  description: "Texte einfügen und konkrete Formulierungsvorschläge erhalten. KI-gestützte Ersteinschätzung, keine Erkennung von KI-Urheberschaft.",
-};
+export const metadata = pageMetadata("/text-check", "Textcheck — Satzstrategie", "Original und Überarbeitung im Vergleich: eine gekennzeichnete Beispielauswertung zeigt, wie wir Texte verständlicher machen.");
 
 export default function TextCheckPage() {
-  return <AnalysisExperience textMode />;
+  return <AnalysisExperience available={isAnalysisAvailable()} textMode />;
 }

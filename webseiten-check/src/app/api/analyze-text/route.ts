@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
+import { analysisReleaseGuard } from "@/lib/analysis-release";
 import OpenAI from "openai";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { TEXT_REVIEW_PROMPT, validateTextReport } from "@/lib/analysis-evidence";
 
 export async function POST(request: Request) {
+  const unavailable = analysisReleaseGuard();
+  if (unavailable) return unavailable;
   const limit = checkRateLimit(request, "text-analysis", 10, 10 * 60 * 1_000);
   if (!limit.allowed) return NextResponse.json({ error: "Bitte warten Sie einige Minuten vor dem nächsten Textcheck." }, { status: 429, headers: { "Retry-After": String(limit.retryAfterSeconds) } });
   let payload: unknown;

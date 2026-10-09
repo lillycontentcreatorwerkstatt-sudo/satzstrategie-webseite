@@ -1,0 +1,16 @@
+# Satzstrategie
+
+> Copywriting, UX/UI-Design und Softwareentwicklung. Die richtigen Wörter, klare Nutzerführung und die technische Umsetzung gehören zusammen.
+
+## Leistungen
+- [Text, Design und Entwicklung](https://www.satzstrategie.de/beratung): Neue Webseitentexte und Landingpages, Überarbeitung vorhandener Texte, responsive Gestaltung, Entwicklung und persönliche Webseitenberatung. Barrierefreiheit wird dabei mitgedacht; es wird keine pauschale Zertifizierung zugesagt.
+- [Lilly und Piet](https://www.satzstrategie.de/wer-wir-sind): Lilly verantwortet Text, Gestaltung und Entwicklung und steuert die KI-Agenten. Piet ist Inhaber und liefert den zweiten Blick. Die Menschen prüfen und entscheiden.
+- [Kontakt](https://www.satzstrategie.de/kontakt): Anfragen per E-Mail an lillycontentcreatorwerkstatt@gmail.com. Termine werden persönlich vereinbart.
+
+## Textcheck
+- [Beispielauswertung](https://www.satzstrategie.de/analyse): Aktuell ein ausdrücklich selbst entwickeltes Beispiel, keine Prüfung einer Besucher-Webseite. Der automatische KI-Check ist noch nicht freigegeben.
+- Textvorschläge sind keine Messung von Google-Rankings, KI-Empfehlungen oder Barrierefreiheit. Es gibt kein Versprechen einer bestimmten Platzierung.
+
+## Rechtliches
+- [Impressum](https://www.satzstrategie.de/impressum)
+- [Datenschutz](https://www.satzstrategie.de/datenschutz)

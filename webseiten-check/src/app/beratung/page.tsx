@@ -1,48 +1,18 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
-import StudioShell, { StudioEyebrow, StudioNext } from "@/app/components/StudioShell";
-
-export const metadata: Metadata = {
-  title: "Copywriting, Webdesign & Entwicklung — Satzstrategie",
-  description: "Webseitentexte, UX/UI-Design, Entwicklung und persönliche Webseitenanalyse. Einzelne Leistungen oder ein neuer Auftritt. Ohne Branchenbindung.",
-};
-
+import StudioShell, { StudioNext } from "../components/StudioShell";
+import Arrow from "../components/Arrow";
+import WordProof from "../components/WordProof";
+export const metadata = pageMetadata("/beratung", "Text, Design & Entwicklung | Satzstrategie", "Webseitentexte, UX/UI-Design, Entwicklung und persönliche Webseitenberatung. Vom einzelnen Satz bis zum neuen Auftritt, mit Blick auf Barrierefreiheit.");
 export default function BeratungPage() {
-  return (
-    <StudioShell active="/beratung">
-      <section className="studio-hero studio-copy-intro">
-        <StudioEyebrow number="02">Leistungen</StudioEyebrow>
-        <div className="studio-copy-columns">
-          <div>
-            <h1 className="studio-title">Jeder Satz.<br /><span className="studio-mark">Jeder Klick.</span></h1>
-            <p className="studio-lead">Wir schreiben, gestalten und entwickeln Webseiten. Oder verbessern die, die Sie schon haben.</p>
-            <div className="studio-actions"><Link className="studio-button" href="/kontakt">Ihr Projekt besprechen <span aria-hidden="true">↗</span></Link></div>
-            <nav className="studio-offer-links" aria-label="Unsere Leistungen">
-              <a href="#neue-texte">Webseitentexte <span aria-hidden="true">↓</span></a>
-              <a href="#design">UX/UI-Design <span aria-hidden="true">↓</span></a>
-              <a href="#entwicklung">Entwicklung <span aria-hidden="true">↓</span></a>
-              <a href="#webseitenberatung">Analyse & Beratung <span aria-hidden="true">↓</span></a>
-            </nav>
-          </div>
-          <aside className="studio-thinking-note" aria-label="Unser Blick auf Ihre Webseite">
-            <p className="studio-label">Hier schauen wir genauer hin</p>
-            <p className="studio-thinking-question">Sie wissen,<br />was Sie können.</p>
-            <p className="studio-thinking-turn">Weiß man es auch<br />nach einem Blick auf<br /><span className="studio-mark">Ihre Webseite?</span></p>
-            <p className="studio-thinking-caption">Wir prüfen Text, Bedienung und Code.</p>
-          </aside>
-        </div>
-      </section>
-      <section className="studio-section" id="leistungen">
-        <div className="studio-section-intro"><p className="studio-label">Einzeln oder zusammen</p><h2>Was fehlt Ihrer Webseite?</h2></div>
-        <ol className="studio-services">
-          <li id="neue-texte"><span className="studio-label">01</span><h3>Die richtigen Worte.</h3><p>Wir schreiben Ihre Startseite, Leistungsseiten und Landingpages. Oder überarbeiten Ihre Texte: Was bieten Sie an? Für wen? Warum Sie?</p></li>
-          <li id="design"><span className="studio-label">02</span><h3>Ein klarer Weg.</h3><p>Wir gestalten Aufbau, Oberflächen und Kontaktwege. Zuerst fürs Smartphone. Mit lesbarer Schrift, klaren Kontrasten und verständlicher Bedienung.</p></li>
-          <li id="entwicklung"><span className="studio-label">03</span><h3>Der Code dahinter.</h3><p>Wir setzen die Webseite technisch um. Mit sauberer HTML-Struktur, Metadaten und passenden strukturierten Daten. Damit Suchsysteme erkennen können, wer Sie sind und was Sie anbieten.</p></li>
-          <li id="webseitenberatung"><span className="studio-label">04</span><h3>Ein ehrlicher Befund.</h3><p>Was soll Ihre Webseite verkaufen? Was kommt an? Wir prüfen Text, Nutzerführung und technische Grundlagen. Sie erhalten eine Analyse mit konkreten nächsten Schritten – auch zur Übergabe an Ihr Webdesignteam.</p></li>
-        </ol>
-      </section>
-      <p className="studio-scope-note">Ein neuer Text ist kein Auftrag für eine neue Webseite. Sie beauftragen, was Sie brauchen.</p>
-      <StudioNext href="/kontakt" label="Text, Design oder Technik?">Wo hakt es bei Ihnen?</StudioNext>
-    </StudioShell>
-  );
+  return <StudioShell active="/beratung">
+    <section className="services-hero"><h1>Jeder Satz.<br /><span>Jeder Klick.</span></h1><div className="services-hero-bottom"><p>Wir schreiben, gestalten und entwickeln Webseiten.<br />Oder verbessern die, die Sie schon haben.</p><Link className="text-link" href="/kontakt">Ihr Projekt besprechen <Arrow /></Link></div><nav className="chapter-nav" aria-label="Leistungen auf dieser Seite"><a href="#neue-texte">Text <Arrow down /></a><a href="#design">Design <Arrow down /></a><a href="#entwicklung">Code <Arrow down /></a><a href="#webseitenberatung">Beratung <Arrow down /></a></nav></section>
+    <section className="text-chapter section-space" id="neue-texte"><div className="chapter-heading"><h2>Die richtigen<br /><span className="bracket-word">Worte.</span></h2><p>Copywriting &amp; Textgestaltung</p></div><div className="chapter-body"><p className="large-copy">Sie wissen, was Sie können. Wir suchen die Wörter, die es anderen verständlich machen.</p><p>Wir schreiben Startseiten, Leistungsseiten und Landingpages. Oder lesen vorhandene Texte Satz für Satz: Was ist zu allgemein? Was fehlt? Welche Aussage gehört nach vorn?</p><ul className="plain-list"><li>Webseitentexte und Landingpages</li><li>Überarbeitung vorhandener Texte</li><li>Ton, Botschaft und verständliche Struktur</li></ul><Link className="text-link" href="/kontakt">Über Ihre Texte sprechen <Arrow /></Link></div></section>
+    <WordProof />
+    <section className="design-chapter section-space" id="design"><div className="design-composition" aria-hidden="true"><span className="type-sheet sheet-one">Hier.</span><span className="type-sheet sheet-two">geht’s</span><span className="type-sheet sheet-three">weiter.</span></div><div className="chapter-body"><h2>Ein klarer<br />Weg.</h2><p className="large-copy">Gestaltung entscheidet mit, was Menschen lesen. Und ob sie den nächsten Schritt finden.</p><p>Wir ordnen Inhalte, gewichten Aussagen und gestalten Oberflächen. Zuerst fürs Smartphone. Mit einer eigenen Bildsprache, lesbarer Schrift und nachvollziehbarer Navigation.</p><Link className="text-link" href="/kontakt">Über die Gestaltung sprechen <Arrow /></Link></div></section>
+    <section className="code-chapter section-space" id="entwicklung"><div><h2>Der Code<br /><em>dahinter.</em></h2><p>Entwicklung, die den Auftritt trägt.</p></div><div className="chapter-body"><p className="large-copy">Ein guter Entwurf braucht eine Umsetzung, die im Alltag funktioniert.</p><p>Wir entwickeln die Webseite mit sauberer HTML-Struktur, passenden Metadaten und strukturierten Daten. Damit Inhalte auf unterschiedlichen Geräten nutzbar sind und Suchsysteme Ihr Angebot einordnen können.</p><ul className="plain-list"><li>Responsive Umsetzung</li><li>Semantische Struktur und Tastaturbedienung</li><li>Technische Grundlagen für Suchsysteme</li></ul></div></section>
+    <section className="access-detail section-space" id="barrierefreiheit"><h2>Zugang<br />gehört dazu.</h2><div className="chapter-body"><p className="large-copy">Barrierefreiheit beginnt bei den Entscheidungen, die wir beim Gestalten treffen.</p><p>Wir achten auf Kontraste, verständliche Beschriftungen und eine sinnvolle Reihenfolge. Farbe allein trägt keine Information. Links bleiben erkennbar, Formulare bekommen sichtbare Hinweise und Bewegungen berücksichtigen die Geräteeinstellung.</p><p>Welche Prüfung und welche Überarbeitung Ihre Webseite benötigt, klären wir am konkreten Auftritt.</p></div></section>
+    <section className="advice-chapter section-space" id="webseitenberatung"><p className="advice-mark" aria-hidden="true">?</p><div><h2>Manchmal braucht es<br />einen zweiten Blick.</h2><p>Sie haben bereits eine Webseite. Wir prüfen Text, Nutzerführung und technische Grundlagen und ordnen ein, was als Nächstes sinnvoll ist. Auch zur Weitergabe an Ihr bestehendes Webdesignteam.</p><Link className="text-link" href="/analyse">Eine Beispielauswertung ansehen <Arrow /></Link><p className="small-note">Das Beispiel zeigt eine Textüberarbeitung. Die persönliche Beratung kann den gesamten Auftritt einbeziehen.</p></div></section>
+    <StudioNext href="/kontakt" label="Einzelner Satz oder neuer Auftritt.">Wo setzen wir an?</StudioNext>
+  </StudioShell>;
 }

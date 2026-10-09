@@ -10,6 +10,8 @@
     "test": "node --experimental-strip-types --test tests/*.test.mjs"
   },
   "dependencies": {
+    "@fontsource/anton": "^5.3.0",
+    "@fontsource/libre-caslon-text": "^5.3.0",
     "@sparticuz/chromium-min": "^149.0.0",
     "cheerio": "^1.1.2",
     "framer-motion": "^12.29.0",
@@ -18,7 +20,8 @@
     "puppeteer": "^25.7.0",
     "puppeteer-core": "^25.7.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
