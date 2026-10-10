@@ -7,7 +7,7 @@ export default function DatenschutzPage() {
   return (
     <InteriorShell title="Datenschutz." intro="Welche Daten bei einem Besuch und einer Kontaktaufnahme verarbeitet werden.">
       <article className="legal-document">
-        <p>Stand: 9. Oktober 2026. Diese Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
+        <p>Stand: 10. Oktober 2026. Diese Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
 
         <h2>Verantwortlich</h2>
         <p>Peter Josef Klein<br />c/o IP-Management #8336<br />Ludwig-Erhard-Straße 18<br />20459 Hamburg</p>
@@ -28,9 +28,9 @@ export default function DatenschutzPage() {
         <p>Unser Postfach liegt bei Gmail. Beim Versand und Empfang verarbeitet Google die Nachricht und die damit verbundenen Daten; auch eine Verarbeitung außerhalb der EU bzw. des EWR ist möglich. Weitere Informationen enthält die <a href="https://policies.google.com/privacy?hl=de">Datenschutzerklärung von Google</a>. Bitte senden Sie uns keine sensiblen Daten, die für Ihre Anfrage nicht erforderlich sind.</p>
         <p>Eine Kontaktanfrage meldet Sie nicht für einen Newsletter an.</p>
 
-        <h2>Beispielauswertung und KI-Textcheck</h2>
-        <p>Der automatische KI-Textcheck ist in dieser Fassung nicht freigeschaltet. Die Beispielauswertung verwendet einen von uns entwickelten Text. Sie ruft keine Besucher-Webseite ab, erfordert keine E-Mail-Adresse und übermittelt keine Eingaben an einen KI- oder Tabellendienst.</p>
-        <p>Vor der Freischaltung des tatsächlichen Checks ergänzen wir diese Informationen um den konkreten Ablauf, die beteiligten Dienste, die Bestätigung und die Löschfristen.</p>
+        <h2>Persönliche Ersteinschätzung und Textbeispiele</h2>
+        <p>Unter „Erster Blick“ können Sie einen E-Mail-Entwurf mit Ihrer Webadresse, dem Ziel Ihrer Webseite und optional Ihrem Namen vorbereiten. Die Bitte um eine kostenlose kurze Ersteinschätzung ist freiwillig und nicht vorausgewählt. Wie beim Kontaktbrief werden diese Eingaben erst durch Ihren eigenen E-Mail-Versand an uns übermittelt. Die Funktion „Anfrage kopieren“ schreibt den vorbereiteten Text nach Ihrem Klick in Ihre Zwischenablage.</p>
+        <p>Die Webseite führt keinen automatischen KI-Check durch und überträgt diese Eingaben nicht an einen KI-, Newsletter- oder Tabellendienst. Die Textbeispiele sind selbst entwickelt und rufen keine Besucher-Webseite ab. Für Ihre Nachricht gelten die Hinweise zur Kontaktaufnahme per E-Mail.</p>
 
         <h2>Postanschrift</h2>
         <p>Für den Empfang und die Weiterleitung von Post verwenden wir den im Impressum genannten Dienst Impressum-Privatschutz. Bei postalischer Kontaktaufnahme erhält dieser die zur Bearbeitung erforderlichen Absender- und Sendungsdaten. Die Verarbeitung dient der Erreichbarkeit und Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b bzw. f DSGVO). Weitere Informationen: <a href="https://impressum-privatschutz.de/datenschutzerklaerung/">Datenschutz bei Impressum-Privatschutz</a>.</p>

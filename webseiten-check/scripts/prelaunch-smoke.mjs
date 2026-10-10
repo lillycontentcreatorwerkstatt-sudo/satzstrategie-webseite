@@ -13,7 +13,7 @@ const records = [];
 const errors = [];
 const externalRequests = new Set();
 const internalPaths = new Set();
-const routes = ['/', '/beratung', '/wer-wir-sind', '/kontakt', '/analyse', '/text-check', '/impressum', '/datenschutz'];
+const routes = ['/', '/beratung', '/wer-wir-sind', '/kontakt', '/erster-blick', '/impressum', '/datenschutz'];
 try {
   const page = await browser.newPage();
   await page.setCacheEnabled(false);
@@ -54,7 +54,7 @@ try {
         if (link?.startsWith('/')) internalPaths.add(new URL(link, origin).pathname);
       }
       records.push({ route, ...record });
-      if (width !== 320 && ['/', '/analyse', '/datenschutz'].includes(route)) {
+      if (width !== 320 && ['/', '/erster-blick', '/datenschutz'].includes(route)) {
         await page.screenshot({ path: `${output}/${width}-${route.replaceAll('/', '') || 'home'}.png`, fullPage: true });
       }
     }
@@ -73,17 +73,17 @@ try {
     records.push({ route: '/', width, height, bounds });
   }
   await page.setViewport({ width: 390, height: 844 });
-  await page.goto(origin + '/analyse', { waitUntil: 'networkidle0' });
+  await page.goto(origin + '/erster-blick', { waitUntil: 'networkidle0' });
   let apiCalls = 0;
   page.on('request', request => { if (request.url().includes('/api/')) apiCalls++; });
-  assert.equal(await page.$$eval('input, textarea', elements => elements.length), 0);
-  await page.click('#analysis-example');
-  await page.waitForSelector('#analysis-results');
-  assert.match(await page.$eval('#analysis-results', node => node.textContent), /Es wurde keine Webseite geprüft/);
-  assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H1');
-  await page.screenshot({ path: `${output}/390-example.png`, fullPage: true });
-  await page.click('.studio-report-actions button:last-child');
-  await page.waitForFunction(() => document.activeElement?.id === 'analysis-example');
+  assert.equal(await page.$eval('#look-choice', node => node.checked), false);
+  assert.equal(await page.$eval('.first-look-letter', form => form.checkValidity()), false);
+  await page.click('.first-look-letter .studio-button');
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'look-website');
+  await page.click('.first-look-example summary');
+  assert.equal(await page.$eval('.first-look-example', node => node.open), true);
+  assert.match(await page.$eval('.first-look-examples', node => node.textContent), /Selbst entwickelte Beispiele/);
+  await page.screenshot({ path: `${output}/390-first-look.png`, fullPage: true });
   assert.equal(apiCalls, 0);
   await page.click('.mobile-menu summary');
   assert.equal(await page.$eval('.mobile-menu', node => node.open), true);
@@ -97,19 +97,19 @@ try {
   // Form navigation is intentionally not invoked: no external mail program or send.
   for (const route of internalPaths) assert.equal((await fetch(origin + route)).status, 200, route);
   assert.equal((await fetch(origin + '/nicht-vorhanden')).status, 404);
-  for (const [oldPath, path] of [['/index.html', '/'], ['/impressum.html', '/impressum'], ['/datenschutz.html', '/datenschutz'], ['/kontakt.html', '/kontakt']]) {
+  for (const [oldPath, path] of [['/index.html', '/'], ['/impressum.html', '/impressum'], ['/datenschutz.html', '/datenschutz'], ['/kontakt.html', '/kontakt'], ['/analyse', '/erster-blick'], ['/text-check', '/erster-blick']]) {
     const response = await fetch(origin + oldPath, { redirect: 'manual' });
     assert.equal(response.status, 308);
     assert.equal(new URL(response.headers.get('location'), origin).pathname, path);
   }
   for (const endpoint of ['/api/analyze', '/api/analyze-text', '/api/save-lead']) {
     const response = await fetch(origin + endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
-    assert.equal(response.status, 503);
-    assert.equal((await response.json()).code, 'ANALYSIS_NOT_RELEASED');
+    assert.equal(response.status, 410);
+    assert.equal((await response.json()).code, 'ANALYSIS_RETIRED');
   }
   assert.match(await (await fetch(origin + '/robots.txt')).text(), /Disallow: \//);
   const sitemap = await (await fetch(origin + '/sitemap.xml')).text();
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 8);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 7);
   const imageResponse = await fetch(origin + '/opengraph-image');
   assert.equal(imageResponse.status, 200);
   const image = Buffer.from(await imageResponse.arrayBuffer());
@@ -119,7 +119,7 @@ try {
   assert.deepEqual(errors, []);
   assert.deepEqual([...externalRequests], []);
   await writeFile(`${output}/checks.json`, JSON.stringify({ records, errors, externalRequests: [...externalRequests], exampleApiCalls: apiCalls, checks: 'passed' }, null, 2));
-  console.log(`PASS: 24 route/viewport checks, 4 extra cover sizes, metadata, redirects, menu, example/reset, contact validation, no tracking requests/storage, 3 locked APIs. Screenshots: ${output}`);
+  console.log(`PASS: 21 route/viewport checks, 4 extra cover sizes, metadata, redirects, menu, first-look form, contact validation, no tracking requests/storage, 3 retired APIs. Screenshots: ${output}`);
 } finally {
   await browser.close();
 }

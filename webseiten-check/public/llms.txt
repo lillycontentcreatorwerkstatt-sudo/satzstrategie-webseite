@@ -7,9 +7,9 @@
 - [Lilly und Piet](https://www.satzstrategie.de/wer-wir-sind): Lilly verantwortet Text, Gestaltung und Entwicklung und steuert die KI-Agenten. Piet ist Inhaber und liefert den zweiten Blick. Die Menschen prüfen und entscheiden.
 - [Kontakt](https://www.satzstrategie.de/kontakt): Anfragen per E-Mail an lillycontentcreatorwerkstatt@gmail.com. Termine werden persönlich vereinbart.
 
-## Textcheck
-- [Beispielauswertung](https://www.satzstrategie.de/analyse): Aktuell ein ausdrücklich selbst entwickeltes Beispiel, keine Prüfung einer Besucher-Webseite. Der automatische KI-Check ist noch nicht freigegeben.
-- Textvorschläge sind keine Messung von Google-Rankings, KI-Empfehlungen oder Barrierefreiheit. Es gibt kein Versprechen einer bestimmten Platzierung.
+## Persönliche Anfrage
+- [Erster Blick](https://www.satzstrategie.de/erster-blick): Webadresse und Ziel als E-Mail-Entwurf an Lilly vorbereiten. Besucher senden die Nachricht selbst. Eine kostenlose kurze Ersteinschätzung per E-Mail kann freiwillig angefragt werden. Kein automatisierter Check und keine vollständige Prüfung.
+- Drei selbst entwickelte Textvergleiche veranschaulichen die Arbeitsweise. Keine Kundenprojekte, Ranking-Messungen oder Erfolgsversprechen.
 
 ## Rechtliches
 - [Impressum](https://www.satzstrategie.de/impressum)
