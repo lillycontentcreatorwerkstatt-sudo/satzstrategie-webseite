@@ -11,7 +11,7 @@ export default function WordProof() {
     <div className="proof-paper">
       <div className="proof-tabs" aria-label="Textfassung wählen">{versions.map((version, index) => <button key={version.label} type="button" aria-pressed={selected === index} onClick={() => setSelected(index)}>{version.label}</button>)}</div>
       <div className="proof-content" aria-live="polite" aria-atomic="true"><p className={selected === 0 ? "proof-sentence proof-before" : "proof-sentence"}>{selected === 0 ? <>Wir bieten <span className="proof-strike">innovative Lösungen</span> für Ihren Erfolg.</> : <>Wir schreiben die Texte, die Ihr Angebot <span className="proof-insert">verständlich</span> machen.</>}</p><p className="proof-annotation">{versions[selected].note}</p></div>
-      <button type="button" className="text-link" onClick={() => setSelected(selected === 0 ? 1 : 0)}>{versions[selected].action}<span aria-hidden="true"> →</span></button>
+      <button type="button" className="studio-button proof-action" onClick={() => setSelected(selected === 0 ? 1 : 0)}>{versions[selected].action}</button>
     </div>
   </section>;
 }

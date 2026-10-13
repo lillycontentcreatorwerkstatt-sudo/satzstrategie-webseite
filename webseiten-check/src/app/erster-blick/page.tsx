@@ -1,7 +1,6 @@
 import Link from "next/link";
 import StudioShell from "@/app/components/StudioShell";
 import FirstLookLetter from "@/app/components/FirstLookLetter";
-import Arrow from "@/app/components/Arrow";
 import { pageMetadata } from "@/lib/site-metadata";
 
 export const metadata = pageMetadata("/erster-blick", "Ein erster Blick auf Ihre Website | Satzstrategie", "Schicken Sie Lilly Ihre Webadresse und Ihr Ziel. Auf Wunsch erhalten Sie eine kostenlose kurze Ersteinschätzung per E-Mail. Persönlich, ohne automatischen Check.");
@@ -19,7 +18,7 @@ export default function FirstLookPage() {
         <h1 id="first-look-title">Ihre Website.<br /><span>Unser erster<br />Eindruck.</span></h1>
         <p>Schicken Sie mir Ihren Link und sagen Sie, was Ihre Webseite erreichen soll. Ich schaue persönlich drauf.</p>
         <p className="first-look-signature">Lilly</p>
-        <a className="text-link first-look-jump" href="#look-website">Webadresse eintragen <Arrow down /></a>
+        <a className="studio-button first-look-jump" href="#look-website">Webadresse eintragen</a>
         <aside className="first-look-ps"><h2>P.S.</h2><p>Auf Wunsch bekommen Sie ein bis zwei konkrete Hinweise kostenlos per E-Mail. Für neue Texte oder eine gründliche Überarbeitung besprechen wir einen Auftrag.</p></aside>
       </div>
       <FirstLookLetter />
@@ -27,7 +26,7 @@ export default function FirstLookPage() {
     <section className="first-look-examples" aria-labelledby="look-examples-title">
       <div className="first-look-examples-heading"><h2 id="look-examples-title">So wird aus Text<br />eine Aussage.</h2><p>Selbst entwickelte Beispiele. Keine Kundenprojekte, keine Auswertung Ihrer Website.</p></div>
       <div>{examples.map(example => <details key={example.title} className="first-look-example"><summary>{example.title}<span aria-hidden="true" className="example-plus" /></summary><div className="first-look-comparison"><div><h3>Vorher</h3><p><s>{example.before}</s></p></div><div><h3>Nachher</h3><p>{example.after}</p></div></div><p className="first-look-reason">{example.reason}</p></details>)}</div>
-      <Link className="text-link" href="/kontakt">Schon ein konkretes Vorhaben? <Arrow /></Link>
+      <Link className="studio-button studio-button-secondary first-look-contact" href="/kontakt">Ihr Projekt anfragen</Link>
     </section>
   </StudioShell>;
 }

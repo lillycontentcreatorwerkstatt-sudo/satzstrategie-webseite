@@ -1,6 +1,5 @@
 "use client";
 import { useState, type FormEvent } from "react";
-import Arrow from "./Arrow";
 import { createContactMail } from "@/lib/contact-mail";
 export default function ContactLetter() {
   const [message, setMessage] = useState("");
@@ -16,7 +15,7 @@ export default function ContactLetter() {
     <div className="studio-field"><label htmlFor="contact-message">darüber würde ich gern sprechen:</label><textarea id="contact-message" name="message" required minLength={10} maxLength={3000} rows={4} placeholder="Mein Angebot, meine Idee oder die Stelle, an der es hakt …" /></div>
     <div className="studio-field"><label htmlFor="contact-website">Meine Webseite <span>(optional)</span></label><input id="contact-website" name="website" type="text" inputMode="url" autoComplete="url" maxLength={2048} placeholder="ihre-webseite.de" /></div>
     <div className="studio-field"><label htmlFor="contact-name">Viele Grüße von</label><input id="contact-name" name="name" autoComplete="name" required maxLength={120} placeholder="Ihr Name" /></div>
-    <button className="studio-button" type="submit">E-Mail-Entwurf öffnen <Arrow /></button>
+    <button className="studio-button" type="submit">E-Mail-Entwurf öffnen</button>
     <p className="studio-form-note">Öffnet Ihr E-Mail-Programm. Die Eingaben werden hier weder gespeichert noch versendet.</p>
     <p className="contact-status" role="status">{message}</p>
   </form>;

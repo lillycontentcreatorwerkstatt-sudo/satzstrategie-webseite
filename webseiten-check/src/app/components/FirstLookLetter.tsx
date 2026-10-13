@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useRef, useState, useSyncExternalStore } from "react";
-import Arrow from "./Arrow";
 import CopyEmail from "./CopyEmail";
 import { createFirstLookMail, createFirstLookMessage, INQUIRY_EMAIL, normalizeInquiryWebsite, type FirstLookRequest } from "@/lib/first-look-mail";
 
@@ -69,9 +68,9 @@ export default function FirstLookLetter() {
           <span>Ja, ich wünsche mir eine kostenlose Ersteinschätzung per E-Mail.</span>
         </label>
         <p id="look-scope" className="small-note">Ein bis zwei konkrete Hinweise, keine vollständige Prüfung. Alles Weitere besprechen wir danach.</p>
-        <button className="studio-button" type="button" onClick={openDraft}>E-Mail-Entwurf öffnen <Arrow /></button>
+        <button className="studio-button" type="button" onClick={openDraft}>E-Mail-Entwurf öffnen</button>
         <p className="studio-form-note">Sie senden die E-Mail selbst. Hier wird nichts gespeichert oder automatisch ausgewertet. <Link href="/datenschutz">Datenschutz</Link></p>
-        <button className="text-link first-look-copy" type="button" onClick={copyRequest}>Anfrage kopieren</button>
+        <button className="studio-button studio-button-secondary first-look-copy" type="button" onClick={copyRequest}>Anfrage kopieren</button>
       </fieldset>
       <noscript><p>Bitte schreiben Sie Ihre Webadresse und Ihr Anliegen direkt an <a href={`mailto:${INQUIRY_EMAIL}`}>{INQUIRY_EMAIL}</a>. Für den ausfüllbaren Brief benötigen Sie JavaScript.</p></noscript>
       <p className="contact-status" role="status">{status}</p>

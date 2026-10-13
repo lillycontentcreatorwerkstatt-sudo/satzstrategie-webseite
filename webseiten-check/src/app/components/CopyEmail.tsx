@@ -20,5 +20,5 @@ export default function CopyEmail({ email }: { email: string }) {
       setMessage("Bitte die markierte Adresse kopieren.");
     }
   }
-  return <div className="studio-copy-email"><span ref={addressRef}>{email}</span><button type="button" onClick={copy}>Adresse kopieren</button><span role="status">{message}</span></div>;
+  return <div className="studio-copy-email"><span ref={addressRef}>{email}</span><button className="studio-button studio-button-secondary" type="button" onClick={copy}>Adresse kopieren</button><span role="status">{message}</span></div>;
 }
