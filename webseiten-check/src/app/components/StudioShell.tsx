@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 import MobileMenu from "./MobileMenu";
 import { siteNavigation } from "./siteNavigation";
 
-export default function StudioShell({ active, children }: { active: string; children: ReactNode }) {
-  return <div className="studio-page">
+export default function StudioShell({ active, children, flowFooter = false }: { active: string; children: ReactNode; flowFooter?: boolean }) {
+  return <div className={flowFooter ? "studio-page studio-page--flow-footer" : "studio-page"}>
     <a className="studio-skip" href="#studio-content">Zum Inhalt springen</a>
     <header className="studio-header no-print">
       <Link className="studio-brand" href="/" aria-label="Satzstrategie, Startseite">satzstrategie<span className="brand-mark" aria-hidden="true">]</span></Link>
