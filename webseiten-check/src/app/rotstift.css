@@ -90,7 +90,7 @@
 }
 
 /* Leistungen in Klammern statt im roten Band. */
-.studio-page .discipline-band { background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.studio-page .discipline-band { display: flex; justify-content: space-between; gap: 12px; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .studio-page .discipline-band a { font-family: var(--display); text-decoration: none; border-right: 0; letter-spacing: -.01em; }
 .studio-page .discipline-band a::before { content: '['; color: var(--red); margin-right: .03em; }
 .studio-page .discipline-band a::after { content: ']'; color: var(--red); margin-left: .03em; }

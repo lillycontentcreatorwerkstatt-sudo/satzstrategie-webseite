@@ -9,13 +9,13 @@ function Explanation({ before, change, reason }: { before: string; change: strin
 }
 export default function WorkExamples() {
   return <>
-    <section className="open-case" id="text" aria-labelledby="example-text"><header><h2 id="example-text">Sagen, was<br />man anbietet.</h2><p>Text für einen Handwerksbetrieb, erfundenes Beispiel</p></header>
+    <section className="open-case" id="text" aria-labelledby="example-text"><header><h2 id="example-text">Sagen, was<br />man anbietet</h2><p>Text für einen Handwerksbetrieb, erfundenes Beispiel</p></header>
       <Comparison before={<p className="example-sentence">„Wir sind ein junges, dynamisches Team mit Leidenschaft für Qualität.“</p>} after={<p className="example-sentence">„Wir renovieren Altbauwohnungen in Leipzig – für Menschen, die dort wohnen bleiben möchten.“</p>} />
       <Explanation before="Ein Selbstbild steht dort, wo Leser eine Leistung erwarten." change="Die Formulierung nennt die Arbeit, den Ort und die Menschen, für die das Angebot gedacht ist." reason="Leser können sofort einordnen, ob der Betrieb zu ihrem Vorhaben passt." />
       <div className="small-comparison"><h3>Auch ein Link braucht eine Aussage.</h3><p><span>Vorher: „Mehr erfahren“</span><strong>Nachher: „Renovierung besprechen“</strong></p><p>Der neue Text nennt das Gespräch und seinen Anlass.</p></div>
       <a className="example-back" href="#beispielauswahl">Zur Beispielauswahl</a>
     </section>
-    <section className="open-case open-case-design" id="design" aria-labelledby="example-design"><header><h2 id="example-design">Das Wichtige<br />zuerst.</h2><p>Gestaltung für ein Kursangebot, erfundenes Beispiel</p></header>
+    <section className="open-case open-case-design" id="design" aria-labelledby="example-design"><header><h2 id="example-design">Das Wichtige<br />zuerst</h2><p>Gestaltung für ein Kursangebot, erfundenes Beispiel</p></header>
       <Comparison before={<div className="course-sheet course-before"><p>Willkommen zu einer Stunde für Bewegung und Ruhe. Unser Abendkurs verbindet sanfte Übungen mit bewusster Atmung. Nehmen Sie sich nach einem vollen Tag Zeit für sich.</p><h4>Yoga am Abend</h4><p>Dienstags, 18–19 Uhr.<br />Im Kursraum vor Ort.<br />15 € pro Termin.</p></div>} after={<div className="course-sheet course-after"><h4>Yoga<br />am Abend.</h4><dl><div><dt>Wann</dt><dd>Dienstags, 18–19 Uhr</dd></div><div><dt>Wo</dt><dd>Im Kursraum vor Ort</dd></div><div><dt>Preis</dt><dd>15 € pro Termin</dd></div></dl><p>Sanfte Übungen und bewusste Atmung zum Ausklang des Tages.</p></div>} />
       <Explanation before="Die Einleitung steht vor den Angaben, die für eine Buchung wichtig sind." change="Kurs, Termin, Ort und Preis rücken nach oben. Die Beschreibung folgt danach." reason="Besucher erkennen auf einen Blick, ob das Angebot in ihren Alltag passt. Auch auf dem Handy." />
       <a className="example-back" href="#beispielauswahl">Zur Beispielauswahl</a>

@@ -36,7 +36,7 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
     setStatus("Noch nicht versendet. Prüfen und senden Sie den Entwurf in Ihrem E-Mail-Programm. Öffnet sich nichts? Nutzen Sie „Anfrage kopieren“.");
   }
   return <form ref={form} className="contact-letter" aria-label={firstLook ? "Kostenlose Ersteinschätzung anfragen" : "Projekt bei Lilly und Piet anfragen"} onSubmit={openMail}>
-    <div className="letter-address">An Lilly und Piet,<br />Satzstrategie</div>
+    <div className="letter-address">An: Satzstrategie</div>
     <p className="letter-greeting">Hallo Lilly und Piet,</p>
     {firstLook && <p className="letter-purpose">ich wünsche mir eine kostenlose Ersteinschätzung zu meiner Webseite.</p>}
     <fieldset disabled={!ready} className="letter-fields">
