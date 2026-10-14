@@ -64,11 +64,11 @@ export default function ServiceExperience({ standalone = false }: { standalone?:
     setStatus("Ein vorbereitetes Beispiel wurde eingesetzt. Sie können es bearbeiten oder die Anfrage ansehen.");
     requestAnimationFrame(() => projectField.current?.focus());
   }
-  const designNote = (layout === "type" ? "Die Aussage führt. Das Motiv gibt ihr Raum." : "Das Motiv führt. Die Aussage setzt den Akzent.") + (open ? " Vier Ebenen: Papier, Bild, Typografie und Orientierung." : "");
+  const designNote = (layout === "type" ? "Die große Überschrift steht links, das Bild rechts. Der Text soll zuerst auffallen." : "Das Bild füllt den oberen Teil. Die Überschrift liegt darauf. Das Motiv soll zuerst auffallen.") + (open ? " Die geöffneten Ebenen zeigen, wie Hintergrund, Bild und Texte übereinanderliegen." : "");
 
   return <div className="service-experience">
     <section id="leistungen" className="service-opening" aria-labelledby="services-title">
-      <div><Heading id="services-title">Was können wir<br />für Sie <em>bewegen?</em></Heading><p>Ein Satz wird klarer. Eine Seite bekommt Haltung.<br className="desktop-break" /> Eine Idee funktioniert. Probieren Sie es aus.</p></div>
+      <div><Heading id="services-title">Was können wir<br />für Sie <em>bewegen?</em></Heading><p>Ein Satz wird klarer. Eine Seite bekommt Haltung.<br className="desktop-break" /> Eine Idee funktioniert. Probieren Sie es aus.</p><p>Haltung heißt für uns: Wir prüfen jede Formulierung und übernehmen Verantwortung für das, was wir veröffentlichen.</p></div>
       <nav className="intent-links" aria-label="Ihr Anliegen"><a href="#design">Ich brauche eine Website</a><a href="#neue-texte">Ich möchte Texte prüfen lassen</a></nav>
     </section>
     <section id="neue-texte" className="text-section service" aria-labelledby="text-title">
@@ -81,7 +81,7 @@ export default function ServiceExperience({ standalone = false }: { standalone?:
       </div>
     </section>
     <section id="design" className="design-section service" aria-labelledby="design-title">
-      <div className="section-intro"><h2 id="design-title">Design mit<br /><em>einer Idee.</em></h2><div><p>Was fällt zuerst auf?<br />Was gehört zusammen? Wohin geht es weiter?</p><p className="instruction">Verändern Sie den Aufbau. Öffnen Sie die Ebenen. Sehen Sie, wie die Seite zusammenspielt.</p></div></div>
+      <div className="section-intro"><h2 id="design-title">Design mit<br /><em>einer Idee.</em></h2><div><p>Was fällt zuerst auf?<br />Was gehört zusammen? Wohin geht es weiter?</p><p className="instruction">Wechseln Sie zwischen Text und Bild als Blickfang. Öffnen Sie die Ebenen, um den Aufbau zu sehen.</p></div></div>
       <div className="design-workshop"><div className="design-controls"><div role="group" aria-label="Aufbau wählen" className="layout-switch"><button type="button" aria-pressed={layout === "type"} onClick={() => setLayout("type")}>Aussage zuerst</button><button type="button" aria-pressed={layout === "image"} onClick={() => setLayout("image")}>Motiv zuerst</button></div><button className="depth-button" type="button" aria-pressed={open} onClick={() => setOpen(value => !value)}>{open ? "Zusammensetzen" : "Ebenen öffnen"}</button></div>
         <div ref={stage} className="stage" data-layout={layout} data-open={open} role="img" aria-label={`Gestaltungsbeispiel: ${layout === "type" ? "Aussage" : "Motiv"} zuerst, Ebenen ${open ? "geöffnet" : "zusammengesetzt"}. Raum für gute Ideen.`}>
           <div className="artboard-scale" aria-hidden="true"><div className="artboard"><div className="sheet-base" /><div className="sheet-image"><Image src="/images/papierarchitektur.webp" alt="" fill sizes="(max-width: 760px) 80vw, 600px" /></div><div className="sheet-type"><span>Raum für</span><span>gute Ideen.</span></div><div className="sheet-detail"><span>Ein klarer Gedanke.<br />Ein eigener Auftritt.</span><span className="mini-action">Lassen Sie uns reden</span></div><div className="sheet-accent"><span>Form.<br />Mit Haltung.</span></div></div></div>
