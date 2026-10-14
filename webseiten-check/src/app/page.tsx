@@ -25,6 +25,6 @@ export default function Home() {
     </section>
     <PaperExample />
     <section className="home-people section-space"><h2>Lilly. <br />Piet.<br /><span>Persönlich.</span></h2><div><p className="large-copy">Sie sprechen mit den Menschen, die an Ihrer Webseite arbeiten.</p><p>Lilly schreibt, gestaltet und entwickelt. Piet liest mit, hinterfragt und schaut noch einmal hin.</p><Link href="/wer-wir-sind">Lilly und Piet kennenlernen</Link></div></section>
-    <section className="home-contact section-space"><div><h2>Was haben<br />Sie vor?</h2><p>Ein neuer Auftritt, ein Text oder eine Stelle, an der Sie nicht weiterkommen. Schreiben Sie Lilly.</p><Link className="studio-button" href="/kontakt">Projekt anfragen</Link></div><aside><h3>Schon eine Webseite?</h3><p>Sie möchten erst wissen, wo es hakt? Lilly gibt Ihnen ein bis zwei konkrete Hinweise kostenlos per E-Mail.</p><Link href="/erster-blick">Kostenlose Ersteinschätzung anfragen</Link></aside></section>
+    <section className="home-contact section-space"><div><h2>Was haben<br />Sie vor?</h2><p>Ein neuer Auftritt, ein Text oder eine Stelle, an der Sie nicht weiterkommen. Schreiben Sie Lilly.</p><Link className="studio-button" href="/kontakt">Projekt anfragen</Link></div><aside><h3>Schon eine Webseite?</h3><p>Sie möchten erst wissen, wo es hakt? Lilly gibt Ihnen ein bis zwei konkrete Hinweise kostenlos per E-Mail.</p><Link className="studio-button studio-button-secondary" href="/erster-blick">Kostenlose Ersteinschätzung anfragen</Link></aside></section>
   </StudioShell>;
 }

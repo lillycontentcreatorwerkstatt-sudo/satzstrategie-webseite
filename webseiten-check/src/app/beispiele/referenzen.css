@@ -56,3 +56,6 @@
 .work-method {padding:var(--space) var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:50px;border-bottom:1px solid var(--line)}
 .work-method div>a {display:inline-flex;min-height:48px;align-items:center;margin-top:20px;color:var(--red-deep)}
 @media(max-width:760px){.work-intro-copy,.open-comparison,.example-reasons,.work-method{grid-template-columns:1fr}.work-intro-copy{gap:24px}.work-index{gap:12px 24px}.open-case header{align-items:start;flex-direction:column;margin-bottom:28px}.open-comparison{gap:16px}.example-reasons{gap:22px}.example-reasons dd{max-width:65ch}.work-method{gap:32px}}
+
+.example-back {display:inline-flex;align-items:center;min-height:44px;margin-top:32px;font-size:15px;text-underline-offset:.25em}
+.open-case-code .example-back:focus-visible {outline-color:var(--white)}
