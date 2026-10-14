@@ -1,0 +1,187 @@
+/*
+  Rotstift-Variante.
+  Die Seite ist ein korrigiertes Manuskript: Papier, Tinte und ein Rotstift.
+  Rot steht nur für Korrekturen (Streichung, Einfügung, Randnotiz) und für die
+  Klammer im Logo. Alle Regeln sind mit .studio-page eingeleitet, damit sie die
+  seitenbezogenen Stylesheets sicher übersteuern.
+
+  Schriften: Libre Caslon Display und Reenie Beanie, beide SIL Open Font License,
+  als lateinische Teilmenge lokal ausgeliefert. Die Handschrift ist ein Platzhalter
+  für eingescannte Notizen von Lilly und Piet.
+*/
+@font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('./fonts/libre-caslon-display-latin-400.woff2') format('woff2'); }
+@font-face { font-family: 'Reenie Beanie'; font-style: normal; font-weight: 400; font-display: swap; src: url('./fonts/reenie-beanie-latin-400.woff2') format('woff2'); }
+
+:root {
+  --paper: #e9eae4;
+  --paper-light: #f6f6f2;
+  --table: #dadcd3;
+  --ink: #1c2333;
+  --ink-soft: #2e3850;
+  --red: #c8102e;
+  --red-deep: #a31621;
+  --muted: #4f534e;
+  --line: #c9cbc3;
+  --display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
+  --hand: 'Reenie Beanie', 'Bradley Hand', cursive;
+}
+
+/* Überschriften in Caslon Display: etwas weiter laufend als die frühere Plakatschrift. */
+.studio-page h1, .studio-page h2 { letter-spacing: -.015em; line-height: 1.04; }
+
+/* Handlungen in Tinte; Rot bleibt der Korrektur vorbehalten. */
+.studio-page .studio-button { background: var(--ink); border-color: var(--ink); color: var(--paper-light); }
+.studio-page .studio-button:hover:not(:disabled) { background: var(--ink-soft); border-color: var(--ink-soft); }
+.studio-page .studio-button:active:not(:disabled) { background: var(--ink); border-color: var(--ink); }
+.studio-page .studio-button-secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
+.studio-page .studio-button-secondary:hover:not(:disabled), .studio-page .studio-button-secondary:active:not(:disabled) { background: var(--ink); color: var(--paper-light); }
+.studio-page .studio-button:focus-visible { outline-color: var(--red); }
+.studio-page :is(.offer-lines, .home-people, .home-contact, .service-detail, .working-together, .quiet-next, .work-method) a:not(.studio-button) { color: var(--ink); }
+.studio-page a:not(.studio-button):hover { text-decoration-color: var(--red); }
+
+/* Kopf: die Klammer bleibt das Zeichen. Aktive Seite mit Rotstift unterstrichen. */
+.studio-page .mobile-menu nav a[aria-current='page'] { color: var(--ink); text-decoration-color: var(--red); }
+
+/* Werkzeuge der Korrektur */
+.studio-page .hand { font-family: var(--hand); font-weight: 400; color: var(--red); line-height: 1.05; letter-spacing: 0; display: inline-block; }
+.studio-page .proof-caret { display: inline-block; width: .5em; height: .62em; color: var(--red); flex: none; }
+.studio-page .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.studio-page del.proof-del { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: .09em; color: var(--muted); }
+.studio-page ins.proof-ins { text-decoration: none; }
+
+/* Startseite: die Floskel wird gestrichen, die Aussage eingefügt. */
+.studio-page .hero-head { position: relative; padding: 14px 0 0 16px; }
+.studio-page .hero-draft { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 0; width: fit-content; max-width: calc(100% - 16px); background: var(--paper); padding: 2px 8px 4px 0; }
+.studio-page .hero-draft-text { position: relative; display: inline-block; font-size: clamp(17px, 1.7vw, 26px); line-height: 1.3; color: var(--muted); }
+.studio-page .hero-strike { position: absolute; left: -.2em; top: 50%; width: calc(100% + .4em); height: .9em; transform: translateY(-48%); overflow: visible; pointer-events: none; }
+.studio-page .hero-strike path { fill: none; stroke: var(--red); stroke-width: 3.2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.studio-page .hero-draft .hand { font-size: clamp(25px, 2.3vw, 34px); transform: rotate(-4deg); }
+.studio-page .hero-title { padding: 8px 0 0; display: flex; align-items: flex-start; gap: .12em; }
+.studio-page .hero-title .proof-caret { margin-top: .16em; width: .22em; height: .3em; }
+.studio-page .hero-title-words { display: block; }
+.studio-page .hero-title-words span { display: block; width: fit-content; background: var(--paper); padding: 0 .08em .02em 0; }
+.studio-page .hero-title span:nth-child(2), .studio-page .hero-title span:last-child { margin-left: 0; }
+.studio-page .hero-title { font-size: min(20vw, 11.8svh); line-height: 1; letter-spacing: -.02em; }
+.studio-page .hero-bottom p strong { color: inherit; font-weight: 400; }
+.studio-page .hero-note { font-size: 28px; background: var(--paper); padding: 0 8px; transform: rotate(3deg); }
+.studio-page .hero-example-link { background: var(--paper); }
+@media (prefers-reduced-motion: no-preference) {
+  .studio-page .hero-strike path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: rs-strike .7s cubic-bezier(.6, .1, .3, 1) .55s forwards; }
+  .studio-page .hero-title, .studio-page .hero-head .hand, .studio-page .hero-note { opacity: 0; animation: rs-fade .6s ease-out forwards; }
+  .studio-page .hero-title { animation-delay: 1.3s; }
+  .studio-page .hero-head .hand { animation-delay: 1.9s; }
+  .studio-page .hero-note { animation-delay: 2.2s; }
+}
+@keyframes rs-strike { to { stroke-dashoffset: 0; } }
+@keyframes rs-fade { to { opacity: 1; } }
+@media (min-width: 761px) {
+  .studio-page .hero-head { padding: 18px 0 0 var(--gutter); }
+  .studio-page .hero-title { font-size: clamp(56px, calc((100svh - var(--header-height) - var(--footer-height) - var(--band-height) - 300px) / 3.1), 10.5vw); }
+}
+@media (max-height: 560px) and (orientation: landscape) {
+  .studio-page .hero-title { font-size: min(6.5vw, 52px); }
+  .studio-page .hero-draft-text { font-size: 15px; }
+  .studio-page .hero-draft .hand { font-size: 22px; }
+}
+
+/* Leistungen in Klammern statt im roten Band. */
+.studio-page .discipline-band { background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.studio-page .discipline-band a { font-family: var(--display); text-decoration: none; border-right: 0; letter-spacing: -.01em; }
+.studio-page .discipline-band a::before { content: '['; color: var(--red); margin-right: .03em; }
+.studio-page .discipline-band a::after { content: ']'; color: var(--red); margin-left: .03em; }
+.studio-page .discipline-band a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--red); text-underline-offset: .12em; }
+.studio-page .discipline-band :focus-visible { outline-color: var(--red); }
+.studio-page .discipline-band a { font-size: min(9.2vw, 7.2svh); }
+@media (min-width: 761px) { .studio-page .discipline-band a { font-size: min(8.6vw, 12.4svh); } }
+@media (max-height: 560px) and (orientation: landscape) { .studio-page .discipline-band a { font-size: 40px; } }
+
+/* Abschnitte mit Randnotiz */
+.studio-page .with-margin { position: relative; }
+.studio-page .margin-note { font-size: clamp(26px, 2.3vw, 34px); transform: rotate(-2deg); margin-top: 20px; }
+@media (min-width: 1100px) {
+  .studio-page .with-margin { padding-right: calc(var(--gutter) + 250px); }
+  .studio-page .with-margin::after { content: ''; position: absolute; top: var(--space); bottom: var(--space); right: calc(var(--gutter) + 230px); border-left: 1px solid var(--line); }
+  .studio-page .with-margin .margin-note { position: absolute; right: var(--gutter); width: 210px; margin: 0; }
+  .studio-page .home-people .margin-note { top: calc(var(--space) + 120px); }
+  .studio-page .home-contact .margin-note { bottom: calc(var(--space) + 40px); }
+}
+.studio-page .home-offer h3, .studio-page .offer-lines h3 { font-family: var(--display); font-size: clamp(30px, 2.6vw, 40px); line-height: 1.12; }
+
+/* Das Korrekturblatt: Floskel gestrichen, Aussage eingefügt. */
+.studio-page .paper-example { background: var(--table); color: var(--ink); }
+.studio-page .paper-example a:focus-visible { outline-color: var(--red); }
+.studio-page .paper-example-intro a { color: var(--ink); }
+.studio-page .paper-example-intro h2 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .3em; }
+.studio-page .paper-example-intro h2 del { font-size: .62em; }
+.studio-page .paper-example-intro h2 ins { display: inline-flex; align-items: flex-start; gap: .08em; }
+.studio-page .paper-example-intro h2 .proof-caret { width: .3em; height: .4em; margin-top: .1em; }
+.studio-page .proof-sheet { background: var(--paper-light); border: 1px solid var(--line); padding: clamp(26px, 3.6vw, 56px); transform: rotate(-1.2deg); box-shadow: 0 22px 40px -28px rgba(28, 35, 51, .45); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 28px; }
+.studio-page .proof-sheet-old { margin: 0; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.45; }
+.studio-page .proof-sheet-new { margin: 18px 0 0; display: flex; align-items: flex-start; gap: 12px; font: clamp(30px, 3.2vw, 46px) / 1.1 var(--display); letter-spacing: -.01em; }
+.studio-page .proof-sheet-new .proof-caret { width: 18px; height: 22px; margin-top: .25em; }
+.studio-page .proof-sheet-why { margin: 22px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 40ch; }
+.studio-page .proof-sheet-notes { border-left: 1px solid var(--table); padding-left: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-width: 120px; }
+.studio-page .proof-sheet-notes .hand { font-size: clamp(26px, 2.2vw, 32px); }
+.studio-page .proof-sheet-notes .hand:first-child { transform: rotate(-4deg); }
+.studio-page .proof-sheet-notes .hand:last-child { transform: rotate(2deg); }
+.studio-page .specimen-caption { color: var(--muted); }
+@media (max-width: 760px) {
+  .studio-page .proof-sheet { grid-template-columns: 1fr; transform: rotate(-1deg); }
+  .studio-page .proof-sheet-notes { border-left: 0; padding-left: 0; flex-direction: row; justify-content: space-between; order: -1; }
+  .studio-page .proof-sheet-notes .hand:last-child { display: none; }
+}
+
+/* Lilly und Piet */
+.studio-page .home-people h2 span { font-family: var(--display); font-style: normal; font-size: 1em; color: inherit; }
+.studio-page .home-people h2 { font-size: clamp(58px, 6.6vw, 96px); }
+
+/* Leistungen */
+.studio-page .offer-header h1, .studio-page .service-detail h2, .studio-page .working-together h2 { letter-spacing: -.015em; }
+.studio-page .working-together { background: var(--table); }
+.studio-page .studio-next h2 { line-height: 1.1; }
+
+/* Beispiele */
+.studio-page .work-page { --work-sheet: var(--paper-light); }
+.studio-page .work-index a { color: var(--ink); text-decoration: none; }
+.studio-page .work-index a::before { content: '['; color: var(--red); }
+.studio-page .work-index a::after { content: ']'; color: var(--red); }
+.studio-page .work-index a:hover { text-decoration: underline; text-decoration-color: var(--red); }
+.studio-page .open-case-design { background: var(--table); }
+.studio-page .open-case-code { background: var(--paper); color: var(--ink); }
+.studio-page .open-case-code .example-back:focus-visible, .studio-page .optional-demo summary:focus-visible { outline-color: var(--red); }
+.studio-page .optional-demo { border-color: var(--line); }
+.studio-page .open-comparison > div:last-child h3 { color: var(--ink); }
+.studio-page .open-comparison > div:last-child .example-sentence, .studio-page .small-comparison strong { color: var(--ink); }
+.studio-page #text .open-comparison > div:first-child .example-sentence,
+.studio-page #code .open-comparison > div:first-child .example-error { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 3px; color: var(--muted); }
+.studio-page .course-after h4 { color: var(--ink); }
+.studio-page .work-solid { background: var(--ink); border-color: var(--ink); color: var(--paper-light); }
+.studio-page .work-solid:hover { background: var(--ink-soft); }
+
+/* Über uns */
+.studio-page .about-amp { color: var(--ink); font-family: var(--display); font-style: normal; }
+.studio-page .people-spread { background: var(--table); }
+.studio-page .person-sheet .person-note { font-family: var(--hand); font-style: normal; font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; color: var(--red); transform: rotate(-3deg); }
+.studio-page .person-piet .person-note { color: #ff8f9c; }
+.studio-page .human-statement h2 span { color: inherit; }
+
+/* Kontakt und Ersteinschätzung: unterschrieben mit Handschrift. */
+.studio-page .contact-signature em { font-family: var(--hand); font-style: normal; font-size: 64px; color: var(--red); transform: rotate(-6deg); }
+.studio-page .first-look-simple h1 span { color: inherit; }
+.studio-page .contact-letter { transform: rotate(.6deg); box-shadow: 0 22px 40px -28px rgba(28, 35, 51, .45); border: 1px solid var(--line); }
+.studio-page .studio-copy-email [role='status'] { color: var(--ink); }
+.studio-page .letter-stamp { color: var(--ink); border-color: var(--ink); }
+
+/* Fehlerseite */
+.studio-page .not-found h1 { line-height: 1.04; }
+
+@media (max-width: 760px) {
+  .studio-page .home-people h2 { font-size: 56px; }
+  .studio-page .contact-signature em { font-size: 56px; }
+}
+@media (max-width: 360px) {
+  .studio-page .hero-draft .hand { font-size: 23px; }
+}
+
+/* Die gestrichene Floskel im Kopf zeichnet der Rotstift selbst. */
+.studio-page .hero-draft-text del { text-decoration: none; color: inherit; }

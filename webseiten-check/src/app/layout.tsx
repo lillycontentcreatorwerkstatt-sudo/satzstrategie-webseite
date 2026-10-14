@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { isIndexableDeployment, organizationData, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site-metadata";
-import "@fontsource/anton/latin-400.css";
 import "@fontsource/libre-caslon-text/latin-400.css";
 import "@fontsource/libre-caslon-text/latin-400-italic.css";
 import "@fontsource/libre-caslon-text/latin-700.css";
 import "./globals.css";
-export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#f5f3ee" };
+import "./rotstift.css";
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#e9eae4" };
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_TITLE, template: "%s" },

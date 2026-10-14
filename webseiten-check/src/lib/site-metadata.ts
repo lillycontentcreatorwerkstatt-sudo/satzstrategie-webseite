@@ -18,7 +18,7 @@ export function pageMetadata(path: string, title: string, description: string): 
     alternates: { canonical: url },
     openGraph: {
       title, description, url, siteName: "Satzstrategie", locale: "de_DE", type: "website",
-      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "Satzstrategie — Endlich gesehen werden. Text. Design. Technik." }],
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "Satzstrategie — Endlich gesehen werden. Text, Design, Technik." }],
     },
     twitter: { card: "summary_large_image", title, description, images: [`${SITE_URL}/opengraph-image`] },
   };
