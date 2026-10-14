@@ -35,9 +35,9 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
     window.location.href = href;
     setStatus("Noch nicht versendet. Prüfen und senden Sie den Entwurf in Ihrem E-Mail-Programm. Öffnet sich nichts? Nutzen Sie „Anfrage kopieren“.");
   }
-  return <form ref={form} className="contact-letter" aria-label={firstLook ? "Kostenlose Ersteinschätzung anfragen" : "Projekt bei Lilly anfragen"} onSubmit={openMail}>
-    <div className="letter-address">An Lilly,<br />Satzstrategie</div>
-    <p className="letter-greeting">Hallo Lilly,</p>
+  return <form ref={form} className="contact-letter" aria-label={firstLook ? "Kostenlose Ersteinschätzung anfragen" : "Projekt bei Lilly und Piet anfragen"} onSubmit={openMail}>
+    <div className="letter-address">An Lilly und Piet,<br />Satzstrategie</div>
+    <p className="letter-greeting">Hallo Lilly und Piet,</p>
     {firstLook && <p className="letter-purpose">ich wünsche mir eine kostenlose Ersteinschätzung zu meiner Webseite.</p>}
     <fieldset disabled={!ready} className="letter-fields">
       {firstLook && <div className="studio-field"><label htmlFor="inquiry-website">Meine Webadresse</label><input id="inquiry-website" name="website" type="text" inputMode="url" autoComplete="url" autoCapitalize="none" required maxLength={500} placeholder="ihre-webseite.de" onInput={event => event.currentTarget.setCustomValidity("")} /></div>}

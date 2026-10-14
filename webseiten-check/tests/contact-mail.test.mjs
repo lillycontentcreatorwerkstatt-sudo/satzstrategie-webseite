@@ -7,7 +7,7 @@ test('mail draft preserves German text, paragraph breaks and URL query character
   assert.equal(mail.protocol, 'mailto:');
   assert.equal(mail.pathname, 'lillycontentcreatorwerkstatt@gmail.com');
   assert.equal(mail.searchParams.get('subject'), 'Ein Vorhaben für Satzstrategie');
-  assert.equal(mail.searchParams.get('body'), 'Hallo Lilly,\n\nGrüße & eine Idee?\nZweite Zeile.\n\nMeine Webseite: https://example.com/?a=1&b=2\n\nViele Grüße\nJörg');
+  assert.equal(mail.searchParams.get('body'), 'Hallo Lilly und Piet,\n\nGrüße & eine Idee?\nZweite Zeile.\n\nMeine Webseite: https://example.com/?a=1&b=2\n\nViele Grüße\nJörg');
   assert.equal([...mail.searchParams.keys()].length, 2);
 });
 

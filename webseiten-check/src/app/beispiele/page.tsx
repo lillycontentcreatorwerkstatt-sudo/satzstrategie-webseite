@@ -16,7 +16,7 @@ export default function ReferencesPage() {
       </header>
       <WorkExamples />
       <aside className="work-method"><h2>Vom Beispiel<br />zu Ihrer Seite.</h2><div><p>Die Beispiele zeigen einzelne Entscheidungen. Was Ihre Webseite braucht, sehen wir uns im Zusammenhang an: die Texte, die Gestaltung und die Bedienung.</p><p>Die Beispiele zur Lesbarkeit und Bedienung orientieren sich an internationalen Regeln für zugängliche Webseiten, kurz WCAG. Dazu gehören die Erläuterungen zu <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">Textkontrast</a>, <a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html">Fehlermeldungen</a> und <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">sichtbarem Tastaturfokus</a>.</p><Link href="/leistungen">Unsere Leistungen ansehen</Link></div></aside>
-      <StudioNext href="/kontakt" label="Schreiben Sie Lilly, was Sie verändern möchten." actionLabel="Projekt anfragen">Wo hakt es<br />auf Ihrer Seite?</StudioNext>
+      <StudioNext href="/kontakt" label="Schreiben Sie uns, was Sie verändern möchten." actionLabel="Projekt anfragen">Wo hakt es<br />auf Ihrer Seite?</StudioNext>
     </div>
   </StudioShell>;
 }

@@ -20,7 +20,7 @@ export function normalizeInquiryWebsite(value: string): string | null {
 
 export function createFirstLookMessage(request: FirstLookRequest): string {
   return [
-    "Hallo Lilly,", "",
+    "Hallo Lilly und Piet,", "",
     `meine Webseite: ${request.website.trim()}`,
     `Das soll sie erreichen: ${request.goal.trim()}`, "",
     "Ich wünsche mir eine kostenlose kurze Ersteinschätzung per E-Mail. Mir ist bewusst, dass dies keine vollständige Prüfung ist.",

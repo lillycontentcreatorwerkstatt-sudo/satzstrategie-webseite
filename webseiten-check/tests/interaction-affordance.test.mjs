@@ -20,7 +20,7 @@ test('public routes and shared controls do not rely on decorative arrows', () =>
 test('primary next steps use explicit action surfaces, not linked headlines', () => {
   assert.match(read('page.tsx'), /className="studio-button hero-action" href="\/kontakt">Projekt anfragen/);
   assert.match(read('components/WordProof.tsx'), /className="studio-button proof-action"/);
-  assert.match(read('wer-wir-sind/page.tsx'), /actionLabel="Lilly kontaktieren"/);
+  assert.match(read('wer-wir-sind/page.tsx'), /actionLabel="Uns kontaktieren"/);
   assert.match(read('components/StudioShell.tsx'), /<h2>\{children\}<\/h2>/);
   assert.match(read('components/ContactLetter.tsx'), /<CopyDraft getText=\{copyText\}/);
   assert.match(read('components/FirstLookLetter.tsx'), /<ContactLetter firstLook/);
