@@ -10,7 +10,7 @@ export default function Home() {
     <section className="paper-hero" aria-labelledby="home-title">
       <div className="hero-art"><Image src="/images/papierarchitektur.webp" alt="" fill preload sizes="(max-width: 760px) 82vw, 50vw" /></div>
       <h1 id="home-title" className="hero-title"><span>Wörter </span><span>brauchen </span><span>Haltung.</span></h1>
-      <div className="hero-bottom"><Link className="studio-button hero-action" href="#leistungen">Leistungen entdecken</Link><p>Texte <strong>schreiben und prüfen.</strong><br />Websites <strong>gestalten und entwickeln.</strong></p></div>
+      <div className="hero-bottom"><Link className="studio-button hero-action" href="#leistungen">Leistungen entdecken</Link><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p></div>
     </section>
     <section className="discipline-band" aria-label="Text, Design und Code"><Link href="#neue-texte">Text.</Link><Link href="#design">Design.</Link><Link href="#entwicklung">Code.</Link></section>
     </div>
