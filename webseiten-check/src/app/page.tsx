@@ -14,7 +14,7 @@ export default function Home() {
       {/* Keep the light offer text between the red CTA and the red discipline band. */}
       <div className="hero-bottom"><p className="hero-promise">Sie können viel. Nur sieht es keiner.<br />Das ändern wir.</p><div className="hero-actions"><Link className="studio-button hero-action" href="/kontakt">Projekt anfragen</Link><Link className="hero-example-link" href="/beispiele">Beispiele ansehen</Link></div><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p></div>
     </section>
-    <section className="discipline-band" aria-label="Text, Design und Code"><Link href="/leistungen#texte">Text.</Link><Link href="/leistungen#gestaltung">Design.</Link><Link href="/leistungen#entwicklung">Code.</Link></section>
+    <section className="discipline-band" aria-label="Text, Design und Technik"><Link href="/leistungen#texte">Text.</Link><Link href="/leistungen#gestaltung">Design.</Link><Link href="/leistungen#entwicklung">Technik.</Link></section>
     </div>
     <section className="home-offer section-space" id="leistungen" aria-labelledby="offer-title">
       <h2 id="offer-title">Was brauchen Sie?</h2>

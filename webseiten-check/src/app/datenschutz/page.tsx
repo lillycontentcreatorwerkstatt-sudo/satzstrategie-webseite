@@ -7,7 +7,7 @@ export default function DatenschutzPage() {
   return (
     <InteriorShell title="Datenschutz." intro="Welche Daten bei einem Besuch und einer Kontaktaufnahme verarbeitet werden.">
       <article className="legal-document">
-        <p>Stand: 10. Oktober 2026. Diese Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
+        <p>Stand: 14. Oktober 2026. Diese Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
 
         <h2>Verantwortlich</h2>
         <p>Peter Josef Klein<br />c/o IP-Management #8336<br />Ludwig-Erhard-Straße 18<br />20459 Hamburg</p>
@@ -19,7 +19,7 @@ export default function DatenschutzPage() {
         <p>Anbieter ist Vercel Inc., USA. Eine Verarbeitung außerhalb der EU bzw. des EWR ist möglich. Informationen zu Verarbeitung und Übermittlungsmechanismen finden Sie in der <a href="https://vercel.com/legal/privacy-notice">Datenschutzerklärung von Vercel</a> und dessen <a href="https://vercel.com/legal/dpa">Vereinbarung zur Datenverarbeitung</a>.</p>
 
         <h2>Schriften, Cookies und externe Inhalte</h2>
-        <p>Die Schriften und Bilder werden mit der Webseite ausgeliefert. Beim Laden der Seite werden keine Google Fonts nachgeladen. Wir setzen in dieser Fassung keine Werbepixel, Besuchsstatistik oder eingebetteten Karten und Videos ein. Die Anwendung setzt keine Cookies und speichert keine Angaben im lokalen Browser-Speicher.</p>
+        <p>Die Schriften und Bilder werden mit der Webseite ausgeliefert. Beim Laden der Seite werden keine Google Fonts nachgeladen. Wir setzen in dieser Fassung keine Werbepixel, Besuchsstatistik oder eingebetteten Karten und Videos ein. Die Webseite setzt keine Cookies und speichert keine Angaben im lokalen Browser-Speicher.</p>
         <p>Externe Links öffnen die Seite des jeweiligen Anbieters erst, wenn Sie sie aufrufen. Dort gelten dessen Datenschutzhinweise.</p>
 
         <h2>Kontakt per E-Mail</h2>
@@ -29,7 +29,7 @@ export default function DatenschutzPage() {
         <p>Eine Kontaktanfrage meldet Sie nicht für einen Newsletter an.</p>
 
         <h2>Persönliche Ersteinschätzung und Textbeispiele</h2>
-        <p>Unter „Erster Blick“ können Sie einen E-Mail-Entwurf mit Ihrer Webadresse, dem Ziel Ihrer Webseite und optional Ihrem Namen vorbereiten. Die Bitte um eine kostenlose kurze Ersteinschätzung ist freiwillig und nicht vorausgewählt. Wie beim Kontaktbrief werden diese Eingaben erst durch Ihren eigenen E-Mail-Versand an uns übermittelt. Die Funktion „Anfrage kopieren“ schreibt den vorbereiteten Text nach Ihrem Klick in Ihre Zwischenablage.</p>
+        <p>Unter „Erster Blick“ können Sie einen E-Mail-Entwurf mit Ihrer Webadresse, dem Ziel Ihrer Webseite und optional Ihrem Namen vorbereiten. Der Brieftext enthält die Bitte um eine kostenlose kurze Ersteinschätzung. Sie können ihn vor dem Versand in Ihrem E-Mail-Programm ändern. Wie beim Kontaktbrief werden diese Eingaben erst durch Ihren eigenen E-Mail-Versand an uns übermittelt. Die Funktion „Anfrage kopieren“ schreibt den vorbereiteten Text nach Ihrem Klick in Ihre Zwischenablage.</p>
         <p>Die Webseite führt keinen automatischen KI-Check durch und überträgt diese Eingaben nicht an einen KI-, Newsletter- oder Tabellendienst. Die Textbeispiele sind selbst entwickelt und rufen keine Besucher-Webseite ab. Für Ihre Nachricht gelten die Hinweise zur Kontaktaufnahme per E-Mail.</p>
 
         <h2>Postanschrift</h2>

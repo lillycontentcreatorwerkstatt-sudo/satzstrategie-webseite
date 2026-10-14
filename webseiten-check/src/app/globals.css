@@ -68,8 +68,8 @@ em { font-family: var(--reading); font-weight: 400; }
 .hero-bottom p { background: var(--paper); padding: 9px 10px; font-size: 20px; line-height: 1.25; max-width: 100%; }
 .hero-bottom p strong { color: var(--red); font-weight: 700; }
 .hero-bottom .hero-action { width: fit-content; min-height: 48px; padding: 11px 16px; }
-.discipline-band { display: grid; grid-template-columns: .8fr 1.2fr .95fr; align-items: center; background: var(--red); color: var(--white); padding: 10px 16px; }
-.discipline-band a { font-family: var(--display); font-size: min(13.2vw, 7.8svh); letter-spacing: -.025em; line-height: 1.12; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .1em; text-align: center; min-height: 44px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eed0c8; }
+.discipline-band { display: grid; grid-template-columns: .8fr 1.1fr 1.3fr; align-items: center; background: var(--red); color: var(--white); padding: 10px 16px; }
+.discipline-band a { font-family: var(--display); font-size: min(10.8vw, 7.8svh); letter-spacing: -.025em; line-height: 1.12; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .1em; text-align: center; min-height: 44px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eed0c8; }
 .discipline-band a:first-child { justify-content: flex-start; }
 .discipline-band a:last-child { border: 0; justify-content: flex-end; }
 .discipline-band a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .08em; }
@@ -82,7 +82,7 @@ em { font-family: var(--reading); font-weight: 400; }
   .hero-title span:nth-child(2), .hero-title span:last-child { margin-left: 0; }
   .hero-bottom { left: 8vw; width: 41%; bottom: 20px; gap: 12px; }
   .hero-bottom p { padding: 0; font-size: clamp(22px, 1.9vw, 32px); max-width: 100%; }
-  .discipline-band { padding: 12px var(--gutter); grid-template-columns: .8fr 1.2fr 1fr; }
+  .discipline-band { padding: 12px var(--gutter); grid-template-columns: .8fr 1.1fr 1.3fr; }
   .discipline-band a { font-size: min(10.4vw, 13.6svh); }
 }
 @media (max-width: 760px) and (max-height: 700px) and (orientation: portrait) {

@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/beratung", destination: "/leistungen", permanent: true },
       { source: "/referenzen", destination: "/beispiele", permanent: true },
+      { source: "/wir-sind", destination: "/wer-wir-sind", permanent: true },
       { source: "/ueber-uns", destination: "/wer-wir-sind", permanent: true },
       { source: "/kontakt.html", destination: "/kontakt", permanent: true },
       { source: "/datenschutz.html", destination: "/datenschutz", permanent: true },

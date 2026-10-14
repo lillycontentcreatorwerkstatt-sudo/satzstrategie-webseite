@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import sharp from "sharp";
 
-export const alt = "Satzstrategie — Endlich gesehen werden. Text. Design. Code.";
+export const alt = "Satzstrategie — Endlich gesehen werden. Text. Design. Technik.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +29,7 @@ export default async function OpenGraphImage() {
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 92, padding: "0 48px", background: "#b32d23", color: "#ffffff" }}>
-        <span style={{ fontFamily: "Anton", fontSize: 48 }}>Text. Design. Code.</span><span style={{ fontSize: 24 }}>satzstrategie.de</span>
+        <span style={{ fontFamily: "Anton", fontSize: 48 }}>Text. Design. Technik.</span><span style={{ fontSize: 24 }}>satzstrategie.de</span>
       </div>
     </div>,
     { ...size, fonts: [

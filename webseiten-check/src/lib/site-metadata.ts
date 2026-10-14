@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.satzstrategie.de";
-export const SITE_TITLE = "Satzstrategie | Endlich gesehen werden.";
+export const SITE_TITLE = "Texte und Webseiten, die zeigen, was Sie können | Satzstrategie";
 export const SITE_DESCRIPTION = "Texte schreiben und prüfen. Webseiten gestalten und entwickeln. Lernen Sie Lilly und Piet kennen und sehen Sie an Beispielen, wie Satzstrategie arbeitet.";
 export const PUBLIC_ROUTES = ["/", "/leistungen", "/beispiele", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
 
@@ -18,7 +18,7 @@ export function pageMetadata(path: string, title: string, description: string): 
     alternates: { canonical: url },
     openGraph: {
       title, description, url, siteName: "Satzstrategie", locale: "de_DE", type: "website",
-      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "Satzstrategie — Endlich gesehen werden. Text. Design. Code." }],
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "Satzstrategie — Endlich gesehen werden. Text. Design. Technik." }],
     },
     twitter: { card: "summary_large_image", title, description, images: [`${SITE_URL}/opengraph-image`] },
   };
