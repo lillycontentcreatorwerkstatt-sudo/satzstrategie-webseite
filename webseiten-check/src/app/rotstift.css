@@ -78,6 +78,11 @@
   .studio-page .hero-head { padding: 18px 0 0 var(--gutter); }
   .studio-page .hero-title { font-size: clamp(56px, calc((100svh - var(--header-height) - var(--footer-height) - var(--band-height) - 300px) / 3.1), 10.5vw); }
 }
+/* Tablet und kleine Laptops: Die Randnotiz rückt unter die gestrichene Zeile, statt ins Foto zu ragen. */
+@media (min-width: 761px) and (max-width: 1279px) {
+  .studio-page .hero-draft { max-width: calc(50vw - var(--gutter) - 28px); }
+  .studio-page .hero-title { font-size: clamp(56px, calc((100svh - var(--header-height) - var(--footer-height) - var(--band-height) - 344px) / 3.1), 10.5vw); }
+}
 @media (max-height: 560px) and (orientation: landscape) {
   .studio-page .hero-title { font-size: min(6.5vw, 52px); }
   .studio-page .hero-draft-text { font-size: 15px; }
