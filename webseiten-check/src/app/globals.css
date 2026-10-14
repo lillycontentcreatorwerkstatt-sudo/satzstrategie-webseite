@@ -448,3 +448,8 @@ em { font-family: var(--reading); font-weight: 400; }
   .studio-report h2 { font-size: 20pt; }
   .studio-comparison > div { border: 1px solid #777; background: #fff; }
 }
+
+/* Shared long-page footer and navigation with the references entry. */
+.studio-page--flow-footer { padding-bottom: 0; }
+.studio-page--flow-footer .studio-footer { position: static; margin-top: 0; }
+@media (min-width: 761px) and (max-width: 1000px) { .studio-desktop-nav { gap: 18px; } .studio-header { gap: 16px; } }

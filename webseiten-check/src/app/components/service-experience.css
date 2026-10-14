@@ -23,7 +23,6 @@
 .service-experience .enquiry-preview h3{font-size:36px}
 .service-experience .enquiry-preview h3:focus{outline:none}
 
-.studio-page--flow-footer{padding-bottom:0}.studio-page--flow-footer .studio-footer{position:static;margin-top:0}
 
 .service-experience .design-section :is(button,a,summary):focus-visible{outline-color:var(--white)}
 .service-experience input::placeholder,.service-experience textarea::placeholder{color:var(--muted);opacity:1}

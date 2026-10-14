@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 
 const read = (path) => readFileSync(new URL(`../src/app/${path}`, import.meta.url), 'utf8');
 const activeFiles = [
+  'referenzen/page.tsx', 'referenzen/work-examples.tsx',
   'page.tsx', 'beratung/page.tsx', 'erster-blick/page.tsx', 'wer-wir-sind/page.tsx',
   'kontakt/page.tsx', 'impressum/page.tsx', 'datenschutz/page.tsx', 'not-found.tsx',
   'components/StudioShell.tsx', 'components/MobileMenu.tsx', 'components/WordProof.tsx',
