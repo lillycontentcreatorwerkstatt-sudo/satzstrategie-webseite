@@ -10,7 +10,7 @@ export function normalizeServiceWebsite(value: string): string {
 export function createServiceInquiry({ intent, project, website }: { intent: "website" | "text"; project: string; website: string }) {
   if (!project.trim()) throw new Error("Bitte das Vorhaben beschreiben.");
   const url = normalizeServiceWebsite(website);
-  const subject = intent === "website" ? "Eine Website mit Satzstrategie" : "Meine Texte prüfen lassen";
+  const subject = intent === "website" ? "Eine Webseite mit Satzstrategie" : "Meine Texte prüfen lassen";
   const body = `Hallo Lilly,\n\n${project.trim()}${url ? `\n\nMeine Webadresse: ${url}` : ""}\n\nIch freue mich auf ein erstes Gespräch.`;
   return { subject, body, href: `mailto:lillycontentcreatorwerkstatt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}` };
 }

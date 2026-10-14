@@ -453,3 +453,26 @@ em { font-family: var(--reading); font-weight: 400; }
 .studio-page--flow-footer { padding-bottom: 0; }
 .studio-page--flow-footer .studio-footer { position: static; margin-top: 0; }
 @media (min-width: 761px) and (max-width: 1000px) { .studio-desktop-nav { gap: 18px; } .studio-header { gap: 16px; } }
+
+/* Plain-language service overview and direct invitation, in the paper layout. */
+.services-overview {display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(32px,6vw,96px);align-items:start}
+.services-overview h1 {font-family:var(--display);font-size:clamp(52px,6vw,88px);line-height:1.08;font-weight:400}
+.services-list {margin:0}
+.services-list>div {border-top:1px solid var(--line);padding:24px 0}
+.services-list>div:last-child {border-bottom:1px solid var(--line)}
+.services-list dt {font-size:22px;line-height:1.5}
+.services-list dt a {display:inline-block;min-height:44px;text-underline-offset:.2em}
+.services-list dd {margin:8px 0 0;max-width:55ch;font-size:17px;line-height:1.7}
+.first-look-invitation {border-top:1px solid var(--line);display:flex;gap:40px;align-items:center;justify-content:space-between}
+.first-look-invitation h2 {font-family:var(--display);font-size:clamp(36px,4vw,60px);line-height:1.12;font-weight:400}
+.first-look-invitation p {max-width:48ch;margin-top:24px;font-size:18px;line-height:1.7}
+.first-look-invitation>.studio-button {flex-shrink:0}
+.copy-draft {margin-top:16px}
+.copy-draft>p:empty {display:none}
+.copy-draft>p {font-size:14px;line-height:1.6;margin-top:12px;max-width:52ch}
+.copy-draft textarea {width:100%;overflow-wrap:anywhere}
+@media(max-width:760px){
+ .services-overview {grid-template-columns:1fr}
+ .first-look-invitation {align-items:flex-start;flex-direction:column}
+ .first-look-invitation>.studio-button {white-space:normal;text-align:center;max-width:100%}
+}

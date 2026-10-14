@@ -10,11 +10,12 @@ export default function Home() {
     <section className="paper-hero" aria-labelledby="home-title">
       <div className="hero-art"><Image src="/images/papierarchitektur.webp" alt="" fill preload sizes="(max-width: 760px) 82vw, 50vw" /></div>
       <h1 id="home-title" className="hero-title"><span>Wörter </span><span>brauchen </span><span>Haltung.</span></h1>
-      <div className="hero-bottom"><Link className="studio-button hero-action" href="#leistungen">Leistungen entdecken</Link><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p></div>
+      <div className="hero-bottom"><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p><Link className="studio-button hero-action" href="#leistungen">Leistungen entdecken</Link></div>
     </section>
     <section className="discipline-band" aria-label="Text, Design und Code"><Link href="#neue-texte">Text.</Link><Link href="#design">Design.</Link><Link href="#entwicklung">Code.</Link></section>
     </div>
     <a className="home-services-scroll" href="#leistungen">Weiter zu den Leistungen</a>
     <ServiceExperience />
+    <section className="first-look-invitation section-space"><div><h2>Ein erster Blick<br />auf Ihre Webseite.</h2><p>Lilly schaut persönlich auf Ihre Seite. Auf Wunsch bekommen Sie ein bis zwei konkrete Hinweise kostenlos per E-Mail.</p></div><Link className="studio-button" href="/erster-blick">Kostenlose Ersteinschätzung anfragen</Link></section>
   </StudioShell>;
 }

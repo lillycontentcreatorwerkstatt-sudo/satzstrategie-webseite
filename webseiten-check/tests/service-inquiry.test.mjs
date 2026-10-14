@@ -14,7 +14,7 @@ test('both inquiry intents create one correctly encoded self-sent draft', () => 
   const draft=createServiceInquiry({intent,project:' Grüße & Ideen?\nEin zweiter Satz. ',website:'example.com'});
   const url=new URL(draft.href);
   assert.equal(url.pathname,'lillycontentcreatorwerkstatt@gmail.com');
-  assert.equal(url.searchParams.get('subject'),intent==='website'?'Eine Website mit Satzstrategie':'Meine Texte prüfen lassen');
+  assert.equal(url.searchParams.get('subject'),intent==='website'?'Eine Webseite mit Satzstrategie':'Meine Texte prüfen lassen');
   assert.equal(url.searchParams.get('body'),draft.body);
   assert.match(draft.body,/Grüße & Ideen\?\nEin zweiter Satz\./);
   assert.equal([...url.searchParams.keys()].length,2);
