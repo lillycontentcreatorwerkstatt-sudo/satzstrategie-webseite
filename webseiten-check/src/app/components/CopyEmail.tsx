@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 
 export default function CopyEmail({ email }: { email: string }) {
   const [message, setMessage] = useState("");
-  const addressRef = useRef<HTMLSpanElement>(null);
+  const addressRef = useRef<HTMLAnchorElement>(null);
   async function copy() {
     try {
       await navigator.clipboard.writeText(email);
@@ -20,5 +20,5 @@ export default function CopyEmail({ email }: { email: string }) {
       setMessage("Bitte die markierte Adresse kopieren.");
     }
   }
-  return <div className="studio-copy-email"><span ref={addressRef}>{email}</span><button className="studio-button studio-button-secondary" type="button" onClick={copy}>Adresse kopieren</button><span role="status">{message}</span></div>;
+  return <div className="studio-copy-email"><a ref={addressRef} href={`mailto:${email}`}>{email}</a><button className="studio-button studio-button-secondary" type="button" onClick={copy}>Adresse kopieren</button><span role="status">{message}</span></div>;
 }

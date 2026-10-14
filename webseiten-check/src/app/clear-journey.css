@@ -1,0 +1,79 @@
+/* The existing paper cover stays. The journey underneath becomes readable. */
+.hero-actions {display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap}
+.hero-example-link {font-size:15px;min-height:44px;display:inline-flex;align-items:center;background:var(--paper);padding:6px 8px;text-underline-offset:.25em}
+.home-offer {display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,7vw,100px)}
+.home-offer h2 {font-size:clamp(44px,5.2vw,76px)}
+.offer-lines article {padding:28px 0;border-top:1px solid var(--line)}
+.offer-lines article:first-child {padding-top:0;border-top:0}
+.offer-lines h3 {font-size:28px;line-height:1.3;margin-bottom:16px}
+.offer-lines p {max-width:48ch}
+.offer-lines a,.home-people a {display:inline-flex;min-height:48px;align-items:center;margin-top:14px;color:var(--red-deep)}
+.paper-example {background:var(--red);color:var(--white);display:grid;grid-template-columns:.8fr 1.2fr;gap:48px 7%;overflow:hidden}
+.paper-example-intro h2 {font-size:clamp(42px,5vw,72px)}
+.paper-example-intro p {margin-top:28px;max-width:34ch;font-size:18px}
+.paper-example-intro a {display:inline-flex;min-height:48px;align-items:center;margin-top:24px}
+.paper-example a:focus-visible {outline-color:var(--white)}
+.paper-specimen {perspective:1100px;align-self:center;padding:20px 12px}
+.specimen-before {background:#eadfca;color:var(--ink);padding:24px 30px 44px;max-width:83%;transform:rotate(-5deg) translateX(-6px);box-shadow:8px 16px 24px #43150e38}
+.specimen-before h3,.specimen-after h3 {font:14px/1.5 var(--reading);margin-bottom:18px}
+.specimen-before p {font-size:20px;line-height:1.5}
+.specimen-after {position:relative;margin:-12px 0 0 8%;padding:clamp(28px,3.6vw,54px);background:var(--paper-light);color:var(--ink);transform:rotate(2deg) rotateY(-5deg);box-shadow:16px 24px 38px #43150e50}
+.specimen-after>p {font:clamp(28px,3.2vw,46px)/1.15 var(--display);letter-spacing:-.02em}
+.specimen-after strong {color:var(--red);font-weight:400}
+.specimen-after span {display:block;font-size:15px;line-height:1.7;margin-top:26px;max-width:40ch}
+.specimen-caption {grid-column:1/-1;font-size:14px;color:#ffe5de;max-width:80ch}
+@media(prefers-reduced-motion:no-preference){
+ .paper-specimen[data-settled=true] .specimen-after {animation:specimen-settle 1100ms var(--ease) both}
+ @keyframes specimen-settle {from{transform:rotate(5deg) rotateY(-15deg) translateY(24px);box-shadow:28px 40px 48px #43150e66}to{transform:rotate(2deg) rotateY(-5deg);box-shadow:16px 24px 38px #43150e50}}
+}
+.home-people {display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
+.home-people h2 {font-size:clamp(58px,7vw,96px)}
+.home-people h2 span {font-family:var(--reading);font-style:italic;font-size:.55em;color:var(--red)}
+.home-people p+p {margin-top:24px}
+.home-contact {display:grid;grid-template-columns:1.2fr .8fr;gap:10%;border-top:1px solid var(--line);align-items:center}
+.home-contact>div p {margin:24px 0;max-width:44ch}
+.home-contact aside {border-top:1px solid var(--line);padding-top:24px}
+.home-contact aside h3 {font-size:26px}
+.home-contact aside p {margin:18px 0;max-width:34ch}
+.home-contact aside a {display:inline-flex;align-items:center;min-height:48px;color:var(--red-deep)}
+.offer-header {display:grid;grid-template-columns:1fr 1fr;gap:7%;align-items:end}
+.offer-header h1 {font-size:clamp(62px,8vw,112px);line-height:1.08}
+.offer-header p+p {margin-top:20px}
+.offer-header .studio-button {margin-top:24px}
+.service-detail {display:grid;grid-template-columns:1fr 1.2fr;gap:7%;border-top:1px solid var(--line)}
+.service-detail h2 {font-size:clamp(38px,4.5vw,64px);max-width:12ch}
+.service-detail .large-copy {font-size:clamp(20px,2vw,26px)}
+.service-detail p+p {margin-top:24px}
+.service-detail a {display:inline-flex;min-height:48px;align-items:center;margin-top:20px;color:var(--red-deep)}
+.working-together {display:grid;grid-template-columns:1fr 1.2fr;gap:7%;background:#e8e0d1}
+.working-together h2 {font-size:clamp(40px,5vw,72px)}
+.working-together h3 {font-size:23px;margin:32px 0 16px}
+.working-together h3:first-child {margin-top:0}
+.working-together a {display:inline-flex;min-height:48px;align-items:center;margin-top:20px;color:var(--red-deep)}
+.letter-fields {border:0;margin:0;padding:0;min-width:0}
+.letter-purpose {font-size:17px;margin-top:20px}
+.contact-letter .copy-draft .studio-button {margin-top:0}
+.studio-copy-email>a {overflow-wrap:anywhere}
+.first-look-simple .contact-intro h1 {font-size:clamp(48px,6.5vw,92px)}
+.first-look-simple h1 span {color:var(--red)}
+.first-look-mobile-link {display:inline-flex;min-height:48px;align-items:center;margin-top:18px}
+.quiet-next {padding:32px var(--gutter);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.quiet-next a {display:inline-flex;min-height:44px;align-items:center;color:var(--red-deep)}
+@media(min-width:900px){.first-look-mobile-link{display:none}}
+@media(max-width:760px){
+ .hero-actions{gap:4px 12px}.hero-example-link{font-size:14px;padding:6px 4px}.hero-bottom .hero-action{font-size:14px;padding-inline:12px}
+ .home-offer,.paper-example,.home-people,.home-contact,.offer-header,.service-detail,.working-together{grid-template-columns:1fr;gap:36px}
+ .home-people{gap:32px}.home-people h2{font-size:64px}.home-people h2 br{display:none}.home-people h2 span{display:block;margin-top:12px}
+ .paper-example{gap:28px}.paper-example-intro p{max-width:48ch}.paper-specimen{padding:16px 0}.specimen-before{padding:20px 22px 32px;max-width:91%}.specimen-before p{font-size:18px}.specimen-after{margin-left:5%;padding:28px 24px}.specimen-after>p{font-size:32px}.specimen-after span{font-size:14px}.specimen-caption{font-size:13px}
+ .service-detail h2{max-width:none}.home-contact aside p{max-width:48ch}.home-offer h2{font-size:46px}
+}
+@media(max-width:360px){.hero-actions{gap:4px 8px}.hero-example-link{font-size:12px}.hero-bottom .hero-action{font-size:13px;padding-inline:10px}.specimen-after>p{font-size:28px}}
+@media(max-height:560px) and (orientation:landscape){.hero-bottom{left:29%;width:21%}.hero-actions{gap:0}.hero-example-link{font-size:12px;min-height:32px}.hero-bottom .hero-action{font-size:12px}}
+/* Let short phones grow vertically instead of overlapping title and actions. */
+@media(max-width:760px) and (orientation:portrait){
+ .home-opening{height:auto;min-height:calc(100svh - var(--header-height) - var(--footer-height));grid-template-rows:auto var(--band-height)}
+ .paper-hero{display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:calc(100svh - var(--header-height) - var(--footer-height) - var(--band-height))}
+ .hero-bottom{position:relative;left:auto;bottom:auto;flex-shrink:0;width:calc(100% - 32px);margin:0 16px 18px}
+ .hero-bottom p{font-size:clamp(18px,5.12vw,20px)}
+}
+@media(min-width:761px) and (max-width:1000px){.hero-actions{gap:8px}.hero-example-link{font-size:14px;padding-inline:4px}}

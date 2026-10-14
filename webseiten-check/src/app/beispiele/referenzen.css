@@ -1,0 +1,58 @@
+.work-page {--work-sheet:#fffdf8}
+.work-intro {padding:48px var(--gutter) 0}
+.work-intro h1 {font-size:clamp(64px,9vw,120px)}
+.work-intro-copy {display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:32px 0 44px;align-items:end}
+.work-lead {font-size:clamp(26px,3vw,40px);line-height:1.4}
+.work-intro-copy>p:last-child {margin:0;max-width:50ch}
+.work-index {display:flex;flex-wrap:wrap;gap:12px 40px;border-block:1px solid var(--line);padding:12px 0}
+.work-index a {font:clamp(24px,3vw,40px)/1.5 var(--display);color:var(--red);min-height:44px}
+.open-case {padding:var(--space) var(--gutter);border-bottom:1px solid var(--line)}
+.open-case header {display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px}
+.open-case header h2 {font-size:clamp(42px,5vw,72px)}
+.open-case header p {font-size:14px;max-width:35ch}
+.open-comparison {display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.open-comparison>div {background:var(--work-sheet);color:var(--ink);padding:clamp(24px,3.5vw,52px);min-width:0}
+.open-comparison h3 {font-size:15px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.open-comparison>div:last-child h3 {color:var(--red);font-weight:700}
+.example-sentence {font-size:clamp(24px,2.8vw,40px);line-height:1.5}
+.open-comparison>div:last-child .example-sentence {color:var(--red-deep)}
+.example-reasons {display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:36px 0 0}
+.example-reasons dt {font-size:15px;font-weight:700;margin-bottom:10px}
+.example-reasons dd {margin:0;font-size:16px;max-width:42ch}
+.small-comparison {margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
+.small-comparison h3 {font-size:21px;margin-bottom:18px}
+.small-comparison p {font-size:16px}
+.small-comparison span,.small-comparison strong {display:block;font-weight:400}
+.small-comparison strong {color:var(--red-deep);margin-top:6px}
+.small-comparison a {display:inline-flex;align-items:center;min-height:48px;margin-top:12px}
+.open-case-design {background:#e8e0d1}
+.course-sheet h4 {font-family:var(--display);font-size:42px;line-height:1.15;font-weight:400;margin:28px 0 20px}
+.course-after h4 {color:var(--red);font-size:clamp(42px,5vw,64px);margin-top:0}
+.course-sheet dl {margin:24px 0}
+.course-sheet dl>div {display:flex;gap:20px;border-bottom:1px solid var(--line);padding:8px 0}
+.course-sheet dt {min-width:45px;font-weight:700}
+.course-sheet dd {margin:0}
+.open-case-code {background:var(--red);color:var(--white)}
+.error-specimen {font-size:clamp(20px,2.2vw,28px);line-height:1.5}
+.example-error {padding-top:24px;color:var(--red-deep)}
+.optional-demo {margin-top:36px;border-block:1px solid #e3a49e}
+.optional-demo summary {padding:18px 4px;min-height:52px;text-decoration:underline;text-underline-offset:.25em}
+.optional-demo summary:focus-visible {outline-color:var(--white)}
+.work-demo {background:var(--work-sheet);color:var(--ink);padding:clamp(24px,4vw,48px);max-width:700px;margin:12px 0 32px}
+.work-demo form {margin-top:24px}
+.work-demo label {display:block;margin-bottom:10px;font-size:16px}
+.work-demo label span {font-size:14px}
+.work-demo input {display:block;width:100%;background:var(--white);border:1px solid var(--muted);padding:12px;min-height:48px;font-size:16px;margin-bottom:22px;color:var(--ink)}
+.work-demo input[aria-invalid=true] {border:2px solid var(--red)}
+.work-feedback {font-size:15px;margin:20px 0;min-height:48px}
+.work-error {display:flex;gap:12px;color:var(--red-deep)}
+.work-error svg {flex-shrink:0;margin-top:3px}
+.work-solid {background:var(--red);color:var(--white);border:1px solid var(--red);padding:12px 20px;min-height:48px}
+.work-solid:hover {background:var(--red-deep)}
+.contrast-sample {margin:0}
+.contrast-sample svg {display:block;width:100%;height:auto}
+.contrast-sample figcaption {font-size:15px;margin-top:20px}
+.comparison-transcript,.example-limit {font-size:14px;margin-top:24px}
+.work-method {padding:var(--space) var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:50px;border-bottom:1px solid var(--line)}
+.work-method div>a {display:inline-flex;min-height:48px;align-items:center;margin-top:20px;color:var(--red-deep)}
+@media(max-width:760px){.work-intro-copy,.open-comparison,.example-reasons,.work-method{grid-template-columns:1fr}.work-intro-copy{gap:24px}.work-index{gap:12px 24px}.open-case header{align-items:start;flex-direction:column;margin-bottom:28px}.open-comparison{gap:16px}.example-reasons{gap:22px}.example-reasons dd{max-width:65ch}.work-method{gap:32px}}

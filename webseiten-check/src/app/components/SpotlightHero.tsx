@@ -207,7 +207,7 @@ export default function SpotlightHero() {
         <nav className="spotlight-nav" aria-label="Hauptnavigation">
           <Link className="spotlight-brand" href="/">satzstrategie.</Link>
           <div className="spotlight-links">
-            <Link href="/analyse">Analyse</Link><Link href="/beratung">Leistungen</Link><Link href="/wer-wir-sind">Wer wir sind</Link>
+            <Link href="/analyse">Analyse</Link><Link href="/leistungen">Leistungen</Link><Link href="/wer-wir-sind">Wer wir sind</Link>
           </div>
           <Link className="spotlight-nav-action" href="/kontakt" aria-label="Gespräch anfragen"><span className="spotlight-contact-full">Gespräch anfragen ↗</span><span className="spotlight-contact-short">Kontakt ↗</span></Link>
           <MobileMenu className="spotlight-mobile-menu" />

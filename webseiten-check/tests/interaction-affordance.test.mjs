@@ -4,8 +4,8 @@ import { readFileSync } from 'node:fs';
 
 const read = (path) => readFileSync(new URL(`../src/app/${path}`, import.meta.url), 'utf8');
 const activeFiles = [
-  'referenzen/page.tsx', 'referenzen/work-examples.tsx',
-  'page.tsx', 'beratung/page.tsx', 'erster-blick/page.tsx', 'wer-wir-sind/page.tsx',
+  'beispiele/page.tsx', 'beispiele/work-examples.tsx',
+  'page.tsx', 'leistungen/page.tsx', 'erster-blick/page.tsx', 'wer-wir-sind/page.tsx',
   'kontakt/page.tsx', 'impressum/page.tsx', 'datenschutz/page.tsx', 'not-found.tsx',
   'components/StudioShell.tsx', 'components/MobileMenu.tsx', 'components/WordProof.tsx',
   'components/ContactLetter.tsx', 'components/FirstLookLetter.tsx', 'components/CopyEmail.tsx',
@@ -18,9 +18,10 @@ test('public routes and shared controls do not rely on decorative arrows', () =>
 });
 
 test('primary next steps use explicit action surfaces, not linked headlines', () => {
-  assert.match(read('page.tsx'), /className="studio-button hero-action" href="#leistungen">Leistungen entdecken/);
+  assert.match(read('page.tsx'), /className="studio-button hero-action" href="\/kontakt">Projekt anfragen/);
   assert.match(read('components/WordProof.tsx'), /className="studio-button proof-action"/);
   assert.match(read('wer-wir-sind/page.tsx'), /actionLabel="Lilly kontaktieren"/);
   assert.match(read('components/StudioShell.tsx'), /<h2>\{children\}<\/h2>/);
-  assert.match(read('components/FirstLookLetter.tsx'), /studio-button studio-button-secondary first-look-copy/);
+  assert.match(read('components/ContactLetter.tsx'), /<CopyDraft getText=\{copyText\}/);
+  assert.match(read('components/FirstLookLetter.tsx'), /<ContactLetter firstLook/);
 });

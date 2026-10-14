@@ -2,7 +2,6 @@ export type FirstLookRequest = {
   website: string;
   goal: string;
   name: string;
-  wantsFirstLook: boolean;
 };
 
 export const INQUIRY_EMAIL = "lillycontentcreatorwerkstatt@gmail.com";
@@ -24,14 +23,12 @@ export function createFirstLookMessage(request: FirstLookRequest): string {
     "Hallo Lilly,", "",
     `meine Webseite: ${request.website.trim()}`,
     `Das soll sie erreichen: ${request.goal.trim()}`, "",
-    request.wantsFirstLook
-      ? "Ich wünsche mir eine kostenlose kurze Ersteinschätzung per E-Mail. Mir ist bewusst, dass dies keine vollständige Prüfung ist."
-      : "Ich möchte über eine mögliche Zusammenarbeit sprechen. Eine kostenlose Ersteinschätzung habe ich nicht angefordert.",
+    "Ich wünsche mir eine kostenlose kurze Ersteinschätzung per E-Mail. Mir ist bewusst, dass dies keine vollständige Prüfung ist.",
     "", "Viele Grüße", request.name.trim(),
   ].filter(line => line !== undefined).join("\n");
 }
 
 export function createFirstLookMail(request: FirstLookRequest): string {
-  const subject = request.wantsFirstLook ? "Ein erster Blick auf meine Webseite" : "Anfrage zu meiner Webseite";
+  const subject = "Ein erster Blick auf meine Webseite";
   return `mailto:${INQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(createFirstLookMessage(request))}`;
 }

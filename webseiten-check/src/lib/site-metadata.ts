@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.satzstrategie.de";
 export const SITE_TITLE = "Satzstrategie | Wörter brauchen Haltung.";
-export const SITE_DESCRIPTION = "Copywriting, UX/UI-Design und Entwicklung. Satzstrategie verbindet die richtigen Wörter mit klarer Gestaltung und der Technik dahinter.";
-export const PUBLIC_ROUTES = ["/", "/beratung", "/referenzen", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
+export const SITE_DESCRIPTION = "Texte schreiben und prüfen. Webseiten gestalten und entwickeln. Lernen Sie Lilly und Piet kennen und sehen Sie an Beispielen, wie Satzstrategie arbeitet.";
+export const PUBLIC_ROUTES = ["/", "/leistungen", "/beispiele", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
 
 // Local and Vercel preview builds must not enter search results.
 export function isIndexableDeployment(environment = process.env.VERCEL_ENV): boolean {

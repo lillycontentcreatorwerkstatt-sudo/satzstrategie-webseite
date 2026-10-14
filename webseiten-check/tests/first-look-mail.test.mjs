@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { normalizeInquiryWebsite, createFirstLookMessage, createFirstLookMail } from '../src/lib/first-look-mail.ts';
 
-const request = { website: 'https://beispiel.de/angebot?a=1&b=2', goal: 'Mehr Anfragen für Größe & Qualität.', name: 'Testperson', wantsFirstLook: false };
+const request = { website: 'https://beispiel.de/angebot?a=1&b=2', goal: 'Mehr Anfragen für Größe & Qualität.', name: 'Testperson' };
 
 test('website normalization permits common web addresses without fetching them', () => {
   assert.equal(normalizeInquiryWebsite(' beispiel.de '), 'https://beispiel.de/');
@@ -13,9 +13,9 @@ test('website normalization permits common web addresses without fetching them',
   }
 });
 
-test('first look is optional and changes the actual request, not just the display', () => {
-  assert.match(createFirstLookMessage(request), /nicht angefordert/);
-  assert.match(createFirstLookMessage({ ...request, wantsFirstLook: true }), /Ich wünsche mir eine kostenlose kurze Ersteinschätzung/);
+test('a first-look request always asks for the advertised free assessment', () => {
+  assert.doesNotMatch(createFirstLookMessage(request), /nicht angefordert/);
+  assert.match(createFirstLookMessage(request), /Ich wünsche mir eine kostenlose kurze Ersteinschätzung/);
 });
 
 test('mailto keeps recipient fixed and encodes umlauts, line breaks and URL parameters', () => {
@@ -23,7 +23,7 @@ test('mailto keeps recipient fixed and encodes umlauts, line breaks and URL para
   assert.equal(mail.protocol, 'mailto:');
   assert.equal(mail.pathname, 'lillycontentcreatorwerkstatt@gmail.com');
   assert.equal(mail.searchParams.get('body'), createFirstLookMessage(request));
-  assert.equal(mail.searchParams.get('subject'), 'Anfrage zu meiner Webseite');
+  assert.equal(mail.searchParams.get('subject'), 'Ein erster Blick auf meine Webseite');
   assert.equal([...mail.searchParams.keys()].length, 2);
 });
 

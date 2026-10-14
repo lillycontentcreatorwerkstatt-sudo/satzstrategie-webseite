@@ -1,7 +1,6 @@
 export const siteNavigation = [
-  { href: "/beratung", label: "Leistungen", number: "01" },
-  { href: "/referenzen", label: "Beispiele", number: "02" },
-  { href: "/erster-blick", label: "Erster Blick", number: "03" },
-  { href: "/wer-wir-sind", label: "Wir sind", number: "04" },
-  { href: "/kontakt", label: "Kontakt", number: "05" },
+  { href: "/leistungen", label: "Leistungen", number: "01" },
+  { href: "/beispiele", label: "Beispiele", number: "02" },
+  { href: "/wer-wir-sind", label: "Über uns", number: "03" },
+  { href: "/kontakt", label: "Kontakt", number: "04" },
 ];
