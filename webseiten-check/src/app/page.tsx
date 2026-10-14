@@ -10,9 +10,9 @@ export default function Home() {
     <div className="home-opening">
     <section className="paper-hero" aria-labelledby="home-title">
       <div className="hero-art"><Image src="/images/papierarchitektur.webp" alt="" fill preload sizes="(max-width: 760px) 82vw, 50vw" /></div>
-      <h1 id="home-title" className="hero-title"><span>Wörter </span><span>brauchen </span><span>Haltung.</span></h1>
+      <h1 id="home-title" className="hero-title"><span>Endlich </span><span>gesehen </span><span>werden.</span></h1>
       {/* Keep the light offer text between the red CTA and the red discipline band. */}
-      <div className="hero-bottom"><div className="hero-actions"><Link className="studio-button hero-action" href="/kontakt">Projekt anfragen</Link><Link className="hero-example-link" href="/beispiele">Beispiele ansehen</Link></div><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p></div>
+      <div className="hero-bottom"><p className="hero-promise">Sie können viel. Nur sieht es keiner.<br />Das ändern wir.</p><div className="hero-actions"><Link className="studio-button hero-action" href="/kontakt">Projekt anfragen</Link><Link className="hero-example-link" href="/beispiele">Beispiele ansehen</Link></div><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p></div>
     </section>
     <section className="discipline-band" aria-label="Text, Design und Code"><Link href="/leistungen#texte">Text.</Link><Link href="/leistungen#gestaltung">Design.</Link><Link href="/leistungen#entwicklung">Code.</Link></section>
     </div>

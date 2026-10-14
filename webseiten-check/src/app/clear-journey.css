@@ -77,3 +77,17 @@
  .hero-bottom p{font-size:clamp(18px,5.12vw,20px)}
 }
 @media(min-width:761px) and (max-width:1000px){.hero-actions{gap:8px}.hero-example-link{font-size:14px;padding-inline:4px}}
+/* The promise belongs to the headline; the concrete offer remains visible. */
+.hero-bottom .hero-promise{font-size:clamp(17px,1.5vw,22px);line-height:1.4;margin:0}
+@media(min-width:761px){
+ .home-opening{height:auto;grid-template-rows:auto var(--band-height)}
+ .paper-hero{display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:calc(100svh - var(--header-height) - var(--footer-height) - var(--band-height))}
+ .hero-title{font-size:clamp(56px,calc((100svh - var(--header-height) - var(--footer-height) - var(--band-height) - 244px) / 3.15),13.8vw)}
+ .hero-bottom{position:relative;left:auto;bottom:auto;margin:0 0 20px 8vw;width:41%}
+}
+@media(max-width:760px){.hero-bottom .hero-promise{font-size:17px;padding:6px 10px}}
+@media(max-height:560px) and (orientation:landscape){
+ .home-opening{height:auto;grid-template-rows:auto var(--band-height)}
+ .paper-hero{display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:420px}
+ .hero-bottom{position:relative;left:auto;bottom:auto;width:44%;margin:0 0 18px 16px}
+}
