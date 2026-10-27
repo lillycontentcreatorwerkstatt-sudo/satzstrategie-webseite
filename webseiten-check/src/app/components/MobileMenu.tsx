@@ -15,7 +15,7 @@ export default function MobileMenu({ active = "", className = "" }: { active?: s
   const closeMenu = () => { if (menu.current) menu.current.open = false; };
   return <details ref={menu} className={`mobile-menu ${className}`} onKeyDown={event => {
     if (event.key === "Escape" && menu.current?.open) { menu.current.open = false; menu.current.querySelector("summary")?.focus(); }
-  }}><summary>Menü <span className="menu-cross" aria-hidden="true" /></summary><nav aria-label="Mobile Hauptnavigation">
+  }}><summary><span className="visually-hidden">Menü</span><span className="menu-icon" aria-hidden="true"><span /><span /><span /></span></summary><nav aria-label="Mobile Hauptnavigation">
     {siteNavigation.filter(item => item.href !== "/kontakt").map(item => <Link key={item.href} className="menu-item" href={item.href} aria-current={active === item.href ? "page" : undefined} onClick={closeMenu}><span className="menu-number" aria-hidden="true">{item.number}</span>{item.label}{active === item.href && <ProofCaret className="menu-current" />}</Link>)}
     <Link className="studio-button menu-contact" href="/kontakt" aria-current={active === "/kontakt" ? "page" : undefined} onClick={closeMenu}>Kontakt</Link>
     <a className="menu-mail" href={`mailto:${INQUIRY_EMAIL}`}>{INQUIRY_EMAIL}</a>
