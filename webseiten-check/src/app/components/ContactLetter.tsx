@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useId, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { INQUIRY_EMAIL, normalizeInquiryEmail, normalizeInquiryWebsite } from "@/lib/inquiry";
 const subscribe = () => () => {};
 
 export default function ContactLetter({ firstLook = false }: { firstLook?: boolean }) {
   const form = useRef<HTMLFormElement>(null);
   const startedAt = useRef(0);
+  const sentDialog = useRef<HTMLDialogElement>(null);
+  const sentTitle = useId();
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
@@ -35,7 +37,8 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
       const response = await fetch("/api/inquiry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       if (!response.ok) throw new Error(String(response.status));
       form.current?.reset();
-      setStatus(firstLook ? "Danke! Ihre Anfrage ist bei uns angekommen. Ihre Ersteinschätzung erhalten Sie werktags innerhalb von 24 Stunden." : "Danke! Ihre Anfrage ist bei uns angekommen. Wir melden uns per E-Mail bei Ihnen.");
+      setStatus("");
+      sentDialog.current?.showModal();
     } catch {
       setStatus(`Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an ${INQUIRY_EMAIL}.`);
     } finally {
@@ -58,6 +61,14 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
       <p className="studio-form-note">Ihre Anfrage geht direkt an uns. Auf der Webseite wird nichts gespeichert. Mehr dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
     </fieldset>
     <p className="contact-status" role="status">{status}</p>
+    <dialog ref={sentDialog} className="sent-dialog" aria-labelledby={sentTitle} onClick={event => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
+      <div className="sent-sheet">
+        <h2 id={sentTitle}>Danke!<span>Ihre Anfrage ist bei uns angekommen.</span></h2>
+        <p>{firstLook ? "Ihre Ersteinschätzung erhalten Sie werktags innerhalb von 24 Stunden per E-Mail." : "Wir melden uns per E-Mail bei Ihnen."}</p>
+        <span className="sent-signature">Lilly und Piet</span>
+        <button className="studio-button" type="button" onClick={() => sentDialog.current?.close()}>Schließen</button>
+      </div>
+    </dialog>
     <noscript><p>Schreiben Sie Ihr Anliegen direkt an <a href={`mailto:${INQUIRY_EMAIL}`}>{INQUIRY_EMAIL}</a>. Für den ausfüllbaren Brief benötigen Sie JavaScript.</p></noscript>
   </form>;
 }
