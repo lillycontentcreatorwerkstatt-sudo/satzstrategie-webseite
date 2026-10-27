@@ -230,3 +230,13 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 @keyframes sent-in { from { opacity: 0; transform: translateY(24px) scale(.97); } }
 @keyframes sent-blur { from { opacity: 0; } }
 @keyframes sent-sign { from { opacity: 0; } }
+
+/* Nach oben: ein Papierzettel mit dem Einfügungszeichen des Rotstifts, erst sichtbar nach dem ersten Bildschirm. */
+.studio-page .back-to-top { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: calc(var(--footer-height) + 16px); z-index: 36; display: grid; place-items: center; width: 52px; height: 52px; padding: 0; background: var(--paper-light); border: 1px solid var(--ink); box-shadow: 0 14px 26px -16px rgba(28, 35, 51, .6); color: var(--red); cursor: pointer; transform: rotate(-3deg); opacity: 0; visibility: hidden; transition: opacity .2s ease-out, visibility .2s, transform .2s var(--ease); }
+.studio-page .back-to-top[data-visible='true'] { opacity: 1; visibility: visible; }
+.studio-page .back-to-top:hover { transform: rotate(0deg) translateY(-3px); }
+.studio-page .back-to-top:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+.studio-page .back-to-top-caret { width: 22px; height: 26px; margin-top: -2px; }
+@media (min-width: 761px) {
+  .studio-page .back-to-top { right: max(24px, env(safe-area-inset-right)); bottom: calc(var(--footer-height) + 24px); width: 56px; height: 56px; }
+}

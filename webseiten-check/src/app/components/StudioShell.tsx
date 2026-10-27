@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import BackToTop from "./BackToTop";
 import MobileMenu from "./MobileMenu";
 import { siteNavigation } from "./siteNavigation";
 
@@ -12,6 +13,7 @@ export default function StudioShell({ active, children, flowFooter = false }: { 
       <MobileMenu active={active} key={active} />
     </header>
     <main id="studio-content" tabIndex={-1}>{children}</main>
+    <BackToTop />
     <footer className="studio-footer no-print">
       <span className="footer-credit">© {new Date().getFullYear()} Satzstrategie</span>
       <nav aria-label="Kontakt und rechtliche Informationen"><Link className="footer-contact" href="/kontakt">Kontakt</Link><Link href="/impressum">Impressum</Link><Link href="/datenschutz">Datenschutz</Link></nav>
