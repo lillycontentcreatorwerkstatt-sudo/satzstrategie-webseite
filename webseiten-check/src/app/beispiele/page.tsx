@@ -4,7 +4,7 @@ import StudioShell, { StudioNext } from '../components/StudioShell';
 import WorkExamples from './work-examples';
 import './referenzen.css';
 
-export const metadata = pageMetadata('/beispiele', 'Beispiele: Texte, Gestaltung und Bedienung | Satzstrategie', 'An eigenen Arbeitsbeispielen sehen Sie, wie Satzstrategie Texte, Gestaltung, Formulare und die Zugänglichkeit von Webseiten verbessert.');
+export const metadata = pageMetadata('/beispiele', 'Webseitentexte vorher und nachher: Beispiele | Satzstrategie', 'Vorher und nachher: An eigenen Beispielen sehen Sie, wie Satzstrategie Webseitentexte, Gestaltung, Formulare und die Zugänglichkeit von Webseiten verbessert.');
 
 export default function ReferencesPage() {
   return <StudioShell active="/beispiele" flowFooter>

@@ -2,6 +2,28 @@
 
 Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 
+## SEO Phase 1 am 27. Oktober 2026 — lokal, nicht veröffentlicht
+
+- Ziel: Suchbegriffe sichtbar machen, ohne Design oder Hero-Animation zu ändern.
+  Geändert wurden nur Seitentitel und Beschreibungen (Start, Leistungen, Beispiele,
+  Erster Blick, Wer wir sind) mit „Webseitentexte“, „Webdesign“, „Copywriting“,
+  „schreiben lassen“ und „Webseite prüfen lassen“. Das H1 „Endlich gesehen werden“ bleibt.
+- `public/llms.txt` auf die aktuellen Seiten gebracht: `/leistungen` statt `/beratung`,
+  `/beispiele` ergänzt, Rollen und Ersteinschätzung wie auf der Live-Seite beschrieben.
+- Geprüft: ESLint, 21 Tests, Produktionsbuild; Titel im gebauten HTML kontrolliert.
+- Ort: Impressum nutzt bewusst einen Anschriften-Service in Hamburg. Kein lokales SEO,
+  kein Google-Unternehmensprofil; Hamburg nicht als Standort auf der Seite nennen.
+- GitHub Pages am 27. Oktober 2026 auf Lillys Wunsch im Repo abgeschaltet.
+- Offen: E-Mail-Adresse mit eigener Domain bei IONOS (danach Gmail in Impressum,
+  Kontakt, Schema und llms.txt ersetzen), Google Search Console und Bing Webmaster Tools.
+- Sicherheitsupdate per `npm audit fix` (nur `package-lock.json`): next 16.4.0 → 16.4.3
+  (u. a. GHSA-2464-fhr4-w9xw, GHSA-673q-mjm6-r5xr), dazu undici und zod. Danach
+  `npm audit`: 0 Lücken. ESLint, 21 Tests, Produktionsbuild erfolgreich; lokaler
+  Produktionsserver: alle öffentlichen Seiten HTTP 200, Hero-Bild über die
+  Bildoptimierung geladen, keine Browserfehler.
+- Danach geplant (Phase 2): Bereich „Selbst machen“ mit Schulungsseite, Ratgeber und
+  Checkliste. Format und Preis der Schulung sind noch offen.
+
 ## Veröffentlichung am 9. Oktober 2026
 
 - Lilly hat Commit, Push und Veröffentlichung des aktuellen Vorschau-Stands

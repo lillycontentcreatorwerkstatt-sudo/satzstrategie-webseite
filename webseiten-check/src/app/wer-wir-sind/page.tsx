@@ -1,6 +1,6 @@
 import { pageMetadata } from "@/lib/site-metadata";
 import StudioShell, { StudioNext } from "../components/StudioShell";
-export const metadata = pageMetadata("/wer-wir-sind", "Wir sind Lilly & Piet | Satzstrategie", "Lilly schreibt Texte, gestaltet und entwickelt Webseiten. Piet liest mit und hinterfragt die Entwürfe. Lernen Sie die Menschen hinter Satzstrategie kennen.");
+export const metadata = pageMetadata("/wer-wir-sind", "Wir sind Lilly & Piet: Copywriting und Webdesign | Satzstrategie", "Lilly schreibt Texte, gestaltet und entwickelt Webseiten. Piet liest mit und hinterfragt die Entwürfe. Lernen Sie die Menschen hinter Satzstrategie kennen.");
 export default function StudioPage() {
   return <StudioShell active="/wer-wir-sind" flowFooter>
     <section className="about-hero"><h1><span>Lilly</span><span className="about-amp" aria-hidden="true">&amp;</span><span>Piet</span></h1><p>Zwei Menschen,<br />eine gemeinsame Satzstrategie.</p><p>Lilly arbeitet seit vielen Jahren mit Texten, Gestaltung und Code. Einen Lebenslauf brauchen Sie dafür nicht: Diese Webseite hat sie geschrieben, gestaltet und gebaut. Piet hat mitgelesen und nachgefragt, bis jeder Satz saß.</p></section>

@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/site-metadata";
 import StudioShell, { StudioNext } from "../components/StudioShell";
 import "../clear-journey.css";
 
-export const metadata = pageMetadata("/leistungen", "Leistungen: Texte und Webseiten | Satzstrategie", "Texte schreiben und prüfen, Webseiten gestalten und entwickeln. Erfahren Sie, was wir übernehmen und wie wir Umfang und Preis gemeinsam klären.");
+export const metadata = pageMetadata("/leistungen", "Webseitentexte schreiben lassen & Webdesign | Satzstrategie", "Wir schreiben und überarbeiten Webseitentexte, gestalten und entwickeln Webseiten und prüfen bestehende Seiten. Umfang und Preis klären wir gemeinsam.");
 const services = [
   { id: "texte", title: "Texte schreiben und prüfen", copy: "Sie brauchen Worte für Ihr Angebot? Wir schreiben neue Webseitentexte oder überarbeiten Ihre vorhandenen Texte. Wir prüfen, was verständlich ist, was fehlt und was nach Ihnen klingt.", result: "Sie bekommen ausformulierte Texte. Welche Seiten und welche Überarbeitung dazugehören, besprechen wir vorab.", link: "/beispiele#text", label: "Textbeispiele ansehen" },
   { id: "gestaltung", title: "Webseiten gestalten", copy: "Wir ordnen Ihre Inhalte und entwickeln die Gestaltung dazu: Schrift, Bilder, Farben und die Wege durch die Seite. Damit Besucher Ihr Angebot verstehen und finden, was sie suchen.", result: "Die Gestaltung berücksichtigt von Anfang an das Handy und den Computer. Gut lesbare Schrift und erkennbare Bedienelemente gehören dazu.", link: "/beispiele#design", label: "Gestaltungsbeispiel ansehen" },

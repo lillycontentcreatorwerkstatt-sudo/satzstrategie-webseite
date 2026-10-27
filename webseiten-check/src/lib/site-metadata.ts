@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.satzstrategie.de";
-export const SITE_TITLE = "Texte und Webseiten, die zeigen, was Sie können | Satzstrategie";
-export const SITE_DESCRIPTION = "Texte schreiben und prüfen. Webseiten gestalten und entwickeln. Lernen Sie Lilly und Piet kennen und sehen Sie an Beispielen, wie Satzstrategie arbeitet.";
+export const SITE_TITLE = "Webseitentexte & Webdesign, die zeigen, was Sie können | Satzstrategie";
+export const SITE_DESCRIPTION = "Copywriting, Webdesign und Entwicklung: Lilly und Piet schreiben Ihre Webseitentexte, gestalten und bauen Ihre Webseite. Mit kostenloser Ersteinschätzung.";
 export const PUBLIC_ROUTES = ["/", "/leistungen", "/beispiele", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
 
 // Local and Vercel preview builds must not enter search results.
