@@ -245,3 +245,43 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   .studio-page .back-to-top[data-visible='true'] { transform: rotate(-3deg); }
   .studio-page .back-to-top[data-visible='true']:hover { transform: rotate(0deg) translateY(-3px); }
 }
+
+/* Kopfzeile: ruhige Leseschrift, der Rotstift markiert die aktuelle Seite, Kontakt ist der einzige dunkle Knopf. */
+@media (min-width: 1001px) {
+  .studio-page .studio-desktop-nav { gap: clamp(26px, 2.8vw, 46px); }
+  .studio-page .studio-desktop-nav a { position: relative; font-size: 17px; color: var(--ink); text-decoration: none; }
+  .studio-page .studio-desktop-nav a:not(.nav-contact)::after { content: ''; position: absolute; left: -2px; right: -2px; bottom: 7px; height: 2px; border-radius: 2px; background: var(--red); transform: scaleX(0) rotate(-1.2deg); transform-origin: left center; transition: transform .3s var(--ease); }
+  .studio-page .studio-desktop-nav a:hover::after, .studio-page .studio-desktop-nav a[aria-current='page']::after { transform: scaleX(1) rotate(-1.2deg); }
+  .studio-page .studio-desktop-nav a:hover, .studio-page .studio-desktop-nav a[aria-current='page'] { text-decoration: none; }
+  .studio-page .studio-desktop-nav .nav-contact { min-height: 48px; padding-inline: 24px; background: var(--ink); border-color: var(--ink); color: var(--paper-light); font-weight: 700; }
+  .studio-page .studio-desktop-nav .nav-contact:hover, .studio-page .studio-desktop-nav .nav-contact[aria-current='page'] { background: var(--ink-soft); border-color: var(--ink-soft); color: var(--paper-light); }
+  .studio-page .studio-desktop-nav .nav-contact[aria-current='page'] { box-shadow: inset 0 -3px 0 var(--red); }
+}
+
+/* Handymenü als Inhaltsverzeichnis: ein Papierblatt über der unscharf gestellten Seite. */
+@media (max-width: 1000px) {
+  html:has(.mobile-menu[open]) { overflow: hidden; }
+  .studio-page .mobile-menu summary { gap: 14px; min-height: 48px; padding: 10px 16px; font-size: 17px; font-weight: 700; }
+  .studio-page .mobile-menu[open] summary { background: var(--ink); color: var(--paper-light); }
+  .studio-page .mobile-menu .menu-cross::before, .studio-page .mobile-menu .menu-cross::after { height: 2px; top: 6.5px; }
+  .studio-page .mobile-menu[open]::before { content: ''; position: fixed; inset: var(--header-height) 0 0; background: rgba(233, 234, 228, .6); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .studio-page .mobile-menu nav { position: fixed; top: var(--header-height); max-height: calc(100dvh - var(--header-height)); padding: 8px var(--gutter) 28px; border-bottom: 1px solid var(--ink); box-shadow: 0 24px 40px -24px rgba(28, 35, 51, .55); }
+  .studio-page .mobile-menu nav .menu-item { display: grid; grid-template-columns: 36px 1fr auto; column-gap: 10px; align-items: center; min-height: 68px; font: 400 clamp(24px, 7.5vw, 30px)/1.15 var(--reading); color: var(--ink); text-decoration: none; border-top: 1px solid var(--line); }
+  .studio-page .mobile-menu nav .menu-item:first-child { border-top: 0; }
+  .studio-page .mobile-menu .menu-number { font-size: 14px; font-weight: 700; letter-spacing: .06em; color: var(--red); font-variant-numeric: tabular-nums; }
+  .studio-page .mobile-menu .menu-current { width: 20px; height: 24px; color: var(--red); }
+  .studio-page .mobile-menu nav .menu-contact { display: flex; width: 100%; min-height: 56px; margin-top: 20px; font: 700 18px/1.2 var(--reading); text-decoration: none; border: 1px solid var(--ink); }
+  .studio-page .mobile-menu nav .menu-mail { display: flex; justify-content: center; min-height: 44px; margin-top: 8px; font-size: 15px; color: var(--muted); border: 0; }
+}
+@media (max-width: 1000px) and (prefers-reduced-motion: no-preference) {
+  .studio-page .mobile-menu[open]::before { animation: menu-blur .3s ease-out both; }
+  .studio-page .mobile-menu[open] nav { animation: menu-sheet .35s var(--ease) both; }
+  .studio-page .mobile-menu[open] nav > * { animation: menu-item .45s var(--ease) both; }
+  .studio-page .mobile-menu[open] nav > :nth-child(2) { animation-delay: 40ms; }
+  .studio-page .mobile-menu[open] nav > :nth-child(3) { animation-delay: 80ms; }
+  .studio-page .mobile-menu[open] nav > :nth-child(4) { animation-delay: 120ms; }
+  .studio-page .mobile-menu[open] nav > :nth-child(n+5) { animation-delay: 160ms; }
+}
+@keyframes menu-blur { from { opacity: 0; } }
+@keyframes menu-sheet { from { opacity: 0; transform: translateY(-12px); } }
+@keyframes menu-item { from { opacity: 0; transform: translateY(10px); } }
