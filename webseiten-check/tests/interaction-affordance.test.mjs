@@ -7,7 +7,7 @@ const activeFiles = [
   'beispiele/page.tsx', 'beispiele/work-examples.tsx',
   'page.tsx', 'leistungen/page.tsx', 'erster-blick/page.tsx', 'wer-wir-sind/page.tsx',
   'kontakt/page.tsx', 'impressum/page.tsx', 'datenschutz/page.tsx', 'not-found.tsx',
-  'components/StudioShell.tsx', 'components/MobileMenu.tsx', 'components/WordProof.tsx',
+  'components/StudioShell.tsx', 'components/MobileMenu.tsx',
   'components/ContactLetter.tsx', 'components/FirstLookLetter.tsx', 'components/CopyEmail.tsx',
 ];
 
@@ -19,7 +19,6 @@ test('public routes and shared controls do not rely on decorative arrows', () =>
 
 test('primary next steps use explicit action surfaces, not linked headlines', () => {
   assert.match(read('page.tsx'), /className="studio-button hero-action" href="\/kontakt">Projekt anfragen/);
-  assert.match(read('components/WordProof.tsx'), /className="studio-button proof-action"/);
   assert.match(read('wer-wir-sind/page.tsx'), /actionLabel="Uns kontaktieren"/);
   assert.match(read('components/StudioShell.tsx'), /<h2>\{children\}<\/h2>/);
   assert.match(read('components/ContactLetter.tsx'), /type="submit">\{sending \? "Wird gesendet …" : "Anfrage senden"\}/);

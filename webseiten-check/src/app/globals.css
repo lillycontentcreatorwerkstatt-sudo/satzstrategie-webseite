@@ -113,20 +113,6 @@ em { font-family: var(--reading); font-weight: 400; }
   .hero-bottom .hero-action { min-height: 44px; padding: 8px 10px; }
   .discipline-band a { font-size: 44px; }
 }
-.proof-section { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 8%; background: #ded5c4; padding: var(--space) calc(var(--gutter) + 1vw); }
-.proof-intro p { margin-top: 28px; max-width: 37ch; }
-.proof-intro .small-note { margin-top: 16px; }
-.proof-paper { background: var(--paper-light); padding: clamp(24px, 3.4vw, 58px); transform: rotate(-2deg); box-shadow: 12px 25px 35px #30251526; }
-.proof-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-.proof-tabs button { flex: 1; min-height: 44px; padding: 10px 12px; border: 1px solid var(--ink); background: var(--paper-light); font-size: 14px; }
-.proof-tabs button:hover { background: var(--paper); }
-.proof-tabs button[aria-pressed='true'] { background: var(--ink); color: var(--white); font-weight: 700; }
-.proof-paper .proof-action { width: 100%; }
-.proof-content { min-height: 300px; }
-.proof-sentence { font-size: clamp(25px, 2.7vw, 42px); line-height: 1.45; letter-spacing: -.025em; }
-.proof-strike { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 3px; }
-.proof-insert { color: var(--red); text-decoration: underline; text-underline-offset: .15em; }
-.proof-annotation { font-size: 15px; font-style: italic; color: var(--red); margin: 26px 0 34px; line-height: 1.6; }
 .studio-next { display: grid; gap: 28px; padding: 65px var(--gutter) 75px; border-top: 1px solid var(--line); }
 .studio-next p { font-size: 15px; margin-top: 18px; }
 .studio-next h2 { font-size: clamp(42px, 6.8vw, 108px); line-height: 1.2; }
@@ -304,8 +290,6 @@ em { font-family: var(--reading); font-weight: 400; }
 .not-found h1 { font-size: clamp(72px, 13vw, 180px); margin: 18px 0 40px; }
 @media (min-width: 1800px) { .studio-page { max-width: 1920px; margin: auto; } }
 @media (max-width: 1100px) and (min-width: 761px) {
-  .proof-section { gap: 6%; }
-  .proof-content { min-height: 320px; }
   .person-sheet { padding: 35px 30px; }
   .studio-check-layout { gap: 5%; }
   .studio-check-intro h1 { font-size: 7.5vw; }
@@ -313,14 +297,6 @@ em { font-family: var(--reading); font-weight: 400; }
 @media (max-width: 760px) {
   body { font-size: 15px; }
   .studio-header { padding-block: 8px; }
-  .proof-section { display: block; padding: 65px var(--gutter); }
-  .proof-intro h2 { font-size: 12vw; }
-  .proof-intro p { max-width: none; margin-top: 24px; }
-  .proof-paper { margin: 42px 0 0; transform: rotate(-1.3deg); padding: 25px; }
-  .proof-content { min-height: 285px; }
-  .proof-sentence { font-size: 27px; }
-  .proof-tabs button { font-size: 14px; }
-  .proof-annotation { font-size: 14px; }
   .studio-next { padding: 45px var(--gutter) 55px; }
   .studio-next p { font-size: 14px; }
   .studio-next h2 { font-size: clamp(38px, 10vw, 64px); }
