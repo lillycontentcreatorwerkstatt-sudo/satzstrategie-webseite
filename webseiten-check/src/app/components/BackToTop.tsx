@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import { ProofCaret } from "./Proof";
 
-// Erscheint nach etwa einer Bildschirmhöhe und bringt Leserinnen samt Tastaturfokus zurück an den Anfang.
+// Erscheint nach etwa 40 % einer Bildschirmhöhe und bringt Leserinnen samt Tastaturfokus zurück an den Anfang.
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     let frame = 0;
-    const update = () => { frame = 0; setVisible(window.scrollY > window.innerHeight * 0.8); };
+    const update = () => { frame = 0; setVisible(window.scrollY > window.innerHeight * 0.4); };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
