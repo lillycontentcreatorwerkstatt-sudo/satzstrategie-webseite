@@ -2,7 +2,7 @@
 
 Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 
-## SEO Phase 1 am 27. Oktober 2026 — lokal, nicht veröffentlicht
+## SEO Phase 1 am 27. Oktober 2026 — veröffentlicht
 
 - Ziel: Suchbegriffe sichtbar machen, ohne Design oder Hero-Animation zu ändern.
   Geändert wurden nur Seitentitel und Beschreibungen (Start, Leistungen, Beispiele,
@@ -28,9 +28,14 @@ Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
   TXT @ google-site-verification=Vqcsu3p1gWulO3-oFVyE1FY-HYe8-QV2jUFnMO3BvFA ·
   TXT @ google-site-verification=A8yVxifiR5btIk-EgykbiQz4sp8DlUBNeoPk77QDww0.
   Mail-Einträge (MX, SPF, DKIM, DMARC, autodiscover) legt IONOS selbst an.
-- Offen: Postfach mit Lillys E-Mail-Programm verbinden; danach die Gmail-Adresse in
-  Impressum, Kontakt, Schema und llms.txt durch kontakt@satzstrategie.de ersetzen.
-  Bing Webmaster Tools (Import aus Search Console).
+- Postfach in Apple Mail verbunden (IMAP/SMTP IONOS), in beide Richtungen getestet.
+  Gmail-Adresse überall durch kontakt@satzstrategie.de ersetzt und live geprüft.
+- Bing Webmaster Tools am 27. Oktober 2026 eingerichtet: Import aus der Search Console
+  (Konto lillycontentcreatorwerkstatt@gmail.com, Bing hat nur Leserechte), Property
+  `https://satzstrategie.de/`, Sitemap `https://www.satzstrategie.de/sitemap.xml`
+  eingereicht. Erste Daten nach bis zu 48 Stunden.
+- Offen: 5-€-Autorisierung von IONOS in PayPal ab etwa 3. November 2026 prüfen.
+  Optional Anmeldung in zwei Schritten für das Postfach.
 - Sicherheitsupdate per `npm audit fix` (nur `package-lock.json`): next 16.4.0 → 16.4.3
   (u. a. GHSA-2464-fhr4-w9xw, GHSA-673q-mjm6-r5xr), dazu undici und zod. Danach
   `npm audit`: 0 Lücken. ESLint, 21 Tests, Produktionsbuild erfolgreich; lokaler
