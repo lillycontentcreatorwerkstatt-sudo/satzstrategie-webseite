@@ -21,7 +21,7 @@ export default function ValidationForm() {
     <input id={`${id}-name`} value={name} onChange={event => setName(event.target.value)} autoComplete="off" />
     <label htmlFor={`${id}-zip`}>Postleitzahl in Deutschland <span>(Pflichtfeld)</span></label>
     <input id={`${id}-zip`} ref={zipField} value={zip} onChange={event => { setZip(event.target.value); setChecked(false); }} inputMode="numeric" autoComplete="off" required aria-invalid={invalid} aria-describedby={`${id}-result`} />
-    <div id={`${id}-result`} className={`work-feedback${invalid ? ' work-error' : ''}`} role="status">{invalid ? <><ErrorMark /><span>Bitte geben Sie die Postleitzahl mit fünf Ziffern ein.</span></> : checked ? 'Das Format stimmt. Dieses Beispiel prüft nur fünf Ziffern, keine Zustelladresse.' : 'Probieren Sie „123“ und danach „04109“. Die übrigen Eingaben bleiben erhalten.'}</div>
+    <div id={`${id}-result`} className={`work-feedback${invalid ? ' work-error' : ''}`} role="status">{invalid ? <><ErrorMark /><span>Bitte geben Sie die Postleitzahl mit fünf Ziffern ein.</span></> : checked ? 'Das Format stimmt. Dieses\u00A0Beispiel prüft nur fünf Ziffern, keine Zustelladresse.' : 'Probieren Sie „123“ und danach „04109“. Die\u00A0übrigen Eingaben bleiben erhalten.'}</div>
     <button className="work-solid" type="submit">Postleitzahl prüfen</button>
   </form>;
 }

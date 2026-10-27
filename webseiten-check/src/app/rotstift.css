@@ -329,5 +329,11 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 }
 
 /* Ersteinschätzung: Die Randnotiz steht mit Luft neben dem Kästchen und ist gut lesbar. */
-.studio-page .first-look-action { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 36px; }
+.studio-page .first-look-action { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 36px; }
 .studio-page .home-contact .first-look-action .margin-note { flex: 1 1 220px; max-width: 320px; margin: 0; font-size: clamp(32px, 2.8vw, 42px); word-spacing: .12em; -webkit-text-stroke: .5px currentColor; }
+/* Beide Kästchen schließen unten auf einer Linie ab. */
+@media (min-width: 761px) { .studio-page .home-contact { align-items: end; } }
+/* Die Bildunterschrift hält Abstand zur schräg liegenden Karte. */
+.studio-page .specimen-caption { margin-top: 28px; }
+/* Die Handschrift hat kein sichtbares geschütztes Leerzeichen; die kurze Notiz bleibt so auf einer Zeile. */
+.studio-page .hero-note { white-space: nowrap; }
