@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/beratung", destination: "/leistungen", permanent: true },
+      { source: "/angebot.html", destination: "/leistungen", permanent: true },
       { source: "/referenzen", destination: "/beispiele", permanent: true },
       { source: "/wir-sind", destination: "/wer-wir-sind", permanent: true },
       { source: "/ueber-uns", destination: "/wer-wir-sind", permanent: true },
