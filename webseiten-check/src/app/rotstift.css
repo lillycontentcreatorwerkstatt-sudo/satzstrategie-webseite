@@ -298,3 +298,32 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 /* Startseite: Die wichtigste Handlung trägt die Farbe des Rotstifts. */
 .studio-page .hero-bottom .hero-action { background: var(--red); border-color: var(--red); color: var(--paper-light); letter-spacing: .04em; }
 .studio-page .hero-bottom .hero-action:hover:not(:disabled) { background: var(--red-deep); border-color: var(--red-deep); }
+
+/* Startseite: eine gemeinsame Linie. Alle zweispaltigen Abschnitte teilen ein Raster,
+   die rechte Spalte beginnt überall an derselben Kante. */
+.studio-page .paper-specimen { margin: 0; padding-inline: 0; }
+@media (min-width: 761px) {
+  .studio-page :is(.home-offer, .paper-example, .home-people, .home-contact) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(32px, 5vw, 96px); }
+  .studio-page .hero-bottom { margin-left: var(--gutter); }
+}
+/* Die Randnotiz sitzt innerhalb der rechten Spalte, statt das Raster zu verschieben. */
+@media (min-width: 1100px) {
+  .studio-page .home-people.with-margin { padding-right: var(--gutter); }
+  .studio-page .home-people > div { padding-right: 250px; }
+}
+@media (min-width: 1100px) and (max-width: 1299px) {
+  .studio-page .home-people > div { padding-right: 0; }
+  .studio-page .home-people.with-margin::after { display: none; }
+  .studio-page .home-people.with-margin .margin-note { position: static; width: auto; margin-top: 20px; }
+}
+@media (min-width: 761px) and (max-width: 1299px) {
+  .studio-page .home-people .margin-note { grid-column: 2; }
+}
+@media (max-width: 760px) {
+  .studio-page .paper-example { grid-template-columns: minmax(0, 1fr); }
+  .studio-page .hero-head { padding-left: var(--gutter); }
+  .studio-page .discipline-band { padding-inline: var(--gutter); }
+}
+@media (max-width: 760px) and (orientation: portrait) {
+  .studio-page .hero-bottom { width: calc(100% - 2 * var(--gutter)); margin-inline: var(--gutter); }
+}
