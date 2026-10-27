@@ -402,9 +402,5 @@ em { font-family: var(--reading); font-weight: 400; }
 .studio-page--flow-footer .studio-footer { position: static; margin-top: 0; }
 @media (min-width: 761px) and (max-width: 1000px) { .studio-desktop-nav { gap: 18px; } .studio-header { gap: 16px; } }
 
-.copy-draft {margin-top:16px}
-.copy-draft>p:empty {display:none}
-.copy-draft>p {font-size:14px;line-height:1.6;margin-top:12px;max-width:52ch}
-.copy-draft textarea {width:100%;overflow-wrap:anywhere}
 
 .recovery-links{display:flex;flex-wrap:wrap;gap:16px 32px;margin:24px 0 36px}.recovery-links a{display:inline-flex;align-items:center;min-height:48px}.not-found>p{color:var(--ink);font-size:18px}

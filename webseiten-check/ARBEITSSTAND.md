@@ -34,6 +34,11 @@ Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
   (Konto lillycontentcreatorwerkstatt@gmail.com, Bing hat nur Leserechte), Property
   `https://satzstrategie.de/`, Sitemap `https://www.satzstrategie.de/sitemap.xml`
   eingereicht. Erste Daten nach bis zu 48 Stunden.
+- Kontaktformular sendet seit 27. Oktober 2026 selbst: `POST /api/inquiry` schickt die
+  Anfrage per nodemailer über smtp.ionos.de (Konto kontakt@satzstrategie.de) an dasselbe
+  Postfach, Reply-To ist die Adresse des Besuchers. Passwort nur als Vercel-Secret
+  `SMTP_PASSWORD` (Production). Spam-Schutz: verstecktes Feld `company` und 3-Sekunden-Sperre.
+  Kein Speichern, kein E-Mail-Entwurf mehr; Datenschutz entsprechend angepasst (IONOS statt Gmail).
 - Offen: 5-€-Autorisierung von IONOS in PayPal ab etwa 3. November 2026 prüfen.
   Optional Anmeldung in zwei Schritten für das Postfach.
 - Sicherheitsupdate per `npm audit fix` (nur `package-lock.json`): next 16.4.0 → 16.4.3

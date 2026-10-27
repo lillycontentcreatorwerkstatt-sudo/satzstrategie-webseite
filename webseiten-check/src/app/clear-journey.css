@@ -52,7 +52,6 @@
 .working-together a {display:inline-flex;min-height:48px;align-items:center;margin-top:20px;color:var(--red-deep)}
 .letter-fields {border:0;margin:0;padding:0;min-width:0}
 .letter-purpose {font-size:17px;margin-top:20px}
-.contact-letter .copy-draft .studio-button {margin-top:0}
 .studio-copy-email>a {overflow-wrap:anywhere}
 .first-look-simple .contact-intro h1 {font-size:clamp(48px,6.5vw,92px)}
 .first-look-simple h1 span {color:var(--red)}

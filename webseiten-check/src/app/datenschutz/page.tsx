@@ -7,7 +7,7 @@ export default function DatenschutzPage() {
   return (
     <InteriorShell title="Datenschutz." intro="Welche Daten bei einem Besuch und einer Kontaktaufnahme verarbeitet werden.">
       <article className="legal-document">
-        <p>Stand: 14. Oktober 2026. Diese Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
+        <p>Stand: 27. Oktober 2026. Diese Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
 
         <h2>Verantwortlich</h2>
         <p>Peter Josef Klein<br />c/o IP-Management #8336<br />Ludwig-Erhard-Straße 18<br />20459 Hamburg</p>
@@ -22,14 +22,18 @@ export default function DatenschutzPage() {
         <p>Die Schriften und Bilder werden mit der Webseite ausgeliefert. Beim Laden der Seite werden keine Google Fonts nachgeladen. Wir setzen in dieser Fassung keine Werbepixel, Besuchsstatistik oder eingebetteten Karten und Videos ein. Die Webseite setzt keine Cookies und speichert keine Angaben im lokalen Browser-Speicher.</p>
         <p>Externe Links öffnen die Seite des jeweiligen Anbieters erst, wenn Sie sie aufrufen. Dort gelten dessen Datenschutzhinweise.</p>
 
+        <h2>Kontaktformular</h2>
+        <p>Wenn Sie uns über den Kontaktbrief oder die Anfrage zur Ersteinschätzung schreiben, übertragen wir Ihre Angaben nach Ihrem Klick auf „Anfrage senden“ verschlüsselt an unseren Webserver: Ihre E-Mail-Adresse, Ihre Nachricht, Ihre Webadresse und, falls angegeben, Ihren Namen. Der Webserver leitet diese Angaben sofort als E-Mail an unser Postfach weiter. Auf der Webseite selbst werden sie nicht gespeichert; es gibt keine Datenbank und keine Weitergabe an andere Dienste.</p>
+        <p>Für die Übertragung verarbeitet unser Hostingdienst Vercel die Angaben kurzzeitig (siehe „Aufruf der Webseite“). Versand und Empfang der E-Mail erfolgen über unser Postfach bei IONOS.</p>
+
         <h2>Kontakt per E-Mail</h2>
-        <p>Der Kontaktbrief auf der Webseite öffnet einen Entwurf in Ihrem E-Mail-Programm. Die eingegebenen Angaben werden durch dieses Formular nicht an unseren Server übertragen oder dort gespeichert. Erst wenn Sie die E-Mail selbst versenden, erhalten wir Ihre Nachricht.</p>
-        <p>Wir verarbeiten Ihre Absenderadresse, den Inhalt und freiwillige Angaben, um Ihre Anfrage zu beantworten. Bei Anfragen zu einem Auftrag ist Art. 6 Abs. 1 lit. b DSGVO die Rechtsgrundlage; bei anderen Anliegen Art. 6 Abs. 1 lit. f DSGVO mit dem Interesse, die gewünschte Kommunikation zu ermöglichen.</p>
-        <p>Unser Postfach liegt bei Gmail. Beim Versand und Empfang verarbeitet Google die Nachricht und die damit verbundenen Daten; auch eine Verarbeitung außerhalb der EU bzw. des EWR ist möglich. Weitere Informationen enthält die <a href="https://policies.google.com/privacy?hl=de">Datenschutzerklärung von Google</a>. Bitte senden Sie uns keine sensiblen Daten, die für Ihre Anfrage nicht erforderlich sind.</p>
+        <p>Sie können uns auch direkt an <a href="mailto:kontakt@satzstrategie.de">kontakt@satzstrategie.de</a> schreiben.</p>
+        <p>Wir verarbeiten Ihre Absenderadresse, den Inhalt und freiwillige Angaben, um Ihre Anfrage zu beantworten. Das gilt für Nachrichten über das Kontaktformular und für direkte E-Mails. Bei Anfragen zu einem Auftrag ist Art. 6 Abs. 1 lit. b DSGVO die Rechtsgrundlage; bei anderen Anliegen Art. 6 Abs. 1 lit. f DSGVO mit dem Interesse, die gewünschte Kommunikation zu ermöglichen.</p>
+        <p>Unser Postfach liegt bei der IONOS SE, Elgendorfer Straße 57, 56410 Montabaur, Deutschland. IONOS verarbeitet die Nachrichten und die damit verbundenen Daten in unserem Auftrag. Weitere Informationen enthält die <a href="https://www.ionos.de/terms-gtc/datenschutzerklaerung/">Datenschutzerklärung von IONOS</a>. Bitte senden Sie uns keine sensiblen Daten, die für Ihre Anfrage nicht erforderlich sind.</p>
         <p>Eine Kontaktanfrage meldet Sie nicht für einen Newsletter an.</p>
 
         <h2>Persönliche Ersteinschätzung und Textbeispiele</h2>
-        <p>Unter „Erster Blick“ können Sie einen E-Mail-Entwurf mit Ihrer Webadresse, dem Ziel Ihrer Webseite und optional Ihrem Namen vorbereiten. Der Brieftext enthält die Bitte um eine kostenlose kurze Ersteinschätzung. Sie können ihn vor dem Versand in Ihrem E-Mail-Programm ändern. Wie beim Kontaktbrief werden diese Eingaben erst durch Ihren eigenen E-Mail-Versand an uns übermittelt. Die Funktion „Anfrage kopieren“ schreibt den vorbereiteten Text nach Ihrem Klick in Ihre Zwischenablage.</p>
+        <p>Unter „Erster Blick“ senden Sie uns Ihre Webadresse, das Ziel Ihrer Webseite, Ihre E-Mail-Adresse und optional Ihren Namen. Die Nachricht enthält die Bitte um eine kostenlose kurze Ersteinschätzung. Für die Übertragung gelten die Hinweise zum Kontaktformular.</p>
         <p>Die Webseite führt keinen automatischen KI-Check durch und überträgt diese Eingaben nicht an einen KI-, Newsletter- oder Tabellendienst. Die Textbeispiele sind selbst entwickelt und rufen keine Besucher-Webseite ab. Für Ihre Nachricht gelten die Hinweise zur Kontaktaufnahme per E-Mail.</p>
 
         <h2>Postanschrift</h2>

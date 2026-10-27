@@ -3,7 +3,7 @@ import StudioShell from "../components/StudioShell";
 import FirstLookLetter from "../components/FirstLookLetter";
 import CopyEmail from "../components/CopyEmail";
 import { pageMetadata } from "@/lib/site-metadata";
-import { INQUIRY_EMAIL } from "@/lib/first-look-mail";
+import { INQUIRY_EMAIL } from "@/lib/inquiry";
 import "../clear-journey.css";
 export const metadata = pageMetadata("/erster-blick", "Webseite prüfen lassen: kostenlose Ersteinschätzung | Satzstrategie", "Lilly und Piet sehen sich Ihre Webseite persönlich an. Sie erhalten ein bis zwei konkrete Hinweise kostenlos per E-Mail, keine automatische Auswertung.");
 export default function FirstLookPage() {
