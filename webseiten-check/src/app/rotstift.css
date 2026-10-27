@@ -178,6 +178,12 @@
 .studio-page .contact-signature em { font-family: var(--hand); font-style: normal; font-size: 64px; color: var(--red); transform: rotate(-6deg); }
 .studio-page .first-look-simple h1 span { color: inherit; }
 .studio-page .contact-letter { transform: rotate(.6deg); box-shadow: 0 22px 40px -28px rgba(28, 35, 51, .45); border: 1px solid var(--line); }
+/* Beschriftung führt, Beispieltext tritt zurück: fett über der Linie, kursiv und heller darin. */
+.studio-page .contact-letter .studio-field { gap: 4px; }
+.studio-page .contact-letter .studio-field label { font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.studio-page .contact-letter .studio-field label > span { font-size: 14px; font-weight: 400; color: var(--muted); }
+.studio-page .contact-letter .studio-field input, .studio-page .contact-letter .studio-field textarea { font-size: 18px; color: var(--ink); border-bottom: 2px solid var(--ink); padding: 10px 0; }
+.studio-page .contact-letter .studio-field input::placeholder, .studio-page .contact-letter .studio-field textarea::placeholder { font-style: italic; color: #6b6f69; }
 .studio-page .studio-copy-email [role='status'] { color: var(--ink); }
 .studio-page .letter-stamp { color: var(--ink); border-color: var(--ink); }
 
