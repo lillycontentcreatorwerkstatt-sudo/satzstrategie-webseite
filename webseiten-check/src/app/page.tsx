@@ -13,7 +13,7 @@ export default function Home() {
       <div className="hero-art"><Image src="/images/papierarchitektur.webp" alt="" fill preload sizes="(max-width: 760px) 82vw, 50vw" /></div>
       {/* Die Floskel wird gestrichen, die Aussage eingefügt: einmal beim Laden, sonst ruhig. */}
       <div className="hero-head">
-        <p className="hero-draft"><span className="hero-draft-text"><del>Wir bieten innovative Lösungen.</del><ProofStrike /></span><span className="hand">zu allgemein. Was genau?</span></p>
+        <p className="hero-draft"><span className="hero-draft-text"><del>Qualität, die überzeugt.</del><ProofStrike /></span><span className="hand">zu allgemein. Was genau?</span></p>
         <h1 id="home-title" className="hero-title"><ProofCaret /><span className="hero-title-words"><span>Endlich </span><span>gesehen </span><span>werden.</span></span></h1>
       </div>
       <div className="hero-bottom"><p className="hero-promise">Sie können viel. Nur sieht es keiner.<br />Das ändern wir.</p><div className="hero-actions"><Link className="studio-button hero-action" href="/kontakt">Projekt anfragen</Link><Link className="hero-example-link" href="/beispiele">Beispiele ansehen</Link><span className="hand hero-note">Ja. Das ist es. – P.</span></div><p>Texte <strong>schreiben und prüfen.</strong><br />Webseiten <strong>gestalten und entwickeln.</strong></p></div>

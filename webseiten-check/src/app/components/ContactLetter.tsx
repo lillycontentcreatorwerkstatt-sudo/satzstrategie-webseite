@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useId, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { INQUIRY_EMAIL, normalizeInquiryEmail, normalizeInquiryWebsite } from "@/lib/inquiry";
 const subscribe = () => () => {};
 
@@ -11,6 +11,9 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
   const sentTitle = useId();
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
+  // Der Dank steht erst nach dem Senden im Dokument, damit Suchmaschinen ihn nicht als Seiteninhalt lesen.
+  const [sent, setSent] = useState(false);
+  useEffect(() => { if (sent) sentDialog.current?.showModal(); }, [sent]);
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
   function readForm() {
     if (!form.current) return null;
@@ -38,7 +41,7 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
       if (!response.ok) throw new Error(String(response.status));
       form.current?.reset();
       setStatus("");
-      sentDialog.current?.showModal();
+      setSent(true);
     } catch {
       setStatus(`Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an ${INQUIRY_EMAIL}.`);
     } finally {
@@ -61,13 +64,13 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
       <p className="studio-form-note">Ihre Anfrage geht direkt an uns. Auf der Webseite wird nichts gespeichert. Mehr dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
     </fieldset>
     <p className="contact-status" role="status">{status}</p>
-    <dialog ref={sentDialog} className="sent-dialog" aria-labelledby={sentTitle} onClick={event => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
-      <div className="sent-sheet">
+    <dialog ref={sentDialog} className="sent-dialog" aria-labelledby={sentTitle} onClose={() => setSent(false)} onClick={event => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
+      {sent && <div className="sent-sheet">
         <h2 id={sentTitle}>Danke!<span>Ihre Anfrage ist bei uns angekommen.</span></h2>
         <p>{firstLook ? "Ihre Ersteinschätzung erhalten Sie werktags innerhalb von 24 Stunden per E-Mail." : "Wir melden uns per E-Mail bei Ihnen."}</p>
         <span className="sent-signature">Lilly und Piet</span>
         <button className="studio-button" type="button" onClick={() => sentDialog.current?.close()}>Schließen</button>
-      </div>
+      </div>}
     </dialog>
     <noscript><p>Schreiben Sie Ihr Anliegen direkt an <a href={`mailto:${INQUIRY_EMAIL}`}>{INQUIRY_EMAIL}</a>. Für den ausfüllbaren Brief benötigen Sie JavaScript.</p></noscript>
   </form>;

@@ -35,6 +35,23 @@ export const organizationData = {
       email: "kontakt@satzstrategie.de",
       description: SITE_DESCRIPTION,
       logo: `${SITE_URL}/icon.svg`,
+      areaServed: { "@type": "Country", name: "Deutschland" },
+      knowsLanguage: "de",
+      member: [
+        { "@type": "Person", "@id": `${SITE_URL}/#lilly`, name: "Lilly", url: `${SITE_URL}/wer-wir-sind` },
+        { "@type": "Person", "@id": `${SITE_URL}/#piet`, name: "Piet", url: `${SITE_URL}/wer-wir-sind` },
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Leistungen",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Webseitentexte und Copywriting", description: "Neue Webseitentexte schreiben oder vorhandene Texte prüfen und überarbeiten.", url: `${SITE_URL}/leistungen#texte` } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Webdesign", description: "Inhalte ordnen und die Webseite gestalten, für Handy und Computer.", url: `${SITE_URL}/leistungen#gestaltung` } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Webentwicklung", description: "Den Entwurf als nutzbare, mit der Tastatur bedienbare Webseite umsetzen.", url: `${SITE_URL}/leistungen#entwicklung` } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bestehende Webseiten prüfen", description: "Texte, Orientierung und technische Grundlagen einer vorhandenen Webseite prüfen.", url: `${SITE_URL}/leistungen#webseitenberatung` } },
+          { "@type": "Offer", price: "0", priceCurrency: "EUR", itemOffered: { "@type": "Service", name: "Kostenlose Ersteinschätzung", description: "Ein bis zwei konkrete Hinweise zur eigenen Webseite per E-Mail.", url: `${SITE_URL}/erster-blick` } },
+        ],
+      },
     },
     {
       "@type": "WebSite",
