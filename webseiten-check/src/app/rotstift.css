@@ -201,7 +201,7 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 .studio-page .sent-dialog::backdrop { background: rgba(233, 234, 228, .6); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 .studio-page .sent-sheet { background: var(--paper-light); border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(28, 35, 51, .55); padding: 32px 24px 24px; transform: rotate(-.8deg); max-height: calc(100dvh - 32px); overflow-y: auto; }
 .studio-page .sent-sheet h2 { font-size: clamp(64px, 20vw, 112px); line-height: .95; margin: 0; }
-.studio-page .sent-sheet h2 span { display: block; font-size: clamp(30px, 8.6vw, 48px); line-height: 1.08; margin-top: 18px; }
+.studio-page .sent-sheet h2 span { display: block; font-family: var(--reading); font-weight: 700; font-size: clamp(24px, 6.4vw, 34px); line-height: 1.25; letter-spacing: 0; margin-top: 18px; }
 .studio-page .sent-sheet p { font-size: 18px; line-height: 1.55; margin: 20px 0 0; max-width: 30ch; }
 .studio-page .sent-signature { display: block; font-family: var(--hand); font-size: 52px; line-height: 1; color: var(--red); transform: rotate(-6deg); margin: 22px 0 8px; }
 .studio-page .sent-sheet .studio-button { width: 100%; margin-top: 16px; }
