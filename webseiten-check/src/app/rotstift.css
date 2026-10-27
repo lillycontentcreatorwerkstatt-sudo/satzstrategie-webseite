@@ -29,6 +29,12 @@
 /* Überschriften in Caslon Display: etwas weiter laufend als die frühere Plakatschrift. */
 .studio-page h1, .studio-page h2 { letter-spacing: -.015em; line-height: 1.04; }
 
+/* Optische Größen: Caslon Display nur für Seitentitel und sehr große Wörter, ihre feinen
+   Haarstriche verschwinden darunter. Abschnittsüberschriften und mittlere Größen in Caslon Text. */
+.studio-page h2 { font-family: var(--reading); letter-spacing: 0; line-height: 1.12; }
+.studio-page :is(.home-people, .person-sheet, .sent-sheet) h2 { font-family: var(--display); letter-spacing: -.015em; line-height: 1.04; }
+.studio-page .course-sheet h4, .studio-page .mobile-menu nav a { font-family: var(--reading); letter-spacing: 0; }
+
 /* Handlungen in Tinte; Rot bleibt der Korrektur vorbehalten. */
 .studio-page .studio-button { background: var(--ink); border-color: var(--ink); color: var(--paper-light); }
 .studio-page .studio-button:hover:not(:disabled) { background: var(--ink-soft); border-color: var(--ink-soft); }
@@ -91,8 +97,7 @@
 
 /* Leistungen in Klammern statt im roten Band. */
 .studio-page .discipline-band { display: flex; justify-content: space-between; gap: 12px; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.studio-page .discipline-band a { font-family: var(--display); text-decoration: none; border-right: 0; letter-spacing: -.01em; }
-.studio-page .discipline-band a::before { content: '['; color: var(--red); margin-right: .03em; }
+.studio-page .discipline-band a { font-family: var(--display); text-decoration: none; border-right: 0; letter-spacing: -.01em; }.studio-page .discipline-band a::before { content: '['; color: var(--red); margin-right: .03em; }
 .studio-page .discipline-band a::after { content: ']'; color: var(--red); margin-left: .03em; }
 .studio-page .discipline-band a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--red); text-underline-offset: .12em; }
 .studio-page .discipline-band :focus-visible { outline-color: var(--red); }
@@ -110,7 +115,7 @@
   .studio-page .home-people .margin-note { top: calc(var(--space) + 120px); }
   .studio-page .home-contact .margin-note { bottom: calc(var(--space) + 40px); }
 }
-.studio-page .home-offer h3, .studio-page .offer-lines h3 { font-family: var(--display); font-size: clamp(30px, 2.6vw, 40px); line-height: 1.12; }
+.studio-page .home-offer h3, .studio-page .offer-lines h3 { font-family: var(--reading); font-size: clamp(30px, 2.6vw, 40px); line-height: 1.12; }
 
 /* Das Korrekturblatt: Floskel gestrichen, Aussage eingefügt. */
 .studio-page .paper-example { background: var(--table); color: var(--ink); }
@@ -122,7 +127,7 @@
 .studio-page .paper-example-intro h2 .proof-caret { width: .3em; height: .4em; margin-top: .1em; }
 .studio-page .proof-sheet { background: var(--paper-light); border: 1px solid var(--line); padding: clamp(26px, 3.6vw, 56px); transform: rotate(-1.2deg); box-shadow: 0 22px 40px -28px rgba(28, 35, 51, .45); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 28px; }
 .studio-page .proof-sheet-old { margin: 0; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.45; }
-.studio-page .proof-sheet-new { margin: 18px 0 0; display: flex; align-items: flex-start; gap: 12px; font: clamp(30px, 3.2vw, 46px) / 1.1 var(--display); letter-spacing: -.01em; }
+.studio-page .proof-sheet-new { margin: 18px 0 0; display: flex; align-items: flex-start; gap: 12px; font: clamp(30px, 3.2vw, 46px) / 1.15 var(--reading); letter-spacing: 0; }
 .studio-page .proof-sheet-new .proof-caret { width: 18px; height: 22px; margin-top: .25em; }
 .studio-page .proof-sheet-why { margin: 22px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 40ch; }
 .studio-page .proof-sheet-notes { border-left: 1px solid var(--table); padding-left: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-width: 120px; }
@@ -151,7 +156,7 @@
 
 /* Beispiele */
 .studio-page .work-page { --work-sheet: var(--paper-light); }
-.studio-page .work-index a { color: var(--ink); text-decoration: none; }
+.studio-page .work-index a { font-family: var(--reading); color: var(--ink); text-decoration: none; }
 .studio-page .work-index a::before { content: '['; color: var(--red); }
 .studio-page .work-index a::after { content: ']'; color: var(--red); }
 .studio-page .work-index a:hover { text-decoration: underline; text-decoration-color: var(--red); }
