@@ -93,7 +93,7 @@ try {
   await page.goto(origin + '/kontakt', { waitUntil: 'networkidle0' });
   assert.equal(await page.$eval('.contact-letter', form => form.checkValidity()), false);
   assert.match(await page.$eval('.contact-letter', node => node.textContent), /weder gespeichert noch versendet/);
-  assert.match(await page.$eval('.direct-email', node => node.textContent), /lillycontentcreatorwerkstatt@gmail.com/);
+  assert.match(await page.$eval('.direct-email', node => node.textContent), /kontakt@satzstrategie.de/);
   // Form navigation is intentionally not invoked: no external mail program or send.
   for (const route of internalPaths) assert.equal((await fetch(origin + route)).status, 200, route);
   assert.equal((await fetch(origin + '/nicht-vorhanden')).status, 404);

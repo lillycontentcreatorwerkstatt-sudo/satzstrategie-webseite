@@ -11,7 +11,7 @@ export default function DatenschutzPage() {
 
         <h2>Verantwortlich</h2>
         <p>Peter Josef Klein<br />c/o IP-Management #8336<br />Ludwig-Erhard-Straße 18<br />20459 Hamburg</p>
-        <p>Bei Fragen zum Datenschutz: <a href="mailto:lillycontentcreatorwerkstatt@gmail.com">lillycontentcreatorwerkstatt@gmail.com</a>.</p>
+        <p>Bei Fragen zum Datenschutz: <a href="mailto:kontakt@satzstrategie.de">kontakt@satzstrategie.de</a>.</p>
 
         <h2>Aufruf der Webseite</h2>
         <p>Die Webseite wird über Vercel bereitgestellt. Dabei werden technische Verbindungsdaten verarbeitet, insbesondere Ihre IP-Adresse, die angeforderte Adresse, Zeitpunkt des Zugriffs sowie Angaben zu Browser und Gerät. Das ist erforderlich, um die Seite auszuliefern, Fehler zu erkennen und den Betrieb zu schützen.</p>

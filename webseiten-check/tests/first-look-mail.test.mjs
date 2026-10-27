@@ -21,7 +21,7 @@ test('a first-look request always asks for the advertised free assessment', () =
 test('mailto keeps recipient fixed and encodes umlauts, line breaks and URL parameters', () => {
   const mail = new URL(createFirstLookMail(request));
   assert.equal(mail.protocol, 'mailto:');
-  assert.equal(mail.pathname, 'lillycontentcreatorwerkstatt@gmail.com');
+  assert.equal(mail.pathname, 'kontakt@satzstrategie.de');
   assert.equal(mail.searchParams.get('body'), createFirstLookMessage(request));
   assert.equal(mail.searchParams.get('subject'), 'Ein erster Blick auf meine Webseite');
   assert.equal([...mail.searchParams.keys()].length, 2);

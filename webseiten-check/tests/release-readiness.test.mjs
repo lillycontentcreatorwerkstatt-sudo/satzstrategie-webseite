@@ -46,6 +46,6 @@ test('structured data identifies the actual organization without invented rating
   const organization = organizationData['@graph'].find(item => item['@type'] === 'Organization');
   assert.equal(organization.name, 'Satzstrategie');
   assert.equal(organization.url, SITE_URL);
-  assert.equal(organization.email, 'lillycontentcreatorwerkstatt@gmail.com');
+  assert.equal(organization.email, 'kontakt@satzstrategie.de');
   assert.equal(organization.aggregateRating, undefined);
 });

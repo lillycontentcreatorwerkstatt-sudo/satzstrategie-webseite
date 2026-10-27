@@ -14,8 +14,23 @@ Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 - Ort: Impressum nutzt bewusst einen Anschriften-Service in Hamburg. Kein lokales SEO,
   kein Google-Unternehmensprofil; Hamburg nicht als Standort auf der Seite nennen.
 - GitHub Pages am 27. Oktober 2026 auf Lillys Wunsch im Repo abgeschaltet.
-- Offen: E-Mail-Adresse mit eigener Domain bei IONOS (danach Gmail in Impressum,
-  Kontakt, Schema und llms.txt ersetzen), Google Search Console und Bing Webmaster Tools.
+- Google Search Console am 27. Oktober 2026 eingerichtet: Domain-Property
+  `satzstrategie.de` im Konto lillycontentcreatorwerkstatt@gmail.com, bestätigt per
+  TXT-Eintrag bei IONOS (von Hand, nicht über Domain Connect – das hätte Mail
+  deaktiviert). Ein älterer, zweiter google-site-verification-Eintrag bleibt stehen.
+  Sitemap eingereicht (8 Seiten erkannt), Neuindexierung der Startseite beantragt.
+- E-Mail: IONOS Mail Basic 1 (1,50 €/Monat, Vertrag 300500175) am 27. Oktober 2026
+  gebucht. satzstrategie.de ist jetzt Inklusiv-Domain dieses Vertrags (nicht mehr in
+  109895857). Postfach kontakt@satzstrategie.de angelegt. Die DNS-Einträge sind beim
+  Umzug entgegen der IONOS-Ankündigung erhalten geblieben; Webseite geprüft (HTTP 200,
+  Weiterleitungen ok). Falls sie je zurückgesetzt werden, so wiederherstellen:
+  A @ 216.198.79.1 · CNAME www c348a76a114e6300.vercel-dns-017.com ·
+  TXT @ google-site-verification=Vqcsu3p1gWulO3-oFVyE1FY-HYe8-QV2jUFnMO3BvFA ·
+  TXT @ google-site-verification=A8yVxifiR5btIk-EgykbiQz4sp8DlUBNeoPk77QDww0.
+  Mail-Einträge (MX, SPF, DKIM, DMARC, autodiscover) legt IONOS selbst an.
+- Offen: Postfach mit Lillys E-Mail-Programm verbinden; danach die Gmail-Adresse in
+  Impressum, Kontakt, Schema und llms.txt durch kontakt@satzstrategie.de ersetzen.
+  Bing Webmaster Tools (Import aus Search Console).
 - Sicherheitsupdate per `npm audit fix` (nur `package-lock.json`): next 16.4.0 → 16.4.3
   (u. a. GHSA-2464-fhr4-w9xw, GHSA-673q-mjm6-r5xr), dazu undici und zod. Danach
   `npm audit`: 0 Lücken. ESLint, 21 Tests, Produktionsbuild erfolgreich; lokaler

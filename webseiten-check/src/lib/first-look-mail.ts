@@ -4,7 +4,7 @@ export type FirstLookRequest = {
   name: string;
 };
 
-export const INQUIRY_EMAIL = "lillycontentcreatorwerkstatt@gmail.com";
+export const INQUIRY_EMAIL = "kontakt@satzstrategie.de";
 
 // Syntactic validation only. No DNS lookup, scraping or third-party request.
 export function normalizeInquiryWebsite(value: string): string | null {

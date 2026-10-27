@@ -32,7 +32,7 @@ export const organizationData = {
       "@id": `${SITE_URL}/#organization`,
       name: "Satzstrategie",
       url: SITE_URL,
-      email: "lillycontentcreatorwerkstatt@gmail.com",
+      email: "kontakt@satzstrategie.de",
       description: SITE_DESCRIPTION,
       logo: `${SITE_URL}/icon.svg`,
     },
