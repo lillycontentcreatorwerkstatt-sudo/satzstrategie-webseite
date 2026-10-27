@@ -296,8 +296,8 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 @keyframes menu-item { from { opacity: 0; transform: translateY(10px); } }
 
 /* Startseite: Die wichtigste Handlung trägt die Farbe des Rotstifts. */
-.studio-page .hero-bottom .hero-action { background: var(--red); border-color: var(--red); color: var(--paper-light); letter-spacing: .04em; }
-.studio-page .hero-bottom .hero-action:hover:not(:disabled) { background: var(--red-deep); border-color: var(--red-deep); }
+.studio-page :is(.hero-bottom .hero-action, .home-contact > div > .studio-button) { background: var(--red); border-color: var(--red); color: var(--paper-light); letter-spacing: .04em; }
+.studio-page :is(.hero-bottom .hero-action, .home-contact > div > .studio-button):hover:not(:disabled) { background: var(--red-deep); border-color: var(--red-deep); }
 
 /* Startseite: eine gemeinsame Linie. Alle zweispaltigen Abschnitte teilen ein Raster,
    die rechte Spalte beginnt überall an derselben Kante. */
@@ -327,3 +327,7 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 @media (max-width: 760px) and (orientation: portrait) {
   .studio-page .hero-bottom { width: calc(100% - 2 * var(--gutter)); margin-inline: var(--gutter); }
 }
+
+/* Ersteinschätzung: Die Randnotiz steht mit Luft neben dem Kästchen und ist gut lesbar. */
+.studio-page .first-look-action { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 36px; }
+.studio-page .home-contact .first-look-action .margin-note { flex: 1 1 220px; max-width: 320px; margin: 0; font-size: clamp(32px, 2.8vw, 42px); word-spacing: .12em; -webkit-text-stroke: .5px currentColor; }
