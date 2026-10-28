@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import ValidationForm from './validation-demo';
 
-function Comparison({ before, after }: { before: ReactNode; after: ReactNode }) {
+export function Comparison({ before, after }: { before: ReactNode; after: ReactNode }) {
   return <div className="open-comparison"><div><h3>Vorher</h3>{before}</div><div><h3>Nachher</h3>{after}</div></div>;
 }
-function Explanation({ before, change, reason }: { before: string; change: string; reason: string }) {
+export function Explanation({ before, change, reason }: { before: string; change: string; reason: string }) {
   return <dl className="example-reasons"><div><dt>Ausgangslage</dt><dd>{before}</dd></div><div><dt>Unsere Änderung</dt><dd>{change}</dd></div><div><dt>Warum es besser ist</dt><dd>{reason}</dd></div></dl>;
 }
 export default function WorkExamples() {

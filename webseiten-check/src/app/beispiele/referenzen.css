@@ -3,7 +3,8 @@
 .work-intro h1 {font-size:clamp(64px,9vw,120px)}
 .work-intro-copy {display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:32px 0 44px;align-items:end}
 .work-lead {font-size:clamp(26px,3vw,40px);line-height:1.4}
-.work-intro-copy>p:last-child {margin:0;max-width:50ch}
+.work-intro-copy>div {max-width:50ch}
+.work-intro-copy>div p {margin:0}
 .work-index {display:flex;flex-wrap:wrap;gap:12px 40px;border-block:1px solid var(--line);padding:12px 0}
 .work-index a {font:clamp(24px,3vw,40px)/1.5 var(--display);color:var(--red);min-height:44px}
 .open-case {padding:var(--space) var(--gutter);border-bottom:1px solid var(--line)}
@@ -59,3 +60,17 @@
 
 .example-back {display:inline-flex;align-items:center;min-height:44px;margin-top:32px;font-size:15px;text-underline-offset:.25em}
 .open-case-code .example-back:focus-visible {outline-color:var(--white)}
+
+/* Fallstudie in eigener Sache */
+.case-logo {font-size:clamp(30px,4vw,52px);line-height:1.2;overflow-wrap:anywhere}
+.case-logo span {color:var(--red);font-family:var(--display);font-weight:400}
+.case-logo-before {font-family:var(--display);letter-spacing:-.04em}
+.case-logo-after {font-family:var(--logo);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.case-logo-after span {font-size:1.5em;letter-spacing:0;margin-left:2px}
+.case-order {margin:0;padding-left:1.4em;font-size:clamp(18px,2vw,24px);line-height:1.8}
+.case-order strong {color:var(--red)}
+.case-figures {display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:0}
+.case-figures dt {font:clamp(40px,5vw,64px)/1.1 var(--display);color:var(--red-deep);margin-bottom:14px}
+.case-figures dd {margin:0;font-size:16px;max-width:36ch}
+@media(max-width:760px){.case-figures{grid-template-columns:1fr;gap:28px}}
+.work-case-link {display:inline-flex;align-items:center;min-height:48px;margin-top:16px;color:var(--red-deep);text-underline-offset:.25em}

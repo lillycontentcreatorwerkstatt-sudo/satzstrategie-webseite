@@ -11,7 +11,7 @@ export default function ReferencesPage() {
     <div className="work-page">
       <header className="work-intro">
         <h1>Beispiele.</h1>
-        <div className="work-intro-copy"><p className="work-lead">Typische Situationen<br />und wie wir sie überarbeiten.</p><p>Eigene Arbeitsbeispiele aus Text, Design und Entwicklung. Dazu&nbsp;zeigen wir, wie Seiten besser lesbar und leichter bedienbar werden. Sie&nbsp;sehen Vorher und Nachher im direkten Vergleich – ohne Umschalten.</p></div>
+        <div className="work-intro-copy"><p className="work-lead">Typische Situationen<br />und wie wir sie überarbeiten.</p><div><p>Eigene Arbeitsbeispiele aus Text, Design und Entwicklung. Dazu&nbsp;zeigen wir, wie Seiten besser lesbar und leichter bedienbar werden. Sie&nbsp;sehen Vorher und Nachher im direkten Vergleich – ohne Umschalten.</p><Link className="work-case-link" href="/beispiele/satzstrategie">Fallstudie: unsere eigene Webseite</Link></div></div>
         <nav id="beispielauswahl" tabIndex={-1} className="work-index" aria-label="Bereiche der Beispiele"><a href="#text">Text</a><a href="#design">Design</a><a href="#code">Technik</a><a href="#zugang">Bedienung</a></nav>
       </header>
       <WorkExamples />
