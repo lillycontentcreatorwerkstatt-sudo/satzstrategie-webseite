@@ -157,6 +157,8 @@
 /* Leistungen */
 .studio-page .offer-header h1, .studio-page .service-detail h2, .studio-page .working-together h2 { letter-spacing: -.015em; }
 .studio-page .working-together { background: var(--table); }
+/* Leistungen: Abschnitte wechseln zwischen hellem Papier und Grundton, damit das Auge an jeder Grenze neu ansetzt. */
+.studio-page :is(.service-detail:nth-child(odd), .faq) { background: var(--paper-light); }
 .studio-page .studio-next h2 { line-height: 1.1; }
 
 /* Beispiele */
