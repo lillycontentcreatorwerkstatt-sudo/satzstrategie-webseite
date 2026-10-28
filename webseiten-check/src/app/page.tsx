@@ -2,15 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import StudioShell from "./components/StudioShell";
 import PaperExample from "./components/PaperExample";
+import PaperIntro from "./components/PaperIntro";
 import { ProofCaret, ProofStrike } from "./components/Proof";
 import "./clear-journey.css";
 import { pageMetadata, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site-metadata";
 export const metadata = pageMetadata("/", SITE_TITLE, SITE_DESCRIPTION);
 export default function Home() {
   return <StudioShell active="/" flowFooter>
+    <PaperIntro />
     <div className="home-opening">
     <section className="paper-hero" aria-labelledby="home-title">
-      <div className="hero-art"><Image src="/images/papierarchitektur.webp" alt="" fill preload sizes="(max-width: 760px) 82vw, 50vw" /></div>
+      <div className="hero-art"><Image src="/images/papierarchitektur.webp" alt="" fill preload sizes="(max-width: 760px) 100vh, 50vw" /></div>
       {/* Die Floskel wird gestrichen, die Aussage eingefügt: einmal beim Laden, sonst ruhig. */}
       <div className="hero-head">
         <p className="hero-draft"><span className="hero-draft-text"><del>Qualität, die überzeugt.</del><ProofStrike /></span><span className="hand">zu allgemein. Was genau?</span></p>
