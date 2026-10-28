@@ -406,3 +406,5 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 /* Startseite: Die Leistungszeile steht direkt unter der Überschrift; auf dem Handy etwas kleiner, damit jede Zeile ganz bleibt. */
 /* Handy: Hauptzeile hell, Leistungszeile im Papierton, Versprechen wieder hell. */
 @media (max-width: 760px) { .studio-page .hero-bottom p:first-child { font-size: clamp(16px, 4.7vw, 20px); } .studio-page :is(.hero-title-words, .hero-title-words span, .hero-bottom .hero-promise) { background: var(--paper-light); } }
+/* Handy: ohne Handnotiz und mit mehr Luft zwischen den Kästchen. */
+@media (max-width: 760px) { .studio-page .hero-note { display: none; } .studio-page .hero-title { padding-top: 20px; } .studio-page .hero-bottom { gap: 16px; } }
