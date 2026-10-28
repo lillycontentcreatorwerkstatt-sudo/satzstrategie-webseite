@@ -404,4 +404,4 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 @media (max-width: 760px) { .studio-page .faq { grid-template-columns: 1fr; gap: 28px; } }
 
 /* Startseite: Die Leistungszeile steht direkt unter der Überschrift; auf dem Handy etwas kleiner, damit jede Zeile ganz bleibt. */
-@media (max-width: 760px) { .studio-page .hero-bottom p:first-child { font-size: clamp(16px, 4.7vw, 20px); } }
+@media (max-width: 760px) { .studio-page .hero-bottom p:first-child { font-size: clamp(16px, 4.7vw, 20px); background: var(--paper-light); } }
