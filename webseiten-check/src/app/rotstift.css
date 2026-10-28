@@ -20,11 +20,15 @@
   --ink-soft: #2e3850;
   --red: #c8102e;
   --red-deep: #a31621;
+  --forest: #2e5e3e;
   --muted: #4f534e;
   --line: #c9cbc3;
   --display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
   --hand: 'Reenie Beanie', 'Bradley Hand', cursive;
 }
+
+/* Der Name hat als Einziger Förstergrün; die Klammer im Logo bleibt rot. */
+.studio-page .studio-brand { color: var(--forest); }
 
 /* Überschriften in Caslon Display: etwas weiter laufend als die frühere Plakatschrift. */
 .studio-page h1, .studio-page h2 { letter-spacing: -.015em; line-height: 1.04; }
@@ -345,22 +349,30 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   .studio-page .hero-art::after { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--paper) 55%, transparent); }
 }
 
-/* Handy, erster Besuch: Intro mit der ganzen Papierskulptur. Sie wird unscharf zum Hintergrund, ihre Klammern fliegen ins Band (PaperIntro.tsx). */
+/* Handy, erster Besuch: Der Name wird aufgestempelt und wandert in die Kopfzeile. Dann steht die ganze Papierskulptur da,
+   wird unscharf zum Hintergrund, und ihre Klammern fliegen ins Band (PaperIntro.tsx). */
 .studio-page .paper-intro { display: none; }
 @media (max-width: 760px) and (orientation: portrait) and (prefers-reduced-motion: no-preference) {
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .5s ease-in-out 1.2s forwards, intro-gone 0s 2.4s forwards; }
-  .studio-page .paper-intro-photo { position: absolute; inset: 0; animation: intro-settle 1.2s ease-out both, intro-blur .5s ease-in-out 1.2s forwards; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .45s ease-in-out 1.8s forwards, intro-gone 0s 2.95s forwards; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header { animation: intro-header 2.95s step-end; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header .studio-brand { animation: intro-hold .95s step-end; }
+  .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg) scale(2.2); animation: intro-gone 0s .95s forwards; }
+  .studio-page .paper-intro-stamp .studio-brand { animation: intro-stamp .25s cubic-bezier(.3, 0, .4, 1) .05s both; }
+  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; animation: intro-show .3s ease-out .95s both, intro-settle 1s ease-out .95s both, intro-blur .45s ease-in-out 1.8s forwards; }
   .studio-page .paper-intro-photo img { object-fit: cover; }
   .studio-page .paper-intro-mark { position: absolute; left: 0; top: 0; color: var(--red); font-family: var(--display); opacity: 0; will-change: transform; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::before,
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::after { animation: intro-hold 2.4s step-end; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 2s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-title { animation-delay: 2.3s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 2.45s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-note { animation-delay: 2.6s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::after { animation: intro-hold 2.95s step-end; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 2.55s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-title { animation-delay: 2.85s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 3s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-note { animation-delay: 3.15s; }
 }
+@keyframes intro-stamp { 0% { opacity: 0; transform: scale(1.5); } 70% { opacity: 1; transform: scale(.97); } }
+@keyframes intro-show { from { opacity: 0; } }
 @keyframes intro-settle { from { transform: scale(1.06); } }
 @keyframes intro-blur { to { filter: blur(10px); opacity: 0; } }
 @keyframes intro-clear { to { background-color: transparent; } }
 @keyframes intro-gone { to { visibility: hidden; } }
 @keyframes intro-hold { from, to { opacity: 0; } }
+@keyframes intro-header { from, to { z-index: 1001; background-color: transparent; } }

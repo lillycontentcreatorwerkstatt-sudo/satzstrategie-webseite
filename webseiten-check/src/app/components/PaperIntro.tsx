@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-// Handy, erster Besuch: Erst steht die ganze Papierskulptur da, dann werden ihre roten Klammern zu [Text] [Design] [Technik].
+// Handy, erster Besuch: Erst wird der Name aufgestempelt und wandert in die Kopfzeile, dann steht die ganze Papierskulptur da
+// und ihre roten Klammern werden zu [Text] [Design] [Technik].
 // Ob das Intro läuft, entscheidet das Skript vor dem ersten Bild (Klasse paper-intro-on am <html>); die Zeiten stehen in rotstift.css.
 const INTRO_CHECK = `try{if(matchMedia("(max-width:760px) and (orientation:portrait) and (prefers-reduced-motion:no-preference)").matches&&!sessionStorage.getItem("paper-intro")){sessionStorage.setItem("paper-intro","1");document.documentElement.classList.add("paper-intro-on")}}catch(e){}`;
 
@@ -10,6 +11,10 @@ const INTRO_CHECK = `try{if(matchMedia("(max-width:760px) and (orientation:portr
 const PHOTO_BRACKETS = [{ x: .3127, y: .5087 }, { x: .5824, y: .4267 }];
 const PHOTO_BRACKET_HEIGHT = .12;
 const PHOTO_ANGLE = -17;
+// Stempel: Größe und Neigung wie in rotstift.css, Mitte bei 42 % der Bildschirmhöhe.
+const STAMP_SCALE = 2.2;
+const STAMP_ANGLE = -6;
+const STAMP_TOP = .42;
 
 export default function PaperIntro() {
   const root = useRef<HTMLDivElement>(null);
@@ -20,10 +25,21 @@ export default function PaperIntro() {
     const skip = () => html.classList.add("paper-intro-done");
     el.addEventListener("pointerdown", skip);
     const elapsed = Number(el.getAnimations()[0]?.currentTime ?? 0);
+    const stamp = el.querySelector<HTMLElement>(".paper-intro-stamp");
+    const brand = document.querySelector<HTMLElement>(".studio-header .studio-brand");
+    if (stamp && brand && elapsed < 600) {
+      const target = brand.getBoundingClientRect();
+      const dx = target.left + target.width / 2 - el.clientWidth / 2, dy = target.top + target.height / 2 - el.clientHeight * STAMP_TOP;
+      stamp.animate([
+        { transform: `translate(-50%, -50%) rotate(${STAMP_ANGLE}deg) scale(${STAMP_SCALE})` },
+        { transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px)` },
+      ], { duration: 350, delay: 600 - elapsed, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
+    }
+    const photo = el.querySelector<HTMLElement>(".paper-intro-photo")?.getBoundingClientRect();
     const links = [...document.querySelectorAll<HTMLElement>(".discipline-band a")];
     const marks = [...el.querySelectorAll<HTMLElement>(".paper-intro-mark")];
-    if (elapsed < 1100 && links.length * 2 === marks.length) {
-      const size = Math.max(innerWidth, innerHeight), offsetX = (innerWidth - size) / 2, offsetY = (innerHeight - size) / 2;
+    if (photo && elapsed < 1700 && links.length * 2 === marks.length) {
+      const size = Math.max(photo.width, photo.height), offsetX = photo.left + (photo.width - size) / 2, offsetY = photo.top + (photo.height - size) / 2;
       links.forEach((link, i) => {
         const box = link.getBoundingClientRect(), css = getComputedStyle(link);
         [marks[2 * i], marks[2 * i + 1]].forEach((mark, side) => {
@@ -36,8 +52,8 @@ export default function PaperIntro() {
           const from = PHOTO_BRACKETS[side];
           const scale = PHOTO_BRACKET_HEIGHT * size / parseFloat(css.fontSize);
           const start = `translate(${offsetX + from.x * size - left - width / 2}px, ${offsetY + from.y * size - top - height / 2}px) rotate(${PHOTO_ANGLE}deg) scale(${scale})`;
-          mark.animate([{ opacity: 0, transform: start }, { opacity: 1, transform: start }], { duration: 200, delay: 1100 - elapsed, fill: "both" });
-          mark.animate([{ transform: start }, { transform: "none" }], { duration: 650, delay: 1650 - elapsed + i * 50, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
+          mark.animate([{ opacity: 0, transform: start }, { opacity: 1, transform: start }], { duration: 200, delay: 1700 - elapsed, fill: "both" });
+          mark.animate([{ transform: start }, { transform: "none" }], { duration: 650, delay: 2200 - elapsed + i * 50, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
         });
       });
     }
@@ -46,6 +62,7 @@ export default function PaperIntro() {
   return <>
     <script type={typeof window === "undefined" ? "text/javascript" : "text/plain"} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: INTRO_CHECK }} />
     <div ref={root} className="paper-intro" aria-hidden="true">
+      <div className="paper-intro-stamp"><span className="studio-brand">satzstrategie<span className="brand-mark">]</span></span></div>
       <div className="paper-intro-photo"><Image src="/images/papierarchitektur.webp" alt="" fill loading="eager" sizes="(max-width: 760px) 100vh, 50vw" /></div>
       {["[", "]", "[", "]", "[", "]"].map((mark, i) => <span key={i} className="paper-intro-mark">{mark}</span>)}
     </div>
