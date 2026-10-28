@@ -3,6 +3,7 @@ import { isIndexableDeployment, organizationData, SITE_DESCRIPTION, SITE_TITLE, 
 import "@fontsource/libre-caslon-text/latin-400.css";
 import "@fontsource/libre-caslon-text/latin-400-italic.css";
 import "@fontsource/libre-caslon-text/latin-700.css";
+import "@fontsource/big-shoulders-stencil-display/latin-800";
 import "./globals.css";
 import "./rotstift.css";
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#e9eae4" };

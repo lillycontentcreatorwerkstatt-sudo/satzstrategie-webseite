@@ -20,15 +20,16 @@
   --ink-soft: #2e3850;
   --red: #c8102e;
   --red-deep: #a31621;
-  --forest: #2e5e3e;
   --muted: #4f534e;
   --line: #c9cbc3;
   --display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
   --hand: 'Reenie Beanie', 'Bradley Hand', cursive;
+  --logo: 'Big Shoulders Stencil Display', 'Libre Caslon Text', sans-serif;
 }
 
-/* Der Name hat als Einziger Förstergrün; die Klammer im Logo bleibt rot. */
-.studio-page .studio-brand { color: var(--forest); }
+/* Das Logo hat als Einziges die Schablonenschrift, in Großbuchstaben mit offenem Abstand für bessere Lesbarkeit; die Klammer bleibt Caslon in Rot. */
+.studio-page .studio-brand { font-family: var(--logo); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: clamp(28px, 2.6vw, 40px); }
+.studio-page .studio-brand .brand-mark { font-family: var(--display); font-weight: 400; font-size: 1.5em; letter-spacing: 0; margin-left: 2px; }
 
 /* Überschriften in Caslon Display: etwas weiter laufend als die frühere Plakatschrift. */
 .studio-page h1, .studio-page h2 { letter-spacing: -.015em; line-height: 1.04; }
@@ -356,7 +357,7 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .45s ease-in-out 1.8s forwards, intro-gone 0s 2.95s forwards; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header { animation: intro-header 2.95s step-end; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header .studio-brand { animation: intro-hold .95s step-end; }
-  .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg) scale(2.2); animation: intro-gone 0s .95s forwards; }
+  .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg) scale(1.5); animation: intro-gone 0s .95s forwards; }
   .studio-page .paper-intro-stamp .studio-brand { animation: intro-stamp .25s cubic-bezier(.3, 0, .4, 1) .05s both; }
   .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; animation: intro-show .3s ease-out .95s both, intro-settle 1s ease-out .95s both, intro-blur .45s ease-in-out 1.8s forwards; }
   .studio-page .paper-intro-photo img { object-fit: cover; }

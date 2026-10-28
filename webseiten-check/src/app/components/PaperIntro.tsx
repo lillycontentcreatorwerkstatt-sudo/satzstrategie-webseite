@@ -12,7 +12,7 @@ const PHOTO_BRACKETS = [{ x: .3127, y: .5087 }, { x: .5824, y: .4267 }];
 const PHOTO_BRACKET_HEIGHT = .12;
 const PHOTO_ANGLE = -17;
 // Stempel: Größe und Neigung wie in rotstift.css, Mitte bei 42 % der Bildschirmhöhe.
-const STAMP_SCALE = 2.2;
+const STAMP_SCALE = 1.5;
 const STAMP_ANGLE = -6;
 const STAMP_TOP = .42;
 
