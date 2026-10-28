@@ -159,6 +159,9 @@
 .studio-page .working-together { background: var(--table); }
 /* Leistungen: Abschnitte wechseln zwischen hellem Papier und Grundton, damit das Auge an jeder Grenze neu ansetzt. */
 .studio-page :is(.service-detail:nth-child(odd), .faq) { background: var(--paper-light); }
+/* Gleicher Wechsel auf den übrigen Seiten; wo helle Vergleichsblätter liegen, bleibt der Grund dunkler. */
+.studio-page :is(.home-offer, .home-contact, .human-statement, .work-method, #ergebnis) { background: var(--paper-light); }
+.studio-page #zugang { background: var(--table); }
 .studio-page .studio-next h2 { line-height: 1.1; }
 
 /* Beispiele */
