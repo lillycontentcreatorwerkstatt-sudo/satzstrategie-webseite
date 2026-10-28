@@ -36,7 +36,7 @@
 .home-contact aside h3 {font-size:26px}
 .home-contact aside p {margin:18px 0;max-width:34ch}
 .home-contact aside a:not(.studio-button) {display:inline-flex;align-items:center;min-height:48px;color:var(--red-deep)}
-.offer-header {display:grid;grid-template-columns:1fr 1fr;gap:7%;align-items:end}
+.offer-header {display:grid;grid-template-columns:1fr 1.2fr;gap:7%;align-items:end}
 .offer-header h1 {font-size:clamp(62px,8vw,112px);line-height:1.08}
 .offer-header p+p {margin-top:20px}
 .offer-header .studio-button {margin-top:24px}
