@@ -106,7 +106,7 @@
 .studio-page .discipline-band a::after { content: ']'; color: var(--red); margin-left: .03em; }
 .studio-page .discipline-band a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--red); text-underline-offset: .12em; }
 .studio-page .discipline-band :focus-visible { outline-color: var(--red); }
-.studio-page .discipline-band a { font-size: min(9.2vw, 7.2svh); }
+.studio-page .discipline-band a { font-size: min(9.2vw, 7.2svh, calc((100vw - 72px) / 9)); }
 @media (min-width: 761px) { .studio-page .discipline-band a { font-size: min(8.6vw, 12.4svh); } }
 @media (max-height: 560px) and (orientation: landscape) { .studio-page .discipline-band a { font-size: 40px; } }
 

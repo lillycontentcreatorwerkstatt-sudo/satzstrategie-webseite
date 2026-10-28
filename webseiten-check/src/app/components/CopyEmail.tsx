@@ -8,7 +8,7 @@ export default function CopyEmail({ email }: { email: string }) {
   async function copy() {
     try {
       await navigator.clipboard.writeText(email);
-      setMessage("E-Mail-Adresse kopiert.");
+      setMessage("E\u2011Mail-Adresse kopiert.");
     } catch {
       const selection = window.getSelection();
       if (addressRef.current && selection) {
