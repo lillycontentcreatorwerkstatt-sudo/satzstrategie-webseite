@@ -187,6 +187,10 @@
 .studio-page .people-spread { background: var(--table); }
 .studio-page .person-sheet .person-note { font-family: var(--hand); font-style: normal; font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; color: var(--red); transform: rotate(-3deg); }
 .studio-page .person-piet .person-note { color: #ff8f9c; }
+/* Fotos wie aufgelegte Abzüge, die oben über das Blatt hinausragen. */
+.studio-page .person-photo { display: block; width: min(60%, 300px); height: auto; margin: -110px 0 20px auto; border: 8px solid var(--paper-light); box-shadow: 0 18px 30px -18px rgba(28, 35, 51, .55); transform: rotate(4deg); }
+.studio-page .person-piet .person-photo { transform: rotate(-3deg); }
+@media (max-width: 760px) { .studio-page .person-photo { margin-top: -70px; } .studio-page .person-piet { margin-top: 100px; } }
 .studio-page .human-statement h2 span { color: inherit; }
 
 /* Kontakt und Ersteinschätzung: unterschrieben mit Handschrift. */
