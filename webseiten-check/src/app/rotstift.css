@@ -186,7 +186,7 @@
 .studio-page .work-solid:hover { background: var(--ink-soft); }
 
 /* Über uns */
-.studio-page .about-amp { color: var(--ink); font-family: var(--display); font-style: normal; }
+.studio-page .about-amp { color: var(--red); font-family: var(--display); font-style: normal; }
 .studio-page .people-spread { background: var(--table); }
 .studio-page .person-sheet .person-note { font-family: var(--hand); font-style: normal; font-size: clamp(30px, 2.6vw, 38px); line-height: 1.05; color: var(--red); transform: rotate(-3deg); }
 .studio-page .person-piet .person-note { color: #ff8f9c; }
