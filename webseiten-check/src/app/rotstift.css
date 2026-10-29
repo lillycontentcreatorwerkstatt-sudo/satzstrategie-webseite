@@ -166,6 +166,9 @@
 
 /* Beispiele */
 .studio-page .work-page { --work-sheet: var(--paper-light); }
+/* Beispiele und Fallstudie: Kopf auf hellem Papier, die Auswahlleiste darunter als eigenes Band im Tischton. */
+.studio-page .work-intro-light { background: var(--paper-light); padding-bottom: 0; }
+.studio-page .work-intro-light .work-index { margin-inline: calc(-1 * var(--gutter)); padding: 12px var(--gutter); background: var(--table); border-block: 0; }
 .studio-page .work-index a { font-family: var(--reading); color: var(--ink); text-decoration: none; }
 .studio-page .work-index a::before { content: '['; color: var(--red); }
 .studio-page .work-index a::after { content: ']'; color: var(--red); }

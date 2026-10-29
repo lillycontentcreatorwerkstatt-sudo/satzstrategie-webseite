@@ -9,7 +9,7 @@ export const metadata = pageMetadata('/beispiele/satzstrategie', 'Fallstudie: un
 export default function CaseStudyPage() {
   return <StudioShell active="/beispiele" flowFooter>
     <div className="work-page">
-      <header className="work-intro">
+      <header className="work-intro work-intro-light">
         <h1>Fallstudie.</h1>
         <div className="work-intro-copy"><p className="work-lead">Unsere&nbsp;eigene Webseite,<br />Fassung für Fassung.</p><p>Lilly hat diese Webseite geschrieben, gestaltet und gebaut. Piet&nbsp;hat gegengelesen. Jedes&nbsp;Vorher auf dieser Seite war einmal veröffentlicht. Hier&nbsp;steht, was wir geändert haben und warum.</p></div>
         <nav id="beispielauswahl" tabIndex={-1} className="work-index" aria-label="Bereiche der Fallstudie"><a href="#text">Text</a><a href="#design">Design</a><a href="#code">Technik</a><a href="#ergebnis">Ergebnis</a></nav>

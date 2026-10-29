@@ -9,9 +9,9 @@ export const metadata = pageMetadata('/beispiele', 'Webseitentexte vorher und na
 export default function ReferencesPage() {
   return <StudioShell active="/beispiele" flowFooter>
     <div className="work-page">
-      <header className="work-intro">
+      <header className="work-intro work-intro-light">
         <h1>Beispiele.</h1>
-        <div className="work-intro-copy"><p className="work-lead">Typische Situationen<br />und wie wir sie überarbeiten.</p><div><p>Eigene Arbeitsbeispiele aus Text, Design und Entwicklung. Dazu&nbsp;zeigen wir, wie Seiten besser lesbar und leichter bedienbar werden. Sie&nbsp;sehen Vorher und Nachher im direkten Vergleich – ohne Umschalten.</p><Link className="work-case-link" href="/beispiele/satzstrategie">Fallstudie: unsere eigene Webseite</Link></div></div>
+        <div className="work-intro-copy"><p className="work-lead">Typische Situationen<br />und wie wir sie überarbeiten.</p><div><p>Eigene Arbeitsbeispiele aus Text, Design und Entwicklung. Dazu&nbsp;zeigen wir, wie Seiten besser lesbar und leichter bedienbar werden. Sie&nbsp;sehen Vorher und Nachher im direkten Vergleich – ohne Umschalten.</p><Link className="work-case-link studio-button studio-button-secondary" href="/beispiele/satzstrategie">Fallstudie: unsere eigene Webseite</Link></div></div>
         <nav id="beispielauswahl" tabIndex={-1} className="work-index" aria-label="Bereiche der Beispiele"><a href="#text">Text</a><a href="#design">Design</a><a href="#code">Technik</a><a href="#zugang">Bedienung</a></nav>
       </header>
       <WorkExamples />
