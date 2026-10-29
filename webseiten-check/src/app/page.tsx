@@ -18,7 +18,7 @@ export default function Home() {
         <p className="hero-draft"><span className="hero-draft-text"><del>Qualität, die überzeugt.</del><ProofStrike /></span><span className="hand">zu allgemein. Was genau?</span></p>
         <h1 id="home-title" className="hero-title"><ProofCaret /><span className="hero-title-words"><span>Endlich </span><span>gesehen </span><span>werden.</span></span></h1>
       </div>
-      <div className="hero-bottom"><p>Webseitentexte <strong>schreiben und&nbsp;prüfen.</strong><br />Webseiten <strong>gestalten und&nbsp;entwickeln.</strong></p><p className="hero-promise">Sie können viel. Nur&nbsp;sieht es keiner.<br />Das ändern wir.</p><div className="hero-actions"><Link className="studio-button hero-action" href="/kontakt">Projekt anfragen</Link><Link className="hero-example-link" href="/beispiele">Beispiele ansehen</Link><span className="hand hero-note">Ja. Das ist es. – P.</span></div></div>
+      <div className="hero-bottom"><p>Webseitentexte <strong>schreiben und&nbsp;prüfen.</strong><br />Webseiten <strong>gestalten und&nbsp;entwickeln.</strong></p><p className="hero-promise">Sie können viel. Nur&nbsp;sieht es keiner.<br />Das ändern wir.</p><div className="hero-actions"><Link className="studio-button hero-action" href="/kontakt">Projekt anfragen</Link><Link className="hero-example-link" href="/beispiele">Arbeitsproben ansehen</Link><span className="hand hero-note">Ja. Das ist es. – P.</span></div></div>
     </section>
     <section className="discipline-band" aria-label="Text, Design und Technik"><Link href="/leistungen#texte">Text</Link><Link href="/leistungen#gestaltung">Design</Link><Link href="/leistungen#entwicklung">Technik</Link></section>
     </div>

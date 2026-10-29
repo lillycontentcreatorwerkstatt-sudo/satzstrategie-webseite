@@ -4,7 +4,7 @@ import { ProofCaret } from "./Proof";
 // Ein korrigiertes Blatt: die Floskel ist gestrichen, die konkrete Aussage eingefügt.
 export default function PaperExample() {
   return <section className="paper-example section-space" aria-labelledby="paper-example-title">
-    <div className="paper-example-intro"><h2 id="paper-example-title" aria-label="Weniger Floskel, mehr Aussage."><del className="proof-del">Floskel.</del><ins className="proof-ins"><ProofCaret />Aussage.</ins></h2><p>Eine Webseite muss sagen, was jemand anbietet. Hier&nbsp;wird aus einem allgemeinen Versprechen eine konkrete Leistung.</p><Link href="/beispiele">Weitere Beispiele ansehen</Link></div>
+    <div className="paper-example-intro"><h2 id="paper-example-title" aria-label="Weniger Floskel, mehr Aussage."><del className="proof-del">Floskel.</del><ins className="proof-ins"><ProofCaret />Aussage.</ins></h2><p>Eine Webseite muss sagen, was jemand anbietet. Hier&nbsp;wird aus einem allgemeinen Versprechen eine konkrete Leistung.</p><Link href="/beispiele">Weitere Arbeitsproben ansehen</Link></div>
     <figure className="paper-specimen">
       <div className="proof-sheet">
         <div>
@@ -14,7 +14,6 @@ export default function PaperExample() {
         </div>
         <div className="proof-sheet-notes"><span className="hand">Was? Wo? Für wen?</span><span className="hand">jetzt klar.</span></div>
       </div>
-      <figcaption className="specimen-caption">Selbst entwickeltes Text- und Gestaltungsbeispiel für einen erfundenen Handwerksbetrieb. Kein&nbsp;Kundenprojekt.</figcaption>
     </figure>
   </section>;
 }
