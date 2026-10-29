@@ -2,10 +2,10 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-// Handy, erster Besuch: Erst wird der Name aufgestempelt und wandert in die Kopfzeile, dann steht die ganze Papierskulptur da
+// Erster Besuch auf Handy und Computer: Erst wird der Name aufgestempelt und wandert in die Kopfzeile, dann steht die ganze Papierskulptur da
 // und ihre roten Klammern werden zu [Text] [Design] [Technik].
 // Ob das Intro läuft, entscheidet das Skript vor dem ersten Bild (Klasse paper-intro-on am <html>); die Zeiten stehen in rotstift.css.
-const INTRO_CHECK = `try{if(matchMedia("(max-width:760px) and (orientation:portrait) and (prefers-reduced-motion:no-preference)").matches&&!sessionStorage.getItem("paper-intro")){sessionStorage.setItem("paper-intro","1");document.documentElement.classList.add("paper-intro-on")}}catch(e){}`;
+const INTRO_CHECK = `try{if(matchMedia("(max-width:760px) and (orientation:portrait) and (prefers-reduced-motion:no-preference), (min-width:761px) and (min-height:561px) and (prefers-reduced-motion:no-preference)").matches&&!sessionStorage.getItem("paper-intro")){sessionStorage.setItem("paper-intro","1");document.documentElement.classList.add("paper-intro-on")}}catch(e){}`;
 
 // Mitte der beiden roten Klammern im Foto als Anteil der Bildbreite und -höhe, dazu ihre Höhe und Neigung.
 const PHOTO_BRACKETS = [{ x: .3127, y: .5087 }, { x: .5824, y: .4267 }];
@@ -35,7 +35,14 @@ export default function PaperIntro() {
         { transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px)` },
       ], { duration: 350, delay: 600 - elapsed, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
     }
-    const photo = el.querySelector<HTMLElement>(".paper-intro-photo")?.getBoundingClientRect();
+    const photoEl = el.querySelector<HTMLElement>(".paper-intro-photo");
+    const photo = photoEl?.getBoundingClientRect();
+    // Computer: Das Foto schrumpft an seinen Platz im Hero, während die Klammern ins Band fliegen.
+    const art = document.querySelector<HTMLElement>(".hero-art")?.getBoundingClientRect();
+    if (photoEl && photo && art && matchMedia("(min-width: 761px)").matches && elapsed < 2200) {
+      const box = (r: DOMRect) => ({ top: `${r.top}px`, left: `${r.left}px`, width: `${r.width}px`, height: `${r.height}px` });
+      photoEl.animate([box(photo), box(art)], { duration: 650, delay: 2200 - elapsed, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
+    }
     const links = [...document.querySelectorAll<HTMLElement>(".discipline-band a")];
     const marks = [...el.querySelectorAll<HTMLElement>(".paper-intro-mark")];
     if (photo && elapsed < 1700 && links.length * 2 === marks.length) {
@@ -63,7 +70,7 @@ export default function PaperIntro() {
     <script type={typeof window === "undefined" ? "text/javascript" : "text/plain"} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: INTRO_CHECK }} />
     <div ref={root} className="paper-intro" aria-hidden="true">
       <div className="paper-intro-stamp"><span className="studio-brand">satzstrategie<span className="brand-mark">]</span></span></div>
-      <div className="paper-intro-photo"><Image src="/images/papierarchitektur.webp" alt="" fill loading="eager" sizes="(max-width: 760px) 100vh, 50vw" /></div>
+      <div className="paper-intro-photo"><Image src="/images/papierarchitektur.webp" alt="" fill loading="eager" sizes="(max-width: 760px) 100vh, 100vw" /></div>
       {["[", "]", "[", "]", "[", "]"].map((mark, i) => <span key={i} className="paper-intro-mark">{mark}</span>)}
     </div>
   </>;

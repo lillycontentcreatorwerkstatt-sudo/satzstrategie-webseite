@@ -74,15 +74,13 @@
 .studio-page .hero-title span:nth-child(2), .studio-page .hero-title span:last-child { margin-left: 0; }
 .studio-page .hero-title { font-size: min(20vw, 11.8svh); line-height: 1; letter-spacing: -.02em; }
 .studio-page .hero-bottom p strong { color: inherit; font-weight: 400; }
-.studio-page .hero-note { font-size: 28px; background: var(--paper); padding: 0 8px; transform: rotate(3deg); }
 .studio-page .hero-example-link { background: var(--paper); }
 @media (prefers-reduced-motion: no-preference) {
-  /* Die Aussage steht sofort; Entwurfszeile, Text darunter und Randnotizen folgen. */
+  /* Die Aussage steht sofort; Entwurfszeile, Text darunter und Randnotiz folgen. */
   .studio-page .hero-strike path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: rs-strike .3s cubic-bezier(.6, .1, .3, 1) .55s forwards; }
-  .studio-page .hero-draft, .studio-page .hero-bottom, .studio-page .hero-head .hand, .studio-page .hero-note { opacity: 0; animation: rs-fade .3s ease-out forwards; }
+  .studio-page .hero-draft, .studio-page .hero-bottom, .studio-page .hero-head .hand { opacity: 0; animation: rs-fade .3s ease-out forwards; }
   .studio-page :is(.hero-draft, .hero-bottom) { animation-delay: .2s; }
   .studio-page .hero-head .hand { animation-delay: .9s; }
-  .studio-page .hero-note { animation-delay: 1.05s; }
 }
 @keyframes rs-strike { to { stroke-dashoffset: 0; } }
 @keyframes rs-fade { to { opacity: 1; } }
@@ -354,8 +352,6 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 @media (min-width: 761px) { .studio-page .home-contact { align-items: end; } }
 /* Die Bildunterschrift hält Abstand zur schräg liegenden Karte. */
 .studio-page .specimen-caption { margin-top: 28px; }
-/* Die Handschrift hat kein sichtbares geschütztes Leerzeichen; die kurze Notiz bleibt so auf einer Zeile. */
-.studio-page .hero-note { white-space: nowrap; }
 
 /* Handy: Das Papierfoto liegt unscharf und aufgehellt hinter dem ganzen Hero, die Texte stehen auf Papierzetteln davor. */
 @media (max-width: 760px) and (orientation: portrait) {
@@ -364,10 +360,10 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   .studio-page .hero-art::after { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--paper) 55%, transparent); }
 }
 
-/* Handy, erster Besuch: Der Name wird aufgestempelt und wandert in die Kopfzeile. Dann steht die ganze Papierskulptur da,
+/* Erster Besuch (Handy und Computer): Der Name wird aufgestempelt und wandert in die Kopfzeile. Dann steht die ganze Papierskulptur da,
    wird unscharf zum Hintergrund, und ihre Klammern fliegen ins Band (PaperIntro.tsx). */
 .studio-page .paper-intro { display: none; }
-@media (max-width: 760px) and (orientation: portrait) and (prefers-reduced-motion: no-preference) {
+@media (max-width: 760px) and (orientation: portrait) and (prefers-reduced-motion: no-preference), (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
   html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .45s ease-in-out 1.8s forwards, intro-gone 0s 2.95s forwards; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header { animation: intro-header 2.95s step-end; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header .studio-brand { animation: intro-hold .95s step-end; }
@@ -381,7 +377,11 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page :is(.hero-draft, .hero-bottom) { animation-delay: 2.85s; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 3.2s; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 3.55s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-note { animation-delay: 3.7s; }
+}
+/* Computer: Das Foto wird nicht unscharf, sondern schrumpft an seinen Platz rechts neben dem Text (PaperIntro.tsx). */
+@media (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
+  .studio-page .paper-intro-photo { animation: intro-show .3s ease-out .95s both, intro-settle 1s ease-out .95s both; }
+  .studio-page .paper-intro-photo img { object-position: 48% center; }
 }
 @keyframes intro-stamp { 0% { opacity: 0; transform: scale(1.5); } 70% { opacity: 1; transform: scale(.97); } }
 @keyframes intro-show { from { opacity: 0; } }
@@ -420,5 +420,7 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 /* Startseite: Die Leistungszeile steht direkt unter der Überschrift; auf dem Handy etwas kleiner, damit jede Zeile ganz bleibt. */
 /* Handy: Hauptzeile hell, Leistungszeile im Papierton, Versprechen wieder hell. */
 @media (max-width: 760px) { .studio-page .hero-bottom p:first-child { font-size: clamp(16px, 4.7vw, 20px); } .studio-page :is(.hero-title-words, .hero-title-words span, .hero-bottom .hero-promise) { background: var(--paper-light); } }
-/* Handy: ohne Handnotiz und mit mehr Luft zwischen den Kästchen. */
-@media (max-width: 760px) { .studio-page .hero-note { display: none; } .studio-page .hero-title { padding-top: 20px; } .studio-page .hero-bottom { gap: 16px; } }
+/* Handy: mit mehr Luft zwischen den Kästchen. */
+@media (max-width: 760px) { .studio-page .hero-title { padding-top: 20px; } .studio-page .hero-bottom { gap: 16px; } }
+/* Computer: Hauptzeile und Texte darunter auf hellen Zetteln wie am Handy. */
+@media (min-width: 761px) and (min-height: 561px) { .studio-page :is(.hero-title-words, .hero-title-words span, .hero-bottom p) { background: var(--paper-light); } .studio-page .hero-bottom p { padding: 10px 14px; } }
