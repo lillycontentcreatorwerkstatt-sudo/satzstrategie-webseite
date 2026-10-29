@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.satzstrategie.de";
-export const SITE_TITLE = "Webseitentexte & Webdesign, die zeigen, was Sie können | Satzstrategie";
+export const SITE_TITLE = "Webseitentexte & Webdesign | Satzstrategie";
 export const SITE_DESCRIPTION = "Copywriting, Webdesign und Entwicklung: Lilly und Piet schreiben Ihre Webseitentexte, gestalten und bauen Ihre Website. Mit kostenloser Ersteinschätzung.";
 export const PUBLIC_ROUTES = ["/", "/leistungen", "/beispiele", "/beispiele/satzstrategie", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
 
@@ -34,7 +34,7 @@ export const organizationData = {
       url: SITE_URL,
       email: "kontakt@satzstrategie.de",
       description: SITE_DESCRIPTION,
-      logo: `${SITE_URL}/icon.svg`,
+      logo: `${SITE_URL}/icon.png`,
       areaServed: { "@type": "Country", name: "Deutschland" },
       knowsLanguage: "de",
       member: [
