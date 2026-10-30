@@ -362,7 +362,7 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 }
 
 /* Erster Besuch (Handy und Computer): Der Name wird aufgestempelt und wandert in die Kopfzeile. Dann steht die ganze Papierskulptur da,
-   wird unscharf zum Hintergrund, und ihre Klammern fliegen ins Band (PaperIntro.tsx). */
+   ihre Klammern lösen sich und fliegen ins Band, erst danach wird das Foto unscharf zum Hintergrund (PaperIntro.tsx). */
 .studio-page .paper-intro { display: none; }
 @media (max-width: 760px) and (orientation: portrait) and (prefers-reduced-motion: no-preference), (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
   html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .45s ease-in-out 1.8s forwards, intro-gone 0s 2.95s forwards; }
@@ -370,7 +370,7 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header .studio-brand { animation: intro-hold .95s step-end; }
   .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg); animation: intro-gone 0s .95s forwards; }
   .studio-page .paper-intro-stamp .studio-brand { font-size: min(12vw, 130px); animation: intro-stamp .3s ease-in .05s both; }
-  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; overflow: hidden; animation: intro-show .3s ease-out .95s both, intro-blur .45s ease-in-out 1.8s forwards; }
+  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; overflow: hidden; animation: intro-show .3s ease-out .95s both, intro-blur .5s ease-in-out 2.35s forwards; }
   .studio-page .paper-intro-photo img { object-fit: cover; animation: intro-settle 1s ease-out .95s both; }
   .studio-page .paper-intro-mark { position: absolute; left: 0; top: 0; color: var(--red); font-family: var(--display); opacity: 0; will-change: transform; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::before,
