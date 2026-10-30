@@ -375,9 +375,11 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   .studio-page .paper-intro-mark { position: absolute; left: 0; top: 0; color: var(--red); font-family: var(--display); opacity: 0; will-change: transform; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::before,
   html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::after { animation: intro-hold 2.95s step-end; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page :is(.hero-draft, .hero-bottom) { animation-delay: 2.85s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 3.2s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 3.55s; }
+  /* Im Intro erscheint die Aussage erst, wenn die Klammern im Band gelandet sind; danach der Rest. */
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-title { opacity: 0; animation: rs-fade .2s ease-out 2.95s forwards; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page :is(.hero-draft, .hero-bottom) { animation-delay: 3.15s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 3.5s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 3.85s; }
 }
 /* Computer: Das Foto wird nicht unscharf, sondern schrumpft an seinen Platz rechts neben dem Text (PaperIntro.tsx). */
 @media (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
