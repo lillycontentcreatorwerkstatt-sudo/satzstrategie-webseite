@@ -367,10 +367,10 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .45s ease-in-out 1.8s forwards, intro-gone 0s 2.95s forwards; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header { animation: intro-header 2.95s step-end; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header .studio-brand { animation: intro-hold .95s step-end; }
-  .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg) scale(1.5); animation: intro-gone 0s .95s forwards; }
-  .studio-page .paper-intro-stamp .studio-brand { animation: intro-stamp .25s cubic-bezier(.3, 0, .4, 1) .05s both; }
-  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; animation: intro-show .3s ease-out .95s both, intro-settle 1s ease-out .95s both, intro-blur .45s ease-in-out 1.8s forwards; }
-  .studio-page .paper-intro-photo img { object-fit: cover; }
+  .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg); animation: intro-gone 0s .95s forwards; }
+  .studio-page .paper-intro-stamp .studio-brand { font-size: min(12vw, 130px); animation: intro-stamp .3s ease-in .05s both; }
+  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; overflow: hidden; animation: intro-show .3s ease-out .95s both, intro-blur .45s ease-in-out 1.8s forwards; }
+  .studio-page .paper-intro-photo img { object-fit: cover; animation: intro-settle 1s ease-out .95s both; }
   .studio-page .paper-intro-mark { position: absolute; left: 0; top: 0; color: var(--red); font-family: var(--display); opacity: 0; will-change: transform; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::before,
   html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::after { animation: intro-hold 2.95s step-end; }
@@ -380,10 +380,10 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 }
 /* Computer: Das Foto wird nicht unscharf, sondern schrumpft an seinen Platz rechts neben dem Text (PaperIntro.tsx). */
 @media (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
-  .studio-page .paper-intro-photo { animation: intro-show .3s ease-out .95s both, intro-settle 1s ease-out .95s both; }
+  .studio-page .paper-intro-photo { animation: intro-show .3s ease-out .95s both; }
   .studio-page .paper-intro-photo img { object-position: 48% center; }
 }
-@keyframes intro-stamp { 0% { opacity: 0; transform: scale(1.5); } 70% { opacity: 1; transform: scale(.97); } }
+@keyframes intro-stamp { 0% { opacity: 0; transform: scale(2.4); } 60% { opacity: 1; transform: scale(.92); animation-timing-function: ease-out; } 80% { transform: scale(1.03); } }
 @keyframes intro-show { from { opacity: 0; } }
 @keyframes intro-settle { from { transform: scale(1.06); } }
 @keyframes intro-blur { to { filter: blur(10px); opacity: 0; } }

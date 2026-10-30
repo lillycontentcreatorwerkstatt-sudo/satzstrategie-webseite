@@ -11,8 +11,7 @@ const INTRO_CHECK = `try{if(matchMedia("(max-width:760px) and (orientation:portr
 const PHOTO_BRACKETS = [{ x: .3127, y: .5087 }, { x: .5824, y: .4267 }];
 const PHOTO_BRACKET_HEIGHT = .12;
 const PHOTO_ANGLE = -17;
-// Stempel: Größe und Neigung wie in rotstift.css, Mitte bei 42 % der Bildschirmhöhe.
-const STAMP_SCALE = 1.5;
+// Stempel: Neigung wie in rotstift.css, Mitte bei 42 % der Bildschirmhöhe. Die Größe steht in rotstift.css.
 const STAMP_ANGLE = -6;
 const STAMP_TOP = .42;
 
@@ -29,13 +28,17 @@ export default function PaperIntro() {
     const brand = document.querySelector<HTMLElement>(".studio-header .studio-brand");
     if (stamp && brand && elapsed < 600) {
       const target = brand.getBoundingClientRect();
+      const scale = target.width / (stamp.firstElementChild as HTMLElement).offsetWidth;
       const dx = target.left + target.width / 2 - el.clientWidth / 2, dy = target.top + target.height / 2 - el.clientHeight * STAMP_TOP;
       stamp.animate([
-        { transform: `translate(-50%, -50%) rotate(${STAMP_ANGLE}deg) scale(${STAMP_SCALE})` },
-        { transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px)` },
+        { transform: `translate(-50%, -50%) rotate(${STAMP_ANGLE}deg)` },
+        { transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${scale})` },
       ], { duration: 350, delay: 600 - elapsed, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
     }
     const photoEl = el.querySelector<HTMLElement>(".paper-intro-photo");
+    // Das Foto füllt nur den Bereich zwischen Kopfzeile und Band.
+    const hero = document.querySelector<HTMLElement>(".paper-hero")?.getBoundingClientRect();
+    if (photoEl && hero) Object.assign(photoEl.style, { top: `${hero.top}px`, bottom: "auto", height: `${hero.height}px` });
     const photo = photoEl?.getBoundingClientRect();
     // Computer: Das Foto schrumpft an seinen Platz im Hero, während die Klammern ins Band fliegen.
     const art = document.querySelector<HTMLElement>(".hero-art")?.getBoundingClientRect();
