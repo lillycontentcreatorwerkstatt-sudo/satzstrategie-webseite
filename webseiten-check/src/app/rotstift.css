@@ -103,7 +103,8 @@
 .studio-page .discipline-band { display: flex; justify-content: space-between; gap: 12px; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .studio-page .discipline-band a { font-family: var(--display); text-decoration: none; border-right: 0; letter-spacing: -.01em; }.studio-page .discipline-band a::before { content: '['; color: var(--red); margin-right: .03em; }
 .studio-page .discipline-band a::after { content: ']'; color: var(--red); margin-left: .03em; }
-.studio-page .discipline-band a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--red); text-underline-offset: .12em; }
+/* Beim Überfahren wird das Wort rot statt unterstrichen; die Klammern zeigen schon, dass es ein Link ist. */
+.studio-page .discipline-band a:hover { color: var(--red); }
 .studio-page .discipline-band :focus-visible { outline-color: var(--red); }
 .studio-page .discipline-band a { font-size: min(9.2vw, 7.2svh, calc((100vw - 72px) / 9)); }
 @media (min-width: 761px) { .studio-page .discipline-band a { font-size: min(8.6vw, 12.4svh); } }
