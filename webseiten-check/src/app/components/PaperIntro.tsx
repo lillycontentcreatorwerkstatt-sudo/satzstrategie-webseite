@@ -8,11 +8,14 @@ import { useEffect, useRef } from "react";
 const INTRO_CHECK = `try{if(matchMedia("(max-width:760px) and (orientation:portrait) and (prefers-reduced-motion:no-preference), (min-width:761px) and (min-height:561px) and (prefers-reduced-motion:no-preference)").matches&&!sessionStorage.getItem("paper-intro")){sessionStorage.setItem("paper-intro","1");document.documentElement.classList.add("paper-intro-on")}}catch(e){}`;
 
 // Mitte der beiden roten Klammern im Foto als Anteil der Bildbreite und -höhe, dazu ihre Höhe und Neigung (die Karte ist schräg fotografiert, die Klammern sind daher geschert, nicht gedreht).
-const PHOTO_BRACKETS = [{ x: .3127, y: .5087 }, { x: .5824, y: .4267 }];
-const PHOTO_BRACKET_HEIGHT = .12;
+const PHOTO_BRACKETS = [{ x: .3127, y: .5103, h: .1224 }, { x: .5831, y: .4242, h: .111 }];
 // Die Klammer der Schrift ist kleiner als ihr Schriftgrad und sitzt tiefer als die Mitte ihrer Zeile; so deckt sie die Fotoklammer.
-const MARK_FIT = 1.12;
+const MARK_FIT = 1.08;
 const MARK_RAISE = .07;
+// Die Fotoklammern sind kräftiger und haben längere Enden: zu Beginn etwas breiter und mit Schatten verdickt, im Flug wieder Schrift.
+const MARK_WIDEN = 1.3;
+const MARK_BOLD = [".01em 0", "-.01em 0", "0 .01em", "0 -.01em"].map(offset => `${offset} currentColor`).join(", ");
+const MARK_THIN = "0 0 transparent, 0 0 transparent, 0 0 transparent, 0 0 transparent";
 const PHOTO_ANGLE = -17;
 // Stempel: Neigung wie in rotstift.css, Mitte bei 42 % der Bildschirmhöhe. Die Größe steht in rotstift.css.
 const STAMP_ANGLE = -6;
@@ -63,11 +66,11 @@ export default function PaperIntro() {
           mark.style.left = `${left}px`;
           mark.style.top = `${top}px`;
           const from = PHOTO_BRACKETS[side];
-          const scale = MARK_FIT * PHOTO_BRACKET_HEIGHT * size / parseFloat(css.fontSize);
+          const scale = MARK_FIT * from.h * size / parseFloat(css.fontSize);
           const raise = MARK_RAISE * parseFloat(css.fontSize) * scale;
-          const start = `translate(${offsetX + from.x * size - left - width / 2}px, ${offsetY + from.y * size - top - height / 2 - raise}px) skewY(${PHOTO_ANGLE}deg) scale(${scale})`;
-          mark.animate([{ opacity: 0, transform: start }, { opacity: 1, transform: start }], { duration: 200, delay: 1700 - elapsed, fill: "both" });
-          mark.animate([{ transform: start }, { transform: "none" }], { duration: 650, delay: 2200 - elapsed + i * 50, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
+          const start = `translate(${offsetX + from.x * size - left - width / 2}px, ${offsetY + from.y * size - top - height / 2 - raise}px) skewY(${PHOTO_ANGLE}deg) scale(${scale * MARK_WIDEN}, ${scale})`;
+          mark.animate([{ opacity: 0, transform: start, textShadow: MARK_BOLD }, { opacity: 1, transform: start, textShadow: MARK_BOLD }], { duration: 200, delay: 1700 - elapsed, fill: "both" });
+          mark.animate([{ transform: start, textShadow: MARK_BOLD }, { transform: "none", textShadow: MARK_THIN }], { duration: 650, delay: 2200 - elapsed + i * 50, easing: "cubic-bezier(.6, 0, .2, 1)", fill: "both" });
         });
       });
     }
