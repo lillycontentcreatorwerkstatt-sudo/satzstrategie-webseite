@@ -19,7 +19,7 @@ export default function DatenschutzPage() {
         <p>Anbieter ist Vercel Inc., USA. Eine&nbsp;Verarbeitung außerhalb der EU bzw. des&nbsp;EWR ist möglich. Informationen&nbsp;zu Verarbeitung und Übermittlungsmechanismen finden Sie in der <a href="https://vercel.com/legal/privacy-notice">Datenschutzerklärung von Vercel</a> und dessen <a href="https://vercel.com/legal/dpa">Vereinbarung zur Datenverarbeitung</a>.</p>
 
         <h2>Schriften, Cookies und externe Inhalte</h2>
-        <p>Die Schriften und Bilder werden mit der Webseite ausgeliefert. Beim&nbsp;Laden der Seite werden keine Google Fonts nachgeladen. Wir&nbsp;setzen in dieser Fassung keine Werbepixel, Besuchsstatistik oder eingebetteten Karten und Videos ein. Die&nbsp;Webseite setzt keine Cookies und speichert keine Angaben im lokalen Browser-Speicher.</p>
+        <p>Die Schriften und Bilder werden mit der Webseite ausgeliefert. Beim&nbsp;Laden der Seite werden keine Google Fonts nachgeladen. Wir&nbsp;setzen in dieser Fassung keine Werbepixel, Besuchsstatistik oder eingebetteten Karten und Videos ein. Die&nbsp;Webseite setzt keine Cookies. Damit&nbsp;die Eingangsanimation nicht bei jedem Seitenaufruf neu startet, merkt sich Ihr Browser im Sitzungsspeicher (sessionStorage) nur den Vermerk „schon gesehen“. Dieser&nbsp;Vermerk enthält keine Angaben zu Ihrer Person, wird nicht an uns übertragen und verschwindet, sobald Sie den Tab oder das Fenster schließen.</p>
         <p>Externe Links öffnen die Seite des jeweiligen Anbieters erst, wenn Sie sie aufrufen. Dort&nbsp;gelten dessen Datenschutzhinweise.</p>
 
         <h2>Kontaktformular</h2>
