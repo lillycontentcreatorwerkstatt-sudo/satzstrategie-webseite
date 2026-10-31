@@ -1,6 +1,6 @@
 export const INQUIRY_EMAIL = "kontakt@satzstrategie.de";
 
-export type InquiryKind = "first-look" | "contact";
+export type InquiryKind = "first-look" | "contact" | "waitlist";
 
 export type Inquiry = {
   kind: InquiryKind;
@@ -45,12 +45,17 @@ export function createContactMessage({ website, message, name, email }: Omit<Inq
   return `Hallo Lilly und Piet,\n\n${message.trim()}\n\nMeine Webseite: ${website.trim() || "noch keine"}\n\nViele Grüße\n${name.trim() || "(ohne Namen)"}\n${email.trim()}`;
 }
 
+export function createWaitlistMessage(email: string): string {
+  return `Hallo Lilly und Piet,\n\nbitte sagen Sie mir einmal Bescheid, wenn „Selbst machen“ startet.\n\nViele Grüße\n${email.trim()}`;
+}
+
 const text = (value: unknown, max: number) => typeof value === "string" && value.length <= max ? value : null;
 
 export function parseInquiry(input: unknown): InquiryMail | { error: string } {
   const data = (input && typeof input === "object" ? input : {}) as Record<string, unknown>;
-  const kind = data.kind === "first-look" || data.kind === "contact" ? data.kind : null;
+  const kind = data.kind === "first-look" || data.kind === "contact" || data.kind === "waitlist" ? data.kind : null;
   const email = normalizeInquiryEmail(text(data.email, 254) ?? "");
+  if (kind === "waitlist" && email) return { subject: "Warteliste: Selbst machen", text: createWaitlistMessage(email), replyTo: email };
   const message = text(data.message, kind === "first-look" ? 500 : 3000);
   const name = text(data.name ?? "", 120);
   const rawWebsite = text(data.website ?? "", 2048);

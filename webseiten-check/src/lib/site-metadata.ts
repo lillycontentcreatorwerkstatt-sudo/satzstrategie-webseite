@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://www.satzstrategie.de";
 export const SITE_TITLE = "Webseitentexte & Webdesign | Satzstrategie";
 export const SITE_DESCRIPTION = "Copywriting, Webdesign und Entwicklung: Lilly und Piet schreiben Ihre Webseitentexte, gestalten und bauen Ihre Website. Mit kostenloser Ersteinschätzung.";
-export const PUBLIC_ROUTES = ["/", "/leistungen", "/beispiele", "/beispiele/satzstrategie", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
+export const PUBLIC_ROUTES = ["/", "/leistungen", "/beispiele", "/beispiele/satzstrategie", "/selbst-machen", "/wer-wir-sind", "/kontakt", "/erster-blick", "/impressum", "/datenschutz"] as const;
 
 // Local and Vercel preview builds must not enter search results.
 export function isIndexableDeployment(environment = process.env.VERCEL_ENV): boolean {

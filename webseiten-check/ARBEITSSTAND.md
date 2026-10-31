@@ -2,6 +2,23 @@
 
 Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 
+## Weiche „Sie haben die Wahl“ und „Selbst machen“ am 31. Oktober 2026 — noch nicht committed, nicht veröffentlicht
+
+- Startseite: Nach dem Stempel erscheint vor dem Foto die Weiche: „Endlich gesehen werden.“,
+  „Webseiten · Texte · Gestaltung“, „Sie haben die Wahl.“ und zwei runde Knöpfe.
+  „Wir setzen es um“ startet die bisherige Animation (Foto, Klammern, Hero) ab dem Klick
+  (`paper-intro-go`), „Sie machen es selbst“ führt nach `/selbst-machen`. Kopfzeile und
+  Kontakt/Impressum/Datenschutz bleiben sichtbar. Die Weiche erscheint wie das Intro nur
+  einmal pro Browsersitzung und nicht bei „Bewegung reduzieren“.
+- `/selbst-machen`: Baustellenschild, Start 16. November 2026 („Wenn wir schneller sind,
+  umso besser“), Warteliste per Mail über `/api/inquiry` (kind `waitlist`, nichts
+  gespeichert), zehn gesperrte Schritte. Menüpunkt 03 „Selbst machen“, in Sitemap und
+  `llms.txt`. Datenschutz um Abschnitt „Warteliste“ ergänzt (Art. 6 Abs. 1 lit. a DSGVO).
+- Menü am Computer: zwischen 1001 und 1120 px etwas enger, damit sechs Punkte in eine
+  Zeile passen.
+- Geprüft: ESLint, 23 Tests, Produktionsbuild; im Browser 320 × 568, 375 × 812,
+  768 × 1024, 1001–1280 px; beide Knöpfe, leeres Wartelistenfeld (nichts gesendet).
+
 ## SEO Phase 1 am 27. Oktober 2026 — veröffentlicht
 
 - Ziel: Suchbegriffe sichtbar machen, ohne Design oder Hero-Animation zu ändern.

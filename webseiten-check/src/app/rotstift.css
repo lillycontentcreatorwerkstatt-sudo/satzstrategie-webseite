@@ -267,13 +267,18 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 /* Kopfzeile: ruhige Leseschrift, der Rotstift markiert die aktuelle Seite, Kontakt ist der einzige dunkle Knopf. */
 @media (min-width: 1001px) {
   .studio-page .studio-desktop-nav { gap: clamp(26px, 2.8vw, 46px); }
-  .studio-page .studio-desktop-nav a { position: relative; font-size: 17px; color: var(--ink); text-decoration: none; }
+  .studio-page .studio-desktop-nav a { position: relative; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
   .studio-page .studio-desktop-nav a:not(.nav-contact)::after { content: ''; position: absolute; left: -2px; right: -2px; bottom: 7px; height: 2px; border-radius: 2px; background: var(--red); transform: scaleX(0) rotate(-1.2deg); transform-origin: left center; transition: transform .3s var(--ease); }
   .studio-page .studio-desktop-nav a:hover::after, .studio-page .studio-desktop-nav a[aria-current='page']::after { transform: scaleX(1) rotate(-1.2deg); }
   .studio-page .studio-desktop-nav a:hover, .studio-page .studio-desktop-nav a[aria-current='page'] { text-decoration: none; }
   .studio-page .studio-desktop-nav .nav-contact { min-height: 48px; padding-inline: 24px; background: var(--ink); border-color: var(--ink); color: var(--paper-light); font-weight: 700; }
   .studio-page .studio-desktop-nav .nav-contact:hover, .studio-page .studio-desktop-nav .nav-contact[aria-current='page'] { background: var(--ink-soft); border-color: var(--ink-soft); color: var(--paper-light); }
   .studio-page .studio-desktop-nav .nav-contact[aria-current='page'] { box-shadow: inset 0 -3px 0 var(--red); }
+}
+/* Sechs Menüpunkte passen auch knapp über der Handygrenze in eine Zeile. */
+@media (min-width: 1001px) and (max-width: 1120px) {
+  .studio-page .studio-desktop-nav { gap: 18px; }
+  .studio-page .studio-desktop-nav a { font-size: 16px; }
 }
 
 /* Handymenü als Inhaltsverzeichnis: ein Papierblatt über der unscharf gestellten Seite. */
@@ -361,31 +366,59 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
   .studio-page .hero-art::after { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--paper) 55%, transparent); }
 }
 
-/* Erster Besuch (Handy und Computer): Der Name wird aufgestempelt und wandert in die Kopfzeile. Dann steht die ganze Papierskulptur da,
-   ihre Klammern lösen sich und fliegen ins Band, erst danach wird das Foto unscharf zum Hintergrund (PaperIntro.tsx). */
+/* Erster Besuch (Handy und Computer): Der Name wird aufgestempelt und wandert in die Kopfzeile. Dann steht die Weiche da.
+   Nach „Wir setzen es um“ (Klasse paper-intro-go) steht die ganze Papierskulptur da, ihre Klammern lösen sich und fliegen ins Band,
+   erst danach wird das Foto unscharf zum Hintergrund (PaperIntro.tsx). Die Zeiten nach der Weiche zählen ab dem Klick. */
 .studio-page .paper-intro { display: none; }
 @media (max-width: 760px) and (orientation: portrait) and (prefers-reduced-motion: no-preference), (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; animation: intro-clear .45s ease-in-out 1.8s forwards, intro-gone 0s 2.95s forwards; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header { animation: intro-header 2.95s step-end; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .paper-intro { display: block; position: fixed; inset: 0; z-index: 1000; background: var(--paper); touch-action: none; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .paper-intro { animation: intro-clear .45s ease-in-out .85s forwards, intro-gone 0s 2s forwards; }
+  html.paper-intro-on:not(.paper-intro-go):not(.paper-intro-done) .studio-page .studio-header { z-index: 1001; background-color: transparent; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .studio-header { animation: intro-header 2s step-end; }
   html.paper-intro-on:not(.paper-intro-done) .studio-page .studio-header .studio-brand { animation: intro-hold .95s step-end; }
   .studio-page .paper-intro-stamp { position: absolute; left: 50%; top: 42%; white-space: nowrap; transform: translate(-50%, -50%) rotate(-6deg); animation: intro-gone 0s .95s forwards; }
   .studio-page .paper-intro-stamp .studio-brand { font-size: min(12vw, 130px); animation: intro-stamp .3s ease-in .05s both; }
-  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; overflow: hidden; animation: intro-show .3s ease-out .95s both, intro-blur .5s ease-in-out 2.35s forwards; }
-  .studio-page .paper-intro-photo img { object-fit: cover; animation: intro-settle 1s ease-out .95s both; }
+  .studio-page .paper-intro-photo { position: absolute; inset: var(--header-height) 0 0; overflow: hidden; opacity: 0; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .paper-intro-photo { opacity: 1; animation: intro-show .3s ease-out both, intro-blur .5s ease-in-out 1.4s forwards; }
+  .studio-page .paper-intro-photo img { object-fit: cover; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .paper-intro-photo img { animation: intro-settle 1s ease-out both; }
   .studio-page .paper-intro-mark { position: absolute; left: 0; top: 0; color: var(--red); font-family: var(--display); opacity: 0; will-change: transform; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::before,
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .discipline-band a::after { animation: intro-hold 2.95s step-end; }
+  /* Die Weiche erscheint, sobald der Stempel in der Kopfzeile gelandet ist, und verschwindet mit dem Klick. */
+  .studio-page .paper-intro-choice { position: absolute; inset: var(--header-height) 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(12px, 2.4svh, 26px); padding: 16px var(--gutter) calc(64px + env(safe-area-inset-bottom, 0px)); text-align: center; touch-action: manipulation; opacity: 0; animation: rs-fade .45s ease-out 1s forwards; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .paper-intro-choice { pointer-events: none; animation: intro-choice-out .25s ease-in forwards; }
+  html.paper-intro-on:not(.paper-intro-go):not(.paper-intro-done) .studio-page .discipline-band a::before,
+  html.paper-intro-on:not(.paper-intro-go):not(.paper-intro-done) .studio-page .discipline-band a::after { opacity: 0; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .discipline-band a::before,
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .discipline-band a::after { animation: intro-hold 2s step-end; }
   /* Im Intro erscheint die Aussage erst, wenn die Klammern im Band gelandet sind; danach der Rest. */
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-title { opacity: 0; animation: rs-fade .2s ease-out 2.95s forwards; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page :is(.hero-draft, .hero-bottom) { animation-delay: 3.15s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 3.5s; }
-  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 3.85s; }
+  html.paper-intro-on:not(.paper-intro-done) .studio-page .hero-title { opacity: 0; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .hero-title { animation: rs-fade .2s ease-out 2s forwards; }
+  html.paper-intro-on:not(.paper-intro-go):not(.paper-intro-done) .studio-page :is(.hero-draft, .hero-bottom, .hero-head .hand, .hero-strike path) { animation: none; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page :is(.hero-draft, .hero-bottom) { animation-delay: 2.2s; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .hero-strike path { animation-delay: 2.55s; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .hero-head .hand { animation-delay: 2.9s; }
 }
 /* Computer: Das Foto wird nicht unscharf, sondern schrumpft an seinen Platz rechts neben dem Text (PaperIntro.tsx). */
 @media (min-width: 761px) and (min-height: 561px) and (prefers-reduced-motion: no-preference) {
-  .studio-page .paper-intro-photo { animation: intro-show .3s ease-out .95s both; }
+  html.paper-intro-on.paper-intro-go:not(.paper-intro-done) .studio-page .paper-intro-photo { animation: intro-show .3s ease-out both; }
   .studio-page .paper-intro-photo img { object-position: 48% center; }
 }
+/* Die Weiche: Satz, Themen, Handnotiz und zwei gleich starke Wege. Handy zuerst: Knöpfe untereinander, volle Breite. */
+.studio-page .choice-claim { margin: 0; font-family: var(--display); font-size: min(15vw, 9.5svh); line-height: 1; letter-spacing: -.02em; text-wrap: balance; }
+.studio-page .choice-claim span { display: inline-block; background: var(--paper-light); padding: .04em .14em .1em; }
+.studio-page .choice-topics { margin: 0; font-size: clamp(16px, 4.4vw, 20px); letter-spacing: .03em; color: var(--muted); }
+.studio-page .choice-topics span { color: var(--red); }
+.studio-page .choice-hand { margin: 0; font-size: clamp(32px, 8.4vw, 46px); transform: rotate(-3deg); }
+.studio-page .choice-actions { display: flex; flex-direction: column; gap: 12px; width: min(100%, 340px); }
+.studio-page .choice-button { width: 100%; border-radius: 999px; }
+.studio-page .choice-legal { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; gap: 22px; padding: 4px var(--gutter) calc(4px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); font-size: 14px; }
+.studio-page .choice-legal a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); }
+@media (min-width: 761px) {
+  .studio-page .choice-claim { font-size: min(9vw, 12svh); }
+  .studio-page .choice-actions { flex-direction: row; justify-content: center; width: auto; gap: 16px; }
+  .studio-page .choice-button { width: auto; min-width: 260px; }
+}
+@keyframes intro-choice-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
 @keyframes intro-stamp { 0% { opacity: 0; transform: scale(2.4); } 60% { opacity: 1; transform: scale(.92); animation-timing-function: ease-out; } 80% { transform: scale(1.03); } }
 @keyframes intro-show { from { opacity: 0; } }
 @keyframes intro-settle { from { transform: scale(1.06); } }

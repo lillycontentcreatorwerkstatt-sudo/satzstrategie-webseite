@@ -1,0 +1,37 @@
+/* Selbst machen: Baustelle mit Startdatum, Warteliste und gesperrter Levelkarte. Handy zuerst. */
+.studio-page .diy-hero { padding: 32px var(--gutter) 48px; display: grid; gap: 20px; justify-items: start; }
+.studio-page .diy-sign { background: var(--paper-light); border: 2px solid var(--ink); transform: rotate(-2deg); margin: 4px 0 8px; }
+.studio-page .diy-sign p { margin: 0; padding: 8px 18px 6px; font-family: var(--logo); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: clamp(20px, 6vw, 30px); line-height: 1.1; }
+/* Rot-weiß wie eine Absperrbake. */
+.studio-page .diy-stripes { display: block; height: 12px; background: repeating-linear-gradient(-45deg, var(--red) 0 10px, var(--paper-light) 10px 20px); }
+.studio-page .diy-hero h1 { margin: 0; font-size: clamp(48px, 14vw, 104px); line-height: 1; text-wrap: balance; }
+.studio-page .diy-lead { margin: 0; max-width: 36ch; font-size: clamp(19px, 2vw, 24px); line-height: 1.45; }
+.studio-page .diy-date { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; font-size: 18px; }
+.studio-page .diy-date strong { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 8vw, 44px); line-height: 1.1; }
+.studio-page .diy-date .hand { font-size: clamp(26px, 6.6vw, 32px); transform: rotate(-3deg); }
+.studio-page .waitlist { width: 100%; max-width: 560px; background: var(--paper-light); border: 1px solid var(--line); padding: 18px; }
+.studio-page .waitlist fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 12px; }
+.studio-page .waitlist label { font-weight: 700; }
+.studio-page .waitlist-row { display: grid; gap: 10px; }
+.studio-page .waitlist input { min-width: 0; min-height: 54px; padding: 12px 18px; font: inherit; font-size: 17px; color: var(--ink); background: var(--white); border: 1px solid var(--ink); border-radius: 999px; }
+.studio-page .waitlist input:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.studio-page .waitlist .studio-button { border-radius: 999px; }
+.studio-page .waitlist .studio-form-note { margin: 0; font-size: 14px; }
+.studio-page .waitlist .contact-status:empty { display: none; }
+.studio-page .waitlist-thanks { margin: 0; }
+.studio-page .waitlist-thanks .hand { font-size: 36px; transform: rotate(-3deg); }
+.studio-page .diy-map { padding: 48px var(--gutter) 64px; border-top: 1px solid var(--line); background: var(--paper-light); }
+.studio-page .diy-map h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 48px); }
+.studio-page .diy-map > p { margin: 0 0 24px; color: var(--muted); }
+.studio-page .diy-map ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: diy; }
+.studio-page .diy-map li { counter-increment: diy; display: grid; grid-template-columns: 2.2em minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); }
+.studio-page .diy-map li::before { content: counter(diy); font-family: var(--display); font-size: 24px; line-height: 1; text-align: center; }
+.studio-page .diy-map li strong { display: block; color: var(--ink); font-weight: 700; }
+.studio-page .diy-lock { width: 16px; height: 18px; fill: none; stroke: var(--muted); stroke-width: 1.6; }
+@media (min-width: 761px) {
+  .studio-page .diy-hero { padding: 56px var(--gutter) 72px; gap: 24px; }
+  .studio-page .waitlist { padding: 22px; }
+  .studio-page .waitlist-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .studio-page .diy-map { padding: 64px var(--gutter) 80px; }
+  .studio-page .diy-map ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

@@ -7,7 +7,7 @@ export default function DatenschutzPage() {
   return (
     <InteriorShell title="Datenschutz." intro="Welche Daten bei einem Besuch und einer Kontaktaufnahme verarbeitet werden.">
       <article className="legal-document">
-        <p>Stand: 27. Oktober&nbsp;2026. Diese&nbsp;Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
+        <p>Stand: 31. Oktober&nbsp;2026. Diese&nbsp;Informationen beziehen sich auf die Webseite von Satzstrategie.</p>
 
         <h2>Verantwortlich</h2>
         <p>Peter Josef Klein<br />c/o IP-Management #8336<br />Ludwig-Erhard-Straße 18<br />20459 Hamburg</p>
@@ -35,6 +35,9 @@ export default function DatenschutzPage() {
         <h2>Persönliche Ersteinschätzung und Textbeispiele</h2>
         <p>Unter „Erster Blick“ senden Sie uns Ihre Webadresse, das Ziel Ihrer Webseite, Ihre E&#8209;Mail-Adresse und optional Ihren Namen. Die&nbsp;Nachricht enthält die Bitte um eine kostenlose kurze Ersteinschätzung. Für&nbsp;die Übertragung gelten die Hinweise zum Kontaktformular.</p>
         <p>Die Webseite führt keinen automatischen KI-Check durch und überträgt diese Eingaben nicht an einen KI-, Newsletter- oder Tabellendienst. Die&nbsp;Textbeispiele sind selbst entwickelt und rufen keine Besucher-Webseite ab. Für&nbsp;Ihre Nachricht gelten die Hinweise zur Kontaktaufnahme per E&#8209;Mail.</p>
+
+        <h2>Warteliste „Selbst machen“</h2>
+        <p>Auf der Seite „Selbst machen“ können Sie uns Ihre E&#8209;Mail-Adresse schicken, damit wir Ihnen Bescheid geben, wenn das Angebot startet. Die&nbsp;Adresse wird wie beim Kontaktformular als E&#8209;Mail an unser Postfach übertragen; auf der Webseite wird nichts gespeichert. Wir&nbsp;schreiben Ihnen einmal zum Start und löschen die Adresse danach. Rechtsgrundlage ist Ihre Einwilligung (Art. 6&nbsp;Abs. 1&nbsp;lit. a&nbsp;DSGVO), die Sie jederzeit per E&#8209;Mail an <a href="mailto:kontakt@satzstrategie.de">kontakt@satzstrategie.de</a> widerrufen können. Die&nbsp;Warteliste ist kein Newsletter.</p>
 
         <h2>Postanschrift</h2>
         <p>Für den Empfang und die Weiterleitung von Post verwenden wir den im Impressum genannten Dienst Impressum-Privatschutz. Bei&nbsp;postalischer Kontaktaufnahme erhält dieser die zur Bearbeitung erforderlichen Absender- und Sendungsdaten. Die&nbsp;Verarbeitung dient der Erreichbarkeit und Bearbeitung Ihrer Anfrage (Art. 6&nbsp;Abs. 1&nbsp;lit. b&nbsp;bzw. f&nbsp;DSGVO). Weitere&nbsp;Informationen: <a href="https://impressum-privatschutz.de/datenschutzerklaerung/">Datenschutz&nbsp;bei Impressum-Privatschutz</a>.</p>
