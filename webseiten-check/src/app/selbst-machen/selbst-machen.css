@@ -1,9 +1,9 @@
 /* Selbst machen: Baustelle mit Startdatum, Warteliste und gesperrter Levelkarte. Handy zuerst. */
 .studio-page .diy-hero { padding: 32px var(--gutter) 48px; display: grid; gap: 20px; justify-items: start; }
-.studio-page .diy-sign { background: var(--paper-light); border: 2px solid var(--ink); transform: rotate(-2deg); margin: 4px 0 8px; }
+.studio-page .diy-sign { background: #f2c230; color: var(--ink); border: 3px solid var(--ink); transform: rotate(-2deg); margin: 4px 0 8px; }
 .studio-page .diy-sign p { margin: 0; padding: 8px 18px 6px; font-family: var(--logo); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: clamp(20px, 6vw, 30px); line-height: 1.1; }
-/* Rot-weiß wie eine Absperrbake. */
-.studio-page .diy-stripes { display: block; height: 12px; background: repeating-linear-gradient(-45deg, var(--red) 0 10px, var(--paper-light) 10px 20px); }
+/* Gelb mit dunklen Streifen wie ein Baustellenschild, hebt sich vom Rotstift ab. */
+.studio-page .diy-stripes { display: block; height: 12px; background: repeating-linear-gradient(-45deg, var(--ink) 0 10px, #f2c230 10px 20px); }
 .studio-page .diy-hero h1 { margin: 0; font-size: clamp(48px, 14vw, 104px); line-height: 1; text-wrap: balance; }
 .studio-page .diy-lead { margin: 0; max-width: 36ch; font-size: clamp(19px, 2vw, 24px); line-height: 1.45; }
 .studio-page .diy-date { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; font-size: 18px; }
