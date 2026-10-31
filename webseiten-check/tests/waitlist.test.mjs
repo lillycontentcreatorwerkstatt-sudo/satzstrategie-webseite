@@ -27,6 +27,8 @@ test('the confirmation request is factual and the proof names both times', () =>
   const request = createWaitlistConfirmRequest('https://www.satzstrategie.de/selbst-machen/bestaetigen#abc');
   assert.equal(request.subject, 'Bitte bestätigen: Warteliste „Selbst machen“');
   assert.match(request.text, /#abc\n\nDer Link gilt 7 Tage\. Wenn Sie sich nicht eingetragen haben, ignorieren Sie diese E-Mail einfach\./);
+  assert.match(request.html, /<a href="https:\/\/www\.satzstrategie\.de\/selbst-machen\/bestaetigen#abc" style="[^"]*">Adresse bestätigen<\/a>/);
+  assert.match(createWaitlistConfirmRequest('https://x.de/#a"b<c').html, /href="https:\/\/x\.de\/#a&quot;b&lt;c"/);
   const proof = createWaitlistConfirmed('lena@beispiel.de', start, start + day);
   assert.equal(proof.subject, 'Warteliste bestätigt: lena@beispiel.de');
   assert.equal(proof.replyTo, 'lena@beispiel.de');

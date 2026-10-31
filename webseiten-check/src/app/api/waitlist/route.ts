@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     connectionTimeout: 10_000, greetingTimeout: 10_000, socketTimeout: 15_000,
   });
   try {
-    await transport.sendMail({ from: { name: "Satzstrategie", address: INQUIRY_EMAIL }, to: mail.to, replyTo: mail.replyTo, subject: mail.subject, text: mail.text });
+    await transport.sendMail({ from: { name: "Satzstrategie", address: INQUIRY_EMAIL }, to: mail.to, replyTo: mail.replyTo, subject: mail.subject, text: mail.text, html: mail.html });
     return Response.json({ ok: true });
   } catch (error) {
     console.error("waitlist: Versand fehlgeschlagen", error instanceof Error ? error.message : error);
