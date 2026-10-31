@@ -28,8 +28,9 @@ test('only production deployments are indexable, never previews or local builds'
 });
 
 test('every public route receives its own canonical and share metadata', () => {
-  assert.equal(new Set(PUBLIC_ROUTES).size, 10);
+  assert.equal(new Set(PUBLIC_ROUTES).size, 11);
   assert.ok(PUBLIC_ROUTES.includes('/selbst-machen'));
+  assert.ok(PUBLIC_ROUTES.includes('/selbst-machen/texte'));
   assert.ok(PUBLIC_ROUTES.includes('/erster-blick'));
   assert.ok(PUBLIC_ROUTES.includes('/beispiele'));
   assert.ok(!PUBLIC_ROUTES.includes('/analyse'));

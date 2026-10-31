@@ -42,6 +42,14 @@
 .studio-page .diy-map li { counter-increment: diy; display: grid; grid-template-columns: 2.2em minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); }
 .studio-page .diy-map li::before { content: counter(diy); font-family: var(--display); font-size: 24px; line-height: 1; text-align: center; }
 .studio-page .diy-map li strong { display: block; color: var(--ink); font-weight: 700; }
+/* Freigeschaltete Kostprobe: ganze Zeile klickbar, dunkler Rand statt Schloss. */
+.studio-page .diy-try { border-radius: 999px; }
+.studio-page .diy-map li.diy-open { display: block; padding: 0; border: 2px solid var(--ink); background: var(--paper-light); color: var(--ink); }
+.studio-page .diy-map li.diy-open a { display: grid; grid-template-columns: 2.2em minmax(0, 1fr); align-items: center; gap: 4px 12px; padding: 11px 13px; color: inherit; text-decoration: none; }
+.studio-page .diy-map li.diy-open a::before { content: counter(diy); font-family: var(--display); font-size: 24px; line-height: 1; text-align: center; grid-row: span 2; }
+.studio-page .diy-map li.diy-open::before { content: none; }
+.studio-page .diy-open-tag { font-weight: 700; color: var(--red); text-decoration: underline; text-underline-offset: .2em; }
+.studio-page .diy-map li.diy-open a:hover .diy-open-tag { text-decoration-thickness: 2px; }
 .studio-page .diy-lock { width: 16px; height: 18px; fill: none; stroke: var(--muted); stroke-width: 1.6; }
 @media (min-width: 761px) {
   .studio-page .diy-hero { padding: 56px var(--gutter) 72px; gap: 24px; }

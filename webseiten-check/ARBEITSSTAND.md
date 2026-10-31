@@ -4,6 +4,12 @@ Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 
 ## Weiche „Sie haben die Wahl“ und „Selbst machen“ am 31. Oktober 2026 — veröffentlicht
 
+- Kostprobe Schritt 2 „Texte“ (`/selbst-machen/texte`, veröffentlicht): vier
+  Übungen ohne Anmeldung (Floskeln antippen, beste Fassung wählen, eigenen Satz prüfen,
+  Claude-Auftrag kopieren), danach Warteliste. Floskel-Liste in `src/lib/floskeln.ts`,
+  läuft nur im Browser. Auf „Selbst machen“ ist Schritt 2 freigeschaltet, dazu der Knopf
+  „Kostprobe: Schritt 2 ausprobieren“. In Sitemap und `llms.txt`.
+
 - Warteliste mit Double-Opt-in (noch nicht veröffentlicht): `POST /api/waitlist` schickt
   bei `step: "request"` nur eine Bestätigungsmail an die eingetragene Adresse; Link
   `/selbst-machen/bestaetigen#<token>` (Adresse + Zeit, HMAC-signiert, 7 Tage gültig,
