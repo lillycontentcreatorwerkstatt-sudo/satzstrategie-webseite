@@ -50,3 +50,13 @@
   .studio-page .diy-map { padding: 64px var(--gutter) 80px; }
   .studio-page .diy-map ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* Computer: Schritte rechts neben Text und Warteliste, damit keine Seite leer wirkt. */
+@media (min-width: 1001px) {
+  .studio-page .diy-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; padding: 36px var(--gutter) 80px; align-items: start; }
+  .studio-page .diy-layout .diy-hero, .studio-page .diy-layout .diy-map { padding: 0; }
+  /* Kleinere Überschrift, damit die Warteliste ohne Scrollen sichtbar bleibt. */
+  .studio-page .diy-layout .diy-hero { gap: 20px; }
+  .studio-page .diy-layout .diy-hero h1 { font-size: clamp(56px, 5.6vw, 84px); }
+  .studio-page .diy-layout .diy-map { border-top: 0; background: none; }
+  .studio-page .diy-layout .diy-map ol { grid-template-columns: 1fr; }
+}
