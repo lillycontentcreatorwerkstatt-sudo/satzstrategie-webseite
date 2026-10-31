@@ -4,11 +4,13 @@ Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 
 ## Weiche „Sie haben die Wahl“ und „Selbst machen“ am 31. Oktober 2026 — veröffentlicht
 
-- Kostprobe Schritt 2 „Texte“ (`/selbst-machen/texte`, veröffentlicht): vier
-  Übungen ohne Anmeldung (Floskeln antippen, beste Fassung wählen, eigenen Satz prüfen,
-  Claude-Auftrag kopieren), danach Warteliste. Floskel-Liste in `src/lib/floskeln.ts`,
-  läuft nur im Browser. Auf „Selbst machen“ ist Schritt 2 freigeschaltet, dazu der Knopf
-  „Kostprobe: Schritt 2 ausprobieren“. In Sitemap und `llms.txt`.
+- „Selbst machen“ neu (`DiyGuide.tsx`, `FiveSecondTest.tsx`): Schild „Baustelle“ mit
+  „Fertigstellung bis 16.11.2026“, zwei Einstiege (schon eine Webseite / neu anfangen),
+  „Das steckt drin“ (9 Schritte, bei bestehender Seite plus Schritt 0), vier Fragen je Weg,
+  5-Sekunden-Test mit erfundener Tischlerei (beide Fassungen mit denselben Angaben), am
+  Ende „Selbst umsetzen“ (Warteliste) oder „Satzstrategie beauftragen“ (Kontakt). „KI“
+  statt „Claude“. Bewusst keine Hilfe-Versprechen zum Paket (sonst Richtung Fernunterricht).
+  Die frühere Kostprobe „Texte“ (`/selbst-machen/texte`) ist entfernt.
 
 - Warteliste mit Double-Opt-in (noch nicht veröffentlicht): `POST /api/waitlist` schickt
   bei `step: "request"` nur eine Bestätigungsmail an die eingetragene Adresse; Link

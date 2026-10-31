@@ -52,7 +52,7 @@ export default function WaitlistForm() {
         <button className="studio-button" type="submit">{sending ? "Wird gesendet …" : "Bescheid geben"}</button>
       </div>
       <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}><label htmlFor="waitlist-company">Firma</label><input id="waitlist-company" name="company" tabIndex={-1} autoComplete="off" /></div>
-      <p className="studio-form-note">Sie bekommen zuerst eine E‑Mail mit einem Bestätigungslink. Danach schreiben wir Ihnen einmal, wenn es losgeht, und löschen die Adresse. Mehr&nbsp;dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
+      <p className="studio-form-note">Sie&nbsp;bekommen zuerst eine E‑Mail mit einem Bestätigungslink. Danach&nbsp;schreiben wir Ihnen einmal, wenn es losgeht, und löschen die Adresse. Mehr&nbsp;dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
     </fieldset>
     <p className="contact-status" role="status">{status}</p>
   </form>;
