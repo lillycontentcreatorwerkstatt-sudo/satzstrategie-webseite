@@ -9,14 +9,14 @@ const SECONDS = 5;
 
 const ANSWERS = [
   { value: "moebel", label: "Möbel verkaufen", reply: "Das stimmt nicht ganz, die Tischlerei baut Einbauschränke und Küchen nach Maß. Auf der Seite steht das allerdings nur ganz unten in sehr kleiner Schrift." },
-  { value: "mass", label: "Einbauschränke und Küchen nach Maß", reply: "Richtig, allerdings steht das nur ganz unten in sehr kleiner Schrift, und viele Besucher übersehen es." },
+  { value: "mass", label: "Einbauschränke und Küchen nach Maß", reply: "Richtig, allerdings steht das nur ganz unten in sehr kleiner Schrift und ist beim Überfliegen leicht zu übersehen." },
   { value: "holz", label: "Holz und Baustoffe liefern", reply: "Das stimmt nicht ganz, die Tischlerei baut Einbauschränke und Küchen nach Maß. Auf der Seite steht das allerdings nur ganz unten in sehr kleiner Schrift." },
-  { value: "unklar", label: "Kann ich nicht erkennen", reply: "So geht es vielen Besuchern, denn das Angebot steht nur ganz unten in sehr kleiner Schrift." },
+  { value: "unklar", label: "Kann ich nicht erkennen", reply: "Das ist verständlich, denn das Angebot steht nur ganz unten in sehr kleiner Schrift." },
 ];
 
 const PROMPTS: Record<DiyPath, string> = {
-  bestehend: "Ich habe eine Webseite für [Ihr Angebot].\nIch habe meine Startseite jemandem fünf Sekunden lang gezeigt. Die Antworten waren: [Antworten].\nEigentlich möchte ich zeigen: [was Sie anbieten, für wen, wo].\n\nBitte vergleiche beides und schlage mir eine Überschrift mit einem Satz darunter vor, die das in fünf Sekunden klarmacht. Schreib in einfachen Worten. Erfinde keine Zahlen oder Versprechen. Frag nach, wenn dir etwas fehlt.",
-  neu: "Ich plane eine Webseite für [Ihr Angebot].\nBesucher sollen in fünf Sekunden wissen: [Ihre Notizen].\n\nBitte schlage mir drei Überschriften mit je einem Satz darunter vor. Schreib in einfachen Worten. Erfinde keine Zahlen oder Versprechen. Frag nach, wenn dir etwas fehlt.",
+  bestehend: "Ich habe eine Webseite für [Ihr Angebot].\nDas steht bisher oben auf meiner Startseite: [Ihr bisheriger Text].\nIch habe die Startseite jemandem fünf Sekunden lang gezeigt. Die Antworten waren: [Antworten].\nEigentlich möchte ich zeigen: [was Sie anbieten, für wen, wo].\n\nBitte vergleiche beides und schlage mir eine Überschrift mit einem Satz darunter vor, die das in fünf Sekunden klarmacht. Behalte, was an meinem Text schon gut ist. Schreib in einfachen Worten und verwende nur meine Angaben. Erfinde keine Zahlen oder Versprechen. Frag nach, wenn dir etwas fehlt.",
+  neu: "Ich plane eine Webseite für [Ihr Angebot].\nBesucher sollen in fünf Sekunden wissen: [Ihre Notizen].\n\nBitte schlage mir drei Überschriften mit je einem Satz darunter vor. Schreib in einfachen Worten und verwende nur meine Angaben. Erfinde keine Zahlen oder Versprechen. Frag nach, wenn dir etwas fehlt.",
 };
 
 function FirstVersion() {
@@ -106,6 +106,7 @@ export default function FiveSecondTest({ path }: { path: DiyPath }) {
         <p className="diy-kicker">Zum Ausprobieren</p>
         <h2 id="diy-test-title" ref={titleRef} tabIndex={-1}>Was sieht ein Kunde in fünf&nbsp;Sekunden?</h2>
         <p>Sie&nbsp;sehen gleich fünf Sekunden lang die Startseite einer Tischlerei, wie ein Kunde sie zum ersten Mal sieht. Danach&nbsp;stellen wir Ihnen eine Frage&nbsp;dazu.</p>
+        <p className="diy-note">Die&nbsp;Übung zeigt, was beim ersten Blick auffällt. Einen&nbsp;Test mit Ihren echten Kunden ersetzt sie&nbsp;nicht.</p>
       </div>
 
       <div>
@@ -136,10 +137,10 @@ export default function FiveSecondTest({ path }: { path: DiyPath }) {
 
         {phase === "result" && <div className="diy-step">
           <h3 ref={resultRef} tabIndex={-1}>Beide Seiten enthalten dieselben&nbsp;Angaben.</h3>
-          <p>Geändert&nbsp;haben sich nur der Text und die Reihenfolge, und darauf kommt es&nbsp;an:</p>
+          <p>Geändert&nbsp;haben sich die Texte, die Reihenfolge und die Gestaltung. Das&nbsp;sind die wichtigsten&nbsp;Unterschiede:</p>
           <ol className="diy-reasons">
             <li>Die&nbsp;Überschrift nennt das Angebot, statt eine Stimmung zu&nbsp;beschreiben.</li>
-            <li>Ort&nbsp;und Leistung stehen ganz oben und sind sofort zu&nbsp;sehen.</li>
+            <li>Ort&nbsp;und Leistung stehen ganz oben in großer, gut lesbarer&nbsp;Schrift.</li>
             <li>Ein&nbsp;deutlicher Knopf zeigt, wie man einen Termin&nbsp;anfragt.</li>
           </ol>
           <div className="diy-compare">

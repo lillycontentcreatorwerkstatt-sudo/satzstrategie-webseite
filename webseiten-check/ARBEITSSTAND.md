@@ -11,6 +11,14 @@ Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
   Ende „Selbst umsetzen“ (Warteliste) oder „Satzstrategie beauftragen“ (Kontakt). „KI“
   statt „Claude“. Bewusst keine Hilfe-Versprechen zum Paket (sonst Richtung Fernunterricht).
   Die frühere Kostprobe „Texte“ (`/selbst-machen/texte`) ist entfernt.
+- Codex-Kritik vom 31.10. umgesetzt (nur Punkte ohne offene Entscheidung): Paket gleich
+  unter dem Einstieg erklärt, absolute Versprechen abgeschwächt, Schritt 6 „KI-Ergebnisse
+  prüfen“, Testauswertung nennt auch die Gestaltung, KI-Auftrag mit bisherigem Text,
+  Weiterleitung `/selbst-machen/texte` → `/selbst-machen`, Weiche erklärt beide Wege,
+  Arbeitsproben als selbst geschriebene Beispiele gekennzeichnet, Fallstudie nennt Absichten
+  statt Wirkungen, Formularhinweis sagt, dass die Anfrage als E-Mail ankommt.
+  Offen (Entscheidung Lilly/Piet): welche Systeme das Paket abdeckt, Format und Preis,
+  24-Stunden-Zusage, Arbeitsweise in Leistungen/FAQ, Feldbezeichnungen im Formular.
 
 - Warteliste mit Double-Opt-in (noch nicht veröffentlicht): `POST /api/waitlist` schickt
   bei `step: "request"` nur eine Bestätigungsmail an die eingetragene Adresse; Link

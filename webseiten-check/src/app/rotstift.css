@@ -411,6 +411,14 @@ html:has(.sent-dialog[open]) { overflow: hidden; }
 .studio-page .choice-hand { margin: 0; font-size: clamp(32px, 8.4vw, 46px); transform: rotate(-3deg); }
 .studio-page .choice-actions { display: flex; flex-direction: column; gap: 12px; width: min(100%, 340px); }
 .studio-page .choice-button { width: 100%; border-radius: 999px; }
+.studio-page .choice-path { display: grid; gap: 4px; justify-items: center; }
+.studio-page .choice-note { margin: 0; font-size: 15px; line-height: 1.35; color: var(--muted); text-align: center; }
+/* Kleine Handys: Knöpfe und Erklärungen rücken enger zusammen, damit nichts unter die Fußzeile rutscht. */
+@media (max-height: 600px) {
+  .studio-page .choice-actions { gap: 8px; }
+  .studio-page .choice-path { gap: 2px; }
+  .studio-page .choice-note { font-size: 14px; line-height: 1.25; }
+}
 .studio-page .choice-legal { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; gap: 22px; padding: 4px var(--gutter) calc(4px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); font-size: 14px; }
 .studio-page .choice-legal a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); }
 @media (min-width: 761px) {

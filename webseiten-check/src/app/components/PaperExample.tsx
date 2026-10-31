@@ -10,9 +10,9 @@ export default function PaperExample() {
         <div>
           <p className="proof-sheet-old"><span className="visually-hidden">Vorher: </span><del className="proof-del">„Wir bieten innovative Lösungen rund um Ihr Zuhause.“</del></p>
           <p className="proof-sheet-new"><ProofCaret /><span><span className="visually-hidden">Nachher: </span>Wir renovieren Altbauwohnungen in Leipzig.</span></p>
-          <p className="proof-sheet-why">Die Arbeit und der Ort stehen fest. Leser&nbsp;wissen sofort, ob das Angebot zu ihnen passt.</p>
+          <p className="proof-sheet-why">Die Arbeit und der Ort stehen fest. Leser&nbsp;erkennen schneller, ob das Angebot zu ihrem Vorhaben passt.</p>
         </div>
-        <div className="proof-sheet-notes"><span className="hand">Was? Wo? Für wen?</span><span className="hand">jetzt klar.</span></div>
+        <div className="proof-sheet-notes"><span className="hand">Was? Wo?</span><span className="hand">jetzt klar.</span></div>
       </div>
     </figure>
   </section>;

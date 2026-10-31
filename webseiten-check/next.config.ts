@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       { source: "/datenschutz.html", destination: "/datenschutz", permanent: true },
       { source: "/impressum.html", destination: "/impressum", permanent: true },
       { source: "/index.html", destination: "/", permanent: true },
+      { source: "/selbst-machen/texte", destination: "/selbst-machen", permanent: true },
     ];
   },
 };

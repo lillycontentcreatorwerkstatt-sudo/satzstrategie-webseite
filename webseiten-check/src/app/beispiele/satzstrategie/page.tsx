@@ -16,13 +16,13 @@ export default function CaseStudyPage() {
       </header>
       <section className="open-case" id="text" aria-labelledby="case-text"><header><h2 id="case-text">Vom&nbsp;Selbstbild<br />zum Versprechen</h2><p>Startseite, Hauptüberschrift</p></header>
         <Comparison before={<p className="example-sentence">„Wörter brauchen Haltung.“</p>} after={<p className="example-sentence">„Endlich gesehen werden.“</p>} />
-        <Explanation before="Die Überschrift sagte etwas über uns. Wer&nbsp;die Seite öffnet, sucht aber etwas für sich." change="Die neue Überschrift nennt, was sich für unsere Kunden ändert. Direkt&nbsp;darunter steht, was wir tun." reason="Besucher erkennen in den ersten Sekunden, ob das Angebot zu ihnen passt." />
+        <Explanation before="Die Überschrift sagte etwas über uns. Wer&nbsp;die Seite öffnet, sucht aber etwas für sich." change="Die neue Überschrift nennt, was sich für unsere Kunden ändert. Direkt&nbsp;darunter steht, was wir tun." reason="So&nbsp;sollen Besucher schneller erkennen, ob das Angebot zu ihnen&nbsp;passt." />
         <div className="small-comparison"><h3>Auch Überschriften helfen beim Finden.</h3><p><span>Vorher: „Texte&nbsp;schreiben und prüfen“</span><strong>Nachher: „Webseitentexte&nbsp;schreiben und prüfen“</strong></p><p>Das genauere Wort ist das, wonach Menschen suchen. Mehr&nbsp;Text braucht es dafür nicht.</p></div>
         <a className="example-back" href="#beispielauswahl">Zur Übersicht</a>
       </section>
       <section className="open-case open-case-design" id="design" aria-labelledby="case-design"><header><h2 id="case-design">Ein Name, den<br />man lesen kann</h2><p>Logo in der Kopfzeile</p></header>
         <Comparison before={<p className="case-logo case-logo-before">satzstrategie<span>]</span></p>} after={<p className="case-logo case-logo-after">satzstrategie<span>]</span></p>} />
-        <Explanation before="Der Name stand in Kleinbuchstaben und eng gesetzt. Neben&nbsp;viel Rot fiel er kaum auf." change="Eine Schablonenschrift in Großbuchstaben, mit offenem Abstand zwischen den Buchstaben. Die&nbsp;rote Klammer bleibt." reason="Eng gesetzte Großbuchstaben verschwimmen für Menschen mit Sehbeeinträchtigung. Der&nbsp;Abstand hält jeden Buchstaben erkennbar." />
+        <Explanation before="Der Name stand in Kleinbuchstaben und eng gesetzt. Neben&nbsp;viel Rot fiel er kaum auf." change="Eine Schablonenschrift in Großbuchstaben, mit offenem Abstand zwischen den Buchstaben. Die&nbsp;rote Klammer bleibt." reason="Durch&nbsp;den größeren Abstand heben sich die einzelnen Buchstaben deutlicher voneinander&nbsp;ab." />
         <p className="example-limit">Eine grüne Fassung des Namens haben wir ausprobiert und wieder verworfen.</p>
         <a className="example-back" href="#beispielauswahl">Zur Übersicht</a>
       </section>

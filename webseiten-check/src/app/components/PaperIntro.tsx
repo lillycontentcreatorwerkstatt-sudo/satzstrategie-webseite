@@ -104,8 +104,8 @@ export default function PaperIntro() {
         <p className="choice-topics">Webseiten <span aria-hidden="true">·</span> Texte <span aria-hidden="true">·</span> Gestaltung</p>
         <p className="hand choice-hand">Sie haben die Wahl.</p>
         <div className="choice-actions">
-          <button type="button" className="studio-button choice-button" onClick={startAgency}>Wir setzen es um</button>
-          <Link className="studio-button choice-button" href="/selbst-machen">Sie machen es selbst</Link>
+          <div className="choice-path"><button type="button" className="studio-button choice-button" onClick={startAgency}>Wir setzen es um</button><p className="choice-note">Wir&nbsp;übernehmen die Arbeit an Ihrer&nbsp;Webseite.</p></div>
+          <div className="choice-path"><Link className="studio-button choice-button" href="/selbst-machen">Sie machen es selbst</Link><p className="choice-note">Unser&nbsp;Paket dafür startet am 16.&nbsp;November.</p></div>
         </div>
         <nav className="choice-legal" aria-label="Kontakt und rechtliche Informationen"><Link href="/kontakt">Kontakt</Link><Link href="/impressum">Impressum</Link><Link href="/datenschutz">Datenschutz</Link></nav>
       </section>

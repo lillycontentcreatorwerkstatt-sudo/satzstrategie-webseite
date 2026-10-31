@@ -11,13 +11,13 @@ const STEPS: Step[] = [
   { title: "Bestandsaufnahme", text: <>Sie&nbsp;klären, womit Ihre Seite gebaut ist und wer die Zugänge hat, und legen eine Sicherung&nbsp;an.</>, only: "bestehend" },
   { title: "Angebot und Kunden", text: <>Sie&nbsp;finden heraus, was Ihre Kunden suchen und ob Ihre Seite es ihnen&nbsp;zeigt.</>, neu: <>Sie&nbsp;legen fest, wen Ihre Seite ansprechen soll und was diese Menschen dort tun&nbsp;sollen.</> },
   { title: <>Texte, die man&nbsp;versteht</>, text: <>Sie&nbsp;schreiben so über Ihr Angebot, wie Ihre Kunden darüber&nbsp;sprechen.</> },
-  { title: <>Aufbau und&nbsp;Wegweiser</>, text: <>Sie&nbsp;ordnen Ihre Inhalte so, dass sich Besucher auch auf dem Handy sofort&nbsp;zurechtfinden.</> },
-  { title: "Gestaltung", text: <>Sie&nbsp;wählen Farben und Schriften, die zu Ihnen passen und für alle gut lesbar&nbsp;sind.</> },
+  { title: <>Aufbau und&nbsp;Wegweiser</>, text: <>Sie&nbsp;ordnen Ihre Inhalte so, dass sich Besucher auch auf dem Handy gut&nbsp;zurechtfinden.</> },
+  { title: "Gestaltung", text: <>Sie&nbsp;wählen Farben und Schriften, die zu Ihnen passen, und prüfen, ob alles gut lesbar&nbsp;ist.</> },
   { title: "Umsetzen mit KI", text: <>Sie&nbsp;bereiten Änderungen mit der KI vor und bauen sie sauber&nbsp;ein.</>, neu: <>Sie&nbsp;lernen, der KI Aufträge zu geben, aus denen Schritt für Schritt Ihre Seite&nbsp;entsteht.</> },
-  { title: <>Prüfen, was die KI nicht&nbsp;kann</>, text: <>Sie&nbsp;lernen, woran Sie Fehler der KI erkennen und was Sie besser selbst&nbsp;entscheiden.</> },
+  { title: "KI-Ergebnisse prüfen", text: <>Sie&nbsp;prüfen, ob Aussagen und Funktionen stimmen, und entscheiden selbst, was veröffentlicht&nbsp;wird.</> },
   { title: "Veröffentlichen", text: <>Sie&nbsp;bringen die überarbeitete Seite sicher&nbsp;online.</>, neu: <>Sie&nbsp;erfahren, was Domain, GitHub und Vercel sind, und bringen Ihre Seite samt Impressum und Datenschutzerklärung ins&nbsp;Netz.</> },
-  { title: "Gefunden werden", text: <>Sie&nbsp;sorgen dafür, dass Google und Bing Ihre Seite finden, und richten Ihr Unternehmensprofil&nbsp;ein.</> },
-  { title: "Pflegen", text: <>Sie&nbsp;halten Ihre Seite mit wenig Aufwand auf dem neuesten&nbsp;Stand.</> },
+  { title: "Gefunden werden", text: <>Sie&nbsp;schaffen die Grundlagen, damit Google und Bing Ihre Seite finden, und richten Ihr Unternehmensprofil&nbsp;ein.</> },
+  { title: "Pflegen", text: <>Sie&nbsp;lernen, was regelmäßig zu tun ist und wie Sie es&nbsp;einplanen.</> },
 ];
 
 const QUESTIONS: Record<DiyPath, { title: ReactNode; text: ReactNode; test?: boolean }[]> = {
@@ -48,9 +48,10 @@ export default function DiyGuide() {
         </div>
         <h1 id="diy-title">Ihre Webseite selbst gestalten und&nbsp;bauen.</h1>
         <p className="diy-lead">Wir&nbsp;zeigen Ihnen Schritt für Schritt, wie Sie mit einer KI Ihre bestehende Webseite verbessern oder eine neue&nbsp;aufbauen.</p>
+        <p className="diy-package">Im&nbsp;Paket finden Sie Anleitungen, Beispiele und vorbereitete Aufträge für die KI, mit denen Sie selbst an Ihrer Webseite arbeiten und die Ergebnisse prüfen. Es&nbsp;startet am 16.&nbsp;November&nbsp;2026.</p>
         <fieldset className="diy-paths">
           <legend>Wo stehen Sie&nbsp;gerade?</legend>
-          <label className="diy-path"><input type="radio" name="diy-path" value="bestehend" checked={path === "bestehend"} onChange={() => setPath("bestehend")} /><strong>Ich habe schon eine&nbsp;Webseite</strong><span>Sie&nbsp;lernen, Ihre Seite mit KI gründlich zu prüfen und so zu überarbeiten, dass Ihre Kunden schnell finden, was sie&nbsp;suchen.</span></label>
+          <label className="diy-path"><input type="radio" name="diy-path" value="bestehend" checked={path === "bestehend"} onChange={() => setPath("bestehend")} /><strong>Ich habe schon eine&nbsp;Webseite</strong><span>Sie&nbsp;lernen, Ihre Seite mit KI gründlich zu prüfen und so zu überarbeiten, dass Ihre Kunden leichter finden, was sie&nbsp;suchen.</span></label>
           <label className="diy-path"><input type="radio" name="diy-path" value="neu" checked={path === "neu"} onChange={() => setPath("neu")} /><strong>Ich fange neu&nbsp;an</strong><span>Sie&nbsp;gehen den ganzen Weg von der ersten Idee bis zur fertigen Seite im Netz, auch wenn Sie so etwas noch nie gemacht&nbsp;haben.</span></label>
         </fieldset>
       </div>
@@ -87,7 +88,7 @@ export default function DiyGuide() {
       <div className="diy-finish">
         <div className="diy-card">
           <h3>Selbst umsetzen</h3>
-          <p>Im&nbsp;Paket finden Sie Anleitungen mit Beispielen und vorbereiteten KI-Aufträgen, die wir regelmäßig auf den neuesten Stand&nbsp;bringen.</p>
+          <p>Sie&nbsp;arbeiten mit unseren Anleitungen, Beispielen und KI-Aufträgen, die wir regelmäßig auf den neuesten Stand&nbsp;bringen.</p>
           <p className="diy-date">Das&nbsp;Paket startet am 16.&nbsp;November&nbsp;2026.</p>
           <WaitlistForm />
         </div>

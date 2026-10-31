@@ -61,7 +61,7 @@ export default function ContactLetter({ firstLook = false }: { firstLook?: boole
       <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}><label htmlFor="inquiry-company">Firma</label><input id="inquiry-company" name="company" tabIndex={-1} autoComplete="off" /></div>
       {firstLook && <p className="small-note">Ein bis zwei konkrete Hinweise per E&#8209;Mail, keine vollständige Prüfung.</p>}
       <button className="studio-button" type="submit">{sending ? "Wird gesendet …" : "Anfrage senden"}</button>
-      <p className="studio-form-note">Ihre Anfrage geht direkt an uns. Auf&nbsp;der Webseite wird nichts gespeichert. Mehr&nbsp;dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
+      <p className="studio-form-note">Ihre&nbsp;Anfrage kommt als E&#8209;Mail bei uns an. Die&nbsp;Webseite selbst speichert sie nicht. Mehr&nbsp;dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
     </fieldset>
     <p className="contact-status" role="status">{status}</p>
     <dialog ref={sentDialog} className="sent-dialog" aria-labelledby={sentTitle} onClose={() => setSent(false)} onClick={event => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>

@@ -11,6 +11,7 @@
 .studio-page .diy-sign-date b { display: block; font-family: var(--display); font-weight: 400; font-size: 22px; }
 .studio-page .diy-start h1 { margin: 0; font-size: clamp(44px, 12vw, 80px); line-height: 1; text-wrap: balance; }
 .studio-page .diy-lead { margin: 0; max-width: 34ch; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.45; }
+.studio-page .diy-package { margin: -8px 0 0; max-width: 46ch; font-size: 17px; line-height: 1.5; color: var(--muted); }
 .studio-page .diy-paths { width: 100%; min-width: 0; margin: 0; padding: 0; border: 0; display: grid; gap: 12px; }
 .studio-page .diy-paths legend { margin-bottom: 4px; font-weight: 700; }
 .studio-page .diy-path { position: relative; display: grid; gap: 6px; padding: 16px 18px 16px 52px; background: var(--paper-light); border: 1px solid var(--line); cursor: pointer; }
@@ -34,6 +35,7 @@
 .studio-page .diy-block { padding: 56px var(--gutter); border-top: 1px solid var(--line); }
 .studio-page .diy-block-head { display: grid; gap: 10px; max-width: 46rem; margin-bottom: 28px; }
 .studio-page .diy-block-head p { margin: 0; font-size: 19px; max-width: 40ch; }
+.studio-page .diy-block-head .diy-note { font-size: 16px; color: var(--muted); }
 .studio-page .diy-block-head .diy-kicker { font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
 .studio-page .diy-block-head h2 { margin: 0; font-family: var(--display); font-size: clamp(36px, 7vw, 60px); line-height: 1.05; letter-spacing: -.01em; text-wrap: balance; }
 .studio-page .diy-questions { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
