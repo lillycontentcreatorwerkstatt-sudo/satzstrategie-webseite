@@ -29,7 +29,7 @@ export default function SelbstMachenPage() {
     </section>
     <section className="diy-map" aria-labelledby="diy-map-title">
       <h2 id="diy-map-title">Ihr Weg zur fertigen Webseite</h2>
-      <p>Geplant sind zehn Schritte. Jeder&nbsp;schaltet den nächsten frei.</p>
+      <p>Geplant sind zehn Schritte. Die&nbsp;Reihenfolge ist ein Vorschlag: Sie&nbsp;steigen dort ein, wo Sie gerade stehen.</p>
       <ol>{steps.map(([title, detail]) => <li key={title}><span><strong>{title}</strong>{detail}</span><svg className="diy-lock" viewBox="0 0 16 18" aria-hidden="true"><rect x="2" y="8" width="12" height="9" rx="1.5" /><path d="M5 8V5.5a3 3 0 0 1 6 0V8" /></svg><span className="visually-hidden">noch gesperrt</span></li>)}</ol>
     </section>
   </div></StudioShell>;
