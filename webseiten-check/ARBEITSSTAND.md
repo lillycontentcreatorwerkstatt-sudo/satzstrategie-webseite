@@ -2,7 +2,16 @@
 
 Stand: 9. Oktober 2026 — geprüfter Stand zur Veröffentlichung freigegeben
 
-## Weiche „Sie haben die Wahl“ und „Selbst machen“ am 31. Oktober 2026 — noch nicht committed, nicht veröffentlicht
+## Weiche „Sie haben die Wahl“ und „Selbst machen“ am 31. Oktober 2026 — veröffentlicht
+
+- Warteliste mit Double-Opt-in (noch nicht veröffentlicht): `POST /api/waitlist` schickt
+  bei `step: "request"` nur eine Bestätigungsmail an die eingetragene Adresse; Link
+  `/selbst-machen/bestaetigen#<token>` (Adresse + Zeit, HMAC-signiert, 7 Tage gültig,
+  hinter `#`, also nicht in Server-Protokollen). Bestätigt wird per Knopf, nicht beim
+  Öffnen (Link-Scanner). Erst `step: "confirm"` schickt den Nachweis an unser Postfach.
+  Der Schlüssel wird aus `SMTP_PASSWORD` abgeleitet: Wird das Passwort geändert, werden
+  offene Links ungültig. Höchstens 5 Anfragen pro IP in 10 Minuten (im Arbeitsspeicher).
+  `/api/inquiry` schreibt wieder nur an das eigene Postfach.
 
 - Startseite: Nach dem Stempel erscheint vor dem Foto die Weiche: „Endlich gesehen werden.“,
   „Webseiten · Texte · Gestaltung“, „Sie haben die Wahl.“ und zwei runde Knöpfe.

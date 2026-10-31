@@ -36,14 +36,6 @@ test('a contact request keeps German text and works without website or name', ()
   assert.equal(mail.text, 'Hallo Lilly und Piet,\n\nGrüße & eine Idee?\nZweite Zeile.\n\nMeine Webseite: noch keine\n\nViele Grüße\n(ohne Namen)\nlena@beispiel.de');
 });
 
-test('a waitlist request needs only an address and asks for one notification', () => {
-  const mail = parseInquiry({ kind: 'waitlist', email: ' lena@beispiel.de ' });
-  assert.equal(mail.subject, 'Warteliste: Selbst machen');
-  assert.equal(mail.replyTo, 'lena@beispiel.de');
-  assert.match(mail.text, /bitte sagen Sie mir einmal Bescheid, wenn „Selbst machen“ startet\./);
-  assert.deepEqual(parseInquiry({ kind: 'waitlist', email: 'kaputt' }), { error: 'email' });
-});
-
 test('invalid inquiries are rejected', () => {
   assert.deepEqual(parseInquiry(null), { error: 'kind' });
   assert.deepEqual(parseInquiry({ ...firstLook, email: 'kaputt' }), { error: 'email' });

@@ -1,17 +1,19 @@
 "use client";
 import Link from "next/link";
-import { useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { INQUIRY_EMAIL, normalizeInquiryEmail } from "@/lib/inquiry";
 const subscribe = () => () => {};
 
-// Warteliste für „Selbst machen“: Die Adresse geht wie beim Kontaktbrief als E-Mail an unser Postfach, gespeichert wird nichts.
+// Warteliste für „Selbst machen“ mit Double-Opt-in: Zuerst geht nur ein Bestätigungslink an die Adresse, gespeichert wird nichts.
 export default function WaitlistForm() {
   const form = useRef<HTMLFormElement>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
   const startedAt = useRef(0);
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [sentTo, setSentTo] = useState("");
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
+  useEffect(() => { if (sentTo) dialog.current?.showModal(); }, [sentTo]);
   async function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!form.current) return;
@@ -23,17 +25,25 @@ export default function WaitlistForm() {
     setSending(true);
     setStatus("Wird gesendet …");
     try {
-      const response = await fetch("/api/inquiry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind: "waitlist", email, company: String(data.get("company") || ""), startedAt: startedAt.current }) });
+      const response = await fetch("/api/waitlist", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ step: "request", email, company: String(data.get("company") || ""), startedAt: startedAt.current }) });
       if (!response.ok) throw new Error(String(response.status));
       setStatus("");
-      setSent(true);
+      setSentTo(email.trim());
     } catch {
       setStatus(`Das hat leider nicht geklappt. Schreiben Sie uns bitte direkt an ${INQUIRY_EMAIL}.`);
     } finally {
       setSending(false);
     }
   }
-  if (sent) return <p className="waitlist-thanks" role="status"><span className="hand">Danke! Wir sagen Bescheid.</span></p>;
+  if (sentTo) return <>
+    <p className="waitlist-thanks" role="status"><span className="hand">Fast geschafft! Bitte bestätigen Sie Ihre E‑Mail-Adresse.</span></p>
+    <dialog ref={dialog} className="waitlist-dialog" aria-labelledby="waitlist-dialog-title">
+      <h2 id="waitlist-dialog-title">Fast geschafft!</h2>
+      <p>Wir haben Ihnen eine E‑Mail an <strong>{sentTo}</strong> geschickt. Bitte klicken Sie auf den Link darin, damit wir wissen, dass die Adresse wirklich Ihnen gehört.</p>
+      <p className="waitlist-dialog-note">Keine E‑Mail da? Schauen Sie bitte auch im Spam-Ordner nach.</p>
+      <form method="dialog"><button className="studio-button" autoFocus>Verstanden</button></form>
+    </dialog>
+  </>;
   return <form ref={form} className="waitlist" aria-label="Warteliste für Selbst machen" onSubmit={send} onFocus={() => { if (!startedAt.current) startedAt.current = Date.now(); }}>
     <fieldset disabled={!ready || sending}>
       <label htmlFor="waitlist-email">Sagen Sie mir Bescheid, wenn es losgeht</label>
@@ -42,7 +52,7 @@ export default function WaitlistForm() {
         <button className="studio-button" type="submit">{sending ? "Wird gesendet …" : "Bescheid geben"}</button>
       </div>
       <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}><label htmlFor="waitlist-company">Firma</label><input id="waitlist-company" name="company" tabIndex={-1} autoComplete="off" /></div>
-      <p className="studio-form-note">Wir schreiben Ihnen einmal, wenn es losgeht. Danach löschen wir die Adresse. Mehr&nbsp;dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
+      <p className="studio-form-note">Sie bekommen zuerst eine E‑Mail mit einem Bestätigungslink. Danach schreiben wir Ihnen einmal, wenn es losgeht, und löschen die Adresse. Mehr&nbsp;dazu im <Link href="/datenschutz">Datenschutz</Link>.</p>
     </fieldset>
     <p className="contact-status" role="status">{status}</p>
   </form>;
